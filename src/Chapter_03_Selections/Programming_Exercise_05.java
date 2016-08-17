@@ -7,7 +7,7 @@ import java.util.Scanner;
  * (Sunday is 0, Monday is 1, …, and Saturday is 6). 
  * Also prompt the user to enter the number of days after today for a future day and display the future day of the week.
  * 
- * 02/05/2016
+ * 08/02/2016
  * @author kevgu
  *
  */
@@ -17,79 +17,69 @@ public class Programming_Exercise_05
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		int day, futureday, displayfuture;
-		String today = null;
-		String future = null;
-		System.out.print("What is today's day? (Enter an integer): ");
-		day = input.nextInt();
-		System.out.print("Enter the number of days after today for a future day: ");
-		futureday = input.nextInt();
+		System.out.print("Enter the day of today and the future day: ");
+		int today, future;
+		today = input.nextInt();
+		future = (today + input.nextInt()) % 7;
 		
-		//Sunday --> Saturday, 0 --> 6
-		displayfuture = (day + futureday) % 7;
-		
-		if (day == 0)
+		if (today == 0)
 		{
-			today = "Sunday";
+			System.out.print("Today is Sunday.");
 		}
-		else if (day == 1)
+		else if (today == 1)
 		{
-			today = "Monday";
+			System.out.print("Today is Monday.");
 		}
-		else if (day == 2)
+		else if (today == 2)
 		{
-			today = "Tuesday";
+			System.out.print("Today is Tuesday.");
 		}
-		else if (day == 3)
+		else if (today == 3)
 		{
-			today = "Wednesday";
+			System.out.print("Today is Wednesday.");
 		}
-		else if (day == 4)
+		else if (today == 4)
 		{
-			today = "Thursday";
+			System.out.print("Today is Thursday.");
 		}
-		else if (day == 5)
+		else if (today == 5)
 		{
-			today = "Friday";
+			System.out.print("Today is Friday.");
 		}
-		else if (day == 6)
+		else
 		{
-			today = "Saturday";
+			System.out.print("Today is Saturday.");
 		}
 		
-		//Find future day
-		if (displayfuture == 0)
+		if (future == 0)
 		{
-			future = "Sunday";
+			System.out.print("Future day is Sunday.");
 		}
-		else if (displayfuture == 1)
+		else if (future == 1)
 		{
-			future = "Monday";
+			System.out.print("Future day is Monday.");
 		}
-		else if (displayfuture == 2)
+		else if (future == 2)
 		{
-			future = "Tuesday";
+			System.out.print("Future day is Tuesday.");
 		}
-		else if (displayfuture == 3)
+		else if (future == 3)
 		{
-			future = "Wednesday";
+			System.out.print("Future day is Wednesday.");
 		}
-		else if (displayfuture == 4)
+		else if (future == 4) 
 		{
-			future = "Thursday";
+			System.out.print("Future day is Thursday.");
 		}
-		else if (displayfuture == 5)
+		else if (future == 5)
 		{
-			future = "Friday";
+			System.out.print("Future day is Friday.");
 		}
-		else if (displayfuture == 6)
+		else
 		{
-			future = "Saturday";
+			System.out.print("Future day is Saturday.");
 		}
-		
-		System.out.print("Today is " + today + " and the future day is " + future);
 		
 		input.close();
 	}
-
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Otherwise, display that the input is invalid. 
  * The input is valid if the sum of every pair of two edges is greater than the remaining edge.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
@@ -17,23 +17,24 @@ public class Programming_Exercise_19
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Input the 3 edges of a triangle: ");
+		System.out.print("Enter the three edges: ");
 		double edge1, edge2, edge3, perimeter;
 		edge1 = input.nextDouble();
 		edge2 = input.nextDouble();
 		edge3 = input.nextDouble();
-		
-		//Perimeter = a + b + c 
 		perimeter = edge1 + edge2 + edge3;
 		
-		if (((edge1 + edge2) > edge3) || ((edge2 + edge3) > edge1) || ((edge3 + edge1) > edge2))
+		if ((edge1 + edge2 > edge3)
+				&& (edge1 + edge3 > edge2) 
+				&& (edge2 + edge3 > edge1))
 		{
-			System.out.print("The input is valid and the perimeter is: " + perimeter);
+			System.out.print("The perimeter of the triangle is " + perimeter);
 		}
 		else
-			System.out.print("The input is invalid");
+		{
+			System.out.print("The input is invalid!");
+		}
 		
 		input.close();
 	}
-
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * and (0, 100). Write a program that prompts the user to enter a point with x- and y-coordinates 
  * and determines whether the point is inside the triangle.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
@@ -18,8 +18,20 @@ public class Programming_Exercise_27
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
+		System.out.print("Enter x y coordinates: ");
+		double x = input.nextDouble();
+		double y = input.nextDouble();
+		double y1 = y - x * 0.5;
+		
+		if (y1 < 100)
+		{
+			System.out.print("The points are in the triangle");
+		}
+		else
+		{
+			System.out.print("The points are not in the triangle");
+		}
 		
 		input.close();		
 	}
-
 }

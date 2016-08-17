@@ -1,4 +1,5 @@
 package Chapter_02_Elementary_Programming;
+
 import java.util.Scanner;
 
 /**
@@ -6,7 +7,7 @@ import java.util.Scanner;
  * Listing 2.7, ShowCurrentTime.java, gives a program that displays the current time in GMT. 
  * Revise the program so that it prompts the user to enter the time zone offset to GMT and displays the time in the specified time zone.
  * 
- * 02/03/2016
+ * 07/31/2016
  * @author kevgu
  *
  */
@@ -16,25 +17,15 @@ public class Programming_Exercise_08
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the time zone offset to GMT: ");
+		System.out.print("Enter the offset to GMT: ");
 		int offset = input.nextInt();
-		long totalMilliseconds = System.currentTimeMillis();
-		// Obtain the total seconds since midnight, Jan 1, 1970
-		long totalSeconds = totalMilliseconds / 1000;
-		// Compute the current second in the minute in the hour
-		long currentSecond = totalSeconds % 60;
-		// Obtain the total minutes
-		long totalMinutes = totalSeconds / 60;
-		// Compute the current minute in the hour
-		long currentMinute = totalMinutes % 60;
-		// Obtain the total hours
-		long totalHours = totalMinutes / 60;
-		// Compute the current hour
-		long currentHour = ((totalHours + offset) % 24);
+		long currentTimeInSeconds = System.currentTimeMillis() / 1000;
+		long hour = (currentTimeInSeconds / 60) / 60;
+		long minute = (currentTimeInSeconds / 60) % 60;
+		long second = currentTimeInSeconds % 60;
 		
-		System.out.print("The current time is " + currentHour + ":" + currentMinute + ":" + currentSecond + " GMT.");
+		System.out.print("The current time is: " + ((hour + offset) % 24) + ":" + (minute) + ":" + second + " EST");
 		
 		input.close();
 	}
-
 }

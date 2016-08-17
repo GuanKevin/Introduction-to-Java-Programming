@@ -1,6 +1,5 @@
 package Chapter_03_Selections;
 import java.util.Scanner;
-import java.util.Random;
 
 /**
  * Game: scissor, rock, paper
@@ -10,46 +9,54 @@ import java.util.Random;
  * The program prompts the user to enter a number 0, 1, or 2 
  * and displays a message indicating whether the user or the computer wins, loses, or draws.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
 
+/*
+ * 0 - Paper
+ * 1 - Rock
+ * 2 - Scissor
+ */
 public class Programming_Exercise_17 
 {
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		Random rand = new Random();
-		int randomnumber = rand.nextInt(3);
-		System.out.print("Enter a number 0(Scissor) 1(Rock) 2(Paper)");
-		int guess = input.nextInt();
+		System.out.print("Enter 0 (Paper), 1 (Rock), 2 (Scissor): ");
+		int userChoice = input.nextInt();
+		int compChoice = (int) (Math.random() * 3);
+		System.out.println("The computer chooses " + compChoice);
 		
-		//0 - Scissor
-		//1 - Rock
-		//2 - Paper
-		//0 -> 2 (0 + 2 == 2)
-		//1 -> 0 (1 == (0 + 1))
-		//2 -> 1 (2 == (1 + 1))
-		//Computer wins
-		if ((randomnumber + 2) == guess || (randomnumber == (guess + 1)))
+		if (userChoice == 0)
 		{
-			System.out.print(randomnumber + " beats " + guess + "\nYou Lose!");
+			if (compChoice == 0)
+				System.out.print("It's a draw!");
+			else if (compChoice == 1)
+				System.out.print("You win!");
+			else
+				System.out.print("You lose!");
 		}
-		//0 <- 1 (0 + 1 == 1)
-		//1 <- 2 (1 + 1 == 2)
-		//2 <- 0 (2 == 0 + 2)
-		//You Win
-		else if(((randomnumber + 1) == guess) || (randomnumber == (guess + 2)))
+		else if (userChoice == 1)
 		{
-			System.out.print(randomnumber + " loses to " + guess + "\nYou Win!");
+			if (compChoice == 0)
+				System.out.print("You lose!");
+			else if (compChoice == 1)
+				System.out.print("It's a draw!");
+			else
+				System.out.print("You win!");
 		}
 		else
 		{
-			System.out.print(randomnumber + " ties with " + guess + "\nIt's a draw!");
+			if (compChoice == 0)
+				System.out.print("You win!");
+			else if (compChoice == 1)
+				System.out.print("You lose!");
+			else
+				System.out.print("It's a draw!");
 		}
-		
+
 		input.close();
 	}
-
 }

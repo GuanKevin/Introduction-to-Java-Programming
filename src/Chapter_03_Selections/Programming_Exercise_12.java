@@ -7,36 +7,31 @@ import java.util.Scanner;
  * and determines whether it is a palindrome number. 
  * A number is palindrome if it reads the same from right to left and from left to right.
  * 
- * 02/07/2016
+ * 08/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_12 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)  
 	{
-		int palindrome, right, left;
 		Scanner input = new Scanner(System.in);
+		int digit, lhs, rhs;
 		System.out.print("Enter a three-digit integer: ");
-		palindrome = input.nextInt();
+		digit = input.nextInt();
+		lhs = digit / 100;
+		rhs = digit % 10;
 		
-		// 1 2 3
-		// ? x ?
-		// 0 1 0 <--
-		right = palindrome % 10;
-		left = palindrome / 100;
-		
-		if (right == left)
+		if (rhs == lhs) 
 		{
-			System.out.print(palindrome + " is a palindrome.");
+			System.out.print(digit + " is a palindrome!");
 		}
 		else
 		{
-			System.out.print(palindrome + " is not a palindrome.");
+			System.out.print(digit + " not is a palindrome!");
 		}
 		
 		input.close();
 	}
-
 }

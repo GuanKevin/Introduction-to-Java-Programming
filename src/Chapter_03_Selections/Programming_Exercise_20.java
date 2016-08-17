@@ -9,7 +9,7 @@ import java.util.Scanner;
  * The program displays the wind-chill temperature if the input is valid; otherwise, 
  * it displays a message indicating whether the temperature and/or wind speed is invalid.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
@@ -19,29 +19,25 @@ public class Programming_Exercise_20
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the temperature in F: ");
+		System.out.print("Enter a temperature: ");
 		double temperature = input.nextDouble();
-		System.out.print("Enter the wind speed: ");
-		double windspeed = input.nextDouble();
 		
-		if (temperature < -58 || temperature > 41)
+		if (temperature >= -58 && temperature <= 41)
 		{
-			System.out.println("The temperature inputed is invalid!");
-		}
-		if (windspeed < 2)
-		{
-			System.out.println("The wind speed is invalid!");
+			System.out.print("Enter the wind speed: ");
+			double windSpeed = input.nextDouble();
+			
+			if (windSpeed >= 2)
+			{
+				double wct = (35.74 + (0.6215 * temperature) - (35.75 * Math.pow(windSpeed, 0.16)) + (0.4275 * temperature * Math.pow(windSpeed, 0.16)));
+				System.out.print("Wind chill temperature: " + wct);
+			}
+			else
+				System.out.println("Invalid input!");
 		}
 		else
-		{
-			double windchilltemp = 35.74 + (.6215 * temperature) 
-					- (35.75 * Math.pow(windspeed, 0.16)) 
-					+ (0.4275 * temperature * Math.pow(windspeed, 0.16));
-			
-			System.out.println("The wind chill temperature is: " + windchilltemp);
-		}
+			System.out.println("Invalid input!");
 		
 		input.close();
 	}
-
 }

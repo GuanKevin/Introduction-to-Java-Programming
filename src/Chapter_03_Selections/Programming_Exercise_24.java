@@ -1,6 +1,4 @@
 package Chapter_03_Selections;
-import java.util.Scanner;
-import java.util.Random;
 
 /**
  * Game: pick a card
@@ -8,94 +6,49 @@ import java.util.Random;
  * Your program should display the rank (Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King) 
  * and suit (Clubs, Diamonds, Hearts, Spades) of the card.
  * 
- * 02/11/2016
+ * 08/06/2016
  * @author kevgu
  *
  */
 
+/**
+ * 1 Clubs
+ * 2 Diamonds
+ * 3 Hearts
+ * 4 Sapdes
+ * 1 Ace
+ * 11 Jack
+ * 12 Queen
+ * 13 King
+ */
 public class Programming_Exercise_24 
 {
 	public static void main(String[] args) 
 	{
-		System.out.print("Pick a number between 1 - 52: ");
-		Scanner input = new Scanner(System.in);
-		Random rand = new Random();
-		int number = input.nextInt() + rand.nextInt(100);
-		int rank = number % 13 + 1;
-		int suit = number % 4 + 1;
-		
-		if (rank == 1)
-		{
-			System.out.print("You got an Ace of ");
-		}
-		if (rank == 2)
-		{
-			System.out.print("You got a 2 of ");
-		}
-		if (rank == 3)
-		{
-			System.out.print("You got a 3 of ");
-		}
-		if (rank == 4)
-		{
-			System.out.print("You got a 4 of ");
-		}
-		if (rank == 5)
-		{
-			System.out.print("You got a 5 of ");
-		}
-		if (rank == 6)
-		{
-			System.out.print("You got a 6 of ");
-		}
-		if (rank == 7)
-		{
-			System.out.print("You got a 7 of ");
-		}
-		if (rank == 8)
-		{
-			System.out.print("You got a 8 of ");
-		}
-		if (rank == 9)
-		{
-			System.out.print("You got a 9 of ");
-		}
-		if (rank == 10)
-		{
-			System.out.print("You got a 10 of ");
-		}
-		if (rank == 11)
-		{
-			System.out.print("You got a Jack of ");
-		}
-		if (rank == 12)
-		{
-			System.out.print("You got a Queen of ");
-		}
-		if (rank == 13)
-		{
-			System.out.print("You got a king of ");
-		}
+		int rank = (int) (Math.random() * 13 + 1);
+		int suit = (int) (Math.random() * 4 + 1);
+		String myCard = null;
 		
 		if (suit == 1)
-		{
-			System.out.print("Clubs");
-		}
-		if (suit == 2)
-		{
-			System.out.print("Diamond");
-		}
-		if (suit == 3)
-		{
-			System.out.print("Heart");
-		}
-		if (suit == 4)
-		{
-			System.out.print("Spaces");
-		}
+			myCard = "Clubs of ";
+		else if (suit == 2)
+			myCard = "Diamonds of ";
+		else if (suit == 3)
+			myCard = "Hearts of ";
+		else
+			myCard = "Spades of ";
+		if (rank == 1)
+			System.out.print("The card you picked is " + myCard + "Ace");
+		else if (rank == 11)
+			System.out.print("The card you picked is " + myCard + "Jack");
+		else if (rank == 12)
+			System.out.print("The card you picked is " + myCard + "Queen");
+		else if (rank == 13)
+			System.out.print("The card you picked is " + myCard + "King");
+		else
+			System.out.print("The card you picked is " + myCard + rank);
 		
 		
 		
-		input.close();
 	}
 }

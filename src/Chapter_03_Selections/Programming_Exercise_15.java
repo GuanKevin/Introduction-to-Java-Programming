@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 		2. If all digits in the user input match all digits in the lottery number, the award is $3,000.
  * 		3. If one digit in the user input matches a digit in the lottery number, the award is $1,000.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
@@ -18,46 +18,43 @@ public class Programming_Exercise_15
 {
 	public static void main(String[] args) 
 	{
-		// Generate a lottery number
-		int lottery = 123; //(int)(Math.random() * 1000);
-		
-		// Prompt the user to enter a guess
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter your lottery pick (three digits): ");
-		int guess = input.nextInt();
+		int lotteryNumber = (int) (Math.random() * 1000);
+		System.out.print("Guess a three digit number: ");
+		int lotteryGuess = input.nextInt();
+		int ln1, ln2, ln3, gn1, gn2, gn3;
+		ln1 = lotteryNumber / 100;
+		ln2 = (lotteryNumber / 10) - (ln1 * 10);
+		ln3 = lotteryNumber % 10;
+		gn1 = lotteryGuess / 100;
+		gn2 = (lotteryGuess / 10) - (ln1 * 10);
+		gn3 = lotteryGuess % 10;
 		
-		// Get digits from lottery
-		//123 % 10 = 3;
-		int lotteryDigit1 = lottery % 10;
-		//123 / 10 = 12 % 10;
-		int lotteryDigit2 = (lottery / 10) % 10;
-		//123 / 100 = 1
-		int lotteryDigit3 = lottery / 100;
+		if (lotteryNumber == lotteryGuess)
+		{
+			System.out.print("You've won $10,000!");
+		}
+		else if (ln1 == gn1 || ln1 == gn2 || ln1 == gn3)
+		{
+			if (ln1 == gn1)
+			{
+				if (ln2 == gn2)
+				{
+					if (ln3 == gn3)
+					{
+						System.out.print("You've won $3,000!");
+					}
+				}
+			}
+		}
+		else if (ln1 == gn1 || ln1 == gn2 || ln1 == gn3
+				|| ln2 == gn1 || ln2 == gn2 || ln2 == gn3
+				|| ln3 == gn1 || ln3 == gn2 || ln3 == gn3)
+		{
+			System.out.print("You've won $1,000!");
+		}
+			
 		
-		// Get digits from guess
-		//123 --> guess 3
-		int guessDigit1 = guess % 10;
-		int guessDigit2 = (guess / 10) % 10;
-		int guessDigit3 = guess / 100;
-		
-		System.out.println(guessDigit1 + " " + guessDigit2 + " " + guessDigit3);
-		System.out.println(lotteryDigit1 + " " + lotteryDigit2 + " " + lotteryDigit3);
-		System.out.println("The lottery number is " + lottery);
-		
-		// Check the guess
-		if (guess == lottery)
-			System.out.println("Exact match: you win $10,000");
-		//Permutation of 123 --> ???
-		else if ((guessDigit1 == lotteryDigit1 || guessDigit1 == lotteryDigit2 || guessDigit1 == lotteryDigit3) 
-				&& (guessDigit2 == lotteryDigit1 || guessDigit2 == lotteryDigit2 || guessDigit2 == lotteryDigit3) 
-				&& (guessDigit3 == lotteryDigit1 || guessDigit3 == lotteryDigit2 || guessDigit3 == lotteryDigit3))
-			System.out.println("Match all digits: you win $3,000");
-		else if (guessDigit1 == lotteryDigit1 || guessDigit1 == lotteryDigit2 || guessDigit1 == lotteryDigit3 
-				|| guessDigit2 == lotteryDigit1 || guessDigit2 == lotteryDigit2 || guessDigit2 == lotteryDigit3 
-				|| guessDigit3 == lotteryDigit1 || guessDigit3 == lotteryDigit2 || guessDigit3 == lotteryDigit3)
-			System.out.println("Match one digit: you win $1,000");
-		else
-			System.out.println("Sorry, no match");
 		input.close();
 	}
 }

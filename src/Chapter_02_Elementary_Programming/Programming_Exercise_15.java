@@ -1,4 +1,5 @@
 package Chapter_02_Elementary_Programming;
+
 import java.util.Scanner;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Scanner;
  * The formula for computing the distance is (Square Root)((x2 - x1)^2 + (y2 - y1)^2). 
  * Note that you can use Math.pow(a, 0.5) to compute 2a.
  * 
- * 02/04/2016
+ * 08/01/2016
  * @author kevgu
  *
  */
@@ -17,19 +18,17 @@ public class Programming_Exercise_15
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		double x1, x2, y1, y2, distance;
-		System.out.print("Enter x1, y1: ");
-		x1 = input.nextDouble();
-		y1 = input.nextDouble();
-		System.out.print("Enter x2, y2: ");
-		x2 = input.nextDouble();
-		y2 = input.nextDouble();
-		
-		distance = Math.pow((((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1))), 0.5);
-		
+		System.out.print("Enter point a: ");
+		double x1 = input.nextDouble();
+		double y1 = input.nextDouble();
+		System.out.print("Enter point b: ");
+		double x2 = input.nextDouble();
+		double y2 = input.nextDouble();
+		double lhs = Math.pow((x2 - x1), 2);
+		double rhs = Math.pow((y2 - y1), 2);
+		double distance = Math.pow((lhs + rhs), 0.5);
 		System.out.print("The distance between the two points is " + distance);
 		
 		input.close();
 	}
-
 }

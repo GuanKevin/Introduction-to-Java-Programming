@@ -10,7 +10,7 @@ package Chapter_02_Elementary_Programming;
  * 4 5 1024
  * 5 6 15625
  * 
- * 02/04/2016
+ * 08/01/2016
  * @author kevgu
  *
  */
@@ -19,12 +19,15 @@ public class Programming_Exercise_18
 {
 	public static void main(String[] args) 
 	{
-		System.out.println("a   b   pow(a, b)");
-		System.out.println(1 + "   " + 2 + "   " + (int)(Math.pow(1, 2)));
-		System.out.println(2 + "   " + 3 + "   " + (int)(Math.pow(2, 3)));
-		System.out.println(3 + "   " + 4 + "   " + (int)(Math.pow(3, 4)));
-		System.out.println(4 + "   " + 5 + "   " + (int)(Math.pow(4, 5)));
-		System.out.println(5 + "   " + 6 + "   " + (int)(Math.pow(5, 6)));
+		float a, b;
+		a = 1;
+		b = 2;
 		
+		System.out.print("a b pow(a, b)"
+				+ "\n" + (int) a + ' ' + (int) b + ' ' + (int) Math.pow(a, b)
+				+ "\n" + (int) ++a + ' ' + (int) ++b + ' ' + (int) Math.pow(a, b)
+				+ "\n" + (int) ++a + ' ' + (int) ++b + ' ' + (int) Math.pow(a, b)
+				+ "\n" + (int) ++a + ' ' + (int) ++b + ' ' + (int) Math.pow(a, b)
+				+ "\n" + (int) ++a + ' ' + (int) ++b + ' ' + (int) Math.pow(a, b));
 	}
 }

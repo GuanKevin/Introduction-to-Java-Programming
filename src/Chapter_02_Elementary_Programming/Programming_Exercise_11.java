@@ -1,4 +1,5 @@
 package Chapter_02_Elementary_Programming;
+
 import java.util.Scanner;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Scanner;
  * Use the hint in Programming Exercise 1.11 for this program. 
  * The population should be cast into an integer.
  * 
- * 02/03/2016
+ * 07/31/2016
  * @author kevgu
  *
  */
@@ -18,17 +19,41 @@ public class Programming_Exercise_11
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter the number of years: ");
-		int years = input.nextInt();
-		int currentpopulation = 312032486;
+		int year = input.nextInt(); 
 		
-		/*
-		 *  One birth every 7 seconds
-		 *  One death every 13 seconds
-		 *  One new immigrant every 45 seconds 
-		 */
-		int population = (int) (currentpopulation + ((years * 365 * 24 * 60 * 60)/7.0 - (years * 365 * 24 * 60 * 60)/13 + (years * 365 * 24 * 60 * 60)/45));
+		int secondsPerYear = 365 * 24 * 60 * 60;
+		int population = 312032486;
 		
-		System.out.print("The population in " + years + " years is " + population);
+		System.out.println("Year 0 " + population);
+		
+		int birth = secondsPerYear / 7;
+		int death = secondsPerYear / 13;
+		int immigrant = secondsPerYear / 45;
+		
+		population += ((birth - death + immigrant) * year);
+		
+		System.out.println("Year " + year + " " + population);
+		
+		population = population + birth - death + immigrant;
+		
+		System.out.println("Year " + ++year + " " + population);
+		
+		population += birth - death + immigrant;
+		
+		System.out.println("Year " + ++year + " " + population);
+		
+		population += birth - death + immigrant;
+		
+		System.out.println("Year " + ++year + " " + population);
+		
+		population += birth - death + immigrant;
+		
+		System.out.println("Year " + ++year + " " + population);
+		
+		population += birth - death + immigrant;
+		
+		System.out.println("Year " + ++year + " " + population);
+		
 		input.close();
 	}
 }

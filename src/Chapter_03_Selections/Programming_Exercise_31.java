@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Prompt the user to enter 0 to convert from U.S. dollars to Chinese RMB and 1 to convert from Chinese RMB and U.S. dollars. 
  * Prompt the user to enter the amount in U.S. dollars or Chinese RMB to convert it to Chinese RMB or U.S. dollars, respectively.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
@@ -17,30 +17,19 @@ public class Programming_Exercise_31
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter 0 to convert from USD to RMB \nEnter 1 to convert from RMB to USD: ");
-		int convert = input.nextInt();
+		double currency;
+		int exchange;
 		
-		if (convert == 0)
-		{
-			//USD to RMB --> 1 USD to 6.57 RMB
-			System.out.print("Enter USD: ");
-			double currency = input.nextDouble();
-			double exchange = currency * 6.57;
-			
-			System.out.printf("The exchange is $%.02f", exchange);
-		}
-		else if (convert == 1)
-		{
-			//RMB to USD --> 1 RMB to 0.15 USD
-			System.out.print("Enter RMB: ");
-			double currency = input.nextDouble();
-			double exchange = currency * 0.15;
-			
-			System.out.printf("The exchange is $%.02f", exchange);
-		}
+		System.out.print("Enter the currency amount: ");
+		currency = input.nextDouble();
+		System.out.print("Enter the type of exchange 0 || 1");
+		exchange = input.nextInt();
 		
+		if (exchange == 0)
+			System.out.print(currency * 8);
+		else
+			System.out.print(currency / 8);
 		
 		input.close();
 	}
-
 }

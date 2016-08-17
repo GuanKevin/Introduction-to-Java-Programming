@@ -1,4 +1,5 @@
 package Chapter_02_Elementary_Programming;
+
 import java.util.Scanner;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Scanner;
  * when converting a double value to an int value. 
  * Enter the input as an integer whose last two digits represent the cents.
  * 
- * 02/04/2016
+ * 08/01/2016
  * @author kevgu
  *
  */
@@ -17,23 +18,25 @@ public class Programming_Exercise_22
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		int value, dollar, quarter, dime, nickel, penny, remaining;
-		System.out.print("Enter a value: ");
-		value = input.nextInt();
+		System.out.print("Enter an amount in double, for example 1156: "); 
+		int amount = input.nextInt();
 		
-		//Find amount of dollars
-		dollar = value / 100;
-		remaining = value % 100;
-		quarter = remaining / 25;
-		remaining = remaining % 25;
-		dime = remaining / 10;
-		remaining = remaining % 10;	
-		nickel = remaining / 5;
-		remaining = remaining % 5;
-		penny = remaining / 1;
+		int numberOfOneDollars = amount / 100;
+		amount = amount % 100;
+		int numberOfQuarters = amount / 25;
+		amount = amount % 25;
+		int numberOfDimes = amount / 10;
+		amount = amount % 10;
+		int numberOfNickels = amount / 5;
+		amount = amount % 5;
+		int numberOfPennies = amount;
 		
-		System.out.println("Dollars Quarters Dimes Nickels Pennies");
-		System.out.print(dollar + "\t" + quarter + "\t" + dime + "\t" + nickel + "\t" + penny);
+		System.out.println("Your amount " + amount + " consists of");
+		System.out.println(" " + numberOfOneDollars + " dollars");
+		System.out.println(" " + numberOfQuarters + " quarters ");
+		System.out.println(" " + numberOfDimes + " dimes");
+		System.out.println(" " + numberOfNickels + " nickels");
+		System.out.println(" " + numberOfPennies + " pennies");
 		
 		input.close();
 	}

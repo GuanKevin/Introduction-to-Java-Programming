@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Revise the program to generate three single-digit integers 
  * and prompt the user to enter the sum of these three integers.
  * 
- * 02/05/2016
+ * 08/02/2016
  * @author kevgu
  *
  */
@@ -17,20 +17,16 @@ public class Programming_Exercise_02
 {
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		int number1 = (int)(System.currentTimeMillis() % 10);
 		int number2 = (int)(System.currentTimeMillis() / 7 % 10);
-		int number3 = (int)(System.currentTimeMillis() / 7 % 10 * 2);
+		int number3 = (int)(System.currentTimeMillis() / 5 % 10);
 		
-		// Create a Scanner
-		Scanner input = new Scanner(System.in);
+		System.out.print("What is " + number1 + " + " + number2 + " + " + number3 + " ? ");
+		int result = input.nextInt();
 		
-		System.out.print("What is " + number1 + " + " + number2 + " + " + number3 + "? ");
-
-		int answer = input.nextInt();
-		
-		System.out.println(number1 + " + " + number2 + " + " + number3 + " = " + answer + " is " + (number1 + number2 + number3 == answer));
+		System.out.print(number1 + " + " + number2 + " + " + number3 + " = " + result + " is " + (number1 + number2 + number3 == result));
 		
 		input.close();
 	}
-
 }

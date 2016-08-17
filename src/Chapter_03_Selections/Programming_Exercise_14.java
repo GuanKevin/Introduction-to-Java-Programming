@@ -1,6 +1,5 @@
 package Chapter_03_Selections;
 import java.util.Scanner;
-import java.util.Random;
 
 /**
  * Game: heads or tails
@@ -8,38 +7,29 @@ import java.util.Random;
  * The program randomly generates an integer 0 or 1, which represents head or tail. 
  * The program prompts the user to enter a guess and reports whether the guess is correct or incorrect.
  * 
- * 02/
+ * 08/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_14 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Guess head(0) or tails(1): ");
+		int coin = (int) (Math.random() * 10) % 2;
+		System.out.print("Enter 0 or 1: ");
 		int guess = input.nextInt();
-		
-		// 0 or 1
-		int coin;
-		Random flip = new Random();
-		coin = flip.nextInt(2);
-		
-		System.out.println("This is the random coin flip result: " + coin);
 		
 		if (coin == guess)
 		{
-			System.out.println("You chose: " + guess + " and you got it right!!");
+			System.out.println("Correct! Result: " + coin);
 		}
 		else
 		{
-			System.out.println("You chose: " + guess + " and you got it wrong!!");
+			System.out.println("Incorrect! Result: " + coin);
 		}
-		
 		
 		input.close();
 	}
-	
-
 }

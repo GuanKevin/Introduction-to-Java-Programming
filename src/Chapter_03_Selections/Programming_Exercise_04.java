@@ -5,7 +5,7 @@ package Chapter_03_Selections;
  * Write a program that randomly generates an integer between 1 and 12 and displays the English month name 
  * January, February, …, December for the number 1, 2, …, 12, accordingly.
  * 
- * 02/05/2016
+ * 08/02/2016
  * @author kevgu
  *
  */
@@ -14,9 +14,9 @@ public class Programming_Exercise_04
 {
 	public static void main(String[] args) 
 	{
-		int month = (int) (System.currentTimeMillis() % 12 + 1);
-		System.out.println((System.currentTimeMillis() % 12 + 1) + " or " + month);
-			
+		int month = (int) (Math.random() * 12 + 1);
+		System.out.println("month = " + month);
+		
 		if (month == 1)
 		{
 			System.out.print("January");
@@ -62,6 +62,8 @@ public class Programming_Exercise_04
 			System.out.print("November");
 		}
 		else
+		{
 			System.out.print("December");
+		}
 	}
 }
