@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Decimal to hex
  * Write a program that prompts the user to enter an integer between 0 and 15 and displays its corresponding hex number.
  * 
- * 02/11/2016
+ * 08/16/2016
  * @author kevgu
  *
  */
@@ -16,19 +16,24 @@ public class Programming_Exercise_11
 	{
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("Enter an integer between 0 and 15: ");
-		int number = input.nextInt();
+		/**
+		 * Hex Numbers
+		 * 0 - 9 Stay the same
+		 * 10 - 15 A to F
+		 */
 		
-		String hex = Integer.toHexString(number);
+		System.out.print("Enter an integer between 0 and 15: ");
+		int hex = input.nextInt();
 		
-		if (number < 0 || number > 15)
+		if (hex <= 9)
 		{
-			System.out.println(number + " is not a valid input");
+			System.out.print("The hex value is " + hex);
 		}
 		else
-			System.out.println("The hex of " + number + " is " + hex);
+		{
+			System.out.print("The hex value is " + (char) (hex + 55));
+		}
 		
-		input.close();
+		input.close(); 
 	}
-
 }

@@ -1,12 +1,10 @@
 package Chapter_05_Loops;
 
-import java.util.Scanner;
-
 /**
  * Display numbers in a pyramid pattern
  * Write a nested for loop that prints the following output:
  * 
- * 02/15/2016
+ * 08/23/2016
  * @author kevgu
  *
  */
@@ -15,36 +13,33 @@ public class Programming_Exercise_19
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the size: ");
-		int size = input.nextInt();
-		int counter = 2;
+		int counter;
 		
-		for (int i = 1; i <= size; i++)
+		for (int i = 1; i <= 8; i++)
 		{
-			for (int j = size; j > i; j--)
-			{
-				System.out.print("   ");
-			}
+			counter = 1;
+			
+			//Printing the white space
+			for (int j = 7; j >= i; j--)
+				System.out.print("    ");
+			
+			//Printing lhs triangle
 			for (int k = 1; k <= i; k++)
 			{
-				if (k <= 2)
-				{
-					System.out.print(k + " ");
-				}
-				else
-				{
-					System.out.print((counter * 2) + " ");
-					counter = counter * 2;
-				}
+				System.out.printf("%-4d", counter);
+				counter *= 2;
 			}
+			
+			counter /= 2;
+			
+			//Printing rhs triangle
 			for (int l = i - 1; l >= 1; l--)
 			{
-				System.out.print(l + " ");
+				counter /= 2;
+				System.out.printf("%-4d", counter);
 			}
+			
 			System.out.println();
 		}
-		
-		input.close();
 	}
 }

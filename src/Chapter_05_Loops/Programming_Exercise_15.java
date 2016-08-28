@@ -1,7 +1,5 @@
 package Chapter_05_Loops;
 
-import java.util.Scanner;
-
 /**
  * Display the ASCII character table
  * Write a program that prints the characters in the ASCII character table from ! to ~. 
@@ -9,7 +7,7 @@ import java.util.Scanner;
  * The ASCII table is shown in Appendix B. 
  * Characters are separated by exactly one space.
  * 
- * 02/15/2016
+ * 08/20/2016
  * @author kevgu
  *
  */
@@ -18,32 +16,16 @@ public class Programming_Exercise_15
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		int number = 0;
 		int counter = 0;
-		boolean unknown = true;
 		
-		while (unknown)
+		for (int i = 33; i <= 126; i++)
 		{
-			number++;
-			if (((char) number) == '!');
-			{
-				while((char) number != '~')
-				{
-					System.out.print(number + " " + (char) number + " ");
-					
-					if (counter == 10)
-					{
-						counter = 0;
-						System.out.println();
-					}
-					counter++;
-					number++;
-				}
-			}
-			number++;
+			++counter;
+			
+			if (counter % 10 == 0)
+				System.out.println((char) i + " ");
+			else
+				System.out.print((char) i + " ");
 		}
-		
-		input.close();
 	}
 }

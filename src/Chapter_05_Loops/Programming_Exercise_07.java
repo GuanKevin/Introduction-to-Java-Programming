@@ -6,7 +6,7 @@ package Chapter_05_Loops;
  * In one year, the tuition will be $10,500. 
  * Write a program that computes the tuition in ten years and the total cost of four years’ worth of tuition after the tenth year.
  * 
- * 02/14/2016
+ * 08/20/2016
  * @author kevgu
  *
  */
@@ -15,21 +15,23 @@ public class Programming_Exercise_07
 {
 	public static void main(String[] args) 
 	{
-		int tuition = 10000;
-		int sumoffouryears = 0;
+		double tuitionPerYear = 10000;
+		double tuitionIncrease = .05;
+		double lastFourYearsTuition = 0;
 		
-		for (int i = 0; i < 14; i++)
+		System.out.printf("%-7s %s \n", "Year", "Cost");
+		
+		for (int i = 0; i <= 14; i++)
 		{
-			System.out.println("Cost of tuition year " + i + ": " + tuition);
-			tuition += (tuition * .05);
-			
-			if (i > 9) //0 - 9 = 10 years, 10 - 13 = (4 years of tuition)
+			if (i <= 10)
 			{
-				sumoffouryears += tuition;
+				System.out.printf("%-7d %.2f \n", i, tuitionPerYear);
+				tuitionPerYear += (tuitionPerYear * tuitionIncrease);
 			}
+			else
+				lastFourYearsTuition += tuitionPerYear + (tuitionPerYear * tuitionIncrease);
 		}
 		
-		System.out.print("Total cost of four years worth of tuition after the tenth year is " + sumoffouryears);
+		System.out.printf("%s %.2f", "Tuition after four years is $", lastFourYearsTuition);
 	}
-
 }

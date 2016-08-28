@@ -1,4 +1,5 @@
 package Chapter_05_Loops;
+
 import java.util.Random;
 
 /**
@@ -12,38 +13,38 @@ import java.util.Random;
  * If the number is greater than max, assign it to max and reset count to 1. 
  * If the number is equal to max, increment count by 1.)
  * 
- * 03/24/2016
+ * 08/27/2016
  * @author kevgu
  *
  */
-
-
+ 
 public class Programming_Exercise_41 
-{
-	static Random rand = new Random();
+{ 
 	public static void main(String[] args) 
 	{
-		int randomNumber = rand.nextInt(10);
-		System.out.print(randomNumber + " ");
-		int maxNumber = randomNumber;
-		int maxCounter = 1;
+		Random randNumber = new Random();
+		int number = randNumber.nextInt(10) + 1;
+		int largestNumber = number;
+		int numberCounter = 1;
 		
-		while (randomNumber != 0)
+		System.out.print(number + " ");
+	 
+		while (number != 0)
 		{
-			if (maxNumber < randomNumber)
+			number = randNumber.nextInt(10);
+			
+			if (largestNumber < number)
 			{
-				maxNumber = randomNumber;
-				maxCounter = 1;
+				largestNumber = number;
+				numberCounter = 1;
 			}
-			else if (maxNumber == randomNumber)
-			{
-				maxCounter++;
-			}
-			randomNumber = rand.nextInt(25);
-			System.out.print(randomNumber + " ");
+			else if (largestNumber == number)
+				numberCounter++;
+			
+			System.out.print(number + " ");
 		}
 		
-		System.out.print("\nMax number: " + maxNumber 
-				+ "\nCounter for max number: " + maxCounter);
+		System.out.print("\nMax number: " + largestNumber 
+				+ "\nCounter for max number: " + numberCounter);
 	}
 }

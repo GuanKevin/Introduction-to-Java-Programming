@@ -5,76 +5,40 @@ import java.util.Scanner;
  * Order three cities
  * Write a program that prompts the user to enter three cities and displays them in ascending order.
  * 
- * 02/14/2016
+ * 08/18/2016
  * @author kevgu
  *
- */
+ */ 
 
 public class Programming_Exercise_24 
 {
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the 1st city: ");
-		String city1 = input.nextLine();
-		System.out.print("Enter the 2nd city: ");
-		String city2 = input.nextLine();
-		System.out.print("Enter the 3rd city: ");
-		String city3 = input.nextLine();
+		System.out.print("Enter the 3 cities: ");
+		String c1, c2, c3;
+		c1 = input.next();
+		c2 = input.next();
+		c3 = input.next();
 		
-		//Albany, Buffalo, Syracuse, 
-		//Albany --> Buffalo --> Syracuse
-		//Take first char of the first city
-		//Compare 1st char with the 1st char of the second city
-		//Less than
+		// c1 Chicago 
+		// c2 Los_Angeles 
+		// c3 Atlanta
 		
-		if (city1.charAt(0) < city2.charAt(0))
-		{
-			if (city1.charAt(0) < city3.charAt(0))
-			{
-				System.out.println(city1);
-				
-				if (city2.charAt(0) < city3.charAt(0))
-				{
-					System.out.println(city2);
-					System.out.println(city3);
-				}
-				else
-				{
-					System.out.println(city3);
-					System.out.println(city2);
-				}
-			}
-			else
-			{
-				System.out.println(city3);
-				System.out.println(city1);
-				System.out.println(city2);
-			}
-		}
-		else if (city2.charAt(0) < city3.charAt(0))
-		{
-			System.out.println(city2);
-			
-			if (city1.charAt(0) < city3.charAt(0))
-			{
-				System.out.println(city1);
-				System.out.println(city3);
-			}
-			else
-			{
-				System.out.println(city3);
-				System.out.println(city1);
-			}
-		}
+		if (c1.compareTo(c2) < 0 && c2.compareTo(c3) < 0)
+			System.out.print(c1 + ' ' + c2 + ' ' + c3); 
+		else if (c1.compareTo(c3) < 0 && c3.compareTo(c2) < 0)
+			System.out.print(c1 + ' ' + c3 + ' ' + c2);
+		else if (c2.compareTo(c1) < 0 && c1.compareTo(c3) < 0)
+			System.out.print(c2 + ' ' + c1 + ' ' + c3);
+		else if (c2.compareTo(c3) < 0 && c3.compareTo(c1) < 0)
+			System.out.print(c2 + ' ' + c3 + ' ' + c2);
+		else if (c3.compareTo(c1) < 0 && c1.compareTo(c2) < 0)
+			System.out.print(c3 + ' ' + c1 + ' ' + c2);
 		else
-		{
-			System.out.println(city3);
-			System.out.println(city2);
-			System.out.println(city1);
-		}
+			System.out.print(c3 + ' ' + c2 + ' ' + c1);
+		
 		
 		input.close();
 	}
-
 }

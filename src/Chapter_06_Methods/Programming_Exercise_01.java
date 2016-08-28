@@ -9,7 +9,7 @@ import java.util.Scanner;
  * public static int getPentagonalNumber(int n) 
  * Write a test program that uses this method to display the first 100 pentagonal numbers with 10 numbers on each line.
  *
- * 02/16/2016
+ * 08/28/2016
  * @author kevgu
  *
  */

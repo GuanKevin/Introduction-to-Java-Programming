@@ -6,36 +6,34 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter the number of students and each student’s name and score, 
  * and finally displays the name of the student with the highest score.
  * 
- * 03/24/2016
+ * 08/20/2016
  * @author kevgu
- */
-
+ */ 
+ 
 public class Programming_Exercise_08 
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);		
 		System.out.print("Enter the number of students: ");
-		int numOfStudents = input.nextInt();
-		double score = 0;
-		String studentsName = "";
+		int numStudents = input.nextInt();
+		input.nextLine(); 
 		
-		System.out.print("Enter students score and enter students name: ");
-		for (int i = 0; i < numOfStudents; i++)
+		System.out.print("Enter the student's name and score: ");
+		String studentNameScore = input.nextLine(); 
+		int studentScore = Integer.parseInt(studentNameScore.substring(studentNameScore.indexOf(' ') + 1, studentNameScore.length()));
+		
+		for (int i = 1; i < numStudents; i++)
 		{
-			double userInput = input.nextDouble();
-			String studentsNameInput = input.next();
+			System.out.print("Enter the student's name and score: ");
+			String tempNameScore = input.nextLine(); 
+			int tempScore = Integer.parseInt(tempNameScore.substring(tempNameScore.indexOf(' ') + 1, tempNameScore.length()));
 			
-			if (score < userInput)
-			{
-				score = userInput;
-				studentsName = studentsNameInput;
-			}
+			if (studentScore < tempScore)
+				studentNameScore = tempNameScore;
 		}
 		
-		System.out.println("The top student is: " 
-				+ "\nStudent's name: " + studentsName 
-				+ "\nStudent's score: " + score);
+		System.out.print("The top student is " + studentNameScore.substring(0, studentNameScore.indexOf(' ')));
 		
 		input.close();
 	}

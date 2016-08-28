@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 10 - (d1 + 3d2 + d3 + 3d4 + d5 + 3d6 + d7 + 3d8 + d9 + 3d10 + d11 + 3d12) % 10
  * If the checksum is 10, replace it with 0. Your program should read the input as a string.
  * 
- * 03/24/2016
+ * 08/27/2016
  * @author kevgu
  *
  */
@@ -23,29 +23,20 @@ public class Programming_Exercise_47
 		String isbn13 = input.next();
 		int checkSum = 0;
 		
-		//(d1 + 3d2 + d3 + 3d4 + d5 + 3d6 + d7 + 3d8 + d9 + 3d10 + d11 + 3d12)
 		for (int i = 0; i < isbn13.length(); i++)
 		{
 			if ((i + 1) % 2 == 0)
-			{
 				checkSum += (3 * Character.getNumericValue(isbn13.charAt(i)));
-			}
 			else
-			{
 				checkSum += Character.getNumericValue(isbn13.charAt(i));
-			}
 		}
 		
-		checkSum = 10 - checkSum % 10;
+		checkSum = 10 - (checkSum % 10);
 		
 		if (checkSum == 10)
-		{
 			System.out.println("ISBN-13: " + isbn13 + '0');
-		}
 		else
-		{
 			System.out.println("ISBN-13: " + isbn13 + checkSum);
-		}
 		
 		input.close();
 	}

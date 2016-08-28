@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Phone key pads
  * Write a program that prompts the user to enter a letter and displays its corresponding number.
  * 
- * 02/14/2016
+ * 08/16/2016
  * @author kevgu
  *
  */
@@ -16,16 +16,7 @@ public class Programming_Exercise_15
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a letter: ");
-		char letter = input.nextLine().charAt(0);
-		//abd -> 2
-		//def -> 3
-		//ghi -> 4
-		//jkl -> 5
-		//mno -> 6
-		//pqrs -> 7
-		//tuv -> 8
-		//wxyz -> 9
-		//' ' -> 0
+		char letter = input.next().charAt(0);
 		
 		if (letter == 'a' || letter == 'b' || letter == 'c' || 
 				letter == 'A' || letter == 'B' || letter == 'C')	
@@ -76,8 +67,6 @@ public class Programming_Exercise_15
 			System.out.print(letter + " could be either a 1 or it does not exist!");
 		}
 		
-		input.close();
-		
+		input.close();	
 	}
-
 }

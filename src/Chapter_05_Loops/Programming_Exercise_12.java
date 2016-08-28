@@ -4,7 +4,7 @@ package Chapter_05_Loops;
  * Find the smallest n such that n^2 > 12,000
  * Use a while loop to find the smallest integer n such that n2 is greater than 12,000.
  * 
- * 02/15/2016
+ * 08/20/2016
  * @author kevgu
  *
  */
@@ -12,19 +12,14 @@ package Chapter_05_Loops;
 public class Programming_Exercise_12 
 {
 	public static void main(String[] args) 
-	{
-		//Scanner input = new Scanner(System.in);
+	{	
+		int n = 1;
 		
-		int number = 2;
-		
-		while (Math.pow(number, 2) < 12000)
+		while ((int) Math.pow(n, 2) < 12000)
 		{
-			number++;
+			++n;
 		}
 		
-		System.out.print(number + " is greater than 12,000"
-				+ "\n" + Math.pow(number, 2) + " is greater than 12,000");
-		
-		//input.close();
+		System.out.print(n);
 	}
 }

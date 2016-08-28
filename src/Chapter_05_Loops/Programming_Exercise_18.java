@@ -1,13 +1,10 @@
 package Chapter_05_Loops;
 
-import java.util.Scanner;
-
 /**
  * Display four patterns using loops
- * Use nested loops that display the following patterns in four separate programs:
- * Patter B
+ * Use nested loops that display the following patterns in four separate programs
  * 
- * 02/15/2016
+ * 08/22/2016
  * @author kevgu
  *
  */
@@ -16,19 +13,44 @@ public class Programming_Exercise_18
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the size of the triangle: ");
-		int size = input.nextInt();
+		System.out.println("Pattern A");
 		
-		for (int i = size; i >= 1; i--)
+		for (int i = 1; i <= 6; i++)
 		{
 			for (int j = 1; j <= i; j++)
-			{
 				System.out.print(j + " ");
-			}
 			System.out.println();
 		}
 		
-		input.close();
+		System.out.println("\nPattern B");
+		
+		for (int i = 6; i >= 1; i--)
+		{
+			for (int j = 1; j <= i; j++)
+				System.out.print(j + " ");
+			System.out.println();
+		}
+		
+		System.out.println("\nPattern C");
+		
+		for (int i = 1; i <= 6; i++)
+		{
+			for (int j = i; j <= 5; j++)
+				System.out.print("  ");
+			for (int k = i; k >= 1; k--)
+				System.out.print(k + " ");
+			System.out.println();
+		}
+		
+		System.out.println("\nPattern D");
+		
+		for (int i = 6; i >= 1; i--)
+		{
+			for (int j = 5; j >= i; j--)
+				System.out.print("  ");
+			for (int k = 1; k <= i; k++)
+				System.out.print(k + " ");
+			System.out.println();
+		}
 	}
 }

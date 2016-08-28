@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Assume letters A, E, I, O, and U as the vowels. 
  * Write a program that prompts the user to enter a string and displays the number of vowels and consonants in the string.
  * 
- * 03/24/2016
+ * 08/27/2016
  * @author kevgu
  *
  */
@@ -17,34 +17,21 @@ public class Programming_Exercise_49
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a string: ");
-		String myString = input.nextLine().toLowerCase();
+		String countVC = input.nextLine().toLowerCase();
 		int vowelCounter = 0;
 		int consonantCounter = 0;
 		
-		
-		//Programming is fun
-		//11 consonants
-		//5 vowels
-		for (int i = 0; i < myString.length(); i++)
+		for (int i = 0; i < countVC.length(); i++)
 		{
-			if (myString.charAt(i) == 'a' || myString.charAt(i) == 'e' || myString.charAt(i) == 'i' 
-					|| myString.charAt(i) == 'o' || myString.charAt(i) == 'u')
-			{
+			if (countVC.charAt(i) == 'a' || countVC.charAt(i) == 'e' || countVC.charAt(i) == 'i' || countVC.charAt(i) == 'o' || countVC.charAt(i) == 'u')
 				vowelCounter++;
-			}
-			else if (myString.charAt(i) == ' ')
-			{
+			else if (countVC.charAt(i) == ' ')
 				continue;
-			}
 			else
-			{
 				consonantCounter++;
-			}
 		}
 		
-		System.out.println(myString + " has " +
-		"\n" + vowelCounter + " vowel(s)"
-		+ "\n" + consonantCounter + " consonant(s)");
+		System.out.print(countVC + " has " + vowelCounter + " vowels and " + consonantCounter + " consonants.");
 		
 		input.close();
 	}

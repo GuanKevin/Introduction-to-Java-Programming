@@ -6,7 +6,7 @@ import java.util.Random;
  * Game: scissor, rock, paper
  * Let the user continuously play until either the user or the computer wins more than two times than its opponent.
  * 
- * 02/15/2016
+ * 08/27/2016
  * @author kevgu
  *
  */
@@ -16,87 +16,80 @@ public class Programming_Exercise_34
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		int userwins = 0;
-		int compwins = 0;
-		Random rand = new Random();
-		int compchoose = rand.nextInt(3);
-		String userchoice = null;
-		boolean win = true;
 		
-		//scissors = 0
-		//rock = 1
-		//paper = 2
+		int userScore = 0;
+		int compScore = 0;
+		String userInput = "";
+		Random randNumber = new Random();
+		int randomPlay;
 		
-		while(win)
+		System.out.println("Enter scissor, rock or paper!");
+		
+		while ((userScore - compScore) != 2 && (compScore - userScore) != 2)
 		{
-			System.out.print("Enter rock scissor or paper: ");
-			userchoice = new String(input.nextLine());
+			System.out.print("You play: ");
+			userInput = input.next();
 			
-			if (userchoice.equals("scissor"))
+			randomPlay = randNumber.nextInt(3);
+			
+			if (randomPlay == 0)
 			{
-				if (compchoose == 2)
+				System.out.println("Comp plays: scissors" );
+				
+				if (userInput.equals("scissors"))			
+					System.out.println("It's a draw! \n");				
+				else if (userInput.equals("rock"))
 				{
-					System.out.println(("You win! Scissors beat Paper!"));
-					userwins++;
-				}
-				else if (compchoose == 1)
-				{
-					System.out.println(("You lose! Scissors beat Paper!"));
-					compwins++;
+					System.out.println("You win! \n");
+					++userScore;
 				}
 				else
 				{
-					System.out.println(("It's a tie!"));
+					System.out.println("You lose! \n");
+					++compScore;
 				}
 			}
-			else if (userchoice.equals("rock"))
+			else if (randomPlay == 1)
 			{
-				if (compchoose == 0)
+				System.out.println("Comp plays: rock" );
+				
+				if (userInput.equals("scissors"))
 				{
-					System.out.println(("You win! Rock beat Scissors!"));
-					userwins++;
-				}
-				else if (compchoose == 2)
-				{
-					System.out.println(("You lose! Paper beat Rock!"));
-					compwins++;
-				}
+					System.out.println("You lose! \n");
+					++compScore;
+				}			
+				else if (userInput.equals("rock"))
+					System.out.println("It's a draw! \n");
 				else
 				{
-					System.out.println(("It's a tie!"));
-				}
-			}
-			else if (userchoice.equals("paper"))
-			{
-				if (compchoose == 1)
-				{
-					System.out.println(("You win! Paper beat Rock!"));
-					userwins++;
-				}
-				else if (compchoose == 0)
-				{
-					System.out.println(("You lose! Scissor beat Paper!"));
-					compwins++;
-				}
-				else
-				{
-					System.out.println(("It's a tie!"));
-				}
+					System.out.println("You win! \n");
+					++userScore;
+				}	
 			}
 			else
 			{
-				System.out.println("YOU DID NOT ENTER CORRECTLY!");
-			}
-			
-			if ((userwins == 2) || (compwins == 2))
-			{
-				win = false;
-			}
-			
-			compchoose = rand.nextInt(3);
+				System.out.print("Comp plays: paper \n" );
+				
+				if (userInput.equals("scissors"))
+				{
+					System.out.println("You win! \n");
+					++userScore;
+				}						
+				else if (userInput.equals("rock"))
+				{
+					System.out.println("You lose! \n");
+					++compScore;
+				}
+				else
+					System.out.println("It's a draw! \n");	
+			}	
 		}
 		
-		System.out.println("Game over!");
+		if ((userScore - compScore) == 2)
+			System.out.print("Congratulations! You've beat the computer!");
+		else
+			System.out.print("You've lost the game!");
+		
 		input.close();
 	}
 }

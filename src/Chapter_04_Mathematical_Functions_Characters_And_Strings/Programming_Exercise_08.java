@@ -15,7 +15,14 @@ public class Programming_Exercise_08
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
+		System.out.print("Enter an integer between 0 and 127: ");
+		int asciiCode = input.nextInt();
 		
+		System.out.println((char) asciiCode); 
+		
+		char asciiChar = (char) asciiCode;
+		
+		System.out.print(asciiChar);
 		input.close();
 	}
 }

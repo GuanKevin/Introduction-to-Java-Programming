@@ -1,11 +1,10 @@
 package Chapter_05_Loops;
 
-import java.util.Scanner;
-
 /**
  * Sum a series
  * Write a program to sum the following series
  * 
+ * 08/25/2016
  * @author kevgu
  *
  */
@@ -14,8 +13,15 @@ public class Programming_Exercise_24
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		int numerator = 1;
+		double series = 0;
 		
-		input.close();
+		for (int i = 3; i <= 99; i += 2)
+		{
+			series += (double) numerator / i; 
+			numerator = i;
+		}
+		
+		System.out.print(series);
 	}
 }

@@ -11,7 +11,7 @@ import java.util.Scanner;
  * C: Computer Science 
  * I: Information Technology
  * 
- * 02/14/2016
+ * 08/16/2016
  * @author kevgu
  *
  */
@@ -21,90 +21,39 @@ public class Programming_Exercise_18
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter two characters to display your major and status: ");
-		String studentms = input.next();
+		System.out.print("M: Mathematics \n"
+				+ "C: Computer Science \n"
+				+ "I: Information Technology \n"
+				+ "Enter your major: ");
+		char m = input.next().charAt(0);
 		
-		//major -> M C I
-		//Status -> 1 2 3 4
-		//M2
-		char major = studentms.charAt(0);
-		int status = Character.getNumericValue(studentms.charAt(1));
+		System.out.print("1 Freshman\n"
+				+ "2 Sophomore\n"
+				+ "3 Junior\n"
+				+ "4 Senior\n"
+				+ "Enter your status: ");
+		int s = input.nextInt();
 		
-		if (major == 'M')
-		{
-			if (status == 1)
-			{
-				System.out.print("You are a Mathematics major in your freshman year!");
-			}
-			else if (status == 2)
-			{
-				System.out.print("You are a Mathematics major in your sophmore year!");
-			}
-			else if (status == 3)
-			{
-				System.out.print("You are a Mathematics major in your junior year!");
-			}
-			else if (status == 4)
-			{
-				System.out.print("You are a Mathematics major in your senior year!");
-			}
-			else
-			{
-				System.out.print("You are a Mathematics major, your status is unknown!");
-			}
-		}
-		else if (major == 'C')
-		{
-			if (status == 1)
-			{
-				System.out.print("You are a Computer Science major in your freshman year!");
-			}
-			else if (status == 2)
-			{
-				System.out.print("You are a Computer Science major in your sophmore year!");
-			}
-			else if (status == 3)
-			{
-				System.out.print("You are a Computer Science major in your junior year!");
-			}
-			else if (status == 4)
-			{
-				System.out.print("You are a Computer Science major in your senior year!");
-			}
-			else
-			{
-				System.out.print("You are a Computer Science major, your status is unknown!");
-			}
-		}
-		else if (major == 'I')
-		{
-			if (status == 1)
-			{
-				System.out.print("You are a Information Technology major in your freshman year!");
-			}
-			else if (status == 2)
-			{
-				System.out.print("You are a Information Technology major in your sophmore year!");
-			}
-			else if (status == 3)
-			{
-				System.out.print("You are a Information Technology major in your junior year!");
-			}
-			else if (status == 4)
-			{
-				System.out.print("You are a Information Technology major in your senior year!");
-			}
-			else
-			{
-				System.out.print("You are a Information Technology major, your status is unknown!");
-			}
-		}
+		String major, status;
+		
+		if (m == 'M')
+			major = "Mathematics";
+		else if (m == 'C')
+			major = "Computer Science";
 		else
-		{
-			System.out.print("Your major is unknown!");
-		}
+			major = "Information Technology";
+		
+		if (s == 1)
+			status = "Freshman";
+		else if (s == 2)
+			status = "Sophomore";
+		else if (s == 3)
+			status = "Junior";
+		else
+			status = "Senior";
+		
+		System.out.print("You are a " + status + " majoring in " + major);
 		
 		input.close();
 	}
-
 }

@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter the number of students and each student’s name and score, 
  * and finally displays the student with the highest score and the student with the second-highest score.
  * 
+ * 08/20/2016
  * @author kevgu
  *
  */
@@ -16,44 +17,29 @@ public class Programming_Exercise_09
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter the number of students: ");
-		final int numberofstudents = input.nextInt(); 
-		String topstudentname1 = null;
-		String topstudentname2 = null;
-		String tempname;
-		double topstudentscore1, topstudentscore2, tempscore;
-		topstudentscore1 = topstudentscore2 = 0;
+		int numStudents = input.nextInt();
+		input.nextLine(); 
 		
-		for (int i = 1; i <= numberofstudents; i++)
+		System.out.print("Enter the student's name and score: ");
+		String studentNameScore = input.nextLine(); 
+		int studentScore = Integer.parseInt(studentNameScore.substring(studentNameScore.indexOf(' ') + 1, studentNameScore.length()));
+		String topStudent2 = null;
+		
+		for (int i = 1; i < numStudents; i++)
 		{
-			System.out.print("Enter the name of student " + i + ": ");
-			tempname = input.next();
-			System.out.print("Enter the score of student " + i + ": ");
-			tempscore = input.nextDouble();
+			System.out.print("Enter the student's name and score: ");
+			String tempNameScore = input.nextLine(); 
+			int tempScore = Integer.parseInt(tempNameScore.substring(tempNameScore.indexOf(' ') + 1, tempNameScore.length()));
 			
-			if (topstudentname1 == null)
+			if (studentScore < tempScore)
 			{
-				topstudentname1 = new String(tempname);
-				topstudentscore1 = tempscore;
-			}
-			else
-			{
-				if (topstudentscore1 < tempscore)
-				{
-					topstudentname2 = new String(topstudentname1);
-					topstudentscore2 = topstudentscore1;
-					topstudentname1 = new String(tempname);
-					topstudentscore1 = tempscore;
-				}
+				topStudent2 = studentNameScore;
+				studentNameScore = tempNameScore;
 			}
 		}
 		
-		//Alex 90, Calvin 99, Stanislav 50, Jimmie 75, Roy 95, Kevin 105, Shafia 10
-		
-		System.out.print("The top 2 student is: " 
-		+ "\n" + topstudentname1 + " " + topstudentscore1
-		+ "\n" + topstudentname2 + " " + topstudentscore2
-				);
-		
+		System.out.print("The top student is " + studentNameScore.substring(0, studentNameScore.indexOf(' '))
+							+ "\nThe 2nd top student is " + topStudent2.substring(0, topStudent2.indexOf(' ')));
 		input.close();
 	}
 }

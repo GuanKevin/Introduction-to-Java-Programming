@@ -9,7 +9,7 @@ import java.util.Scanner;
  * displays the monthly 
  * and total payments for each interest rate starting from 5% to 8%, with an increment of 1/8.
  * 
- * 03/24/2016
+ * 08/23/2016
  * @author kevgu
  *
  */
@@ -19,20 +19,29 @@ public class Programming_Exercise_21
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter loan amount: ");
+		System.out.print("Enter the loan amount: ");
 		double loanAmount = input.nextDouble();
-		System.out.print("Enter loan period: ");
+		System.out.print("Enter the loan period: ");
 		int loanPeriod = input.nextInt();
+		double interestRate = .05;
+		double interestIncrement = .03 / 8;
+		double monthlyPayments = 0;
+		double totalPayments = 0;
 		
-		System.out.printf("%s %20s %20s\n", "Interest Rate", "Monthly Payment", "Total Payments");
-		for (double interestRate = .05; interestRate < .08; interestRate += .00125)
+		for (int i = 1; i <= (loanPeriod * 12); i++)
 		{
-			double interestPerMonth = interestRate / 12;
-			double paymentPerMonth = (loanAmount * interestPerMonth) + (loanAmount / 12);
-			double totalPayments = (paymentPerMonth * 12) * loanPeriod;
+			monthlyPayments = loanAmount * interestRate;
 			
-			System.out.printf("%.4f%s%13s%.2f%20s%.2f\n", interestRate, "%", "$", paymentPerMonth,"%", totalPayments);
+			System.out.printf("%s %-2d %.4f %.2f \n" ,"Month", i, interestRate, monthlyPayments);
+			
+			if (interestRate < .08)
+				interestRate += interestIncrement;
+			
+			loanAmount += (loanAmount * interestRate);
+			totalPayments += monthlyPayments;
 		}
+		
+		System.out.printf("%s %.2f", "Total payments: ", totalPayments);
 		
 		input.close();
 	}

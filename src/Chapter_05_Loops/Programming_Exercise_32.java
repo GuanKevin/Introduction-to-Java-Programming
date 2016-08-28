@@ -1,5 +1,6 @@
 package Chapter_05_Loops;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Game: lottery
@@ -7,36 +8,24 @@ import java.util.Random;
  * The two digits in the number are distinct. 
  * (Hint: Generate the first digit. Use a loop to continuously generate the second digit until it is different from the first digit.)
  * 
- * 02/15/2016
+ * 08/27/2016
  * @author kevgu
- *
+ * 
  */
 
 public class Programming_Exercise_32 {
 	public static void main(String[] args) 
 	{
-		Random rand = new Random();
-		int digit1 = rand.nextInt(10);
-		int digit2 = rand.nextInt(10);
-		StringBuilder lottery = new StringBuilder();
+		Scanner input = new Scanner(System.in);
+		Random randNum = new Random();
+		int num1 = randNum.nextInt(10);
+		int num2 = randNum.nextInt(10);
 		
-		if (digit1 != digit2)
-		{
-			lottery = lottery.append(digit1).append(digit2);
-		}
-		else
-		{
-			while(true)
-			{
-				digit2 = rand.nextInt(10);
-				if (digit1 != digit2)
-				{
-					lottery = lottery.append(digit1).append(digit2);
-					break;
-				}
-			}
-		}
+		while (num1 == num2)
+			num2 = randNum.nextInt(10);
 		
-		System.out.print("The lottery numbers is: " + lottery);
+		System.out.print("Lottery number: " + num1 + num2);
+		
+		input.close();
 	}
 }

@@ -9,6 +9,7 @@ import java.util.Scanner;
  * The first such common divisor is the greatest common divisor for n1 and n2. 
  * Write a program that prompts the user to enter two positive integers and displays the gcd.
  * 
+ * 08/20/2016
  * @author kevgu
  *
  */
@@ -18,37 +19,22 @@ public class Programming_Exercise_14
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter first positive integer: ");
-		int number1 = input.nextInt();
-		System.out.print("Enter second positive integer: ");
-		int number2 = input.nextInt();
-		boolean unknown = true;
-		int divisor;
+		System.out.print("Enter two integers: ");
+		int n1, n2, d;
+		n1 = input.nextInt();
+		n2 = input.nextInt();
 		
-		if (number1 < number2)
-		{
-			divisor = number1;
-		}
+		if (n1 > n2)
+			d = n2;
 		else
+			d = n1;
+		
+		while (!(n1 % d == 0 && n2 % d == 0))
 		{
-			divisor = number2;
+			--d;
 		}
 		
-		
-		//100, 75 --> 25
-		while (unknown)
-		{
-			if (((number1 % divisor) == 0) && ((number2 % divisor) == 0))
-			{
-				unknown = false;
-			}
-			else
-			{
-				divisor--;
-			}
-		}
-		
-		System.out.print("The greatest common divisor of " + number1 + " and " + number2 + " is " + divisor);
+		System.out.print("GCD: " + d);
 		
 		input.close();
 	}

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Your program should extract the dollar amount before the decimal point 
  * and the cents after the decimal amount using the indexOf and substring methods.
  * 
- * 02/14/2016
+ * 08/18/2016
  * @author kevgu
  *
  */
@@ -18,50 +18,14 @@ public class Programming_Exercise_26
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter your money: ");
-		String money = input.next();
-		//indexOf --> . --> 1000.50 --> 1.50
-		int index = money.indexOf('.');
-		String submoney = money.substring(0, index);
-		int mymoney = Integer.parseInt(submoney);
-		//How many $100 Dollars
-		//How many $50 Dollars
-		//$20, $10, $5, $1
-		int hundredbills = mymoney/100;
-		mymoney = mymoney % 100;
-		int fiftybills = mymoney/50;
-		mymoney = mymoney % 50;
-		int twentybills = mymoney/20;
-		mymoney = mymoney % 20;
-		int tenbills = mymoney/10;
-		mymoney = mymoney % 10;
-		int fivebills = mymoney/5;
-		mymoney = mymoney % 5;
-		int dollarbills = mymoney/1;
+		System.out.print("Enter your change: ");
+		String change = input.next();
+		int dollars = Integer.parseInt(change.substring(0, change.indexOf('.')));
+		int remainingChange = Integer.parseInt(change.substring(change.indexOf('.') + 1, change.length()));
 		
-		String subcents = money.substring(index + 1, money.length());
-		//quarters(25), dimes(10), nickels(5), pennies(1)
-		mymoney = Integer.parseInt(subcents);
-		int quarters = mymoney / 25;
-		mymoney = mymoney % 25;
-		int dimes = mymoney / 10;
-		mymoney = mymoney % 10;
-		int nickels = mymoney / 5;
-		mymoney = mymoney % 5;
-		int pennies = mymoney / 1;
-		
-		System.out.print("$100: " + hundredbills +
-				"\n$50: " + fiftybills +
-				"\n$20: " + twentybills +
-				"\n$10: " + tenbills +
-				"\n$5: " + fivebills +
-				"\n$1: " + dollarbills +
-				"\n25 cents: " + quarters +
-				"\n10 cents: " + dimes +
-				"\n5 cents: " + nickels +
-				"\n1 cents: " + pennies);
+		System.out.print("Dollar amount: " + dollars 
+				+ "\nChange amount: " + remainingChange);
 		
 		input.close();
 	}
-
 }

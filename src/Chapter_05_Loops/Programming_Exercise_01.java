@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Your program ends with the input 0. 
  * Display the average as a floating-point number.
  * 
- * 03/24/2016
+ * 08/18/2016
  * @author kevgu
  */
 
@@ -17,46 +17,35 @@ public class Programming_Exercise_01
 {
 	public static void main(String[] args) 
 	{
-		int positiveNumCounter = 0;
-		int negativeNumCounter = 0;
-		int totalNumCounter = 0;
-		float average = 0;
-		int userInput;
-		
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter any number. Enter 0 to stop: ");
-		userInput = input.nextInt();
+		float positiveSum = 0;
+		float negativeSum = 0;
+		float number;
+		int positiveCounter = 0;
+		int negativeCounter = 0;
 		
-		while (userInput != 0)
+		System.out.print("Enter the number: ");
+		number = input.nextFloat();
+		
+		while (number != 0)
 		{
-			if (userInput > 0)
+			if (number > 0)
 			{
-				positiveNumCounter++;
-				//++positiveNumCounter;
-				//positiveNumCounter += 1;
-				//positiveNumCounter = positiveNumCounter + 1;
+				positiveSum += number;
+				positiveCounter++;
 			}
 			else
 			{
-				negativeNumCounter++;
+				negativeSum += number;
+				negativeCounter++;
 			}
-			totalNumCounter++;
-			average += userInput;
-			
-			userInput = input.nextInt();
+			number = input.nextFloat();
 		}
 		
-		if (totalNumCounter == 0)
-		{
-			System.out.println("No numbers were entered!");
-		}
-		else
-		{
-			System.out.println("Postive Number Inputs: " + positiveNumCounter 
-					+ "\nNegative Number Inputs: " + negativeNumCounter 
-					+ "\nTotal Number Inputs: " + totalNumCounter
-					+ "\nAverage: " + average/totalNumCounter);
-		}
+		System.out.print("Positive sum: " + positiveSum
+				+ "\nNegative sum: " + negativeSum
+				+ "\nPositive average: " + positiveSum / positiveCounter
+				+ "\nNegative average:: " + negativeSum / negativeCounter);
 		
 		input.close();
 	}

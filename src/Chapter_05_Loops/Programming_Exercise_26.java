@@ -1,11 +1,10 @@
 package Chapter_05_Loops;
 
-import java.util.Scanner;
-
 /**
  * Compute e
  * You can approximate e using the following series
  * 
+ * 08/25/2016
  * @author kevgu
  *
  */
@@ -14,8 +13,18 @@ public class Programming_Exercise_26
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		double e = 1;
+		double factorial = 1;
 		
-		input.close();
+		for (int i = 10000; i >= 1; i--)
+		{
+			for (int j = i; j >= 1; j--)
+				factorial *= j;
+			
+			e += (double) 1 / factorial;
+			factorial = 1;
+		}
+		
+		System.out.print("e: " + e);
 	}
 }

@@ -15,7 +15,7 @@ package Chapter_05_Loops;
  * Your goal is to earn $30,000 a year. 
  * Write a program that finds the minimum sales you have to generate in order to make $30,000.
  * 
- * 03/24/2016
+ * 08/27/2016
  * @author kevgu
  *
  */
@@ -24,22 +24,31 @@ public class Programming_Exercise_39
 {
 	public static void main(String[] args) 
 	{
-		double commissionEarned = 0.0;
-		double salesAmount = 25000;
-		double salesNessecary = salesAmount;
+		double commission = 0;
+		double sales = 25000;
+		double minimumSales;
 		
-		while (commissionEarned < 25000)
+		while (commission <= 25000)
 		{
-			commissionEarned = 0.0;
+			sales++;
+			minimumSales = sales;
+			commission = 0;
 			
-			commissionEarned += 5000 * .08;
-			commissionEarned += 5000 * .10;
-			salesNessecary -= 10000;
-			commissionEarned += (salesAmount * .12);
-			salesAmount += .01;
-			salesNessecary = salesAmount;
+			if (minimumSales >= 10000)
+			{
+				commission += 5000 * .08;
+				minimumSales -= 5000;
+				
+				commission += 5000 * .10;
+				minimumSales -= 5000;
+			}
+
+			commission += minimumSales * .12;
 		}
 		
-		System.out.printf("%s%.2f","The minimim to earn $30,000 per year is: ", salesNessecary);
+		System.out.print("The minimum sales required is $" + sales
+				+ "\n$5,000 * .08% = " + (5000 * .08)
+				+ "\n$5,000 * .10% = " + (5000 * .1)
+				+ "\n$" + (sales  - 10000) + " * .12% = " + ((sales - 10000) * .12));
 	}
 }

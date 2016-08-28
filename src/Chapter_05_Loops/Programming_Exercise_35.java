@@ -1,21 +1,24 @@
 package Chapter_05_Loops;
 
-import java.util.Scanner;
-
 /**
+ * Summation
+ * Write a program to compute the following summation.
  * 
- * 
- * 02/15/2016
+ * 08/27/2016
  * @author kevgu
  *
  */
 
 
-public class Programming_Exercise_35 {
+public class Programming_Exercise_35 
+{
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		double summation = 0;
 		
-		input.close();
+		for (int i = 1; i <= 624; i++)
+			summation += (1 / ((Math.sqrt(i)) + (Math.sqrt(i + 1))));
+		
+		System.out.print(summation);
 	}
 }

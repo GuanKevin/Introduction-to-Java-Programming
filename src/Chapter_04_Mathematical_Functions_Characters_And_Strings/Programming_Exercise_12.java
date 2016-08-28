@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter a hex digit 
  * and displays its corresponding binary number.
  * 
- * 02/13/2016
+ * 08/16/2016
  * @author kevgu
  *
  */
@@ -17,46 +17,38 @@ public class Programming_Exercise_12
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a hex digit: ");
-		//Hexidecimal -> 0 - 9, A - F 
-		String hex = input.nextLine();
+		int hex = input.nextInt();
 		
-		//B -> 66
-		//B in Hexidecimal is 11 --> 8 + 0 + 2 + 1 --> 1011
-		//String -- > First Char --> Convert into an integer --> Binary String
-		//w(0)o(1)r(2)d(3)
-		
-		char chex = hex.charAt(0);
-		int ihex = (int) chex;
-		
-		if (chex == 'A')
-		{
-			ihex = 10;
-		}
-		if (chex == 'B')
-		{
-			ihex = 11;
-		}
-		if (chex == 'C')
-		{
-			ihex = 12;
-		}
-		if (chex == 'D')
-		{
-			ihex = 13;
-		}
-		if (chex == 'E')
-		{
-			ihex = 14;
-		}
-		if (chex == 'F')
-		{
-			ihex = 16;
-		}
-		
-		String shex = Integer.toBinaryString(ihex);	
-		System.out.print("The binary of " + hex + " is " + shex);
-
+		if (hex <= 1)
+			System.out.print("Binary value is " + hex);
+		else if (hex == 2)
+			System.out.print("Binary value is 10");
+		else if (hex == 3)
+			System.out.print("Binary value is 11");
+		else if (hex == 4)
+			System.out.print("Binary value is 100");
+		else if (hex == 5)
+			System.out.print("Binary value is 101");
+		else if (hex == 6)
+			System.out.print("Binary value is 110");
+		else if (hex == 7)
+			System.out.print("Binary value is 111");
+		else if (hex == 8)
+			System.out.print("Binary value is 1000");
+		else if (hex == 9)
+			System.out.print("Binary value is 1001");
+		else if (hex == 10)
+			System.out.print("Binary value is 1010");
+		else if (hex == 11)
+			System.out.print("Binary value is 1011");
+		else if (hex == 12)
+			System.out.print("Binary value is 1100");
+		else if (hex == 13)
+			System.out.print("Binary value is 1101");
+		else if (hex == 14)
+			System.out.print("Binary value is 1110");
+		else if (hex == 15)
+			System.out.print("Binary value is 1111");
 		input.close();		
 	}
-
 }
