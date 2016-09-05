@@ -12,7 +12,7 @@ import java.util.Scanner;
  * Use a loop to repeatedly extract and remove the digit until all the digits are extracted. 
  * Write a test program that prompts the user to enter an integer and displays the sum of all its digits.
  * 
- * 02/16/2016
+ * 08/28/2016
  * @author kevgu
  *
  */
@@ -22,36 +22,25 @@ public class Programming_Exercise_02
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
+		
 		System.out.print("Enter an integer: ");
 		long digits = input.nextLong();
-		
-		System.out.println(sumDigits(digits));
+		System.out.print(sumDigits(digits));
 		
 		input.close();		
 	}
 	
-	public static int sumDigits(long n)
+	public static int sumDigits(long n) 
 	{
 		int length = (int) Math.log10(n);
-		System.out.println("Length: " + length);
-		int sum = 0;
-		int modder = 10;
-		int divisor = 10;
-				
+		int sumDigits = 0;
+		
 		for (int i = 0; i <= length; i++)
 		{
-			if (i == 0)
-			{
-				sum += (int) n % modder;
-			}
-			else
-			{
-				sum += ((int) (n % modder) / divisor);
-				divisor *= 10;				
-			}
-			modder *= 10;
+			sumDigits += (n % 10);
+			n /= 10;
 		}
 		
-		return sum;
+		return sumDigits;
 	}
 }

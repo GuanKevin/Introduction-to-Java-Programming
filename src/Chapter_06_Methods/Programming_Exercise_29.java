@@ -1,5 +1,4 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
 
 /**
  * Twin primes
@@ -10,7 +9,7 @@ import java.util.Scanner;
  * (5, 7) 
  * ...
  *
- * 02/16/2016
+ * 09/03/2016
  * @author kevgu
  *
  */
@@ -19,8 +18,35 @@ public class Programming_Exercise_29
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		displayTwinPrimes();	
+	}
+	
+	/**
+	 * Display twin primes
+	 */
+	public static void displayTwinPrimes()
+	{
+		int number = 2;
 		
-		input.close();		
+		while (number < 1000)
+		{
+			if (checkPrime(number) && checkPrime(number + 2))
+				System.out.printf("(%d, %d) \n", number, (number + 2));
+			number++;
+		}
+	}
+	
+	/**
+	 * Returns true if number is a prime
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean checkPrime(int number)
+	{
+		for (int i = 2; i <= number / 2; i++)
+			if (number % i == 0)
+				return false;
+		return true;
 	}
 }

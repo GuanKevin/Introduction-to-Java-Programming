@@ -16,7 +16,7 @@ import java.util.Scanner;
  * Implement the following method that returns the square root of n. 
  * public static double sqrt(long n)
  *
- * 02/16/2016
+ * 09/02/2016
  * @author kevgu
  *
  */
@@ -26,7 +26,28 @@ public class Programming_Exercise_22
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		
+		System.out.print("Enter a number: ");
+		System.out.printf("The square root is %.0f", sqrt(input.nextLong()));
 		input.close();		
+	}
+	
+	/**
+	 * returns the square root of n
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public static double sqrt(long n)
+	{
+		double nextGuess = 1;
+		double lastGuess = 0;
+		
+		while ((nextGuess - lastGuess) > .0001 || (lastGuess - nextGuess) > .0001)
+		{
+			lastGuess = nextGuess;
+			nextGuess = (lastGuess + n / lastGuess) / 2;
+		}
+		
+		return nextGuess;
 	}
 }

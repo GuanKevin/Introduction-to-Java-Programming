@@ -1,6 +1,7 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
+
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Display matrix of 0s and 1s
@@ -9,7 +10,7 @@ import java.util.Random;
  * Each element is 0 or 1, which is generated randomly. 
  * Write a test program that prompts the user to enter n and displays an n-by-n matrix.
  *
- * 02/16/2016
+ * 08/31/2016
  * @author kevgu
  *
  */
@@ -19,27 +20,27 @@ public class Programming_Exercise_17
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the size of the matrix: ");
-		int sizeofmatrix = input.nextInt();
-		printMatrix(sizeofmatrix);
+		System.out.print("Enter a number less than 10: ");
+		printMatrix(input.nextInt());
 		
-		input.close();		
+		input.close();
 	}
 	
-	public static void printMatrix(int n)
+	/**
+	 * Displays an n-by-n matrix
+	 * Display matrix of 0s and 1s
+	 * 
+	 * @param n
+	 */
+	public static void printMatrix(int n) 
 	{
-		Random rand = new Random();
-		int binary = rand.nextInt(2);
+		Random binaryNum = new Random();
 		
-		for (int i = 0; i < n; i++)
+		for (int i = 1; i <= n; i++)
 		{
-			for (int j = 0; j < n; j++)
-			{
-				System.out.print(binary + " ");
-				binary = rand.nextInt(2);
-			}
+			for (int j = 1; j <= n; j++)
+				System.out.print(binaryNum.nextInt(2) + " ");
 			System.out.println();
 		}
-		
 	}
 }

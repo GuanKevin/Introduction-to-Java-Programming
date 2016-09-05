@@ -1,12 +1,11 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
 
 /**
  * Use the isPrime Method
  * Listing 6.7, PrimeNumberMethod.java, provides the isPrime(int number) method for testing whether a number is prime. 
  * Use this method to find the number of prime numbers less than 10000.
  *
- * 02/16/2016
+ * 08/29/2016
  * @author kevgu
  *
  */
@@ -15,46 +14,44 @@ public class Programming_Exercise_10
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		final int NUMBER = 10000;
-		printPrimeNumbers(NUMBER);
+		final int CHECK_FOR_PRIME = 10000;
 		
-		input.close();		
+		System.out.print("Number of primes under " + CHECK_FOR_PRIME + " is " + primeCounter(CHECK_FOR_PRIME));
 	}
 	
-	public static void printPrimeNumbers(int numberOfPrimes)
+	/**
+	 * Counts how many prime under a specified number
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static int primeCounter(int number)
 	{
-		final int NUMBERS_PER_LINE = 10;
 		int counter = 0;
-		int number = 2;
 		
-		while (number < 10000)
+		while (number != 1)
 		{
 			if (isPrime(number))
-			{
-				System.out.printf("%-5s", number);
 				counter++;
-			}
 			
-			if (counter == NUMBERS_PER_LINE)
-			{
-				System.out.println();
-				counter = 0;
-			}
-			
-			number++;
+			--number;
 		}
+		
+		return counter;
 	}
 	
+	/**
+	 * Returns true if it is a prime number
+	 * 
+	 * @param number
+	 * @return
+	 */
 	public static boolean isPrime(int number)
 	{
 		for (int i = 2; i <= (number / 2); i++)
-		{
 			if ((number % i) == 0)
-			{
 				return false;
-			}
-		}
+		
 		return true;
 	}
 }

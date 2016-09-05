@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Write a test program that prints ten characters per line from 1 to Z. 
  * Characters are separated by exactly one space.
  *
- * 02/16/2016
+ * 08/30/2016
  * @author kevgu
  *
  */
@@ -18,30 +18,34 @@ public class Programming_Exercise_12
 {
 	public static void main(String[] args) 
 	{
+		final int CHARACTERS_PER_LINE = 10;
 		Scanner input = new Scanner(System.in);
-		final int CHAR_PER_LINE = 10;
-		System.out.print("Enter the characters: ");
-		char ch1 = input.next().charAt(0);
-		char ch2 = input.next().charAt(0);
-		
-		printChars(ch1, ch2, CHAR_PER_LINE);
+		System.out.print("Enter character to print: ");
+		printChars(input.next().charAt(0), input.next().charAt(0), CHARACTERS_PER_LINE);
 		
 		input.close();		
 	}
 	
+	/**
+	 * prints characters
+	 * prints the characters between ch1 and ch2 with the specified numbers per line
+	 * 
+	 * @param ch1
+	 * @param ch2
+	 * @param numberPerLine
+	 */
 	public static void printChars(char ch1, char ch2, int numberPerLine) 
 	{
 		int counter = 0;
 		
-		for (int i = (int) ch1; i <= (int) ch2; i++)
+		for (int i = ch1; i <= ch2; i++)
 		{
-			System.out.printf("%-3s", (char) i);
 			counter++;
-			if (counter == 10)
-			{
-				counter = 0;
-				System.out.println();
-			}
+			
+			if (counter % 10 == 0)
+				System.out.printf("%-2s \n", ((char) i));
+			else
+				System.out.printf("%-2s", ((char) i));
 		}
 	}
 }

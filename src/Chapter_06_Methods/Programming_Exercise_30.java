@@ -1,4 +1,5 @@
 package Chapter_06_Methods;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -22,8 +23,69 @@ public class Programming_Exercise_30
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		playCraps();	
+	}
+	
+	/**
+	 * Play a game of Craps
+	 */
+	public static void playCraps()
+	{
+		Random diceRoll = new Random();
+		int dice1, dice2;
+		int pointsCounter = 0;
+		boolean endGame = true;
 		
-		input.close();		
+		while (endGame)
+		{
+			dice1 = diceRoll.nextInt(6) + 1;
+			dice2 = diceRoll.nextInt(6) + 1;
+			
+			if ((dice1 + dice2) == 2 || (dice1 + dice2) == 3 || (dice1 + dice2) == 12)
+			{
+				System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
+						+ "\nYou lose");
+				endGame = false;
+			}
+			else if ((dice1 + dice2) == 7 || (dice1 + dice2) == 11)
+			{
+				System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
+						+ "\nYou lose");
+				endGame = false;
+			}
+			else
+			{
+				System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
+						+ "\nPoints is " + (pointsCounter + 1));
+				pointsCounter++;
+				
+				while (endGame)
+				{
+					dice1 = diceRoll.nextInt(6) + 1;
+					dice2 = diceRoll.nextInt(6) + 1;
+					
+					if ((dice1 + dice2) == 7)
+					{
+						System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
+								+ "\nYou lose");
+						endGame = false;
+					}
+					else if ((dice1 + dice2) == pointsCounter)
+					{
+						System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
+								+ "\nYou win");
+						endGame = false;
+					}
+					else if (pointsCounter > 12)
+						endGame = false;
+					else 
+					{
+						System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
+								+ "\nPoints is " + (pointsCounter + 1));
+						pointsCounter++;
+					}
+				}
+			}
+		}
 	}
 }

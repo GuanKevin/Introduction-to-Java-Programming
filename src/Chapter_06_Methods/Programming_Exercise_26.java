@@ -1,5 +1,4 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
 
 /**
  * Palindromic prime
@@ -11,7 +10,7 @@ import java.util.Scanner;
  * 313 353 373 383 727 757 787 797 919 929
  * ...
  *
- * 02/16/2016
+ * 09/02/2016
  * @author kevgu
  *
  */
@@ -20,59 +19,59 @@ public class Programming_Exercise_26
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		
-		int counter = 0;
+		displayPalindromicPrime();
+	}
+	
+	/**
+	 * Display prime numbers that are also palindromic
+	 */
+	public static void displayPalindromicPrime()
+	{
+		int primeCounter = 0;
 		int number = 2;
 		
-		while (counter < 100)
+		while (primeCounter != 100)
 		{
-			if (isPrime(number))
-			{
-				if (isPalindromic(number))
+			if (checkPrime(number))
+				if (checkPalindrome(number))
 				{
-					System.out.print(number + " ");
-					counter++;
-					
-					if ((counter % 10) == 0)
-					{
-						System.out.println();
-					}
+					primeCounter++;
+					if (primeCounter % 10 == 0)
+						System.out.printf("%-6d \n", number);
+					else
+						System.out.printf("%-6d", number);
 				}
-			}
 			number++;
 		}
-		
-		input.close();		
 	}
 	
-	public static boolean isPrime(int number)
+	/**
+	 * returns true if the number is a palindrome
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean checkPalindrome(int number)
 	{
-		for (int i = 2; i <= number/2; i++)
-		{
-			if ((number % i) == 0)
-			{
+		String reverse = new StringBuilder(Integer.toString(number)).reverse().toString();
+		int reversedNumber = Integer.parseInt(reverse);
+		
+		if (number == reversedNumber)
+			return true;
+		return false;
+	}
+	
+	/**
+	 * Return true if the number is prime
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean checkPrime(int number)
+	{
+		for (int i = 2; i <=  number / 2; i++)
+			if (number % i == 0)
 				return false;
-			}
-		}
 		return true;
-	}
-	
-	public static boolean isPalindromic(int number)
-	{
-		String palindrome = Integer.toString(number);
-		boolean status = true;
-		
-		for (int i = 0; i < (palindrome.length()/2); ++i)
-		{
-			//1234321 --> 1 == 1
-			if ((int)palindrome.charAt(i) != (int)(palindrome.charAt(palindrome.length() - ++i)));
-			{
-				System.out.println(number + ": " + palindrome.charAt(i) + ":" + (palindrome.charAt(palindrome.length() - ++i)));
-				status = false;
-			}
-		}
-		
-		return status;
 	}
 }

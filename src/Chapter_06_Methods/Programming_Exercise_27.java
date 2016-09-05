@@ -1,5 +1,4 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
 
 /**
  * Emirp
@@ -20,8 +19,62 @@ public class Programming_Exercise_27
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
+		displayEmirp();		
+	}
+	
+	/**
+	 * Displays the first 100 emirps
+	 */
+	public static void displayEmirp()
+	{
+		int counter = 0;
+		int number = 10;
 		
-		input.close();		
+		while (counter != 100)
+		{
+			if (checkPrime(number))
+				if (checkEmirp(number))
+				{
+					counter++;
+					
+					if (counter % 10 == 0)
+						System.out.printf("%-6d \n", number);
+					else
+						System.out.printf("%-6d", number);
+				}
+			
+			number++;
+		}
+	}
+	
+	/**
+	 * returns true if prime number whose reversal is also a prime
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean checkEmirp(int number)
+	{
+		int reverseNumber = Integer.parseInt(new StringBuilder(Integer.toString(number)).reverse().toString());
+		
+		if (number == reverseNumber)
+			return false;
+		if (checkPrime(reverseNumber))
+			return true;
+		return false;
+	}
+	
+	/**
+	 * returns true if number is prime
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean checkPrime(int number)
+	{
+		for (int i = 2; i <= number / 2; i++)
+			if (number % i == 0)
+				return false;
+		return true;
 	}
 }

@@ -12,7 +12,7 @@ import java.util.Scanner;
  * The method header is
  * public static void displayPattern(int n)
  *
- * 02/16/2016
+ * 08/29/2016
  * @author kevgu
  *
  */
@@ -32,10 +32,8 @@ public class Programming_Exercise_06
 	{
 		for (int i = 1; i <= n; i++)
 		{
-			for (int j = i; j >= 1; j--)
-			{
+			for (int j = i; j > 0; j--)
 				System.out.print(j + " ");
-			}
 			System.out.println();
 		}
 	}

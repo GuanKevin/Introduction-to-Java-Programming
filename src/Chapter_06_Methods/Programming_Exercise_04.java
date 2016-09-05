@@ -8,7 +8,7 @@ import java.util.Scanner;
  * For example, reverse(3456) displays 6543. 
  * Write a test program that prompts the user to enter an integer and displays its reversal.
  * 
- * 02/16/2016
+ * 08/29/2016
  * @author kevgu
  *
  */
@@ -26,26 +26,13 @@ public class Programming_Exercise_04
 		input.close();		
 	}
 	
-	public static void reverse(int number) 
+	/**
+	 * Display an integer in reverse order
+	 * 
+	 * @param number
+	 */
+	public static void reverse(int number)
 	{
-		int sum = 0;
-		int counter = 0;
-		
-		while (number != 0)
-		{
-			if (counter == 0)
-			{
-				sum = number % 10;
-				number /= 10;
-				counter++;
-			}
-			else
-			{
-				sum = (sum * 10) + (number % 10);
-				number /= 10;
-				counter++;
-			}
-		}
-		System.out.print(sum);
+		System.out.print(new StringBuilder(Integer.toString(number)).reverse().toString());
 	}
 }

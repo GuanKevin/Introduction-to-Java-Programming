@@ -1,5 +1,4 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
 
 /**
  * Math: pentagonal numbers
@@ -18,28 +17,19 @@ public class Programming_Exercise_01
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		
-		int counter = 0;
 		for (int i = 1; i <= 100; i++)
 		{
-			if (counter == 10)
-			{
-				System.out.println(getPentagonalNumber(i) + " ");
-				counter = 0;
-			}
+			if (i % 10 == 0)
+				System.out.printf("%-6d \n", getPentagonalNumber(i));
 			else
-			{
-				System.out.print(getPentagonalNumber(i) + " ");
-			}
-			counter++;
+				System.out.printf("%-6d", getPentagonalNumber(i));
 		}
-		
-		input.close();		
 	}
 	
 	public static int getPentagonalNumber(int n)
-	{	
-		return (n * ((3 * n) - 1)) / 2;
+	{
+		n = n * ((3 * n) - 1) / 2;
+		
+		return n;	
 	}
 }

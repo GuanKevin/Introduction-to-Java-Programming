@@ -1,4 +1,5 @@
 package Chapter_06_Methods;
+
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter a password and displays Valid 
  * Password if the rules are followed or Invalid Password otherwise.
  *
- * 02/16/2016
+ * 08/31/2016
  * @author kevgu
  *
  */
@@ -20,82 +21,84 @@ public class Programming_Exercise_18
 {
 	public static void main(String[] args) 
 	{	
-		checkPassword();				
-	}
-	
-	public static void checkPassword()
-	{
-		Scanner input = new Scanner(System.in);	
-		System.out.print("Enter your password: ");
-		String password = input.nextLine();
+		Scanner input = new Scanner(System.in);
+		System.out.println("A password must have at least eight characters."
+				+ "\nA password consists of only letters and digits."
+				+ "\nA password must contain at least two digits. ");
+		System.out.print("Check password: ");
 		
-		if (checkPasswordLength(password))
-		{
-			if (checkLettersDigits(password))
-			{
-				if (checkMinDigits(password))
-				{
-					System.out.println(password + " is valid!");
-				}
-				else
-				{
-					System.out.println(password + " is invalid! Password does not contain a minimum of 2 digits!");
-				}
-			}
-			else
-			{
-				System.out.println(password + " is invalid! Password contains characters that are not digits or letters!");
-			}
-		}	
+		if (checkPassword(input.next()))
+			System.out.print("Valid Password");
 		else
-		{
-			System.out.println(password + " is invalid! Password length is not at least 8!");
-		}
+			System.out.print("Invalid Password");
 		
-		input.close();	
+		input.close();
 	}
 	
-	public static boolean checkPasswordLength(String password)
+	/**
+	 * Returns true if it satisfy all password
+	 * requirement conditions
+	 * 
+	 * @param password
+	 * @return
+	 */
+	public static boolean checkPassword(String password)
 	{
-		if (password.length() < 8)
-		{
-			return false;
-		}
-		else
-		{
-			return true;
-		}
+		if (checkLength(password))
+			if (onlyLettersDigits(password))
+				if (atLeast2Digits(password))
+					return true;
+				else return false;
+			else return false;
+		else return false;
 	}
 	
-	public static boolean checkLettersDigits(String password)
+	/**
+	 * Return true if the string contains two digits
+	 * 
+	 * @param password
+	 * @return
+	 */
+	public static boolean atLeast2Digits(String password)
 	{
+		int digitCounter = 0;
+		
 		for (int i = 0; i < password.length(); i++)
-		{	
-			if (((int) password.charAt(i) >= 48 && (int) password.charAt(i) <= 57)  //Check ASCII Code of 0 - 9
-					|| ((int) password.charAt(i) >= 65 && (int) password.charAt(i) <= 90) //Check ASCII Code of A - Z
-					|| ((int) password.charAt(i) >= 97 && (int) password.charAt(i) <= 122)) // Check ASCII Code of a - z
-			{
-				return true;
-			}
-		}
+			if (Character.isDigit(password.charAt(i)))
+					digitCounter++;
+			
+		if (digitCounter >= 2)
+			return true;
+		
 		return false;
 	}
 	
-	public static boolean checkMinDigits(String password)
+	/**
+	 * Returns true if it consists of only letters and digits
+	 * 
+	 * @param password
+	 * @return
+	 */
+	public static boolean onlyLettersDigits(String password)
 	{
-		int counter = 0;
-		
 		for (int i = 0; i < password.length(); i++)
-		{
-			if ((int) password.charAt(i) >= 48 && (int) password.charAt(i) <= 57)
-			{
-				counter++;
-			}
-		}
-		if (counter < 2)	
-		{
+			if (!(Character.isDigit(password.charAt(i)) || Character.isLetter(password.charAt(i))))
+				return false;
+		
+		return true;
+	}
+	
+	/**
+	 * Returns true if string has at least eight characters
+	 * 
+	 * @param password
+	 * @return
+	 */
+	public static boolean checkLength(String password)
+	{
+		if (password.length() <= 7)
 			return false;
-		}
+		
 		return true;
 	}
 }
