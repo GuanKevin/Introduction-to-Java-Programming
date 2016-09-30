@@ -1,4 +1,6 @@
 package Chapter_07_Single_Dimensional_Arrays;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -9,97 +11,69 @@ import java.util.Scanner;
  * Write a test program that prompts the user to enter five numbers, invokes the method to find the gcd of these numbers, 
  * and displays the gcd.
  * 
- * 02/18/2016
+ * 09/20/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_14 
 {
-	static Scanner input = new Scanner(System.in);
+	static final int SIZE = 5;
 	public static void main(String[] args) 
 	{		
-		final int SIZE = 5;
-		int[] myarray = new int[SIZE];
-		inputIntegers(myarray);
-		System.out.print("The GCD of: ");
-		displayNumbers(myarray);
-		System.out.print("is " + gcd(myarray)); 
-		
-	};
+		int[] gcdArray = new int[SIZE];
+		System.out.print("GCD is " + gcd(gcdArray) + " of " + Arrays.toString(gcdArray));
+	}
 	
 	/**
-	 * Return the GCD of the numbers in the array
+	 * Returns the gcd of unspecified number of integers
+	 * 
 	 * @param numbers
 	 * @return
 	 */
-	public static int gcd(int... numbers)
+	public static int gcd(int... numbers) 
 	{
-		int smallestelement = minElement(numbers);
-		boolean foundgcd = true;
-
+		System.out.print("Enter " + SIZE + " numbers: ");
+		Scanner input = new Scanner(System.in);
 		
-		while (foundgcd)
+		for (int i = 0; i < SIZE; i++)
+			numbers[i] = input.nextInt();
+		
+		input.close();
+		int smallestElement = getSmallestElement(numbers);
+		boolean foundNumber = false;
+		
+		while (!foundNumber)
 		{
-			for (int i = 0; i < numbers.length; i++)
+			for (int i = 0; i < SIZE; i++)
 			{
-				if ((numbers[i] % smallestelement) != 0)
+				if (numbers[i] % smallestElement != 0)
 				{
-					smallestelement--;
+					smallestElement--;
 					break;
 				}
-				if ((numbers.length - 1) == i)
-				{
-					foundgcd = false;
-				}
+				if (i == SIZE - 1)
+					foundNumber = true;
 			}
 		}
 		
-		return smallestelement;
+		return smallestElement;	
 	}
 	
 	/**
-	 * It takes an array, and fill it up with integer inputs
-	 * @param myarray
-	 */
-	public static void inputIntegers(int[] myarray)
-	{
-		System.out.print("Enter " + myarray.length + " numbers: ");
-		for (int i = 0; i < myarray.length; i++)
-		{
-			myarray[i] = input.nextInt();
-		}
-	}
-	
-	/**
-	 * Returns smallest element from an array
-	 * @param myarray
+	 * Returns the smallest element from the array
+	 * 
+	 * @param numbers
 	 * @return
 	 */
-	public static int minElement(int[] myarray)
+	public static int getSmallestElement(int[] numbers)
 	{
-		int smallestelement = myarray[0];
+		int number = numbers[0];
 		
-		for (int i = 1; i < myarray.length; i++)
-		{
-			if (smallestelement > myarray[i])
-			{
-				smallestelement = myarray[i];
-			}
-		}
+		for (int i = 1; i < SIZE; i++)
+			if (number > numbers[i])
+				number = numbers[i];
 		
-		return smallestelement;
-	}
-	
-	/**
-	 * Prints out the list of integers in the array
-	 * @param myarray
-	 */
-	public static void displayNumbers(int[] myarray)
-	{
-		for (int i = 0; i < myarray.length; i++)
-		{
-			System.out.print(myarray[i] + " ");
-		}
+		return number;			
 	}
 }

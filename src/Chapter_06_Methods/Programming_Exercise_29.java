@@ -9,7 +9,7 @@ package Chapter_06_Methods;
  * (5, 7) 
  * ...
  *
- * 09/03/2016
+ * 09/09/2016
  * @author kevgu
  *
  */
@@ -18,26 +18,26 @@ public class Programming_Exercise_29
 {
 	public static void main(String[] args) 
 	{
-		displayTwinPrimes();	
+		displayTwinPrimes();
 	}
 	
 	/**
-	 * Display twin primes
+	 * Print twin primes
 	 */
 	public static void displayTwinPrimes()
 	{
-		int number = 2;
+		int twinPrimeNumber = 3;
 		
-		while (number < 1000)
+		while (twinPrimeNumber < 1000)
 		{
-			if (checkPrime(number) && checkPrime(number + 2))
-				System.out.printf("(%d, %d) \n", number, (number + 2));
-			number++;
+			if (checkPrime(twinPrimeNumber) && checkPrime(twinPrimeNumber + 2))
+				System.out.printf("(%d, %d) \n", twinPrimeNumber, (twinPrimeNumber + 2));
+			twinPrimeNumber++;
 		}
 	}
 	
 	/**
-	 * Returns true if number is a prime
+	 * Return true if the number is a prime
 	 * 
 	 * @param number
 	 * @return

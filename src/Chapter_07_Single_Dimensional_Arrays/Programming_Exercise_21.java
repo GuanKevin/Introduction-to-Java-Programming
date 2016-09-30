@@ -1,4 +1,7 @@
 package Chapter_07_Single_Dimensional_Arrays;
+
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -18,7 +21,7 @@ import java.util.Scanner;
  * Each ball falls into a slot via a path. The number of Rs in a path is the position of the slot where the ball falls. 
  * For example, for the path LRLRLRR, the ball falls into slots[4], and for the path is RRLLLLL, the ball falls into slots[2].)
  * 
- * 02/23/2016
+ * 09/21/2016
  * @author kevgu
  *
  */
@@ -28,7 +31,116 @@ public class Programming_Exercise_21
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		
+		System.out.print("Enter the number of balls and number of slots: ");
+		beanMachineSimulation(input.nextInt(), input.nextInt());
 		input.close();
+	}
+	
+	/**
+	 * Simulate balls falling into bean machine
+	 * 
+	 * @param numberBalls
+	 * @param numberSlots
+	 */
+	public static void beanMachineSimulation(int numberBalls, int numberSlots)
+	{
+		char[] positionArray = new char[numberSlots - 1];
+		int[] ballPosition = new int[numberSlots];
+		
+		for (int i = 0; i < numberBalls; i++)
+		{
+			dropPosition(positionArray);
+			storePosition(positionArray, ballPosition);
+			displayArray(positionArray);
+		}
+		
+		System.out.println(Arrays.toString(ballPosition));
+		displayBallPosition(ballPosition);
+	}
+	
+	/**
+	 * Display positions of where the balls have landed
+	 * 
+	 * @param ballPosition
+	 */
+	public static void displayBallPosition(int[] ballPosition)
+	{
+		int maxHB = findMaxH(ballPosition);
+		System.out.println();
+		
+		for (int i = maxHB; i > 0; i--)
+		{
+			for (int j = 0; j < ballPosition.length; j++)
+				if (i == ballPosition[j])
+				{
+					System.out.printf(" %-2d", 0);
+					ballPosition[j]--;
+				}
+				else
+					System.out.printf(" %-2s", "");
+			System.out.println();
+		}
+	}
+	
+	/**
+	 * Find the max horizontal balls
+	 * 
+	 * @param ballPosition
+	 * @return
+	 */
+	public static int findMaxH(int[] ballPosition)
+	{
+		int maxHB = 0;
+		
+		for (int i = 0; i < ballPosition.length; i++)
+			if (maxHB < ballPosition[i])
+				maxHB = ballPosition[i];
+		
+		return maxHB;
+	}
+	
+	/**
+	 * Store the slot position of where the ball landed
+	 * 
+	 * @param positionArray
+	 * @param ballPosition
+	 */
+	public static void storePosition(char[] positionArray, int[] ballPosition)
+	{
+		int midPosition = (positionArray.length + 1) / 2;
+		
+		for (int i = 0; i < positionArray.length; i++)
+			if (positionArray[i] == 'L' && midPosition > 0)
+				midPosition--;
+			else if (midPosition < positionArray.length)
+				midPosition++;
+		
+		ballPosition[midPosition]++;
+	}
+	
+	/**
+	 * Display each element in the array
+	 * 
+	 * @param positionArray
+	 */
+	public static void displayArray(char[] positionArray)
+	{
+		System.out.println(Arrays.toString(positionArray));
+	}
+	
+	/**
+	 * Fills array with character L or R
+	 * 
+	 * @param positionArray
+	 */
+	public static void dropPosition(char[] positionArray)
+	{
+		Random randomLR = new Random();
+		
+		for (int i = 0; i < positionArray.length; i++)
+			if (randomLR.nextBoolean() == true)
+				positionArray[i] = 'L';
+			else
+				positionArray[i] = 'R';
 	}
 }

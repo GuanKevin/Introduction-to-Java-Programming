@@ -13,9 +13,16 @@ import java.util.Scanner;
 
 public class Programming_Exercise_06
 {
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		System.out.print("Enter i: ");
+		System.out.print(series(input.nextDouble()));
+	}
+	public static double series(double i)
+	{
+		if(i == 1)
+			return 1.0 / 2;
+		return (i / (i + 1.0)) + series(i - 1);
 	}
 }

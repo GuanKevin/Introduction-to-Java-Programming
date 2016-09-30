@@ -1,4 +1,6 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -17,10 +19,47 @@ import java.util.Scanner;
 
 public class Programming_Exercise_31
 {
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		File[] file = new File[10];
+		for(int i = 1; i <= 10; i++){
+			if(i == 10)
+				file[i -1] = new File("babynamesranking20" + i + ".txt");
+			else
+				file[i - 1] = new File("babynamesranking200" + i + ".txt");
+		}
+		if(file[1].exists()){
+			System.out.println("Exists");
+		}
+		System.out.print("Enter the year: ");
+		int year = Integer.parseInt(input.nextLine());
+		System.out.print("Enter the gender: ");
+		char gender = input.nextLine().charAt(0);
+		System.out.print("Enter the name: ");
+		String name = input.nextLine();
+		System.out.println(name + " is ranked " + getRank(file, year, gender, name) + " in year " + year);
 	}
-
+	public static int getRank(File[] file, int year, char gender, String name)
+	{
+		Scanner inputf = null;
+		String line = null;
+		String temp;
+		temp = name.toLowerCase();
+		temp = name.substring(0, 1).toUpperCase() + name.substring(1, name.length());
+		try {
+			inputf = new Scanner(file[year - 2001]);
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		while(inputf.hasNext())
+		{
+			line = inputf.nextLine();
+			if(line.contains(temp))
+				return Integer.parseInt(line.substring(0, line.indexOf(" ")));
+		}
+		System.out.println(name + " is not ranked in year " + year);
+		System.exit(0);
+		return 0;
+	}
 }

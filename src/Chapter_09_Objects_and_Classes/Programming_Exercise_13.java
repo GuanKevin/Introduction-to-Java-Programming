@@ -17,10 +17,13 @@ import java.util.Scanner;
 
 public class Programming_Exercise_13 
 {
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		Location location = null;
+		System.out.print("Enter the number of rows and columns in the array: ");
+		location = new Location(input.nextInt(), input.nextInt());
+		System.out.println("The location of the largest element is value " + location.maxValue + " at (" + location.row + ", " + location.column + ")");
 	}
 
 }

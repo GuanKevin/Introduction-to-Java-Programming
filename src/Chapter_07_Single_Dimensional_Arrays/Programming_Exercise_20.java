@@ -1,5 +1,5 @@
 package Chapter_07_Single_Dimensional_Arrays;
-import java.util.Scanner;
+
 import java.util.Random;
 
 /**
@@ -9,89 +9,76 @@ import java.util.Random;
  * Rewrite this program by finding the largest number and swapping it with the last. 
  * Write a test program that reads in ten double numbers, invokes the method, and displays the sorted numbers.
  * 
- * 02/22/2016
+ * 09/21/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_20 
 {
-	static Scanner input = new Scanner(System.in);
 	static final int SIZE = 10;
-	static Random rand = new Random();
 	public static void main(String[] args) 
 	{
-		double[] myarray = new double[SIZE];
-		insertNumbers(myarray);
-		System.out.println("Array before sort: ");
-		displayArray(myarray);
-		selectionSort(myarray);
-		System.out.println("Array after sort: ");
-		displayArray(myarray);
+		int[] sortedArray = new int[SIZE];
+		insertNumbers(sortedArray);
+		System.out.println("Before selection sort");
+		displayArray(sortedArray);
+		System.out.println("After selection sort");
+		selectionSort(sortedArray);
+		displayArray(sortedArray);
 	}
 	
-	public static void displayArray(double[] myarray)
+	/**
+	 * Display every element in the array
+	 * 
+	 * @param sortedArray
+	 */
+	public static void displayArray(int[] sortedArray)
 	{
-		for (int i = 0; i < myarray.length; i++)
-		{
-			System.out.printf("%.2f %-1s", myarray[i], " ");
-		}
+		for (int i = 0; i < SIZE; i++)
+			System.out.printf("%-3d", sortedArray[i]);
 		System.out.println();
 	}
 	
 	/**
-	 * Uses selection sort to sort the array
-	 * Gets the highest number and swap it with the last number in the array
-	 * @param myarray
+	 * Insert elements into the array
+	 * 
+	 * @param sortedArray
 	 */
-	public static void selectionSort(double[] myarray)
+	public static void insertNumbers(int[] sortedArray)
 	{
-		int index = 0;
-		double temp;
+		Random randomNumber = new Random();
 		
-		for (int i = 0; i < myarray.length; i++)
-		{
-			for (int j = myarray.length - 1; j >= 0; j--)
-			{
-				index = findLargest(myarray, j) ;
-				
-				temp = myarray[index];
-				myarray[index] = myarray[j];
-				myarray[j] = temp;
-				
-			}
-		}
+		for (int i = 0; i < SIZE; i++)
+			sortedArray[i] = randomNumber.nextInt(10);
 	}
 	
 	/**
-	 * Find the largest double number in the array and return it
-	 * @param myarray
-	 * @return
+	 * Finds the largest number and swaps it with the last.
+	 *  
+	 * @param list
 	 */
-	public static int findLargest(double[] myarray, int current)
+	public static void selectionSort(int[] list)
 	{
-		int index = 0;
-		
-		for (int i = 0; i <= current; i++)
+		for (int i = list.length - 1; i > 0; i--)
 		{
-			if (myarray[index] < myarray[i])
+			int currentMax = list[i];
+			int currentMaxIndex = i;
+			
+			for (int j = i - 1; j >= 0; j--)
 			{
-				index = i;
+				if (currentMax < list[j])
+				{
+					currentMax = list[j];
+					currentMaxIndex = j;
+				}
 			}
-		}
-		
-		return index;
-	}
-	
-	/**
-	 * Stores numbers inside array
-	 * @param myarray
-	 */
-	public static void insertNumbers(double[] myarray)
-	{
-		for (int i = 0; i < myarray.length; i++)
-		{
-			myarray[i] = rand.nextDouble() * 10;
+			
+			if (currentMaxIndex != i)
+			{
+				list[currentMaxIndex] = list[i];
+				list[i] = currentMax;
+			}
 		}
 	}
 }

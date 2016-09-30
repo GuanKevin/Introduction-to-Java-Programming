@@ -1,6 +1,7 @@
 package Chapter_08_Multidimensional_Arrays;
-import java.util.Scanner;
+
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Sum elements column by column
@@ -8,7 +9,7 @@ import java.util.Random;
  * public static double sumColumn(double[][] m, int columnIndex)
  * Write a test program that reads a 3-by-4 matrix and displays the sum of each column.
  * 
- * 02/25/2016
+ * 09/28/2016
  * @author kevgu
  *
  */
@@ -16,75 +17,54 @@ import java.util.Random;
 public class Programming_Exercise_01 
 {
 	static Scanner input = new Scanner(System.in);
-	static final int ROW = 3;
-	static final int COLUMN = 4;
-	
 	public static void main(String[] args) 
 	{
-		double[][] mymatrix = new double[ROW][COLUMN];
-		insertNumbers(mymatrix);
-		displayMatrix(mymatrix);
-		getColumnSum(mymatrix);
+		System.out.print("Enter the row by column size: ");
+		int row = input.nextInt();
+		int column = input.nextInt();
+		double[][] sumCBCArray = new double[row][column];
+		
+		fillMatrix(sumCBCArray);
+		displayMDArray(sumCBCArray);
+		System.out.print("Which column do you want to sum (0 - " + (sumCBCArray[0].length - 1) + "): ");
+		int columnIndex = input.nextInt();
+		System.out.printf("The sum of column " + columnIndex + " is %.2f", sumColumn(sumCBCArray, columnIndex));
+		
+		input.close();
+	}
+	
+	public static void displayMDArray(double[][] sumCBCArray)
+	{
+		System.out.print("       ");
+		for (int i = 0; i < sumCBCArray[0].length; i++)
+			System.out.printf("%s %-3d", "Column", i);
+		System.out.println();
+		
+		for (int i = 0; i < sumCBCArray.length; i++)
+		{
+			System.out.print("Row " + i + "  ");
+			for (int j = 0; j < sumCBCArray[i].length; j++)
+				System.out.printf("%-10.2f", sumCBCArray[i][j]);
+			System.out.println();
+		}
+	}
+	
+	public static void fillMatrix(double[][] sumCBCArray)
+	{
+		Random randomNumber = new Random();
+		
+		for (int i = 0; i < sumCBCArray.length; i++)
+			for (int j = 0; j < sumCBCArray[i].length; j++)
+				sumCBCArray[i][j] = randomNumber.nextDouble() * 10;
 	}
 	
 	public static double sumColumn(double[][] m, int columnIndex)
 	{
 		double sum = 0;
 		
-		for (int i = 0; i < ROW; i++)
-		{
+		for (int i = 0; i < m.length; i++)
 			sum += m[i][columnIndex];
-		}
 		
 		return sum;
-	}
-	
-	/**
-	 * Print out the sum of each column
-	 * @param mymatrx
-	 */
-	public static void getColumnSum(double[][] mymatrix)
-	{
-		for (int i = 0; i < COLUMN; i++)
-		{
-			System.out.printf("%s %s %s %.2f %s", "The sum of column " , i, " is ", sumColumn(mymatrix, i), "\n");
-		}
-	}
-	
-	/**
-	 * Insert random numbers into the matrix
-	 * 3 by 4, Row by Column
-	 * x x x x
-	 * x x x x
-	 * x x x x
-	 * @param myarray
-	 */
-	public static void insertNumbers(double[][] myarray)
-	{
-		Random rand = new Random();
-		
-		for (int i = 0; i < ROW; i++)
-		{
-			for (int j = 0; j < COLUMN; j++)
-			{
-				myarray[i][j] = rand.nextDouble() * 10;
-			}
-		}
-	}
-	
-	/**
-	 * Display each number in the matrix
-	 * @param myarray
-	 */
-	public static void displayMatrix(double[][] myarray)
-	{
-		for (int i = 0; i < ROW; i++)
-		{
-			for (int j = 0; j < COLUMN; j++)
-			{
-				System.out.printf("%.2f %-1s", myarray[i][j], " ");
-			}
-			System.out.println();
-		}	
 	}
 }

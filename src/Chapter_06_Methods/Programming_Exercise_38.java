@@ -1,5 +1,5 @@
 package Chapter_06_Methods;
-import java.util.Scanner;
+
 import java.util.Random;
 
 /**
@@ -7,50 +7,42 @@ import java.util.Random;
  * Use the methods in RandomCharacter in Listing 6.10 to print 100 uppercase letters and 
  * then 100 single digits, printing ten per line.
  *
- * 03/24/2016
+ * 09/13/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_38 
 {
-	static Random rand = new Random();
+	static Random random = new Random();
+	
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		printUppercaseLetters();
-		printSingleDigits();
-		
-		input.close();		
+		printUppercase();
+		printNumbers();
 	}
 	
-	public static void printSingleDigits()
+	/**
+	 * Print random single digit numbers, 10 per line
+	 */
+	public static void printNumbers()
 	{
 		for (int i = 1; i <= 100; i++)
-		{
-			if ((i % 10) == 0)
-			{
-				System.out.println(rand.nextInt(10) + " ");
-			}
+			if (i % 10 == 0)
+				System.out.println((random.nextInt(10)) + " ");
 			else
-			{
-				System.out.print(rand.nextInt(10) + " ");
-			}
-		}
+				System.out.print((random.nextInt(10)) + " ");
 	}
 	
-	public static void printUppercaseLetters()
-	{	
+	/**
+	 * Print random uppercase letters, 10 per line
+	 */
+	public static void printUppercase()
+	{
 		for (int i = 1; i <= 100; i++)
-		{
-			if ((i % 10) == 0)
-			{
-				System.out.println((char)(rand.nextInt(26) % 26 + 65) + " ");
-			}
+			if (i % 10 == 0)
+				System.out.println((char) (random.nextInt(26) + 65) + " ");
 			else
-			{
-				System.out.print((char)(rand.nextInt(26) % 26 + 65) + " ");
-			}
-		}
+				System.out.print((char) (random.nextInt(26) + 65) + " ");
 	}
 }

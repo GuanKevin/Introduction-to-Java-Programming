@@ -1,4 +1,5 @@
 package Chapter_07_Single_Dimensional_Arrays;
+
 import java.util.Scanner;
 
 /**
@@ -6,7 +7,7 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter the number of students, the students’ names, and their scores, 
  * and prints student names in decreasing order of their scores.
  * 
- * 02/21/2016
+ * 09/21/2016
  * @author kevgu
  *
  */
@@ -14,73 +15,82 @@ import java.util.Scanner;
 public class Programming_Exercise_17 
 {
 	static Scanner input = new Scanner(System.in);
-	
 	public static void main(String[] args) 
 	{
 		System.out.print("Enter the number of students: ");
-		int numofstu = input.nextInt();
-		String[] studentsname = new String[numofstu];
-		int[] studentscore = new int[numofstu];
+		int size = input.nextInt();
+		String[] studentName = new String[size];
+		double[] studentScore = new double[size];
 		
-		grabStudentsInfo(studentsname, studentscore);
-		printStudentsGrade(studentsname, studentscore);
+		studentStudentScore(studentName, studentScore);
+		sortStudentByGrade(studentName, studentScore);
+		displayStudentNameGrade(studentName, studentScore);
 		
+		input.close();
 	}
 	
 	/**
-	 * Store students name and students grade into a string array and an integer array
-	 * @param studentsname
-	 * @param studentscore
+	 * Display student's name and their score
+	 * 
+	 * @param studentName
+	 * @param studentScore
 	 */
-	public static void grabStudentsInfo(String[] studentsname, int[] studentscore)
+	public static void displayStudentNameGrade(String[] studentName, double[] studentScore)
 	{
-		for (int i = 0; i < studentsname.length; i++)
-		{
-			System.out.print("Enter students name: " );
-			studentsname[i] = input.next();
-			System.out.print("Enter students score: ");
-			studentscore[i] = input.nextInt();
-		}
+		System.out.printf("\n%-15s%s\n", "Name", "Score");
+		
+		for (int i = 0; i < studentName.length; i++)
+			System.out.printf("%-15s%s\n", studentName[i], studentScore[i]);
 	}
 	
 	/**
-	 * Returns index with highest grade
-	 * @param studentscore
-	 * @return
+	 * Sort student names and score in decreasing order of their score
+	 * 
+	 * @param studentName
+	 * @param studentScore
 	 */
-	public static int topScore(int[] studentscore)
+	public static void sortStudentByGrade(String[] studentName, double[] studentScore)
 	{
-		int index = 0;
-		
-		for (int i = 0; i < studentscore.length; i++)
-		{
-			if (studentscore[i] == -1)
-			{
-				continue;
-			}
-			if (studentscore[index] < studentscore[i])
-			{
-				index = i;
-			}
-		}
-		
-		return index;
+		for (int i = 0; i < studentName.length - 1; i++)
+			for (int j = i + 1; j < studentName.length; j++)
+				if (studentScore[i] < studentScore[j])
+					swap(studentName, i, studentScore, j);
 	}
 	
 	/**
-	 * Display students name and score in descending order
-	 * @param studentsname
-	 * @param studentscore
+	 * Swap student's name and score
+	 * 
+	 * @param studentScore
+	 * @param i
+	 * @param studentScore
+	 * @param j
 	 */
-	public static void printStudentsGrade(String[] studentsname, int[] studentscore)
+	public static void swap(String[] studentName, int i, double[] studentScore, int j)
 	{
-		int bestscoreindex;
+		String tempName = studentName[i];
+		studentName[i] = studentName[j];
+		studentName[j] = tempName;
 		
-		for (int i = 0; i < studentsname.length; i++)
+		double tempScore = studentScore[i];
+		studentScore[i] = studentScore[j];
+		studentScore[j] = tempScore;
+	}
+	
+	/**
+	 * Prompts the user to enter the student's name and their score
+	 * 
+	 * @param studentName
+	 * @param studentScore
+	 */
+	public static void studentStudentScore(String[] studentName, double[] studentScore)
+	{
+		for (int i = 0; i < studentName.length; i++)
 		{
-			bestscoreindex = topScore(studentscore);
-			System.out.println(studentsname[bestscoreindex] + " " + studentscore[bestscoreindex ]);
-			studentscore[bestscoreindex] = -1;
+			System.out.print("Enter student " + (i + 1) + "'s name: ");
+			input.nextLine();
+			studentName[i] = input.nextLine();
+			System.out.print("Enter " + studentName[i] + "'s score: ");
+			studentScore[i] = input.nextDouble();
 		}
 	}
 }

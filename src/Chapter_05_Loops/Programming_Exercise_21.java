@@ -9,7 +9,7 @@ import java.util.Scanner;
  * displays the monthly 
  * and total payments for each interest rate starting from 5% to 8%, with an increment of 1/8.
  * 
- * 08/23/2016
+ * 09/29/2016
  * @author kevgu
  *
  */
@@ -28,11 +28,13 @@ public class Programming_Exercise_21
 		double monthlyPayments = 0;
 		double totalPayments = 0;
 		
+		System.out.printf("\n%-14s%-15s%s\n", "Time Period", "Interest Rate", "Monthly Payments");
+		
 		for (int i = 1; i <= (loanPeriod * 12); i++)
 		{
 			monthlyPayments = loanAmount * interestRate;
 			
-			System.out.printf("%s %-2d %.4f %.2f \n" ,"Month", i, interestRate, monthlyPayments);
+			System.out.printf("%-4s %-7d %-14.4f %.2f \n" ,"Month", i, interestRate, monthlyPayments);
 			
 			if (interestRate < .08)
 				interestRate += interestIncrement;

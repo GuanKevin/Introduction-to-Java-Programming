@@ -9,7 +9,8 @@ import java.util.Scanner;
  * The triangle area can be computed using the formula in Programming Exercise 2.19. 
  * The method returns 0 if the three points are on the same line. 
  * Write a program that prompts the user to enter three points of a triangle and displays the triangle's area.
- * 
+ * s = (side1 + side2 + side3)/2;
+ * area = square root of (s(s - side1)(s - side2)(s - side3))
  * 02/25/2016
  * @author kevgu
  *
@@ -20,6 +21,24 @@ public class Programming_Exercise_32
 	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		System.out.print("Enter x1, y1, x2, y2. x3, y3: ");
+		double [][]array = new double[3][2];
+		for(int i = 0; i < 3; i++)
+		{
+			array[i][0] = input.nextDouble();
+			array[i][1] = input.nextDouble();
+		}
+		System.out.println("The area of the triangle is " + getTriangleArea(array));
+	}
+	
+	public static double getTriangleArea(double[][] points)
+	{
+		double side1 = Math.sqrt(Math.pow((points[0][0] - points[1][0]), 2) + Math.pow((points[0][1] - points[1][1]), 2));
+		double side2 = Math.sqrt(Math.pow((points[1][0] - points[2][0]), 2) + Math.pow((points[1][1] - points[2][1]), 2));
+		double side3 = Math.sqrt(Math.pow((points[2][0] - points[0][0]), 2) + Math.pow((points[2][1] - points[0][1]), 2));
 		
+		double s = (side1 + side2 + side3) / 2;
+		
+		return Math.sqrt((s * (s - side1) * (s - side2) * (s - side3))); 
 	}
 }

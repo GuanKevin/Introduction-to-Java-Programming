@@ -10,7 +10,7 @@ package Chapter_06_Methods;
  * 149 157 167 179 199 311 337 347 359 389 
  * ...
  *
- * 02/16/2016
+ * 09/09/2016
  * @author kevgu
  *
  */
@@ -19,61 +19,60 @@ public class Programming_Exercise_27
 {
 	public static void main(String[] args) 
 	{
-		displayEmirp();		
+		displayEmirp();
 	}
 	
 	/**
-	 * Displays the first 100 emirps
+	 * Display emirps, nonpalindromic prime numbers, 10 per line
 	 */
 	public static void displayEmirp()
 	{
-		int counter = 0;
-		int number = 10;
+		int emirpCounter = 0;
+		int emirpNumber = 13;
 		
-		while (counter != 100)
+		while (emirpCounter < 100)
 		{
-			if (checkPrime(number))
-				if (checkEmirp(number))
+			if (checkPrime(emirpNumber))
+				if (checkEmirp(emirpNumber))
 				{
-					counter++;
+					emirpCounter++;
 					
-					if (counter % 10 == 0)
-						System.out.printf("%-6d \n", number);
+					if (emirpCounter % 10 == 0)
+						System.out.printf("%-6d \n", emirpNumber);
 					else
-						System.out.printf("%-6d", number);
+						System.out.printf("%-6d", emirpNumber);
 				}
-			
-			number++;
+			emirpNumber++;
 		}
 	}
 	
 	/**
-	 * returns true if prime number whose reversal is also a prime
+	 * Return true if the number is an emirp
 	 * 
-	 * @param number
+	 * @param emirpNumber
 	 * @return
 	 */
-	public static boolean checkEmirp(int number)
+	public static boolean checkEmirp(int emirpNumber)
 	{
-		int reverseNumber = Integer.parseInt(new StringBuilder(Integer.toString(number)).reverse().toString());
+		int reversedEmirp = Integer.parseInt(new StringBuilder(Integer.toString(emirpNumber)).reverse().toString());
 		
-		if (number == reverseNumber)
+		if (emirpNumber == reversedEmirp)
 			return false;
-		if (checkPrime(reverseNumber))
+		if (checkPrime(reversedEmirp))
 			return true;
 		return false;
 	}
 	
 	/**
-	 * returns true if number is prime
+	 * Return true if the number is a prime
 	 * 
-	 * @param number
+	 * @param emirpNumber
 	 * @return
 	 */
-	public static boolean checkPrime(int number)
+	public static boolean checkPrime(int emirpNumber)
 	{
-		for (int i = 2; i <= number / 2; i++)
-			if (number % i == 0)
+		for (int i = 2; i <= emirpNumber / 2; i++)
+			if (emirpNumber % i == 0)
 				return false;
 		return true;
 	}

@@ -12,9 +12,17 @@ import java.util.Scanner;
 
 public class Programming_Exercise_05
 {
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		System.out.print("Enter i: ");
+		System.out.println(series((double)input.nextInt()));
+	}
+	
+	public static double series(double i)
+	{
+		if(i == 1)
+			return (1.0 / 3);
+		return (i / (2.0 * i + 1)) + series(i - 1);
 	}
 }

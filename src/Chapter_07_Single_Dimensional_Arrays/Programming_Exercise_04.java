@@ -1,5 +1,6 @@
 package Chapter_07_Single_Dimensional_Arrays;
-import java.util.Scanner;
+
+import java.util.Random;
 
 /**
  * Analyze scores
@@ -7,115 +8,121 @@ import java.util.Scanner;
  * and how many scores are below the average. Enter a negative number to signify the end of the input. 
  * Assume that the maximum number of scores is 100.
  * 
- * 02/18/2016
+ * 09/14/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_04 
-{
+{		
+	static final int MAXIMUM_NUMBER_OF_SCORES = 100;
+	
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		final int SIZE = 100;
-		int[] myarray = new int[SIZE];
+		int[] analyzeScoresArray = new int[MAXIMUM_NUMBER_OF_SCORES];
 		
-		myarray = readScores(myarray);
-		int average = findAverage(myarray);
-		int belowcounter = belowCounter(myarray, average);
-		int equalcounter = equalCounter(myarray, average);
-		int abovecounter = aboveCounter(myarray, average);
-		
-		System.out.println("Average: " + average +
-				"\nNumbers below average: " + belowcounter +
-				"\nNumbers equal average: " + equalcounter +
-				"\nNumbers above average: " + abovecounter);
-		
-		input.close();
+		inputScore(analyzeScoresArray);
+		int average = findAverage(analyzeScoresArray);
+		System.out.println("Average: " + average
+				+ "\nBelow average: " + belowAverage(analyzeScoresArray, average)
+				+ "\nEqual to or above average: " + aboveAverage(analyzeScoresArray, average) + "\n");
+		displayScore(analyzeScoresArray);
 	}
 	
-	public static int[] readScores(int[] myarray)
+	/**
+	 * Return the amount of numbers that are equal to or above the average
+	 * 
+	 * @return
+	 */
+	public static int aboveAverage(int[] analyzeScoresArray, int average)
 	{
-		System.out.println("Enter a negative number to terminate, else enter students score: ");
-		Scanner input = new Scanner(System.in);
-		int scores = input.nextInt();
-		int index = 0;
+		int aboveCounter = 0;
 		
-		while(scores >= 0)
+		for (int i = 0; i < analyzeScoresArray.length; i++)
 		{
-			myarray[index] = scores;
-			scores = input.nextInt();
-			index++;
+			if (analyzeScoresArray[i] < 0)
+				break;
+			if (analyzeScoresArray[i] >= average)
+				aboveCounter++;
 		}
 		
-		myarray[index] = scores;
-		
-		input.close();
-		return myarray;
+		return aboveCounter;
 	}
 	
-	public static int findAverage(int[] myarray)
+	/**
+	 * Return the amount of numbers that are below the average
+	 * 
+	 * @return
+	 */
+	public static int belowAverage(int[] analyzeScoresArray, int average)
 	{
-		int index = 0;
+		int belowCounter = 0;
+		
+		for (int i = 0; i < analyzeScoresArray.length; i++)
+		{
+			if (analyzeScoresArray[i] < 0)
+				break;
+			if (analyzeScoresArray[i] < average)
+				belowCounter++;
+		}
+		
+		return belowCounter;
+	}
+	
+	/**
+	 * Returns the average of the sum of all integers up to -1 in the index of the array
+	 * 
+	 * @param analyzeScoresArray
+	 * @return
+	 */
+	public static int findAverage(int[] analyzeScoresArray)
+	{
 		int average = 0;
 		
-		while (myarray[index] >= 0)
+		int i;
+		
+		for (i = 0; i < analyzeScoresArray.length; i++)
 		{
-			average += myarray[index];
-			index++;
+			if (analyzeScoresArray[i] < 0)
+				break;
+			average += analyzeScoresArray[i];
 		}
 		
-		return (average / (index));
+		return average / i;
 	}
 	
-	public static int belowCounter(int [] myarray, int average)
+	/**
+	 * Display all the score
+	 * 
+	 * @param analyzeScoreArray
+	 */
+	public static void displayScore(int[] analyzeScoreArray)
 	{
-		int counter = 0;
-		int index = 0;
-		
-		while (myarray[index] >= 0)
+		for (int i = 0; i < analyzeScoreArray.length; i++)
 		{
-			if (myarray[index] < average)
-			{
-				counter++;
-			}
-			index++;
+			if (analyzeScoreArray[i] < 0)
+				break;
+			System.out.println(i + " " + analyzeScoreArray[i]);
 		}
-		
-		return counter;
 	}
 	
-	public static int equalCounter(int [] myarray, int average)
+	/**
+	 * Store scores between 0 to 100 into the array
+	 */
+	public static void inputScore(int[] analyzeScoresArray)
 	{
-		int counter = 0;
-		int index = 0;
+		Random randomNumber = new Random();
+		int number = randomNumber.nextInt(MAXIMUM_NUMBER_OF_SCORES + 2) - 1;
+		int numberCounter = 0;
 		
-		while (myarray[index] >= 0)
+		while (numberCounter != 99 || number < 0)
 		{
-			if (myarray[index] == average)
-			{
-				counter++;
-			}
-			index++;
+			analyzeScoresArray[numberCounter] = number;
+			numberCounter++;
+			number = randomNumber.nextInt(MAXIMUM_NUMBER_OF_SCORES + 2) - 1;
 		}
 		
-		return counter;
-	}
-	
-	public static int aboveCounter(int [] myarray, int average)
-	{
-		int counter = 0;
-		int index = 0;
-		
-		while (myarray[index] >= 0)
-		{
-			if (myarray[index] > average)
-			{
-				counter++;
-			}
-			index++;
-		}
-		
-		return counter;
+		if (numberCounter != 99)
+			analyzeScoresArray[numberCounter] = -1;
 	}
 }

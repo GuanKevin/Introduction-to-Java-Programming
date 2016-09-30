@@ -1,12 +1,13 @@
 package Chapter_07_Single_Dimensional_Arrays;
-import java.util.Scanner;
+
+import java.util.Random;
 
 /**
  * Count occurrence of numbers
  * Write a program that reads the integers between 1 and 100 and counts the occurrences of each. 
  * Assume the input ends with 0.
  * 
- * 02/18/2016
+ * 09/14/2016
  * @author kevgu
  *
  */
@@ -15,42 +16,40 @@ public class Programming_Exercise_03
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		final int SIZE = 101; //0 - 100
+		int[] occurrenceArray = new int[101];
 		
-		int[] myarray = new int[SIZE];
-		myarray = readIntegers(SIZE);
-		displayCounts(myarray);
-		
-		input.close();
+		numberInput(occurrenceArray);
+		displayOccurrences(occurrenceArray);
 	}
 	
-	public static int[] readIntegers(int SIZE)
+	/**
+	 * Display numbers that have occurred more than 0 times
+	 * 
+	 * @param occurrenceArray
+	 */
+	public static void displayOccurrences(int[] occurrenceArray)
 	{
-		Scanner input = new Scanner(System.in);
-		int[] myarray = new int[SIZE];
+		System.out.printf("%-7s%s\n", "Number", "Occurences");
 		
-		System.out.print("Enter 0 to end, else enter a number between 1 - 100: ");
-		int number = input.nextInt();
+		for (int i = 1; i < occurrenceArray.length; i++)
+			if (occurrenceArray[i] > 0)
+				System.out.printf("%-7d%d\n", i, occurrenceArray[i]);
+	}
+	
+	/**
+	 * Stores numbers between 1 and 100 and ends the input when it reads a 0
+	 * 
+	 * @param occurrenceArray
+	 */
+	public static void numberInput(int[] occurrenceArray)
+	{
+		Random randomNumber = new Random();
+		int number = randomNumber.nextInt(101);
 		
 		while (number != 0)
 		{
-			myarray[number]++;
-			number = input.nextInt();
-		}
-		
-		input.close();
-		return myarray;
-	}
-	
-	public static void displayCounts(int[] myarray)
-	{
-		for (int i = 0; i < myarray.length; i++)
-		{
-			if (myarray[i] != 0)
-			{
-				System.out.println("Number: " + i + "   Entered: " + myarray[i] + " times!");
-			}
+			occurrenceArray[number]++;
+			number = randomNumber.nextInt(101);
 		}
 	}
 }

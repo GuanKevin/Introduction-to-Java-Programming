@@ -1,4 +1,9 @@
 package Chapter_17_Binary_IO;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,9 +19,19 @@ import java.util.Scanner;
 
 public class Programming_Exercise_02
 {
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		File file = new File("Excercise17_02.dat");
+		try{
+			PrintWriter input = new PrintWriter(file);
+			Random rand = new Random();
+			for(int i = 0; i < 100; i++){
+				input.print(rand.nextInt(2));
+			}
+			input.close();
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

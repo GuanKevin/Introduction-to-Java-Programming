@@ -1,5 +1,5 @@
 package Chapter_07_Single_Dimensional_Arrays;
-import java.util.Scanner;
+
 import java.util.Random;
 
 /**
@@ -7,42 +7,50 @@ import java.util.Random;
  * Write a program that generates 100 random integers between 0 and 9 and displays the count for each number. 
  * (Hint: Use an array of ten integers, say counts, to store the counts for the number of 0s, 1s, . . . , 9s.)
  * 
- * 02/18/2016
+ * 09/16/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_07 
 {
+	final static int NUMBER = 10;
+	
 	public static void main(String[] args) 
-	{
-		Scanner input = new Scanner(System.in);
-		final int SIZE = 10;
-		int[] myarray = new int[SIZE];
+	{	
+		int[] countDigitsArray = new int[NUMBER];
 		
-		randomNumber(myarray);
-		displayCounts(myarray);
-		
-		input.close();
+		generateRndNumbers(countDigitsArray);
+		displayArray(countDigitsArray);
 	}
 	
-	public static void randomNumber(int[] myarray)
+	/**
+	 * Display array with the counts for the appearance of each number
+	 * from 0 to 9
+	 * 
+	 * @param countDigitsArray
+	 */
+	public static void displayArray(int[] countDigitsArray)
 	{
-		Random rand = new Random();
-		int number = rand.nextInt(10);
-		
-		for (int i = 0; i < 100; i++)
-		{
-			myarray[number]++;
-			number = rand.nextInt(10);
-		}
+		for (int i = 0; i < countDigitsArray.length; i++)
+			System.out.println(i + " " + countDigitsArray[i]);
 	}
 	
-	public static void displayCounts(int[] myarray)
+	/**
+	 * Generate numbers between 0 to 9, 100 times and store it in their 
+	 * respective indexes
+	 * 
+	 * @param countDigitsArray
+	 */
+	public static void generateRndNumbers(int[] countDigitsArray)
 	{
-		for (int i = 0; i <= 9; i++)
+		Random random = new Random();
+		int randomNumber = random.nextInt(10);
+		
+		for (int i = 1; i <= 100; i++)
 		{
-			System.out.println(i + " appeared " + myarray[i] + " times.");
+			countDigitsArray[randomNumber]++; 
+			randomNumber = random.nextInt(10);
 		}
 	}
 }

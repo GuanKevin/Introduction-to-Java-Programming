@@ -1,5 +1,6 @@
 package Chapter_07_Single_Dimensional_Arrays;
-import java.util.Scanner;
+
+import java.util.Random;
 
 /**
  * Print distinct numbers
@@ -8,62 +9,47 @@ import java.util.Scanner;
  * (Hint: Read a number and store it to an array if it is new. If the number is already in the array, ignore it.) 
  * After the input, the array contains the distinct numbers.
  * 
- * 02/18/2016
+ * 09/14/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_05 
-{
+{	
+	final static int ARRAY_SIZE = 10;
+	
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		final int SIZE = 10;
-		int[] myarray = new int[SIZE];
+		int[] distinctNumberArray = new int[ARRAY_SIZE];
 		
-		myarray = storeTen(myarray);
-		displayUnqiue(myarray);
-		input.close();
+		inputDistinctNumbers(distinctNumberArray);
+		displayArray(distinctNumberArray);
 	}
 	
-	public static int[] storeTen(int[] myarray)
+	/**
+	 * Display distinct numbers from the array
+	 */
+	public static void displayArray(int[] distinctNumberArray)
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter 10 numbers: ");
-		int number = input.nextInt();
-		
-		myarray[0] = number;	
-		for (int i = 1; i < myarray.length; i++)
-		{
-			number = input.nextInt();
-			for (int j = 0; j < i; j++)
-			{
-				if (myarray[j] == number)
-				{
-					break;
-				}
-				else if ((j + 1) == i)
-				{
-					myarray[i] = number;
-				}
-			}
-		}
-		
-		input.close();
-		return myarray;
+		System.out.println();
+		for (int i = 0; i < ARRAY_SIZE; i++)
+			if (distinctNumberArray[i] == 1)
+				System.out.print(i + " ");
 	}
 	
-	public static void displayUnqiue(int[] myarray)
+	/**
+	 * Stores distinct numbers into the array
+	 */
+	public static void inputDistinctNumbers(int[] distinctNumberArray)
 	{
-		for (int i = 0; i < myarray.length; i++)
+		Random random = new Random();
+		int randomNumber = random.nextInt(10);
+		
+		for (int i = 0; i < ARRAY_SIZE; i++)
 		{
-			if (myarray[i] == 0)
-			{
-				break;
-			}
-			else
-				System.out.print(myarray[i] + " ");
+			System.out.print(randomNumber + " ");
+			distinctNumberArray[randomNumber] = 1;
+			randomNumber = random.nextInt(10);
 		}
 	}
-	
 }

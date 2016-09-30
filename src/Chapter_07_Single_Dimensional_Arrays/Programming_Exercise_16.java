@@ -1,4 +1,5 @@
 package Chapter_07_Single_Dimensional_Arrays;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -9,110 +10,102 @@ import java.util.Random;
  * Sort the array and estimate the execution time of invoking the binarySearch method in Listing 7.7. 
  * You can use the following code template to obtain the execution time: 
  * long startTime = System.currentTimeMillis(); 
- * perform the task; 
  * long endTime = System.currentTimeMillis(); 
  * long executionTime = endTime - startTime;
  * 
- * 02/18/2016
+ * 09/20/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_16 
 {
-	final static int SIZE = 100000;
-	static Random rand = new Random();
-	
+	static Random randomNumber = new Random();
+	static final int SIZE = 1000000;
 	public static void main(String[] args) 
 	{
-		int[] myarray = new int[SIZE];
-		insertRandomNumbers(myarray);
-		int key = rand.nextInt(100001);
-		long startTime = System.currentTimeMillis(); 
-		int linearsearchresult = linearSearch(myarray, key);
-		long endTime = System.currentTimeMillis(); 
-		long executionTime = (endTime - startTime);
-		System.out.println("The key is " + key);
-		System.out.println("The result for linear search is " + linearsearchresult + " and it took " + executionTime + " milleseconds.");
-		Arrays.sort(myarray);
-		startTime = System.currentTimeMillis(); 
-		int binarysearchresult = binarySearch(myarray, key);
-		endTime = System.currentTimeMillis(); 
-		executionTime = (endTime - startTime);
-		System.out.println("The result for binary search is " + binarysearchresult + " and it took " + executionTime + " milleseconds.");
-		displayArray(myarray);
+		int[] executionArray = new int[SIZE];
+		insertNumbers(executionArray);
+		int key = randomNumber.nextInt(SIZE);
+		linearSearchTime(executionArray, key);
+		Arrays.sort(executionArray);
+		binarySearchTime(executionArray, key);
 	}
 	
 	/**
-	 * The method for finding a key in the list 
-	 * @param list
+	 * Return the amount of milliseconds required for binary search
+	 * 
+	 * @param executionArray
 	 * @param key
-	 * @return
 	 */
-	public static int linearSearch(int[] list, int key) 
-	{
-		for (int i = 0; i < list.length; i++) 
-		{
-			if (key == list[i])
-			{
-				return i;
-			}
-		}		
-		return -1;
-	}
-	
-	/**
-	 * Use binary search to find the key in the list
-	 * O(logn) Run time
-	 * @param list
-	 * @param key
-	 * @return
-	 */
-	public static int binarySearch(int[] list, int key) 
+	public static void binarySearchTime(int[] executionArray, int key)
 	{
 		int low = 0;
-		int high = list.length - 1;
+		int high = executionArray.length - 1;
+		long startTime = System.currentTimeMillis();
+		boolean keyFound = false;
 
 		while (high >= low)
 		{
 			int mid = (low + high) / 2;
-			if (key < list[mid])
-			{
+			if (key < executionArray[mid])
 				high = mid - 1;
-			}
-			else if (key == list[mid])
+			else if (key == executionArray[mid])
 			{
-				return mid;
+				keyFound = true;
+				long endTime = System.currentTimeMillis() - startTime;
+				System.out.print("Key " + key + " found at index " + mid 
+						+ "\nTime: " + endTime + " milliseconds\n");
+				break;
 			}
 			else
-			low = mid + 1;
+				low = mid + 1;
 		}
 		
-		 return -low - 1; // Now high < low, key not found
-	 }
-
-	/**
-	 * Insert random numbers between 0 to 100000 into the array
-	 * O(n) runtime
-	 * @param myarray
-	 */
-	public static void insertRandomNumbers(int[] myarray)
-	{
-		for (int i = 0; i < myarray.length; i++)
+		if (keyFound == false)
 		{
-			myarray[i] = rand.nextInt(100001);
+			long endTime = System.currentTimeMillis() - startTime;
+			System.out.print("Key not found." 
+					+ "\nTime: " + endTime + " milliseconds\n");
 		}
 	}
 	
-	public static void displayArray(int[] myarray)
+	/**
+	 * Return the amount of milliseconds required for linear search
+	 * 
+	 * @param executionArray
+	 */
+	public static void linearSearchTime(int[] executionArray, int key)
 	{
-		for (int i = 0; i < 100; i++)
-		{
-			if ((i % 10) == 0)
+		long startTime = System.currentTimeMillis(); 
+		boolean keyFound = false;
+		
+		for (int i = 0; i < SIZE; i++)
+			if (key == executionArray[i])
 			{
-				System.out.println(myarray[i] + " ");
-			}	
-			System.out.print(myarray[i] + " ");
+				long executionTime = System.currentTimeMillis() - startTime;
+				System.out.print("Key " + key + " found at index " + i
+						+ "\nTime: " + executionTime + " milliseconds\n");
+				keyFound = true;
+				break;
+			}
+		
+		if (keyFound == false)
+		{
+			long executionTime = System.currentTimeMillis() - startTime;
+			System.out.print("Key not found." 
+					+ "\nTime: " + executionTime + " milliseconds\n");
 		}
+	}
+	
+	/**
+	 * Insert elements into the array
+	 * 
+	 * @param executionArray
+	 */
+	public static void insertNumbers(int[] executionArray)
+	{	
+		for (int i = 0; i < SIZE; i++)
+			executionArray[i] = randomNumber.nextInt(SIZE);
 	}
 }

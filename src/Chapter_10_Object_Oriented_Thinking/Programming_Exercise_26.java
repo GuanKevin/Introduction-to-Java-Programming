@@ -12,9 +12,10 @@ import java.util.Scanner;
 
 public class Programming_Exercise_26 
 {
-	Scanner input = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		Calculator calculator = new Calculator(input.nextLine());
+		System.out.println(calculator.calculate());
 	}
 }

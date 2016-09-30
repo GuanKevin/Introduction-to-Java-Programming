@@ -1,5 +1,5 @@
 package Chapter_07_Single_Dimensional_Arrays;
-import java.util.Scanner;
+
 import java.util.Random;
 
 /**
@@ -12,73 +12,73 @@ import java.util.Random;
  * and the larger values “sink” to the bottom. 
  * Write a test program that reads in ten double numbers, invokes the method, and displays the sorted numbers.
  * 
- * 02/21/2016
+ * 09/21/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_18 
 {
-	static Scanner input = new Scanner(System.in);
 	static final int SIZE = 10;
-	
 	public static void main(String[] args) 
 	{
-		double[] myarray = new double[SIZE];
-		insertRandomNumbers(myarray);
-		System.out.print("My array before being sorted: ");
-		printArray(myarray);
-		bubbleSort(myarray);
-		System.out.print("My array after bubble sort: ");
-		printArray(myarray);
+		double[] bubbleSortArray = new double[SIZE];
+		insertNumbers(bubbleSortArray);
+		System.out.println("Before bubble sort: ");
+		displayArray(bubbleSortArray);
+		System.out.println("After bubble sort: ");
+		bubbleSort(bubbleSortArray);
+		displayArray(bubbleSortArray);
 	}
 	
 	/**
-	 * Sort the array using bubble sort. Takes o(n^2) run time
-	 * @param myarray
+	 * Bubble sort array
+	 * 
+	 * @param bubbleSortArray
 	 */
-	public static void bubbleSort(double[] myarray)
+	public static void bubbleSort(double[] bubbleSortArray)
 	{
-		double temp;
-		
-		for (int i = 0; i < myarray.length - 1; i++)
-		{
-			for (int j = 0; j < myarray.length - 1; j++)
-			{
-				if (myarray[j] > myarray[j + 1])
-				{
-					temp = myarray[j];
-					myarray[j] = myarray[j + 1];
-					myarray[j + 1] = temp;
-				}
-			}
-		}
+		for (int i = 0; i < SIZE; i++)
+			for (int j = 0; j < SIZE - 1 - i; j++)
+				if (bubbleSortArray[j] > bubbleSortArray[j + 1])
+					swap(bubbleSortArray, j, j + 1);
 	}
 	
 	/**
-	 * Insert random double numbers into the array
-	 * @param myarray
+	 * Swap two elements in the array
+	 * @param bubbleSortArray
+	 * @param i
+	 * @param j
 	 */
-	public static void insertRandomNumbers(double[] myarray)
+	public static void swap(double[] bubbleSortArray, int i, int j)
 	{
-		Random rand = new Random();
-		
-		for (int i = 0; i < myarray.length; i++)
-		{
-			myarray[i] = rand.nextDouble() * 10;
-		}
+		double tempNumber = bubbleSortArray[i];
+		bubbleSortArray[i] = bubbleSortArray[j];
+		bubbleSortArray[j] = tempNumber; 
 	}
 	
 	/**
-	 * Prints out the numbers in the array
-	 * @param myarray
+	 * Display each element in the array
+	 * 
+	 * @param bubbleSortArray
 	 */
-	public static void printArray(double[] myarray)
+	public static void displayArray(double[] bubbleSortArray)
 	{
-		for (int i = 0; i < myarray.length; i++)
-		{
-			System.out.printf("%.2f %-1s", myarray[i], " ");
-		}
+		for (int i = 0; i < SIZE; i++)
+			System.out.printf("%-6.2f", bubbleSortArray[i]);
 		System.out.println();
+	}
+	
+	/**
+	 * Insert random double elements into the array
+	 * 
+	 * @param bubbleSortArray
+	 */
+	public static void insertNumbers(double[] bubbleSortArray)
+	{
+		Random randomNumber = new Random();
+		
+		for (int i = 0; i < SIZE; i++)
+			bubbleSortArray[i] = randomNumber.nextDouble() * 10;
 	}
 }

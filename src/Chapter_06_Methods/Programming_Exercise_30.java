@@ -1,6 +1,6 @@
 package Chapter_06_Methods;
+
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Game: craps
@@ -14,7 +14,7 @@ import java.util.Scanner;
  * Continue to roll the dice until either a 7 or the same point value is rolled. 
  * If 7 is rolled, you lose. Otherwise, you win.
  *
- * 02/16/2016
+ * 09/09/2016
  * @author kevgu
  *
  */
@@ -23,11 +23,11 @@ public class Programming_Exercise_30
 {
 	public static void main(String[] args) 
 	{
-		playCraps();	
+		playCraps();
 	}
 	
 	/**
-	 * Play a game of Craps
+	 * Single player craps
 	 */
 	public static void playCraps()
 	{
@@ -50,7 +50,7 @@ public class Programming_Exercise_30
 			else if ((dice1 + dice2) == 7 || (dice1 + dice2) == 11)
 			{
 				System.out.println("You rolled " + dice1 + " + " + dice2 + " = " + (dice1 + dice2)
-						+ "\nYou lose");
+						+ "\nYou win");
 				endGame = false;
 			}
 			else

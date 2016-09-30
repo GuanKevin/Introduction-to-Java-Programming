@@ -21,6 +21,22 @@ public class Programming_Exercise_31
 	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		double[][] points = new double[4][2];
+		System.out.print("Enter two points in a line x1, y1, x2, y2: ");
+		System.out.print("Enter another two points in a line x3, y3, x4, y4: ");
+		for(int i = 0; i < 4; i++)
+		{
+			points[i][0] = input.nextDouble();
+			points[i][1] = input.nextDouble();
+		}
+		//System.out.print("The intersecting point is (" + getIntersectingPoint(points) + ")");
 	}
+/*	public static double[] getIntersectingPoint(double[][] points)
+	{
+		double slope1 = (points[0][1] - points[1][1]) / (points[0][0] - points[1][0]);
+		double slope2 = (points[2][1] - points[3][1]) / (points[2][0] - points[3][0]);
+		double b1 = points[0][1] - slope1 * points[0][0];
+		double b2 = points[3][1] - slope2 * points[3][0];
+		return double[]{0, 0, 0};
+	}*/
 }

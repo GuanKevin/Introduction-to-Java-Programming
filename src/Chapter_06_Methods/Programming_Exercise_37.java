@@ -13,7 +13,7 @@ import java.util.Scanner;
  * Write a test program that prompts the user to enter a number 
  * and its width and displays a string returned by invoking format(number, width).
  *
- * 03/24/2016
+ * 09/13/2016
  * @author kevgu
  *
  */
@@ -23,31 +23,29 @@ public class Programming_Exercise_37
 	public static void main(String[] args) 
 	{
 		Scanner input = new Scanner(System.in);
-		System.out.print("Enter the number and the width: ");
-		int number = input.nextInt();
-		int width = input.nextInt();
-		System.out.print("The new format is: " + format(number, width));
+		System.out.print("Enter a number and a width: ");
+		System.out.print(format(input.nextInt(), input.nextInt()));
 		
 		input.close();		
 	}
 	
-	public static String format(int number, int width) 
+	/**
+	 * returns a string for the number with one or more prefix 0s
+	 * 
+	 * @param number
+	 * @param width
+	 * @return
+	 */
+	public static String format(int number, int width)
 	{
-		String numStr = "" + number;
-		int strLength = numStr.length();
+		if ((Integer.toString(number).length() >= width))
+			return Integer.toString(number);
 		
-		if (numStr.length() > width)
-		{
-			return numStr;
-		}
-		else
-		{
-			for (int i = 0; i < (width - strLength); i++)
-			{
-				numStr = "0" + numStr;
-			}
-		}
+		String formatNumber = "";
 		
-		return numStr;
+		for (int i = 0; i < (width - Integer.toString(number).length()); i++)
+				formatNumber += 0;
+		
+		return formatNumber + number;
 	}
 }

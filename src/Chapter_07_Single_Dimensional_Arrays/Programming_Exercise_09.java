@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Write a test program that prompts the user to enter ten numbers, invokes this method to return the minimum value, 
  * and displays the minimum value.
  * 
- * 02/18/2016
+ * 09/19/2016
  * @author kevgu
  *
  */
@@ -17,45 +17,42 @@ public class Programming_Exercise_09
 {
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		double[] myarray = new double[10];
-		storeValues(myarray);
-		double minimum = min(myarray);
-		System.out.print("The minimum value is: " + minimum);
+		double[] minimumElementArray = new double[10];
 		
-		input.close();
+		insertNumbers(minimumElementArray);
+		System.out.print("Smallest element: " + min(minimumElementArray));
 	}
 	
-	public static void storeValues(double[] myarray)
+	/**
+	 * prompts the user to enter ten numbers
+	 * 
+	 * @param minimumElementArray
+	 */
+	public static void insertNumbers(double[] minimumElementArray)
 	{
 		Scanner input = new Scanner(System.in);
-		double values;
 		System.out.print("Enter 10 numbers: ");
 		
 		for (int i = 0; i < 10; i++)
-		{
-			values = input.nextDouble();
-			myarray[i] = values;
-		}
-		
+			minimumElementArray[i] = input.nextDouble();
+			
 		input.close();
 	}
 	
+	/**
+	 * Returns the smallest element in the array
+	 * 
+	 * @param array
+	 * @return
+	 */
 	public static double min(double[] array) 
 	{
-		double minimum = array[0];
+		double smallestElement = array[0];
 		
-		for (int i = 1; i < array.length; i++)
-		{
-			for (int j = i; j >= 0; j--)
-			{
-				if (minimum > array[j])
-				{
-					minimum = array[j];
-				}
-			}
-		}
+		for (int i = 1; i < 10; i++)
+			if (smallestElement > array[i])
+				smallestElement = array[i];
 		
-		return minimum;
+		return smallestElement;
 	}
 }

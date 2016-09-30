@@ -8,7 +8,7 @@ import java.util.Random;
  * public static double sumMajorDiagonal(double[][] m) 
  * Write a test program that reads a 4-by-4 matrix and displays the sum of all its elements on the major diagonal. 
  * 
- * 02/25/2016
+ * 09/29/2016
  * @author kevgu
  *
  */
