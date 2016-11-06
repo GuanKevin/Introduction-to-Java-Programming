@@ -15,7 +15,7 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter a number between 0 and 511 
  * and displays the corresponding matrix with the characters H and T.
  * 
- * 02/25/2016
+ * 10/05/2016
  * @author kevgu
  *
  */
@@ -23,70 +23,68 @@ import java.util.Scanner;
 public class Programming_Exercise_11 
 {
 	static Scanner input = new Scanner(System.in);
-	static final int ROW = 3;
-	static final int COLUMN = 3;
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
+		int[][] binaryMatrix = new int[3][3];
 		System.out.print("Enter a number between 0 and 511: ");
-		String binary = Integer.toBinaryString(input.nextInt());
-		char[][] htmatrix = new char[ROW][COLUMN];
-		headsOrTail(htmatrix, binary);
-		printMatrix(htmatrix);
+		String binaryString = length9(input.nextInt());
+		setMatrix(binaryString, binaryMatrix);
+		displayMatrix(binaryMatrix);
+
+		input.close();
 	}
 	
 	/**
-	 * Print out the matrix
-	 * @param htmatrix
+	 * Display the matrix
+	 * 
+	 * @param binaryMatrix
 	 */
-	public static void printMatrix(char[][] htmatrix)
+	public static void displayMatrix(int[][] binaryMatrix)
 	{
-		for (int i = 0; i < ROW; i++)
+		for (int i = 0; i < binaryMatrix.length; i++)
 		{
-			for (int j = 0; j < COLUMN; j++)
-			{
-				System.out.print(htmatrix[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
-	
-	/**
-	 * Input a h or a t in the matrix depending on the user input that was converted to binary
-	 * 4 = 000000100
-	 * [-] [-] [-]		
-	 * [-] [-] [-]		
-	 * [-] [-] [-]
-	 * @param htmatrix
-	 */
-	public static void headsOrTail(char[][] htmatrix, String binary)
-	{
-		int binarylength = binary.length();
-		int cutoff = 9 - binarylength;
-		int counter = 0;
-		int index = 0;
-		
-		for (int i = 0; i < ROW; i++)
-		{
-			for (int j = 0; j < COLUMN; j++)
-			{
-				if (counter < cutoff)
-				{
-					htmatrix[i][j] = 'H';
-				}
+			for (int j = 0; j < binaryMatrix[i].length; j++)
+				if (binaryMatrix[i][j] == 0)
+					System.out.print("[ H ]");
 				else
-				{
-					if (binary.charAt(index) == '0')
-					{
-						htmatrix[i][j] = 'H';
-					}
-					else
-					{
-						htmatrix[i][j] = 'T';
-					}
-					index++;
-				}
-				counter++;
+					System.out.print("[ T ]");
+			System.out.println();
+		}	
+	}
+	
+	/**
+	 * Set matrix according to binary string
+	 * 
+	 * @param binaryString
+	 * @param binaryMatrix
+	 */
+	public static void setMatrix(String binaryString, int[][] binaryMatrix)
+	{
+		int indexCounter = 0;
+		
+		for (int i = 0; i < binaryMatrix.length; i++)
+			for (int j = 0; j < binaryMatrix[i].length; j++)
+			{
+				binaryMatrix[i][j] = Character.getNumericValue(binaryString.charAt(indexCounter));
+				indexCounter++;
 			}
-		}
+				
+	}
+	
+	/**
+	 * Return a binary string of length 9
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static String length9(int number)
+	{
+		String binaryString = Integer.toBinaryString(number);
+		int length = binaryString.length();
+		
+		for (int i = 0; i <= (8 - length); i++)
+			binaryString = (0 + binaryString);
+		System.out.println("Binary string: " + binaryString);
+		return binaryString;
 	}
 }

@@ -6,7 +6,7 @@ import java.util.Random;
  * Write a program that prompts the user to enter the length of a square matrix, randomly fills in 0s and 1s into the matrix, 
  * prints the matrix, and finds the rows, columns, and diagonals with all 0s or 1s.
  * 
- * 02/25/2016
+ * 10/05/2016
  * @author kevgu
  *
  */
@@ -15,160 +15,123 @@ public class Programming_Exercise_14
 {
 	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
-	{
+	{	
 		System.out.print("Enter the size of the matrix: ");
-		int row = input.nextInt();
-		int column = row;
-		int[][] mymatrix = new int[row][column];
-		insertBinary(mymatrix);
-		printMatrix(mymatrix);
-		exploreMatrix(mymatrix);
+		int size = input.nextInt();
+		int[][] matrix = new int[size][size];
+		setMatrix(matrix);
+		displayMatrix(matrix);
+		checkRow(matrix);
+		checkColumn(matrix);
+		checkDiagonal(matrix);
+		
+		input.close();
 	}
 	
 	/**
-	 * Report if a row, column, or diagonals is all 0s or all 1s
-	 * @param mymatrix
+	 * If major diagonal or minor diagonal have all 0s or all 1s, display that diagonal with the binary number
+	 * 
+	 * @param matrix
 	 */
-	public static void exploreMatrix(int[][] mymatrix)
+	public static void checkDiagonal(int[][] matrix)
 	{
-		int check = 0;
+		int binaryNumber = matrix[0][0];
+		int binaryCounter = 1;
 		
-		//Check rows if they have all 0 or all 1
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			if (mymatrix[i][0] == 0)
-			{
-				check = 0;
-			}
+		for (int j = 1; j < matrix.length; j++)
+			if (binaryNumber == matrix[j][j])
+				binaryCounter++;
 			else
-			{
-				check = 1;
-			}
-			for (int j = 1; j < mymatrix[0].length; j++)
-			{
-				if (mymatrix[i][j] != check)
-				{
-					break;
-				}
-				else if (j == mymatrix.length - 1)
-				{
-					System.out.println("Row " + i + " has all " + check);
-				}
-				
-			}
-		}
+				break;
 		
-		//Check columns if they have all 0 or all 1
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			if (mymatrix[0][i] == 0)
-			{
-				check = 0;
-			}
+		if (binaryCounter == matrix.length)
+			System.out.println("Major diagonal have all " + binaryNumber + "s.");
+		
+		binaryNumber = matrix[0][matrix.length - 1];
+		binaryCounter = 1;
+		
+		for (int j = 1; j < matrix.length; j++)
+			if (binaryNumber == matrix[j][matrix.length - 1 - j])
+				binaryCounter++;
 			else
-			{
-				check = 1;
-			}
-			for (int j = 1; j < mymatrix[0].length; j++)
-			{
-				if (mymatrix[j][i] != check)
-				{
-					break;
-				}
-				else if (j == mymatrix.length - 1)
-				{
-					System.out.println("Column " + i + " has all " + check);
-				}
-			}
-		}
+				break;
 		
-		//Find if matrix has a major diagonal of all 0 or all 1
-		for (int i = 0; i < 1; i++)
-		{
-			if (mymatrix[0][0] == 0)
-			{
-				check = 0;
-			}
-			else
-			{
-				check = 1;
-			}
-			for (int j = 1; j < mymatrix[0].length; j++)
-			{
-				if (mymatrix[j][j] != check)
-				{
-					break;
-				}
-				else if (j == mymatrix.length - 1)
-				{
-					System.out.println("Major Diagonal has all " + check);
-				}
-			}
-		}
-		
-		int x = mymatrix.length - 1;
-		int y = 0;
-		
-		//Find if matrix has a minor diagonal of all 0 or all 1
-		for (int i = 0; i < 1; i++)
-		{
-			if (mymatrix[y][x] == 0)
-			{
-				check = 0;
-			}
-			else
-			{
-				check = 1;
-			}
-			for (int j = 1; j < mymatrix[0].length; j++)
-			{
-				++y;
-				--x;
-				if (mymatrix[y][x] != check)
-				{
-					break;
-				}
-				else if (j == mymatrix.length - 1)
-				{
-					System.out.println("Minor Diagonal has all " + check);
-				}
-			}
-		}
+		if (binaryCounter == matrix.length)
+			System.out.println("Minor diagonal have all " + binaryNumber + "s.");
 	}
 	
 	/**
-	 * Insert binary numbers into the matrix
-	 * @param mymatrix
+	 * If row has all 0s or all 1s, display that row and the binary type
+	 * 
+	 * @param matrix
 	 */
-	public static void insertBinary(int[][] mymatrix)
-	{
-		Random rand = new Random();
-		
-		for (int i = 0; i < mymatrix.length; i++)
+	public static void checkColumn(int[][] matrix)
+	{				
+		for (int i = 0; i < matrix.length; i++)
 		{
-			for (int j = 0; j < mymatrix[0].length; j++)
-			{
-				mymatrix[i][j] = rand.nextInt(2);
-			}
-		}
-	}
-	
-	/**
-	 * Print out the matrix
-	 * @param mymatrix
-	 */
-	public static void printMatrix(int[][] mymatrix)
-	{
-		//Random rand = new Random();
-		
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			for (int j = 0; j < mymatrix[0].length; j++)
-			{
-				System.out.print(mymatrix[i][j] + " ");
-			}
+			int binaryNumber = matrix[0][i];
+			int binaryCounter = 1;
 			
+			for (int j = 1; j < matrix.length; j++)
+				if (binaryNumber == matrix[j][i])
+					binaryCounter++;
+				else
+					break;
+			
+			if (binaryCounter == matrix.length)
+				System.out.println("Column " + i + " have all " + binaryNumber + "s.");
+		}
+	}
+	
+	/**
+	 * If row has all 0s or all 1s, display that row and the binary type
+	 * 
+	 * @param matrix
+	 */
+	public static void checkRow(int[][] matrix)
+	{				
+		for (int i = 0; i < matrix.length; i++)
+		{
+			int binaryNumber = matrix[i][0];
+			int binaryCounter = 1;
+			
+			for (int j = 1; j < matrix.length; j++)
+				if (binaryNumber == matrix[i][j])
+					binaryCounter++;
+				else
+					break;
+			
+			if (binaryCounter == matrix.length)
+				System.out.println("Row " + i + " have all " + binaryNumber + "s.");
+		}
+	}
+	
+	/**
+	 * Display all elements in the matrix
+	 * 
+	 * @param matrix
+	 */
+	public static void displayMatrix(int[][] matrix)
+	{
+		for (int i = 0; i < matrix.length; i++)
+		{
+			for (int j = 0; j < matrix[i].length; j++)
+				System.out.printf("[ %d ]", matrix[i][j]);
 			System.out.println();
 		}
+	}
+	
+	/**
+	 * Set random 0s or 1s into the matrix
+	 * 
+	 * @param matrix
+	 */
+	public static void setMatrix(int[][] matrix)
+	{
+		Random randomElements = new Random();
+		
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; j < matrix[i].length; j++)
+				matrix[i][j] = randomElements.nextInt(2);
 	}
 }

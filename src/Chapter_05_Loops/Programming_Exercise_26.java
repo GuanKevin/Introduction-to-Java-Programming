@@ -21,7 +21,7 @@ public class Programming_Exercise_26
 			for (int j = i; j >= 1; j--)
 				factorial *= j;
 			
-			e += (double) 1 / factorial;
+			e += 1 / factorial;
 			factorial = 1;
 		}
 		

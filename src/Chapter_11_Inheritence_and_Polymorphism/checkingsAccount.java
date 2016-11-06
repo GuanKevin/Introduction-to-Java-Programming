@@ -18,6 +18,7 @@ public class checkingsAccount extends Account
 	
 	//Overload --> Have Two or More Methods with the same name, but different argument
 	//Override --> Two methods with same argument, but different implementation
+	@Override
 	public void withdraw(double withdraw)
 	{
 		if ((super.accountBalance - withdraw) < -1000)
@@ -28,6 +29,7 @@ public class checkingsAccount extends Account
 			super.accountBalance -= withdraw;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return ("Account Number: " + getID()

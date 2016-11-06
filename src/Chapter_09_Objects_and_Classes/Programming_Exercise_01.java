@@ -13,7 +13,7 @@ package Chapter_09_Objects_and_Classes;
  * Write a test program that creates two Rectangle objects—one with width 4 and height 40 and the other with width 3.5 and height 35.9. 
  * Display the width, height, area, and perimeter of each rectangle in this order.
  * 
- * 03/01/2016
+ * 10/29/2016
  * @author kevgu
  *
  */
@@ -22,73 +22,51 @@ public class Programming_Exercise_01
 {
 	public static void main(String[] args) 
 	{
-		Rectangle defRec = new Rectangle();
-		Rectangle intRec = new Rectangle(4, 40);
-		Rectangle douRec = new Rectangle(3.5, 35.9);
+		RectangleClass defaultRectangle = new RectangleClass();
+		System.out.println("\nsWidth " + defaultRectangle.width
+				+ "\nHeight " + defaultRectangle.height
+				+ "\nArea " + defaultRectangle.getArea()
+				+ "\nPerimeter " + defaultRectangle.getPerimeter());
 		
-		System.out.println("The default Rectangle has a \nwidth of " + defRec.getWidth() + 
-				"\nheight of " + defRec.getHeight() +
-				"\narea of " + defRec.getArea() + 
-				"\nperimeter of " + defRec.getPerimeter());
-		System.out.println("The integer Rectangle has a \nwidth of " + intRec.getWidth() + 
-				"\nheight of " + intRec.getHeight() +
-				"\narea of " + intRec.getArea() + 
-				"\nperimeter of " + intRec.getPerimeter());
-		System.out.println("The double Rectangle has a \nwidth of " + douRec.getWidth() + 
-				"\nheight of " + douRec.getHeight() +
-				"\narea of " + douRec.getArea() + 
-				"\nperimeter of " + douRec.getPerimeter());
+		RectangleClass uniqueRectangle = new RectangleClass(4, 40);
+		System.out.println("\nWidth " + uniqueRectangle.width
+				+ "\nHeight " + uniqueRectangle.height
+				+ "\nArea " + uniqueRectangle.getArea()
+				+ "\nPerimeter " + uniqueRectangle.getPerimeter());
+		
+		uniqueRectangle = new RectangleClass(3.5, 35.9);
+		System.out.println("\nWidth " + uniqueRectangle.width
+				+ "\nHeight " + uniqueRectangle.height
+				+ "\nArea " + uniqueRectangle.getArea()
+				+ "\nPerimeter " + uniqueRectangle.getPerimeter());
 	}
 }
 
-class Rectangle
+class RectangleClass
 {
-	double width;
-	double height;
-	double area;
-	double perimeter;
+	double width, height;
 	
-	Rectangle()
+	RectangleClass()
 	{
-		setWidth(1);
-		setHeight(1);
+		width = 1;
+		height = 1;
 	}
 	
-	Rectangle(double width, double height)
-	{
-		setWidth(width);
-		setHeight(height);
-	}
-	
-	public void setWidth(double width)
+	RectangleClass(double width, double height)
 	{
 		this.width = width;
-	}
-	
-	public void setHeight(double height)
-	{
 		this.height = height;
 	}
 	
-	public double getWidth()
+	double getArea()
 	{
-		return width;
+		return (width * height);
 	}
 	
-	public double getHeight()
+	double getPerimeter()
 	{
-		return height;
-	}
-	
-	public double getArea()
-	{
-		area = width * height;
-		return area;
-	}
-	
-	public double getPerimeter()
-	{
-		perimeter = 2 * (width + height);
-		return perimeter;
+		return (2 * (width + height));
 	}
 }
+
+

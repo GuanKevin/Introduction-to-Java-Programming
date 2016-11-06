@@ -11,24 +11,35 @@ import java.util.Scanner;
  * Write a program that prompts the user to enter three points of a triangle and displays the triangle's area.
  * s = (side1 + side2 + side3)/2;
  * area = square root of (s(s - side1)(s - side2)(s - side3))
- * 02/25/2016
+ * 
+ * 10/28/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_32 
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		double[][] triangleArray = enterPoints();
+		
+		System.out.println("The area of the triangle is " + getTriangleArea(triangleArray));
+	}
+	
+	public static double[][] enterPoints()
+	{
+		Scanner input = new Scanner(System.in);
+		double[][] triangleArray = new double[3][2];
 		System.out.print("Enter x1, y1, x2, y2. x3, y3: ");
-		double [][]array = new double[3][2];
+		
 		for(int i = 0; i < 3; i++)
 		{
-			array[i][0] = input.nextDouble();
-			array[i][1] = input.nextDouble();
+			triangleArray[i][0] = input.nextDouble();
+			triangleArray[i][1] = input.nextDouble();
 		}
-		System.out.println("The area of the triangle is " + getTriangleArea(array));
+		
+		input.close();
+		return triangleArray;
 	}
 	
 	public static double getTriangleArea(double[][] points)

@@ -1,4 +1,5 @@
 package Chapter_09_Objects_and_Classes;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -17,13 +18,61 @@ import java.util.Scanner;
 
 public class Programming_Exercise_13 
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		Location location = null;
+		Scanner input = new Scanner(System.in);
+		
 		System.out.print("Enter the number of rows and columns in the array: ");
-		location = new Location(input.nextInt(), input.nextInt());
-		System.out.println("The location of the largest element is value " + location.maxValue + " at (" + location.row + ", " + location.column + ")");
+		System.out.println("The location of the largest element is value " + Location.maxValue + " at (" + Location.row + ", " + Location.column + ")");
+		
+		input.close();
 	}
+}
 
+class Location 
+{
+	public static int row, column = 0;
+	public static  double maxValue = 0;
+	public static double[][] values = null;
+	
+	Location(int row, int column)
+	{
+		values = new double[row][column];
+		insert();
+		display();
+		search();
+	}
+	
+	public static void insert()
+	{
+		Random randNumber = new Random();
+		
+		for (int i = 0; i < values.length; i++)
+			for (int j = 0; j < values[i].length; j++)
+				values[i][j] = randNumber.nextInt(100); 
+	}
+	
+	public static void display()
+	{
+		Random randNumber = new Random();
+		
+		for (int i = 0; i < values.length; i++)
+		{
+			for (int j = 0; j < values[i].length; j++)
+				System.out.print(values[i][j] + " ");
+			System.out.println();
+		}
+	}
+	
+	public static void search()
+	{
+		for (int i = 0; i < values.length; i++)
+			for (int j = 0; j < values[i].length; j++)
+				if(values[i][j] > maxValue)
+				{
+					row = i;
+					column = j;
+					maxValue = values[i][j];
+				}
+	}
 }

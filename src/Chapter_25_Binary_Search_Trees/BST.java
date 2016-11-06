@@ -16,7 +16,8 @@ public class BST<E extends Comparable<E>>
   }
 
   /** Returns true if the element is in the tree */
-  public boolean search(E e) {
+  @Override
+public boolean search(E e) {
     TreeNode<E> current = root; // Start from the root
 
     while (current != null) {
@@ -35,7 +36,8 @@ public class BST<E extends Comparable<E>>
 
   /** Insert element o into the binary tree
    * Return true if the element is inserted successfully */
-  public boolean insert(E e) {
+  @Override
+public boolean insert(E e) {
     if (root == null)
       root = createNewNode(e); // Create a new root
     else {
@@ -70,7 +72,8 @@ public class BST<E extends Comparable<E>>
   }
 
   /** Inorder traversal from the root*/
-  public void inorder() {
+  @Override
+public void inorder() {
     inorder(root);
   }
 
@@ -83,7 +86,8 @@ public class BST<E extends Comparable<E>>
   }
 
   /** Postorder traversal from the root */
-  public void postorder() {
+  @Override
+public void postorder() {
     postorder(root);
   }
 
@@ -96,7 +100,8 @@ public class BST<E extends Comparable<E>>
   }
 
   /** Preorder traversal from the root */
-  public void preorder() {
+  @Override
+public void preorder() {
     preorder(root);
   }
 
@@ -120,7 +125,8 @@ public class BST<E extends Comparable<E>>
   }
 
   /** Get the number of nodes in the tree */
-  public int getSize() {
+  @Override
+public int getSize() {
     return size;
   }
 
@@ -153,7 +159,8 @@ public class BST<E extends Comparable<E>>
   /** Delete an element from the binary tree.
    * Return true if the element is deleted successfully
    * Return false if the element is not in the tree */
-  public boolean delete(E e) {
+  @Override
+public boolean delete(E e) {
     // Locate the node to be deleted and also locate its parent node
     TreeNode<E> parent = null;
     TreeNode<E> current = root;
@@ -214,7 +221,8 @@ public class BST<E extends Comparable<E>>
   }
 
   /** Obtain an iterator. Use inorder. */
-  public java.util.Iterator iterator() {
+  @Override
+public java.util.Iterator iterator() {
     return inorderIterator();
   }
 
@@ -248,7 +256,8 @@ public class BST<E extends Comparable<E>>
     }
 
     /** Next element for traversing? */
-    public boolean hasNext() {
+    @Override
+	public boolean hasNext() {
       if (current < list.size())
         return true;
 
@@ -256,12 +265,14 @@ public class BST<E extends Comparable<E>>
     }
 
     /** Get the current element and move cursor to the next */
-    public Object next() {
+    @Override
+	public Object next() {
       return list.get(current++);
     }
 
     /** Remove the current element and refresh the list */
-    public void remove() {
+    @Override
+	public void remove() {
       delete(list.get(current)); // Delete the current element
       list.clear(); // Clear the list
       inorder(); // Rebuild the list
@@ -274,7 +285,8 @@ public class BST<E extends Comparable<E>>
     size = 0;
   }
   
-  public Object clone() {
+  @Override
+public Object clone() {
     BST<E> tree1 = new BST<E>();
     
     copy(root, tree1);

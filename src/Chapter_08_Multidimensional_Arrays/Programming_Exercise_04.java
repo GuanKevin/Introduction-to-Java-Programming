@@ -1,5 +1,5 @@
 package Chapter_08_Multidimensional_Arrays;
-import java.util.Scanner;
+
 import java.util.Random;
 
 /**
@@ -8,6 +8,7 @@ import java.util.Random;
  * Each row records an employee’s seven-day work hours with seven columns. 
  * For example, the following array stores the work hours for eight employees. 
  * Write a program that displays employees and their total hours in decreasing order of the total hours.
+ * 
  *   M  T  W  T  F  S  S
  * 0 [] [] [] [] [] [] []
  * 1 [] [] [] [] [] [] []
@@ -18,109 +19,110 @@ import java.util.Random;
  * 6 [] [] [] [] [] [] []
  * 7 [] [] [] [] [] [] []
  * 
- * 02/25/2016
+ * 10/03/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_04 
 {
-	static Scanner input = new Scanner(System.in);
-	static final int DAYS = 7; 
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter the numbers of employees: ");
-		int employees = input.nextInt();
-		double[][] mymatrix = new double[employees][DAYS];
-		insertHours(mymatrix);
-		printHourSum(mymatrix);
-		sortEmployeeByHour(mymatrix);
-		//printEmployeeHours(mymatrix);
-		printHourSum(mymatrix);
-	}
-	
-	/**
-	 * Print the sum of hours of the employees in descending order
-	 * @param mymatrix
-	 */
-	public static void printHourSum(double[][] mymatrix)
-	{
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			System.out.printf("Employee " + (i + 1) + " worked %.2f hours.\n", sumOfArray(mymatrix[i]));
-		}
-
-	}
-	
-	/**
-	 * Sort employee in descending hours by hours in a week
-	 * @param mymatrix
-	 */
-	public static void sortEmployeeByHour(double[][] mymatrix)
-	{
-		double[] temparray = new double[mymatrix.length];
+		int numberOfEmployees = 10;
+		int daysOfWeek = 7;
 		
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			for (int j = 0; j < mymatrix.length - 1; j++)
+		double[][] weeklyHours = new double[numberOfEmployees][daysOfWeek];
+		int[] empID = new int[numberOfEmployees];
+		
+		setIDNum(empID);
+		setHours(weeklyHours);
+		displayWeeklyHours(weeklyHours, empID);
+		sortHours(weeklyHours, empID);
+		displayWeeklyHours(weeklyHours, empID);
+	}
+	
+	/**
+	 * Set employee ID number
+	 * 
+	 * @param empID
+	 */
+	public static void setIDNum(int[] empID)
+	{
+		for (int i = 0; i < empID.length; i++)
+			empID[i] = i + 1;
+	}
+	
+	/**
+	 * Sort employee by the amount of hours worked in decreasing order
+	 * 
+	 * @param weeklyHours
+	 */
+	public static void sortHours(double[][] weeklyHours, int[] empID)
+	{
+		for (int i = 0; i < weeklyHours.length - 1; i++)
+			for (int j = i + 1; j < weeklyHours.length; j++)
 			{
-				if (sumOfArray(mymatrix[j]) < sumOfArray(mymatrix[j + 1]))
+				if (getSum(weeklyHours[i]) > getSum(weeklyHours[j]))
 				{
-					temparray = mymatrix[j];
-					mymatrix[j] = mymatrix[j + 1];
-					mymatrix[j + 1] = temparray;
+					double[] tempArray = weeklyHours[i];
+					weeklyHours[i] = weeklyHours[j];
+					weeklyHours[j] = tempArray;
+					
+					int tempID = empID[i];
+					empID[i] = empID[j];
+					empID[j] = tempID;
 				}
 			}
-		}
 	}
 	
 	/**
-	 * Adds up all the hours for that employee, and returns the sum
-	 * @param mymatrix
+	 * Return the total amount of hours worked in the week
+	 * 
+	 * @param weeklyHours
 	 * @return
 	 */
-	public static double sumOfArray(double[] mymatrix)
+	public static double getSum(double[] weeklyHours)
 	{
-		double sum = 0;
+		double hoursWorked = 0;
 		
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			sum += mymatrix[i];
-		}
+		for (int i = 0; i < weeklyHours.length; i++)
+			hoursWorked += weeklyHours[i];
 		
-		return sum;
+		return hoursWorked;
 	}
 	
 	/**
-	 * Insert hours in double data type into employee matrix
-	 * @param mymatrix
+	 * Display day and employee's work hour
+	 * 
+	 * @param weeklyHours
 	 */
-	public static void insertHours(double[][] mymatrix)
+	public static void displayWeeklyHours(double[][] weeklyHours, int[] empID)
 	{
-		Random rand = new Random();
-		
-		for (int i = 0; i < mymatrix.length; i++)
+		System.out.printf("%10s%7s%7s%7s%7s%7s%7s\n", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+		for (int i = 0; i < weeklyHours.length; i++)
 		{
-			for (int j = 0; j < DAYS; j++)
+			double hourSum = 0;
+			System.out.printf("%s%-2d ", "Emp ", empID[i]);
+			for (int j = 0; j < weeklyHours[i].length; j++)
 			{
-				mymatrix[i][j] = rand.nextDouble() * 8 + 5;
+				System.out.printf("[%.2f] ", weeklyHours[i][j]);
+				hourSum += weeklyHours[i][j];
 			}
+			System.out.printf("%s%.2f%s\n", "= ", hourSum, " hours");
 		}
 	}
 	
 	/**
-	 * Prints employees hours for every day of the week
-	 * @param mymatrix
+	 * Set hours for each day of the week for all employees
+	 * 
+	 * @param weeklyHours
 	 */
-	public static void printEmployeeHours(double[][] mymatrix)
+	public static void setHours(double[][] weeklyHours)
 	{
-		for (int i = 0; i < mymatrix.length; i++)
-		{
-			for (int j = 0; j < DAYS; j++)
-			{
-				System.out.printf("%.2f %-1s", mymatrix[i][j], " ");
-			}
-			System.out.println();
-		}
+		Random randomHour = new Random();
+		
+		for (int i = 0; i < weeklyHours.length; i++)
+			for (int j = 0; j < weeklyHours[i].length; j++)
+				weeklyHours[i][j] = randomHour.nextDouble() * 9.9;
 	}
 }

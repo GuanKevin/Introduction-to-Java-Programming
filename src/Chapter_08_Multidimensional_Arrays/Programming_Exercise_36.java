@@ -1,4 +1,5 @@
 package Chapter_08_Multidimensional_Arrays;
+
 import java.util.Scanner;
 
 /**
@@ -8,54 +9,99 @@ import java.util.Scanner;
  * and checks if the input array is a Latin square. 
  * The characters are the first n characters starting from A.
  * 
- * 02/25/2016
+ * 10/29/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_36 
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter numbers of n: ");
-		int n = input.nextInt();
-		System.out.println("Enter " + n + " rows of seperated by spaces:");
-		char[][] array = new char[n][n];
-		char letter;
-		input.nextLine();
-		for(int i = 0; i < n; i++){
-			String line = input.nextLine();
-			for(int j = 0; j < n; ++j){
-				letter = Character.toUpperCase(line.charAt(j * 2));
-				for(int k = 0; k < n; k++){
-					if((65 + k ) == letter){
-						break;
-					}
-					else if((97 + k) != letter && k == n - 1){
-						System.out.println("Wrong input: the letters must be from A to " + (char)(65 + n - 1));
-						return;
-					}
-				}
-				array[i][j] = letter;
+		char[][] latinSquare = enterLatinSquare();
+		displaySquare(latinSquare);
+		System.out.print(checkLatinSquare(latinSquare) ? "It's a latin square." : "It's not a latin square.");
+	}
+
+	/**
+	 * Check if column if matrix has unique characters and is within the size range
+	 * 
+	 * @param latinSquare
+	 * @return
+	 */
+	public static boolean checkLatinSquare(char[][] latinSquare)
+	{
+		char[] tempList = new char[latinSquare.length];
+		
+		for (int i = 0; i < latinSquare.length; i++)
+		{
+			for (int j = 0; j < latinSquare.length; j++)
+				tempList[j] = latinSquare[j][i];
+			if (checkRow(tempList))
+				return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * Display the matrix
+	 * 
+	 * @param latinSquare
+	 */
+	public static void displaySquare(char[][] latinSquare)
+	{
+		for (int i = 0; i < latinSquare.length; i++)
+		{
+			for (int j = 0; j < latinSquare[i].length; j++)
+				System.out.print(latinSquare[i][j] + " ");
+			System.out.println();
+		}
+	}
+	
+	/**
+	 * Ask user to input characters of size n
+	 * Return the matrix back 
+	 * 
+	 * @return
+	 */
+	public static char[][] enterLatinSquare()
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter the size of the square: ");
+		int size = input.nextInt();
+		char[][] latinSquare  = new char[size][size];
+		
+		for (int i = 0; i < latinSquare.length; i++)
+		{
+			System.out.print("Enter for row " + i + ": ");
+			
+			for (int j = 0; j < latinSquare[i].length; j++)
+				latinSquare[i][j] = Character.toUpperCase(input.next().charAt(0));
+			
+			if (checkRow(latinSquare[i]))
+			{
+				i--;
+				System.out.println("Try again, input must be from A - " + (char) (65 + latinSquare.length - 1) + ".");
 			}
 		}
-		for(int i = 0; i < n; i++){
-			for(int j = 0; j < n; j++){
-				for(int k = i + 1; k < n; k++){
-					if(array[i][j] == array[k][j]){
-						System.out.println("Not a Latin square");
-						return;
-					}
-				}
-				for(int k = j + 1; k < n; k++){
-					if(array[i][j] == array[i][k]){
-						System.out.println("Not a Latin square");
-						return;
-					}
-				}
-			}
-		}
-		System.out.println("The input is a Latin square.");
+		
+		input.close();
+		return latinSquare;
+	}
+	
+	/**
+	 * Return true if the array contains character that is either repeated or it is greater than the range initially inputed
+	 * 
+	 * @param latinSquare
+	 * @return
+	 */
+	public static boolean checkRow(char[] latinSquare)
+	{	
+		for (int i = 0; i < latinSquare.length - 1; i++)
+			for (int j = i + 1; j < latinSquare.length; j++)
+				if ((latinSquare[j] >= ('A' + latinSquare.length)) || latinSquare[i] == latinSquare[j])
+						return true;
+		return false;
 	}
 }

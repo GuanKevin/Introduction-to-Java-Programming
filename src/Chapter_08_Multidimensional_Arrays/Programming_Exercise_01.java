@@ -9,7 +9,7 @@ import java.util.Scanner;
  * public static double sumColumn(double[][] m, int columnIndex)
  * Write a test program that reads a 3-by-4 matrix and displays the sum of each column.
  * 
- * 09/28/2016
+ * 09/30/2016
  * @author kevgu
  *
  */
@@ -19,48 +19,54 @@ public class Programming_Exercise_01
 	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter the row by column size: ");
+		System.out.print("Enter the row and column: ");
 		int row = input.nextInt();
 		int column = input.nextInt();
-		double[][] sumCBCArray = new double[row][column];
+		int[][] sumColumnArray = new int[row][column];
 		
-		fillMatrix(sumCBCArray);
-		displayMDArray(sumCBCArray);
-		System.out.print("Which column do you want to sum (0 - " + (sumCBCArray[0].length - 1) + "): ");
-		int columnIndex = input.nextInt();
-		System.out.printf("The sum of column " + columnIndex + " is %.2f", sumColumn(sumCBCArray, columnIndex));
+		setNumbers(sumColumnArray);
+		displayArray(sumColumnArray);
+		System.out.print("Sum which index (0 - " + (column - 1) + "): ");
+		int index = input.nextInt();
+		System.out.print("The sum of index " + index + " is " + sumColumn(sumColumnArray, index));
 		
 		input.close();
 	}
 	
-	public static void displayMDArray(double[][] sumCBCArray)
+	public static void displayArray(int[][] sumColumnArray)
 	{
-		System.out.print("       ");
-		for (int i = 0; i < sumCBCArray[0].length; i++)
-			System.out.printf("%s %-3d", "Column", i);
-		System.out.println();
-		
-		for (int i = 0; i < sumCBCArray.length; i++)
+		for (int i = 0; i < sumColumnArray.length; i++)
 		{
-			System.out.print("Row " + i + "  ");
-			for (int j = 0; j < sumCBCArray[i].length; j++)
-				System.out.printf("%-10.2f", sumCBCArray[i][j]);
+			for (int j = 0; j < sumColumnArray[i].length; j++)
+				System.out.print(sumColumnArray[i][j] + " ");
 			System.out.println();
 		}
 	}
 	
-	public static void fillMatrix(double[][] sumCBCArray)
+	/**
+	 * Store numbers into the array
+	 * 
+	 * @param sumColumnArray
+	 */
+	public static void setNumbers(int[][] sumColumnArray)
 	{
-		Random randomNumber = new Random();
+		Random randNumber = new Random();
 		
-		for (int i = 0; i < sumCBCArray.length; i++)
-			for (int j = 0; j < sumCBCArray[i].length; j++)
-				sumCBCArray[i][j] = randomNumber.nextDouble() * 10;
+		for (int i = 0; i < sumColumnArray.length; i++)
+			for (int j = 0; j < sumColumnArray[i].length; j++)
+				sumColumnArray[i][j] = randNumber.nextInt(10);
 	}
 	
-	public static double sumColumn(double[][] m, int columnIndex)
+	/**
+	 * displays the sum of a specified column
+	 * 
+	 * @param m
+	 * @param columnIndex
+	 * @return
+	 */
+	public static int sumColumn(int[][] m, int columnIndex)
 	{
-		double sum = 0;
+		int sum = 0;
 		
 		for (int i = 0; i < m.length; i++)
 			sum += m[i][columnIndex];

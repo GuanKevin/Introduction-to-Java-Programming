@@ -30,7 +30,7 @@ public class Programming_Exercise_03
 			s = input.next();
 		}
 		
-		myList = myArrayList.removeDuplicates(myList);
+		myList = ArrayListDistinctElements.removeDuplicates(myList);
 		
 		for (String s2 : myList)
 		{

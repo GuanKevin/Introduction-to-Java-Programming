@@ -16,7 +16,7 @@ public class Programming_Exercise_05
 	public static void main(String[] args) 
 	{
 		System.out.print("Enter i: ");
-		System.out.println(series((double)input.nextInt()));
+		System.out.println(series(input.nextInt()));
 	}
 	
 	public static double series(double i)

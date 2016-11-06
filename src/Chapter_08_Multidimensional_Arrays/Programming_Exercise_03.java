@@ -1,12 +1,11 @@
 package Chapter_08_Multidimensional_Arrays;
 import java.util.Scanner;
-import java.util.Random;
 
 /**
  * Sort students on grades
  * Rewrite Listing 8.2, GradeExam.java, to display the students in increasing order of the number of correct answers.
  * 
- * 02/25/2016
+ * 10/03/2016
  * @author kevgu
  *
  */
@@ -14,74 +13,47 @@ import java.util.Random;
 public class Programming_Exercise_03 
 {
 	static Scanner input = new Scanner(System.in);
-	static final int ROW = 2;
 	public static void main(String[] args) 
 	{
-		System.out.print("How many students: ");
-		int column = input.nextInt();
-		String[][] mymatrix = new String[ROW][column];
-		inputStudentInfo(mymatrix);
-		//printStudentInfo(mymatrix);
-		sortStudentInfo(mymatrix);
-		printStudentInfo(mymatrix);
-	}
-	
-	/**
-	 * Uses bubble sort to sort in increasing order
-	 * @param mymatrix
-	 */
-	public static void sortStudentInfo(String[][] mymatrix)
-	{
-		String nametemp;
-		String gradetemp;
+		char[][] answers = {
+				{'A', 'B', 'A', 'C', 'C', 'D', 'E', 'E', 'A', 'D'},
+				{'D', 'B', 'A', 'B', 'C', 'A', 'E', 'E', 'A', 'D'},
+				{'E', 'D', 'D', 'A', 'C', 'B', 'E', 'E', 'A', 'D'},
+				{'C', 'B', 'A', 'E', 'D', 'C', 'E', 'E', 'A', 'D'},
+				{'A', 'B', 'D', 'C', 'C', 'D', 'E', 'E', 'A', 'D'},
+				{'B', 'B', 'E', 'C', 'C', 'D', 'E', 'E', 'A', 'D'},
+				{'B', 'B', 'A', 'C', 'C', 'D', 'E', 'E', 'A', 'D'},
+				{'E', 'B', 'E', 'C', 'C', 'D', 'E', 'E', 'A', 'D'}};
 		
-		for (int i = 0; i < mymatrix[0].length; i++)
+		char[] keys = {'D', 'B', 'D', 'C', 'C', 'D', 'A', 'E', 'A', 'D'};
+		int[] studentGrade = new int[answers.length];
+		
+		for (int i = 0; i < answers.length; i++) 
 		{
-			for (int j = 0; j < mymatrix[0].length - 1; j++)
+			int correctCount = 0;
+			for (int j = 0; j < answers[i].length; j++)
 			{
-				if (Integer.parseInt(mymatrix[1][j]) > Integer.parseInt(mymatrix[1][j + 1]))
-				{
-					nametemp = mymatrix[0][j];
-					mymatrix[0][j] = mymatrix[0][j + 1];
-					mymatrix[0][j + 1] = nametemp;
-					
-					gradetemp = mymatrix[1][j];
-					mymatrix[1][j] = mymatrix[1][j + 1];
-					mymatrix[1][j + 1] = gradetemp;
-					
-					
-				}
+				if (answers[i][j] == keys[j])
+					correctCount++;
 			}
+			
+			studentGrade[i] = correctCount;
 		}
-	}
-	
-	/**
-	 * Takes in students name and grade and store them into the matrix
-	 * x x x x
-	 * x x x x
-	 * @param mymatrix
-	 */
-	public static void inputStudentInfo(String[][] mymatrix)
-	{
-		Random rand = new Random();
 		
-		for (int i = 0; i < mymatrix[0].length; i++)
+		for (int i = 0; i < studentGrade.length; i++)
 		{
-			System.out.print("Enter the students name: ");
-			mymatrix[0][i] = input.next();
-			mymatrix[1][i] = String.valueOf(rand.nextInt(101));
-		}
-	}
-	
-	/**
-	 * Prints students name and grade
-	 * @param mymatrix
-	 */
-	public static void printStudentInfo(String[][] mymatrix)
-	{
-		for (int i = 0; i < mymatrix[0].length; i++)
-		{
-			System.out.println(mymatrix[0][i] + "  " + mymatrix[1][i]);
+			int lowestGrade = studentGrade[0]; 
+			int index = 0;
+			
+			for (int j = 1; j < studentGrade.length; j++)
+				if (lowestGrade > studentGrade[j])
+				{
+					lowestGrade = studentGrade[j];
+					index = j;
+				}
+			
+			System.out.println("Student " + (index + 1) + " grade is " + studentGrade[index]);
+			studentGrade[index] = Integer.MAX_VALUE;
 		}
 	}
 }

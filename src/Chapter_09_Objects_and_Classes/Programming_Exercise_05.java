@@ -11,7 +11,7 @@ import java.util.GregorianCalendar;
  * The GregorianCalendar class has the setTimeInMillis(long), which can be used to set a specified elapsed time since January 1, 1970. 
  * Set the value to 1234567898765L and display the year, month, and day.
  * 
- * 03/01/2016
+ * 11/06/2016
  * @author kevgu
  *
  */

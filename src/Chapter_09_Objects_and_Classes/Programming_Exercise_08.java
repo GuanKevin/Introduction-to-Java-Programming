@@ -107,6 +107,7 @@ class Fan
 	//A method named toString() that returns a string description for the fan.
 	//If the fan is on, the method returns the fan speed, color, and radius in one combined string. 
 	//If the fan is not on, the method returns the fan color and radius along with the string “fan is off” in one combined string.
+	@Override
 	public String toString()
 	{
 		if (getStatus() == true)

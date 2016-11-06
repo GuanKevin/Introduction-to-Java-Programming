@@ -25,6 +25,7 @@ public class Student extends Person
 		this.status = status;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return (getName() + " " + getClassStatus()); 

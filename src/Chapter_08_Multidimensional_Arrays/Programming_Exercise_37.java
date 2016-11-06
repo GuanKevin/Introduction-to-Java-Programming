@@ -9,14 +9,13 @@ import java.util.Scanner;
  * The program prompts the user to answer all states’ capitals and displays the total correct count. 
  * The user’s answer is not case-sensitive.
  * 
- * 10/25/2016
+ * 10/29/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_37 
 {
-	static Scanner input = new Scanner(System.in);
 	static String[][] stateCapitalArray = {
 			{"Alabama",	"Montgomery"}, 		{"Alaska",	"Juneau"},			{"Arizona",	"Phoenix"},			{"Arkansas", "Little Rock"}, 	{"California", "Sacramento"}, 	{"Colorado", "Denver"},
 			{"Connecticut", "Hartford"}, 	{"Delaware", "Dover"}, 			{"Florida", "Tallahassee"}, 	{"Georgia", "Atlanta"}, 		{"Hawaii", "Honolulu"}, 		{"Idaho", "Boise"}, 
@@ -31,12 +30,11 @@ public class Programming_Exercise_37
 	public static void main(String[] args) 
 	{
 		guessCapitals();
-		
-		input.close();
 	}
 	
 	public static void guessCapitals()
 	{
+		Scanner input = new Scanner(System.in);
 		int correctGuessCounter = 0;
 		
 		for (int i = 0; i < stateCapitalArray.length; i++)
@@ -51,5 +49,7 @@ public class Programming_Exercise_37
 				System.out.println("The correct answer should be " + stateCapitalArray[i][1] + ".");
 		}
 		System.out.print("The correct count is " + correctGuessCounter);
+		
+		input.close();
 	}
 }

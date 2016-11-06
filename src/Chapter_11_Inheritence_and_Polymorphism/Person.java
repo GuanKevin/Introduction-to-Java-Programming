@@ -20,6 +20,7 @@ public class Person
 		this.emailAddress = emailAddress;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return (getName() + " " + this.getClass());

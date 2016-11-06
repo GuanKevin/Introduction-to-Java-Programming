@@ -22,7 +22,8 @@ public class GenericStackInheritance<E> extends ArrayList<E>
         return o;
     }
 
-    public boolean isEmpty() 
+    @Override
+	public boolean isEmpty() 
     {
         return super.isEmpty();
     }

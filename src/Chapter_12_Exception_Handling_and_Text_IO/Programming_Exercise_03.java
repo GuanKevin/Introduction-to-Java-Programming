@@ -29,7 +29,7 @@ public class Programming_Exercise_03
 		{
 			System.out.println("The number in index " + index + " is " + myarray[index]);
 		}
-		catch (IndexOutOfBoundsException er)
+		catch (ArrayIndexOutOfBoundsException er)
 		{
 			System.out.println("Array index out of bound exception found! " + er.getMessage());
 		}

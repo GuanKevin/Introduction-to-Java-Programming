@@ -2,7 +2,6 @@ package Chapter_17_Binary_IO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.Random;
 import java.util.Scanner;
 

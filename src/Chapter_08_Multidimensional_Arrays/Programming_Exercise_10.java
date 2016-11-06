@@ -7,7 +7,7 @@ import java.util.Random;
  * Write a program that randomly fills in 0s and 1s into a 4-by-4 matrix, prints the matrix, 
  * and finds the first row and column with the most 1s.
  * 
- * 02/25/2016
+ * 10/05/2016
  * @author kevgu
  *
  */
@@ -15,110 +15,96 @@ import java.util.Random;
 public class Programming_Exercise_10 
 {
 	static Scanner input = new Scanner(System.in);
-	static final int ROW = 4;
-	static final int COLUMN = 4;
 	public static void main(String[] args) 
 	{
-		int[][] mymatrix = new int[ROW][COLUMN];		
-		binaryFillIn(mymatrix);
-		printMatrix(mymatrix);
-		int row = largestRow(mymatrix);
-		int column = largestCol(mymatrix);
+		int[][] binaryMatrix = new int[4][4];
+		fillBinary(binaryMatrix);
+		displayMatrix(binaryMatrix);
+		countHorizontal(binaryMatrix);
+		countVertical(binaryMatrix);
 		
-		System.out.println("The column with the most 1s is " + column);
-		System.out.println("The row with the most 1s is " + row);
+		input.close();
 	}
 	
 	/**
-	 * Return the index of the row with the most 1s
-	 * @param mymatrix
+	 * Display column with the most 1's and display how many1s are in that column
+	 * 
+	 * @param binaryMatrix
 	 */
-	public static int largestRow(int[][] mymatrix)
+	public static void countVertical(int[][] binaryMatrix)
 	{
-		int counter = 0;
-		int index = 0;
-		int sum = 0;
+		int[] mostOne = new int[2];
+		int oneCounter = 0;
 		
-		for (int i = 0; i < ROW; i++)
+		for (int i = 0; i < binaryMatrix.length; i++)
 		{
-			for (int j = 0; j < COLUMN; j++)
+			for(int j = 0; j < binaryMatrix[i].length; j++)
+				if (binaryMatrix[j][i] == 1)
+					oneCounter++;
+			
+			if (mostOne[0] < oneCounter)
 			{
-				if (mymatrix[i][j] == 1)
-				{
-					counter++;
-				}
+				mostOne[0] = oneCounter;
+				mostOne[1] = i;
 			}
-			if (counter > sum)
-			{
-				sum = counter;
-				index = i;
-			}
-			counter = 0;
+			oneCounter = 0;
 		}
 		
-		return index;
+		System.out.println("Column " + mostOne[1] + " have " + mostOne[0] + " 1s.");
 	}
 	
 	/**
-	 * Return the index of the column with the most 1s
-	 * @param mymatrix
+	 * Display the row with the most 1's and display how many 1s are in that row
+	 * @param binaryMatrix
 	 */
-	public static int largestCol(int[][] mymatrix)
+	public static void countHorizontal(int[][] binaryMatrix)
 	{
-		int counter = 0;
-		int index = 0;
-		int sum = 0;
+		int[] mostOne = new int[2];
+		int oneCounter = 0;
 		
-		for (int i = 0; i < ROW; i++)
+		for (int i = 0; i < binaryMatrix.length; i++)
 		{
-			for (int j = 0; j < COLUMN; j++)
+			for(int j = 0; j < binaryMatrix[i].length; j++)
+				if (binaryMatrix[i][j] == 1)
+					oneCounter++;
+			
+			if (mostOne[0] < oneCounter)
 			{
-				if (mymatrix[j][i] == 1)
-				{
-					counter++;
-				}
+				mostOne[0] = oneCounter;
+				mostOne[1] = i;
 			}
-			if (counter > sum)
-			{
-				sum = counter;
-				index = i;
-			}
-			counter = 0;
+			oneCounter = 0;
 		}
 		
-		return index;
+		System.out.println("Row " + mostOne[1] + " have " + mostOne[0] + " 1s.");
 	}
 	
 	/**
-	 * Print out the matrix
-	 * @param mymatrix
+	 * Display the 2d array
+	 * 
+	 * @param binaryMatrix
 	 */
-	public static void printMatrix(int[][] mymatrix)
+	public static void displayMatrix(int[][] binaryMatrix)
 	{
-		for (int i = 0; i < ROW; i++)
+		for (int i = 0; i < binaryMatrix.length; i++)
 		{
-			for (int j = 0; j < COLUMN; j++)
-			{
-				System.out.print(mymatrix[i][j] + " ");
-			}
+			for(int j = 0; j < binaryMatrix[i].length; j++)
+				System.out.printf("[ %d ]", binaryMatrix[i][j]);
 			System.out.println();
 		}
 	}
 	
 	/**
-	 * Fills in 2-dimensional array with random 0s or 1s
-	 * @param mymatrix
+	 * Fill matrix with 0s and 1s
+	 * 
+	 * @param binaryMatrix
 	 */
-	public static void binaryFillIn(int[][] mymatrix)
+	public static void fillBinary(int[][] binaryMatrix)
 	{
-		Random rand = new Random();
+		Random randomBinary = new Random();
 		
-		for (int i = 0; i < ROW; i++)
-		{
-			for (int j = 0; j < COLUMN; j++)
-			{
-				mymatrix[i][j] = rand.nextInt(2);
-			}
-		}
+		for (int i = 0; i < binaryMatrix.length; i++)
+			for(int j = 0; j < binaryMatrix[i].length; j++)
+				binaryMatrix[i][j] = randomBinary.nextInt(2); 
 	}
 }

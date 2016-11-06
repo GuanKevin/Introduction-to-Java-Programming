@@ -50,6 +50,7 @@ public class Time
 		hour = (int) (timeInSec % 24);
 	}
 	
+	@Override
 	public String toString()
 	{
 		return hour + ":" + minute + ":" + second;

@@ -27,6 +27,7 @@ public class Faculty extends Employee
 		this.rank = rank;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return (getName() + " " + getRank());

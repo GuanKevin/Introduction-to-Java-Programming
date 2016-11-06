@@ -1,5 +1,4 @@
 package Chapter_07_Single_Dimensional_Arrays;
-
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -29,6 +28,7 @@ public class Programming_Exercise_32
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter the size of the list: ");
 		int[] pivotArray = new int[input.nextInt()];
+		
 		insertNumber(pivotArray);
 		System.out.print(Arrays.toString(pivotArray) + 
 				"\nPivot index:" + partition(pivotArray) + 

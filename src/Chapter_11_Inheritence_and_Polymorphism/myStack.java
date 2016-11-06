@@ -21,6 +21,7 @@ public class myStack extends ArrayList<Object>
 		add(object);
 	}
 
+	@Override
 	public String toString() 
 	{
 		return "stack: " + super.toString();

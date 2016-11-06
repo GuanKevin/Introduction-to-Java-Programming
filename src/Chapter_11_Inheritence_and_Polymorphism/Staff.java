@@ -11,6 +11,7 @@ public class Staff extends Employee
 		this (0);
 	}
 	
+	@Override
 	public String toString()
 	{
 		return(getName() + " " + getTitle());
