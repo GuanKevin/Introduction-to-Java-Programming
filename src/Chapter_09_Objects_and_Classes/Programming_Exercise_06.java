@@ -1,5 +1,5 @@
 package Chapter_09_Objects_and_Classes;
-import java.util.Scanner;
+
 import java.util.Random;
 
 /**
@@ -10,94 +10,110 @@ import java.util.Random;
  * A method named start() that resets the startTime to the current time.
  * A method named stop() that sets the endTime to the current time.
  * A method named getElapsedTime() that returns the elapsed time for the stopwatch in milliseconds.
- * Draw the UML diagram for the class and then implement the class. 
  * Write a test program that measures the execution time of sorting 100,000 numbers using selection sort.
  * 
- * 03/01/2016
+ * 11/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_06 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		int[] myarray = new int[100000];
-		insertValues(myarray);
-		Stopwatch stopwatch = new Stopwatch();
-		selectionSort(myarray);
-		stopwatch.stop();
-		System.out.print("It took " + stopwatch.getElapsedTime() + " milleseconds.");
+		int[] dataSet = generateArray(100000);
+		StopWatch executionTime = new StopWatch();
+		selectionSort(dataSet, executionTime);
+		displayArray(dataSet);
+		System.out.println("\nSelection sort execution time: " + executionTime.elapsedTime() + " milliseconds.");
 	}
 	
-	public static void selectionSort(int[] myarray)
+	public static void displayArray(int[] dataSet)
 	{
-		int min;
-		int temp;
-		for (int i = 0; i < myarray.length; i++)
-		{
-			min = i;
-			for (int j = i + 1; j < myarray.length; j++)
-			{
-				if (myarray[j] < myarray[min])
-				{
-					min = j;
-				}
-			}
-			
-			if (min != i)
-			{
-				temp = myarray[i];
-				myarray[i] = myarray[min];
-				myarray[min] = temp;
-			}
-		}
+		for (int i = 0; i < dataSet.length; i++)
+			if (((i + 1) % 35) == 0)
+				System.out.printf("%4d\n", dataSet[i]);
+			else
+				System.out.printf("%4d", dataSet[i]);
 	}
 	
-	public static void insertValues(int[] myarray)
+	public static void selectionSort(int[] dataSet, StopWatch executionTime)
 	{
-		Random rand = new Random();
+		executionTime.start();
 		
-		for (int i = 0; i < myarray.length; i++)
+		for (int i = 0; i < dataSet.length - 1; i++)
 		{
-			myarray[i] = rand.nextInt(999999);
+			int minimumIndex = i;
+			
+			for (int j = i + 1; j < dataSet.length; j++)
+				if (dataSet[minimumIndex] > dataSet[j])
+					minimumIndex = j;
+			
+			if (minimumIndex != i)
+			{
+				int tempElement = dataSet[minimumIndex];
+				dataSet[minimumIndex] = dataSet[i];
+				dataSet[i] = tempElement;
+			}
 		}
+		
+		executionTime.stop();
+	}
+	
+	public static int[] generateArray(int size)
+	{
+		int[] dataSet = new int[size];
+		Random randomNumber = new Random();
+		
+		for (int i = 0; i < size; i++)
+			dataSet[i] = randomNumber.nextInt(1000);
+		
+		return dataSet;
 	}
 }
 
-class Stopwatch
+class StopWatch
 {
-	long starttime;
-	long endtime;
+	private long startTime;
+	private long endTime;
 	
-	Stopwatch()
+	public StopWatch()
 	{
-		starttime = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();
 	}
 	
 	public void start()
 	{
-		starttime = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();
 	}
 	
 	public void stop()
 	{
-		endtime = System.currentTimeMillis();
+		endTime = System.currentTimeMillis();
 	}
 	
-	public long getElapsedTime()
+	public long elapsedTime()
 	{
-		return (endtime - starttime);
+		return (endTime - startTime);
 	}
 	
-	public long getStartTime()
+	public long getStartTime() 
 	{
-		return starttime;
+		return startTime;
 	}
 	
-	public long getEndTime()
+	public void setStartTime(long startTime) 
 	{
-		return endtime;
+		this.startTime = startTime;
+	}
+	
+	public long getEndTime() 
+	{
+		return endTime;
+	}
+	
+	public void setEndTime(long endTime) 
+	{
+		this.endTime = endTime;
 	}
 }
