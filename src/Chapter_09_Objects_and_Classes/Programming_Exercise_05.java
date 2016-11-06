@@ -21,12 +21,15 @@ public class Programming_Exercise_05
 	public static void main(String[] args) 
 	{
 		GregorianCalendar gc = new GregorianCalendar();
+		
+		//Displays the current time without modifying the Gregorian Calendar class
 		System.out.println("Today is " + gc.get(GregorianCalendar.MONTH) + "\\" 
 		+ gc.get(GregorianCalendar.DAY_OF_MONTH) + "\\"
 		+ gc.get(GregorianCalendar.YEAR));
 		
 		gc.setTimeInMillis(1234567898765L);
 		
+		//Displays the time after the class has been modified with a set milliseconds of time 
 		System.out.println("Today is " + gc.get(GregorianCalendar.MONTH) + "\\" 
 				+ gc.get(GregorianCalendar.DAY_OF_MONTH) + "\\"
 				+ gc.get(GregorianCalendar.YEAR));
