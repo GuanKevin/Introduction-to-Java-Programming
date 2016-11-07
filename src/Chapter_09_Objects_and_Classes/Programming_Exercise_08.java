@@ -13,13 +13,12 @@ package Chapter_09_Objects_and_Classes;
  * A method named toString() that returns a string description for the fan. 
  * If the fan is on, the method returns the fan speed, color, and radius in one combined string. 
  * If the fan is not on, the method returns the fan color and radius along with the string “fan is off” in one combined string.
- * Draw the UML diagram for the class and then implement the class. 
  * Write a test program that creates two Fan objects. 
  * Assign maximum speed, radius 10, color yellow, and turn it on to the first object. 
  * Assign medium speed, radius 5, color blue, and turn it off to the second object. 
  * Display the objects by invoking their toString method.
  * 
- * 03/01/2016
+ * 11/07/2016
  * @author kevgu
  *
  */
@@ -28,94 +27,63 @@ public class Programming_Exercise_08
 {
 	public static void main(String[] args) 
 	{
-		Fan defFan = new Fan();
-		System.out.println(defFan.toString());
-		Fan maxFan = new Fan(defFan.FAST, 10, true, "yellow");
-		System.out.println(maxFan.toString());
-		Fan medFan = new Fan(defFan.MEDIUM, 5, false, "blue");
-		System.out.println(medFan.toString());
+		Fan myFan = new Fan();
+		System.out.println(myFan.toString());
+		
+		myFan.setSpeed(myFan.FAST);
+		myFan.setRadius(10);
+		myFan.setColor("yellow");
+		myFan.setOn(true);
+		System.out.print(myFan.toString());
 	}
 }
+
 class Fan
 {
-	final int SLOW = 1;
-	final int MEDIUM = 2;
-	final int FAST = 3;
+	final int SLOW = 1, MEDIUM = 2, FAST = 3;
 	private int speed = SLOW;
 	private boolean on = false;
 	private double radius = 5;
 	String color = "blue";
 	
-	//A no-arg constructor that creates a default fan.
-	Fan()
+	public Fan()
 	{
-		speed = SLOW;
-		on = true;
-		radius = 1;
-		color = "silver";
+		setSpeed(FAST);
+		setOn(true);
+		setRadius(1000);
+		setColor("See Through");
 	}
 	
-	Fan(int speed, double radius, boolean on, String color)
-	{
-		this.speed = speed;
-		this.on = on;
-		this.radius = radius;
-		this.color = color;
-	}
-	
-	//The accessor and mutator methods for all four data fields.
-	public void setSpeed(int speed)
-	{
-		this.speed = speed;
-	}
-	
-	public int getSpeed()
-	{
-		return speed;
-	}
-	
-	public void setStatus(boolean on)
-	{
-		this.on = on;
-	}
-	
-	public boolean getStatus()
-	{
-		return on;
-	}
-	
-	public void setRadius(double radius)
-	{
-		this.radius = radius;
-	}
-	
-	public double getRadius()
-	{
-		return radius;
-	}
-	
-	public void setSpeed(String color)
-	{
-		this.color = color;
-	}
-	
-	public String getColor()
-	{
-		return color;
-	}
-	
-	//A method named toString() that returns a string description for the fan.
-	//If the fan is on, the method returns the fan speed, color, and radius in one combined string. 
-	//If the fan is not on, the method returns the fan color and radius along with the string “fan is off” in one combined string.
-	@Override
 	public String toString()
 	{
-		if (getStatus() == true)
-			return ("The fan is currently on." 
-					+ "The speed of the fan is " + getSpeed()
-					+ "The radius of the fan is " + getRadius()
-					+ "The color of the fan is " + getColor());
+		if (isOn())
+			return ("Speed:" + getSpeed() + "\nColor: " + getColor() + "\nRadius: " + getRadius());
 		else
-		return ("The color of the fan is " + getColor() + " fan is off");
+			return ( "\nColor: " + getColor() + "\nRadius: " + getRadius() + "\nFan is off.");
+	}
+
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+	public boolean isOn() {
+		return on;
+	}
+	public void setOn(boolean on) {
+		this.on = on;
+	}
+	public double getRadius() {
+		return radius;
+	}
+	public void setRadius(double radius) {
+		this.radius = radius;
 	}
 }
