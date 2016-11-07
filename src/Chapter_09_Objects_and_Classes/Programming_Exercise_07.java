@@ -1,5 +1,7 @@
 package Chapter_09_Objects_and_Classes;
 
+import java.util.Date;
+
 /**
  * The Account class
  * Design a class named Account that contains:
@@ -33,7 +35,86 @@ public class Programming_Exercise_07
 {
 	public static void main(String[] args) 
 	{
+		Account myAccount = new Account(1122, 20000);
+		myAccount.setAnnualInterestRate(4.5);
+		myAccount.withdraw(2500);
+		myAccount.deposit(3000);
+		System.out.println("Balance: " + myAccount.getBalance() + 
+				"\nMonthly Interest: " + myAccount.getMonthlyInterest() + 
+				"\nAccount created: " + myAccount.getDataCreated());
+	}
+}
 
+class Account
+{
+	private int id;
+	private double balance;
+	private double annualInterestRate;
+	Date dateCreated = new Date();
+	
+	public Account()
+	{
+		setId(0);
+		setBalance(0);
+		setAnnualInterestRate(0);
+		dateCreated = new Date();
+	}
+	
+	public Account(int id, double balance)
+	{
+		this.id = id;
+		this.balance = balance;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public double getAnnualInterestRate() {
+		return annualInterestRate;
+	}
+
+	public void setAnnualInterestRate(double annualInterestRate) {
+		this.annualInterestRate = annualInterestRate;
+	}
+	
+	public Date getDataCreated()
+	{
+		return dateCreated;
+	}
+	
+	public double getMonthlyInterestRate()
+	{
+		return (getAnnualInterestRate() / 100 / 12);
+	}
+	
+	public double getMonthlyInterest()
+	{
+		return (getBalance() * getMonthlyInterestRate());
+	}
+	
+	public double withdraw(double withdraw) 
+	{
+		balance -= withdraw;
+		return (getBalance() - withdraw);
+	}
+	
+	public double deposit(double deposit)
+	{
+		balance += deposit;
+		return (getBalance() + deposit);
 	}
 }
 
