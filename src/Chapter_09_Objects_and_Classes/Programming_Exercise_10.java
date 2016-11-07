@@ -1,4 +1,5 @@
 package Chapter_09_Objects_and_Classes;
+
 import java.util.Scanner;
 
 /**
@@ -11,92 +12,77 @@ import java.util.Scanner;
  * The methods named getRoot1() and getRoot2() for returning two roots of the equation
  * These methods are useful only if the discriminant is nonnegative. 
  * Let these methods return 0 if the discriminant is negative. 
- * Draw the UML diagram for the class and then implement the class. 
- * Write a test program that prompts the user to enter values for a, b, and c and displays the result based on the discriminant. If the discriminant is positive, display the two roots. 
+ * Write a test program that prompts the user to enter values for a, b, and c and displays the result based on the discriminant. 
+ * If the discriminant is positive, display the two roots. 
  * If the discriminant is 0, display the one root. Otherwise, display “The equation has no roots.” 
  * See Programming Exercise 3.1 for sample runs.
  * 
- * 03/01/2016
+ * 11/07/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_10 
 {
-	Scanner input = new Scanner(System.in);
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
-	    Scanner input = new Scanner(System.in);
-	    System.out.print("Enter a, b, c: ");
-	    double a = input.nextDouble();
-	    double b = input.nextDouble();
-	    double c = input.nextDouble();
-
-	    QuadraticEquation equation = new QuadraticEquation(a, b, c);
-	    double discriminant = equation.getDiscriminant();
-
-	    if (discriminant < 0) {
-	      System.out.println("The equation has no roots");
-	    }
-	    else if (discriminant == 0)
-	    {
-	      System.out.println("The root is " + equation.getRoot1());
-	    }
-	    else // (discriminant >= 0)
-	    {
-	      System.out.println("The roots are " + equation.getRoot1() 
-	        + " and " + equation.getRoot2());
-	    }
-	    
-	    input.close();
-	  }
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter a, b and c: ");
+		
+		QuadraticEquation myEquation = new QuadraticEquation(input.nextDouble(), input.nextDouble(), input.nextDouble());
+		
+		if (myEquation.getDiscriminant() > 0)
+			System.out.println("Root 1: " + myEquation.getRoot1() +
+					"\nRoot 2: " + myEquation.getRoot2());
+		if (myEquation.getDiscriminant() == 0)
+			System.out.println("Root 1: " + myEquation.getRoot1());
+		if (myEquation.getDiscriminant() < 0)
+			System.out.println("The equation has no roots.");
+		
+		input.close();
 	}
+}
 
-class QuadraticEquation 
+class QuadraticEquation
 {
-	private double a;
-	private double b;
-	private double c;
+	private double a, b, c;
 
-	public QuadraticEquation(double newA, double newB, double newC) 
+	public QuadraticEquation(double a, double b, double c)
 	{
-	    a = newA;
-	    b = newB;
-	    c = newC; 
+		this.a = a;
+		this.b = b;
+		this.c = c;
 	}
-  
-	double getA() 
-	{
+	
+	public double getA() {
 		return a;
 	}
 
-	double getB() 
-	{
+	public double getB() {
 		return b;
 	}
 
-  double getC() 
-  {
-	  return c;
-  }
-
-  double getDiscriminant() {
-    return b * b - 4 * a * c;
-  }
-
-  double getRoot1() {
-    if (getDiscriminant() < 0)
-      return 0;
-    else {
-      return (-b + getDiscriminant()) / (2 * a);
-    }
-  }
-
-  double getRoot2() {
-    if (getDiscriminant() < 0)
-      return 0;
-    else {
-      return (-b - getDiscriminant()) / (2 * a);
-    }
-  }
+	public double getC() {
+		return c;
+	}	
+	
+	public double getDiscriminant()
+	{
+		return (Math.pow(b, 2) - (4 * a * c));
+	}
+	
+	public double getRoot1()
+	{
+		if (getDiscriminant() >= 0)
+			return (-b + getDiscriminant()) / (2 * a);
+		else
+			return 0;
+	}
+	
+	public double getRoot2()
+	{
+		if (getDiscriminant() >= 0)
+			return (-b - getDiscriminant()) / (2 * a);
+		return 0;
+	}
 }
