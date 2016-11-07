@@ -1,5 +1,4 @@
 package Chapter_09_Objects_and_Classes;
-import java.util.Scanner;
 
 /**
  * Geometry: n-sided regular polygon
@@ -20,7 +19,7 @@ import java.util.Scanner;
  * created using the no-arg constructor, using RegularPolygon(6, 4), and using RegularPolygon(10, 4, 5.6, 7.8). 
  * For each object, display its perimeter and area.
  * 
- * 03/01/2016
+ * 11/07/2016
  * @author kevgu
  *
  */
@@ -29,6 +28,76 @@ public class Programming_Exercise_09
 {
 	public static void main(String[] args) 
 	{
-		
+		RegularPolygon myRP = new RegularPolygon(6, 4);
+		System.out.println("Perimeter: " + myRP.getPerimeter() + 
+				"\nArea: " + myRP.getArea());
+	}
+}
+
+class RegularPolygon
+{
+	private int n;
+	private double side;
+	private double x;
+	private double y;
+	
+	public RegularPolygon()
+	{
+		this(3, 1, 0, 0);
+	}
+	
+	public RegularPolygon(int n, double side)
+	{
+		this(n, side, 0, 0);
+	}
+	
+	public RegularPolygon(int n, double side, double x, double y)
+	{
+		this.setN(n);
+		this.setSide(side);
+		this.setX(x);
+		this.setY(y);
+	}
+
+	public int getN() {
+		return n;
+	}
+
+	public void setN(int n) {
+		this.n = n;
+	}
+
+	public double getSide() {
+		return side;
+	}
+
+	public void setSide(double side) {
+		this.side = side;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getY() {
+		return y;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	public double getPerimeter()
+	{
+		return (getSide() * getN());
+	}
+	
+	public double getArea()
+	{
+		return (getN() * Math.pow(getSide(), 2)) / (4 * Math.tan(Math.PI / getN()));
 	}
 }
