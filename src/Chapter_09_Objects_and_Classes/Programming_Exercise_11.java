@@ -14,7 +14,7 @@ import java.util.Scanner;
  * Write a test program that prompts the user to enter a, b, c, d, e, and f and displays the result. 
  * If ad - bc is 0, report that “The equation has no solution.”
  * 
- * 10/29/2016
+ * 11/07/2016
  * @author kevgu
  *
  */
@@ -23,31 +23,17 @@ public class Programming_Exercise_11
 {
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter linear equations variable: ");
-		double[] linearEquationVariables = storeVariables();
-		LinearEquation equationOne = new LinearEquation(linearEquationVariables);
-		
-		if (equationOne.isSolvable())
-			System.out.print("The equation has no solution.");
-		else
-			System.out.print("X is " + equationOne.getX() + " Y is " + equationOne.getY());
-	}
-	
-	/**
-	 * Store variables into array
-	 * 
-	 * @return
-	 */
-	public static double[] storeVariables()
-	{
 		Scanner input = new Scanner(System.in);
-		double[] linearEquationVariables = new double[6];
 		
-		for (int i = 0; i < linearEquationVariables.length; i++)
-			linearEquationVariables[i] = input.nextDouble();
+		System.out.println("Enter for a, b , c, d, e, f: ");
+		LinearEquation equation = new LinearEquation(input.nextDouble(), input.nextDouble(), input.nextDouble(), input.nextDouble(), input.nextDouble(), input.nextDouble());
+		
+		if (equation.isSolvable())
+			System.out.println("(" + equation.getX() + "," + equation.getY() + ")");
+		else
+			System.out.println("The equation has no solution.");
 		
 		input.close();
-		return linearEquationVariables;
 	}
 }
 
@@ -55,59 +41,53 @@ class LinearEquation
 {
 	private double a, b, c, d, e, f;
 	
-	public LinearEquation(double[] linearEquationVariables)
+	public LinearEquation(double a, double b, double c, double d, double e, double f)
 	{
-		a = linearEquationVariables[0];
-		b = linearEquationVariables[1];
-		c = linearEquationVariables[2];
-		d = linearEquationVariables[3];
-		e = linearEquationVariables[4];
-		f = linearEquationVariables[5];
-	}
-	
-	double getA() 
-	{
-		return a;
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.d = d;
+		this.e = e;
+		this.f = f;
 	}
 
-	double getB() 
-	{
+	public double getA() {
+		return a;
+	}
+	
+	public double getB() {
 		return b;
 	}
 	
-	double getC() 
-	{
+	public double getC() {
 		return c;
 	}
-  
-	double getD() 
-	{
+	
+	public double getD() {
 		return d;
 	}
-
-	double getE() 
-	{
+	
+	public double getE() {
 		return e;
 	}
-
-	double getF() 
-	{
-		return f;	
+	
+	public double getF() {
+		return f;
 	}
 	
-	boolean isSolvable()
+	public boolean isSolvable() 
 	{
 		if ((getA() * getD()) - (getB() * getC()) != 0)
 			return true;
 		return false;
 	}
 	
-	double getX()
+	public double getX()
 	{
 		return ((getE() * getD()) - (getB() * getF())) / ((getA() * getD()) - (getB() * getC()));
 	}
 	
-	double getY()
+	public double getY()
 	{
 		return ((getA() * getF()) - (getE() * getC())) / ((getA() * getD()) - (getB() * getC()));
 	}
