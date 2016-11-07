@@ -27,20 +27,8 @@ import java.util.Scanner;
 
 public class Programming_Exercise_09 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		RegularPolygon polygonObject = new RegularPolygon();
-		System.out.println("Default regular polygon Perimeter: " + polygonObject.getPerimeter() 
-		+ "\nDefault regular polygon Area: " + ' ' + polygonObject.getArea());
 		
-		polygonObject = new RegularPolygon(6, 4);
-		System.out.println("Regular polygon with number of side 6's Perimeter: " + polygonObject.getPerimeter() 
-		+ "\nRegular polygon with length of side 4's Area: " + ' ' + polygonObject.getArea());
-		
-		polygonObject = new RegularPolygon(10, 4, 5.6, 7.8);
-		System.out.println("Regular polygon with number of side 10's Perimeter: " + polygonObject.getPerimeter() 
-		+ "\nRegular polygon with length of side 4's Area: " + ' ' + polygonObject.getArea());
 	}
-
 }
