@@ -1,5 +1,4 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
 
 /**
  * Divisible by 5 or 6
@@ -12,7 +11,6 @@ import java.util.Scanner;
 
 public class Programming_Exercise_21 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		

@@ -1,6 +1,8 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
+import Utilities.DivisibleBy;
+
 /**
  * Divisible by 2 or 3
  * Find the first ten numbers with 50 decimal digits that are divisible by 2 or 3.

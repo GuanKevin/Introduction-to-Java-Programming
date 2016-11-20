@@ -1,6 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.math.BigInteger;
-import java.util.Scanner;
 
 /**
  * Large prime numbers
@@ -13,30 +12,40 @@ import java.util.Scanner;
 
 public class Programming_Exercise_18 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.println(Long.MAX_VALUE);
-		String longnumber = Long.toString(Long.MAX_VALUE);
-		System.out.println(longnumber);
-		BigInteger mylongnum = new BigInteger(longnumber);
-		System.out.println(mylongnum);
-		
-		findLargePrimes(5);
-	}
-	
-	public static void findLargePrimes(int counter)
-	{
-		BigInteger largeNum = new BigInteger(Long.toString(Long.MAX_VALUE));
-		BigInteger one = new BigInteger("1");
-		largeNum = largeNum.add(one);
-		
-		while(counter > 0)
-		{		
-			for (BigInteger i = new BigInteger("1"); i.intValue() < largeNum.intValue(); i.add(one))
+		long startTime = System.currentTimeMillis();
+
+		BigInteger bigNum = new BigInteger(Long.MAX_VALUE + "");
+		bigNum.add(BigInteger.ONE);
+
+		int count = 1;
+		while (count <= 5) 
+		{
+			if (isPrime(bigNum)) 
 			{
-				
+				System.out.println(bigNum);
+				count++;
 			}
+
+			bigNum = bigNum.add(BigInteger.ONE);
 		}
+
+		long endTime = System.currentTimeMillis();
+		System.out.println("Time spent is " + (endTime - startTime) + " milliseconds");
+	}
+
+	public static boolean isPrime(BigInteger num) 
+	{
+		if (num.compareTo(BigInteger.ONE) == 0 || num.compareTo(new BigInteger("2")) == 0) 
+			return true;
+
+		BigInteger halfNum = num.divide(new BigInteger("2"));
+
+		for (BigInteger divisor = new BigInteger("2"); divisor.compareTo(halfNum) <= 0; divisor = divisor.add(BigInteger.ONE)) 
+			if (num.remainder(divisor).equals(BigInteger.ZERO)) 
+				return false;
+
+		return true;
 	}
 }

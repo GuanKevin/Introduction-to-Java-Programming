@@ -1,5 +1,7 @@
 package Chapter_10_Object_Oriented_Thinking;
 
+import Utilities.MyInteger;
+
 /**
  * The MyInteger class
  * Design a class named MyInteger. 
@@ -26,7 +28,7 @@ public class Programming_Exercise_03
 	static final int NUMBERTHREE = 3;
 	public static void main(String[] args) 
 	{
-		MyInteger number = new MyInteger();
+		/*MyInteger number = new MyInteger();
 		System.out.println(number.value + " " 
 		+ number.isEven() + " "
 		+ number.isOdd() + " "
@@ -58,6 +60,6 @@ public class Programming_Exercise_03
 				+ numberthree.isEven() + " "
 				+ numberthree.isOdd() + " "
 				+ numberthree.isPrime() + " "
-				+ numberthree.isEqual(numbertwo));
+				+ numberthree.isEqual(numbertwo));*/
 	}
 }

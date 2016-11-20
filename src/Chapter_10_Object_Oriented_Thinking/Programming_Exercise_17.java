@@ -1,6 +1,8 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
+import Utilities.SquareNumbers;
+
 /**
  * Square numbers
  * Find the first ten square numbers that are greater than Long.MAX_VALUE. 

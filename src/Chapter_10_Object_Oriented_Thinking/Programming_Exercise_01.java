@@ -1,4 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
+import Utilities.Time;
 
 /**
  * The Time class
@@ -16,7 +17,8 @@ package Chapter_10_Object_Oriented_Thinking;
  * (using new Time() and new Time(555550000)) and displays their hour, minute, and second in the format hour:minute:second.
  * (Hint: The first two constructors will extract the hour, minute, and second from the elapsed time. 
  * For the no-arg constructor, the current time can be obtained using System.currentTimeMillis(), as shown in Listing 2.7)
- * 02/29/2016
+ * 
+ * 11/19/2016
  * @author kevgu
  *
  */
@@ -26,8 +28,8 @@ public class Programming_Exercise_01
 	public static void main(String[] args) 
 	{
 		Time time = new Time();
-		System.out.println(time.toString());
+		System.out.println("Time now is " + time.getHour() + ":" + time.getMinute() + ":" + time.getSecond());
 		time = new Time(555550000);
-		System.out.println(time.toString());
+		System.out.println("Time now is " + time.getHour() + ":" + time.getMinute() + ":" + time.getSecond());
 	}
 }

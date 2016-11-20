@@ -1,6 +1,8 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
+import Utilities.primeFactors;
+
 /**
  * Displaying the prime factors
  * Write a program that prompts the user to enter a positive integer and displays all its smallest factors in decreasing order. 

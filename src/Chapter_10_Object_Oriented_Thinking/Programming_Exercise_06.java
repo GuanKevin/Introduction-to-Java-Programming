@@ -1,6 +1,8 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
+import Utilities.primeNumbers;
+
 /**
  * Displaying the prime numbers
  * Write a program that displays all the prime numbers less than 120 in decreasing order. 

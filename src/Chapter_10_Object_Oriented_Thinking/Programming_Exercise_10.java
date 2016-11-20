@@ -1,5 +1,8 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
+
+import Utilities.Queue;
+
 import java.util.Random;
 
 /**

@@ -1,6 +1,8 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
+import Utilities.Course;
+
 /**
  * The Course class
  * Revise the Course class as follows: 

@@ -1,4 +1,4 @@
-package Chapter_10_Object_Oriented_Thinking;
+package Utilities;
 
 public class SquareNumbers 
 {

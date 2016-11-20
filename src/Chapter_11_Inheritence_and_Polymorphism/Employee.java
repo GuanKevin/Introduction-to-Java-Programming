@@ -1,5 +1,5 @@
 package Chapter_11_Inheritence_and_Polymorphism;
-import Chapter_10_Object_Oriented_Thinking.MyDate;
+import Utilities.MyDate;
 
 public class Employee extends Person
 {

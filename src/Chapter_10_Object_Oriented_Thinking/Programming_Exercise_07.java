@@ -1,6 +1,9 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
+import Utilities.Account;
+import Utilities.atmMachine;
+
 /**
  * Game: ATM machine
  * Use the Account class created in Programming Exercise 9.7 to simulate an ATM machine. 
