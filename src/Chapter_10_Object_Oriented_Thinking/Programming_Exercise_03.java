@@ -1,7 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
 
-import Utilities.MyInteger;
-
 /**
  * The MyInteger class
  * Design a class named MyInteger. 
@@ -18,7 +16,7 @@ import Utilities.MyInteger;
  * Draw the UML diagram for the class and then implement the class. 
  * Write a client program that tests all methods in the class.
  * 
- * 03/10/2016
+ * 11/20/2016
  * @author kevgu
  *
  */
