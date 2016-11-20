@@ -1,4 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
+import Utilities.BMI;
 
 /**
  * The BMI class
@@ -15,6 +16,7 @@ public class Programming_Exercise_02
 {
 	public static void main(String[] args) 
 	{
-		
+		BMI bmi = new BMI("Really Hungry", 21, 180.0d, 6.0d, 3.0d);
+		System.out.println(bmi.getName() + " age " + bmi.getAge() + " BMI: " + bmi.getBMI());
 	}
 }

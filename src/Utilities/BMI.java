@@ -21,12 +21,25 @@ public class BMI
 		centimeter = ((feet * 12) + inches) * 0.025;
 	}
 	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public int getAge()
+	{
+		return age;
+	}
+	
 	public void setWeight(double weight)
 	{
 		this.weight = weight;
 	}
 	
-	public double getWeight(double )
+	public double getWeight()
+	{
+		return weight;
+	}
 	
 	public double getBMI()
 	{
