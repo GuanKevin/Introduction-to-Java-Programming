@@ -1,4 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
+import Utilities.MyInteger;
 
 /**
  * The MyInteger class
@@ -13,51 +14,19 @@ package Chapter_10_Object_Oriented_Thinking;
  * The methods equals(int) and equals(MyInteger) that return true if the value in this object is equal to the specified value. 
  * A static method parseInt(char[]) that converts an array of numeric characters to an int value. 
  * A static method parseInt(String) that converts a string into an int value. 
- * Draw the UML diagram for the class and then implement the class. 
  * Write a client program that tests all methods in the class.
  * 
- * 11/20/2016
+ * 11/21/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_03 
 {
-	static final int NUMBERTHREE = 3;
 	public static void main(String[] args) 
 	{
-		/*MyInteger number = new MyInteger();
-		System.out.println(number.value + " " 
-		+ number.isEven() + " "
-		+ number.isOdd() + " "
-		+ number.isPrime() + " "
-		+ number.isEqual(10));
-		
-		number = new MyInteger(31);
-		System.out.println(number.value + " " 
-				+ number.isEven() + " "
-				+ number.isOdd() + " "
-				+ number.isPrime() + " "
-				+ number.isEqual(31));
-		
-		MyInteger numbertwo = new MyInteger(15);
-		System.out.println(numbertwo.value + " " 
-				+ numbertwo.isEven() + " "
-				+ numbertwo.isOdd() + " "
-				+ numbertwo.isPrime() + " "
-				+ numbertwo.isEqual(number));
-		
-		char[] mychararray = {'1', '2', '3', '4', '5'};
-		System.out.println(MyInteger.parseInt(mychararray));
-		
-		String mystring = "54321";
-		System.out.println(MyInteger.parseInt(mystring));
-		
-		MyInteger numberthree = new MyInteger(NUMBERTHREE);
-		System.out.println(numberthree.value + " " 
-				+ numberthree.isEven() + " "
-				+ numberthree.isOdd() + " "
-				+ numberthree.isPrime() + " "
-				+ numberthree.isEqual(numbertwo));*/
+		MyInteger myInteger = new MyInteger(100);
+		System.out.println((myInteger.isOdd()) ? "It is an odd number!" : "It is not an odd number!");
+		System.out.println((MyInteger.isEven(myInteger)) ? "It is an even number!" : "It is not an even number!");
 	}
 }
