@@ -1,37 +1,37 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
-
-import Utilities.primeNumbers;
+import Utilities.StackOfIntegers;
 
 /**
  * Displaying the prime numbers
  * Write a program that displays all the prime numbers less than 120 in decreasing order. 
  * Use the StackOfIntegers class to store the prime numbers (e.g., 2, 3, 5, ...) and retrieve and display them in reverse order.
  * 
- * 03/10/2016
+ * 11/23/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_06 
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter a number: ");
-		int number = input.nextInt();
-		primeNumbers pn;
+		final int LIMIT = 120;
+		StackOfIntegers primeNumStack = new StackOfIntegers();
 		
-		if (number <= 0)
-		{
-			pn = new primeNumbers();
-		}
-		else
-		{
-			pn = new primeNumbers(number);
-		}
+		for (int i = 2; i <= LIMIT; i++)
+			if (isPrime(i))
+				primeNumStack.push(i);
 		
-		pn.displayPrimeNumbers();
+		while (primeNumStack.getSize() != 0)
+			System.out.print(primeNumStack.pop() + " ");
+	}
+	
+	public static boolean isPrime(int number)
+	{
+		for (int i = 2; i <= Math.sqrt(number); i++)
+			if ((number % i) == 0)
+				return false;
 		
+		return true;
 	}
 }
