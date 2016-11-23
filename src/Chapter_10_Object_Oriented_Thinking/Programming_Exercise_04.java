@@ -12,7 +12,7 @@ import Utilities.MyPoint;
  * A method named distance that returns the distance from this point to another point with specified x- and y-coordinates.
  * Write a test program that creates the two points (0, 0) and (10, 30.5) and displays the distance between them.
  * 
- * 11/10/2016
+ * 11/21/2016
  * @author kevgu
  *
  */
@@ -21,7 +21,8 @@ public class Programming_Exercise_04
 {
 	public static void main(String[] args) 
 	{
-		MyPoint myPoint = new MyPoint();
-		System.out.print("Distance: " + myPoint.distance(10, 30.5));
+		MyPoint pointObj1 = new MyPoint();
+		MyPoint pointObj2 = new MyPoint(45.1 , 74.6);
+		System.out.print("Distance: " + pointObj1.distance(pointObj2));
 	}
 }
