@@ -20,6 +20,16 @@ public class Programming_Exercise_09
 {
 	public static void main(String[] args) 
 	{
+		Course course = new Course("Java");
 		
+		course.addStudent("Kevin");
+		course.addStudent("Adriana");
+		course.addStudent("Daniel");
+		course.dropStudent("Kevin");
+		
+		String[] students = course.getStudents();
+		
+		for (int i = 0; i < course.getNumberOfStudents(); i++)
+			System.out.print(students[i] + " ");
 	}
 }

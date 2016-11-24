@@ -1,9 +1,4 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
-
-import Utilities.Queue;
-
-import java.util.Random;
 
 /**
  * The Queue class
@@ -23,43 +18,15 @@ import java.util.Random;
  * After an element is removed from the beginning of the array, you need to shift all elements in the array one position the left. 
  * Write a test program that adds 20 numbers from 1 to 20 into the queue and removes these numbers and displays them.
  * 
- * 03/10/2016
+ * 11/24/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_10 
 {
-	Scanner input = new Scanner(System.in);
-	static final int INITIAL_SIZE = 8;
 	public static void main(String[] args) 
 	{
-		Queue myqueue = new Queue(INITIAL_SIZE);
-		//Write a test program that adds 20 numbers from 1 to 20 into the queue 
-		//and removes these numbers and displays them.
-		addToQueue(myqueue, 5);
-		deQueue(myqueue);
-	}
-	
-	public static void deQueue(Queue myqueue)
-	{
-		while (myqueue.getSize() != 0)
-		{
-			myqueue.dequeue();
-		}
-	}
-	
-	public static void addToQueue(Queue myqueue, int size)
-	{
-		System.out.print("Adding to queue: ");
-		Random rand = new Random();
-		int number;
-		for (int i = 0; i < size; i++)
-		{
-			number = rand.nextInt(25) + 1;
-			System.out.print(number + " ");
-			myqueue.enqueue(number);
-		}
-		System.out.println();
+		
 	}
 }
