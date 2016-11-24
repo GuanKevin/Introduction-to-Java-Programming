@@ -1,5 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
-
+import Utilities.Course;
 
 /**
  * The Course class
@@ -20,6 +20,6 @@ public class Programming_Exercise_09
 {
 	public static void main(String[] args) 
 	{
-
+		
 	}
 }
