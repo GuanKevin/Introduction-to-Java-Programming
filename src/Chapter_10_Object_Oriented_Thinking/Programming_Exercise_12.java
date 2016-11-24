@@ -24,7 +24,7 @@ import java.util.Scanner;
  * If a dashed line intersects a side twice, then the point must be outside the triangle. 
  * For the algorithm of finding the intersecting point of two lines, see Programming Exercise 3.25.)
  * 
- * 03/10/2016
+ * 11/24/2016
  * @author kevgu
  *
  */

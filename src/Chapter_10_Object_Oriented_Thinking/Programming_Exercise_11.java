@@ -1,4 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
+import Utilities.Circle2D;
 
 /**
  * Geometry: the Circle2D class
@@ -16,7 +17,7 @@ package Chapter_10_Object_Oriented_Thinking;
  * and displays the result of c1.contains(3, 3), c1.contains(new Circle2D(4, 5, 10.5)), 
  * and c1.overlaps(new Circle2D(3, 5, 2.3)).
  * 
- * 03/10/2016
+ * 11/24/2016
  * @author kevgu
  *
  */
@@ -25,6 +26,12 @@ public class Programming_Exercise_11
 {
 	public static void main(String[] args) 
 	{
+		Circle2D c1 = new Circle2D(2, 2, 5.5);
 		
+		System.out.print("Area: " + c1.getArea() 
+				+ "\nPerimeter: " + c1.getPerimeter()
+				+ "\nContains Point: " + (c1.contains(3, 3) ? "True" : "False")
+				+ "\nContains Circle: " + ((c1.contains(new Circle2D(4, 5, 10.5)) ? "True" : "False"))
+				+ "\nOverlaps: " + (c1.overlaps(new Circle2D(3, 5, 2.3)) ? "True" : " False"));
 	}
 }
