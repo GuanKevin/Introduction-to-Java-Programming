@@ -1,4 +1,7 @@
 package Chapter_10_Object_Oriented_Thinking;
+import java.util.Random;
+
+import Utilities.Queue;
 
 /**
  * The Queue class
@@ -27,6 +30,28 @@ public class Programming_Exercise_10
 {
 	public static void main(String[] args) 
 	{
+		Queue queue = new Queue();
 		
+		storeNumbers(queue, 20);
+		removeNumbers(queue);
+	}
+	
+	public static void removeNumbers(Queue queue)
+	{
+		while (!queue.isEmpty())
+			System.out.print(queue.dequeue() + " ");
+	}
+	
+	public static void storeNumbers(Queue queue, int size)
+	{
+		Random random = new Random();
+		
+		for (int i = 0; i < size; i++)
+		{
+			int number = random.nextInt(20) + 1;
+			System.out.print(number + " ");
+			queue.enqueue(number);
+		}
+		System.out.println();
 	}
 }
