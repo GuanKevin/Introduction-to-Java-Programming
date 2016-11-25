@@ -1,5 +1,4 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
 
 /**
  * Geometry: the Triangle2D class
@@ -31,7 +30,6 @@ import java.util.Scanner;
 
 public class Programming_Exercise_12 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		
