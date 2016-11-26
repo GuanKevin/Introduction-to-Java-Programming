@@ -1,5 +1,6 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
+
+import Utilities.MyString2;
 
 /**
  * Implement the String class
@@ -12,16 +13,17 @@ import java.util.Scanner;
  * public char[] toChars();
  * public static MyString2 valueOf(boolean b);
  * 
- * 03/10/2016
+ * 11/25/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_23 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		MyString2 obj = new MyString2("Hello World!");
+		obj = obj.substring(3);
+		System.out.println(obj.getString());
 	}
 }
