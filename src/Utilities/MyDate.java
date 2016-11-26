@@ -1,55 +1,76 @@
 package Utilities;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MyDate 
 {
-	Calendar calendar;
-	int year;
-	int month;
-	int day;
+	private int year, month, day;
 	
 	public MyDate()
 	{
-		calendar = Calendar.getInstance();
-		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH);
-		day = calendar.get(Calendar.DAY_OF_MONTH);
+		GregorianCalendar date = new GregorianCalendar();
+		
+		year = date.get(Calendar.YEAR);
+		month = date.get(Calendar.MONTH);
+		day = date.get(Calendar.DAY_OF_MONTH);
 	}
 	
-	public MyDate(long timeInMilliseconds)
+	public MyDate(long elapsedTime)
 	{
-		long time = System.currentTimeMillis() + timeInMilliseconds;
-		calendar = Calendar.getInstance();
-		calendar.setTimeInMillis(time);
-		year = calendar.get(Calendar.YEAR);
-		month = calendar.get(Calendar.MONTH);
-		day = calendar.get(Calendar.DAY_OF_MONTH);
+		GregorianCalendar date = new GregorianCalendar();
+		
+		date.setTimeInMillis(elapsedTime);
+		year = date.get(Calendar.YEAR);
+		month = date.get(Calendar.MONTH);
+		day = date.get(Calendar.DAY_OF_MONTH);
 	}
 	
-	public MyDate(int year, int month, int day)
+	public MyDate(int year, int month, int day) 
 	{
 		this.year = year;
-		this.month = month;
-		this.day = day;
-	}
-	
-	public int getYear()
-	{
-		return year;
-	}
-	
-	public int getMonth()
-	{
-		return month;
-	}
-	
-	public int getDay()
-	{
-		return day;
+	    this.month = month;
+	    this.day = day;
 	}
 	
 	public void setDate(long elapsedTime)
 	{
-		//MyDate newDate = new MyDate(elapsedTime);
+		GregorianCalendar date = new GregorianCalendar();
+		
+		date.setTimeInMillis(elapsedTime);
+		year = date.get(Calendar.YEAR);
+		month = date.get(Calendar.MONTH);
+		day = date.get(Calendar.DAY_OF_MONTH);
 	}
+
+	public int getYear() 
+	{
+		return year;
+	}
+
+	public void setYear(int year) 
+	{
+		this.year = year;
+	}
+
+	public int getMonth() 
+	{
+		return month;
+	}
+
+	public void setMonth(int month) 
+	{
+		this.month = month;
+	}
+
+	public int getDay() 
+	{
+		return day;
+	}
+
+	public void setDay(int day) 
+	{
+		this.day = day;
+	}
+	
+	
 }

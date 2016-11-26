@@ -1,6 +1,4 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
-
 import Utilities.MyDate;
 
 /**
@@ -16,19 +14,18 @@ import Utilities.MyDate;
  * (Hint: The first two constructors will extract the year, month, and day from the elapsed time. 
  * For example, if the elapsed time is 561555550000 milliseconds, the year is 1987, the month is 9, and the day is 18. You may use the GregorianCalendar class discussed in Programming Exercise 9.5 to simplify coding.)
  * 
- * 03/04/2016
+ * 11/25/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_14
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		MyDate newDate = new MyDate();
-		System.out.println(newDate.getMonth() + "\\" + newDate.getDay() + "\\" + newDate.getYear());
-		newDate = new MyDate(34355555133101L);
-		System.out.println(newDate.getMonth() + "\\" + newDate.getDay() + "\\" + newDate.getYear());
+		MyDate d1 = new MyDate();
+		System.out.println(d1.getYear() + "/" + d1.getMonth() + "/" + d1.getDay());
+		d1 = new MyDate(34355555133101L);
+		System.out.print(d1.getYear() + "/" + d1.getMonth() + "/" + d1.getDay());
 	}
 }
