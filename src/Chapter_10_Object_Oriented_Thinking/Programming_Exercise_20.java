@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * In order to get better precision, use BigDecimal with 25 digits of precision in the computation. 
  * Write a program that displays the e value for i = 100, 200, . . . , and 1000.
  * 
- * 11/10/2016
+ * 11/26/2016
  * @author kevgu
  *
  */
