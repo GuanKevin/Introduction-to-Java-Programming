@@ -1,6 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
 
-import Utilities.MyStringBuilder2;
 
 /**
  * Implement the StringBuilder class
@@ -23,7 +22,6 @@ public class Programming_Exercise_28
 {
 	public static void main(String[] args) 
 	{
-		MyStringBuilder2 myString = new MyStringBuilder2("hevbllo");
-		System.out.println(myString.insert(3, new MyStringBuilder2("123")));
+		
 	}
 }

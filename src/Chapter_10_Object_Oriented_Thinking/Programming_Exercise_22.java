@@ -1,5 +1,6 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
+
+import Utilities.MyString1;
 
 /**
  * Implement the String class
@@ -13,16 +14,15 @@ import java.util.Scanner;
  * public boolean equals(MyString1 s);
  * public static MyString1 valueOf(int i);
  * 
- * 03/10/2016
+ * 11/26/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_22 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		System.out.print(MyString1.valueOf(123).charAt(0));
 	}
 }
