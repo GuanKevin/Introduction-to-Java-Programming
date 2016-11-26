@@ -5,7 +5,7 @@ import java.math.BigInteger;
  * Large prime numbers
  * Write a program that finds five prime numbers larger than Long.MAX_VALUE.
  * 
- * 03/10/2016
+ * 11/26/2016
  * @author kevgu
  *
  */
@@ -14,8 +14,6 @@ public class Programming_Exercise_18
 {
 	public static void main(String[] args) 
 	{
-		long startTime = System.currentTimeMillis();
-
 		BigInteger bigNum = new BigInteger(Long.MAX_VALUE + "");
 		bigNum.add(BigInteger.ONE);
 
@@ -30,16 +28,10 @@ public class Programming_Exercise_18
 
 			bigNum = bigNum.add(BigInteger.ONE);
 		}
-
-		long endTime = System.currentTimeMillis();
-		System.out.println("Time spent is " + (endTime - startTime) + " milliseconds");
 	}
 
 	public static boolean isPrime(BigInteger num) 
 	{
-		if (num.compareTo(BigInteger.ONE) == 0 || num.compareTo(new BigInteger("2")) == 0) 
-			return true;
-
 		BigInteger halfNum = num.divide(new BigInteger("2"));
 
 		for (BigInteger divisor = new BigInteger("2"); divisor.compareTo(halfNum) <= 0; divisor = divisor.add(BigInteger.ONE)) 
