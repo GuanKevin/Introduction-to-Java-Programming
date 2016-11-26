@@ -19,37 +19,40 @@ public class MyRectangle2D
 	
 	public double getArea()
 	{
-		return getWidth() * getHeight();
+		return width * height;
 	}
 	
 	public double getPerimeter()
 	{
-		return (getWidth() * 2) + (getHeight() * 2); 
+		return (width * 2) + (height * 2); 
 	}
 	
 	public boolean contains(double x, double y)
 	{
-		return (getWidth() > 0 && 
-				getHeight() > 0 && 
+		return (width > 0 && 
+				height > 0 && 
 				x > getX() && 
-				x < (getX() + getWidth()) && 
+				x < (getX() + width) && 
 				y >= getY() && 
-				y < (getY() + getHeight()));
+				y < (getY() + height));
 	}
 	
 	public boolean contains(MyRectangle2D r)
 	{
-		return (getWidth() > 0 && 
-				getHeight() > 0 && 
-				r.getX() > getX() && 
-				r.getX() < (getX() + getWidth()) && 
-				r.getY() >= getY() && 
-				r.getY() < (getY() + getHeight()));
+		return (width > 0 && 
+				height > 0 && 
+				r.getX() > x && 
+				r.getX() < (x + width) && 
+				r.getY() >= y && 
+				r.getY() < (y + height));
 	}
 	
 	public boolean overlaps(MyRectangle2D r)
 	{
-		return x < r.x + r.width && x + width > r.x && y < r.y + r.height && y + height > r.y;
+		return 	(x < r.x + r.width) && 
+				(x + width > r.x) && 
+				(y < r.y + r.height) && 
+				(y + height > r.y);
 	}
 
 	public double getX() 
@@ -87,6 +90,4 @@ public class MyRectangle2D
 	public void setHeight(double height) {
 		this.height = height;
 	}
-	
-	
 }

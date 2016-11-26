@@ -1,4 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
+import Utilities.MyRectangle2D;
 
 /**
  * Geometry: the MyRectangle2D class
@@ -13,9 +14,10 @@ package Chapter_10_Object_Oriented_Thinking;
  * A method contains(double x, double y) that returns true if the specified point (x, y) is inside this rectangle (see Figure 10.24a).
  * A method contains(MyRectangle2D r) that returns true if the specified rectangle is inside this rectangle (see Figure 10.24b).
  * A method overlaps(MyRectangle2D r) that returns true if the specified rectangle overlaps with this rectangle (see Figure 10.24c).
- * Write a test program that creates a MyRectangle2D object r1 (new MyRectangle2D(2, 2, 5.5, 4.9)), displays its area and perimeter, and displays the result of r1.contains(3, 3), r1.contains(new MyRectangle2D(4, 5, 10.5, 3.2)), and r1.overlaps(new MyRectangle2D(3, 5, 2.3, 5.4)).
+ * Write a test program that creates a MyRectangle2D object r1 (new MyRectangle2D(2, 2, 5.5, 4.9)), displays its area and perimeter, and displays the result of r1.contains(3, 3), 
+ * r1.contains(new MyRectangle2D(4, 5, 10.5, 3.2)), and r1.overlaps(new MyRectangle2D(3, 5, 2.3, 5.4)).
  * 
- * 11/10/2016
+ * 11/25/2016
  * @author kevgu
  *
  */
@@ -24,6 +26,11 @@ public class Programming_Exercise_13
 {
 	public static void main(String[] args) 
 	{
-		
+		MyRectangle2D r1 = new MyRectangle2D(2, 2, 5.5, 4.9);
+		System.out.print("Area: " + r1.getArea() 
+						+ "\nPerimeter: " + r1.getPerimeter()
+						+ "\nContains Point: " + r1.contains(3, 3)
+						+ "\nContains Rectangle: " + r1.contains(new MyRectangle2D(4, 5, 10.5, 3.2))
+						+ "\nOverlaps: " + r1.overlaps(new MyRectangle2D(3, 5, 2.3, 5.4)));
 	}
 }
