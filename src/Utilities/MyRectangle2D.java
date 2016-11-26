@@ -1,5 +1,7 @@
 package Utilities;
 
+import java.util.Arrays;
+
 public class MyRectangle2D 
 {
 	private double x, y, width, height;
@@ -53,6 +55,32 @@ public class MyRectangle2D
 				(x + width > r.x) && 
 				(y < r.y + r.height) && 
 				(y + height > r.y);
+	}
+	
+	public static MyRectangle2D getRectangle(double[][] points) 
+	{
+		double minX = Double.MAX_VALUE;
+		double maxX = -Double.MAX_VALUE;
+		double minY = Double.MAX_VALUE;
+		double maxY = -Double.MAX_VALUE;
+		
+		for (int i = 0; i < points.length; i++) 
+		{
+		    double x = points[i][0];
+		    double y = points[i][1];
+		    minX = Math.min(minX, x);
+		    maxX = Math.max(maxX, x);
+		    minY = Math.min(minY, y);
+		    maxY = Math.max(maxY, y);    
+		}
+
+		double width = maxX - minX;
+		double height = maxY - minY;
+		
+		double centerX = ((maxX + minX) / 2); 
+		double centerY = ((maxY + minY) / 2);
+		
+		return new MyRectangle2D(centerX, centerY, width, height);
 	}
 
 	public double getX() 

@@ -1,5 +1,7 @@
 package Chapter_10_Object_Oriented_Thinking;
+
 import java.util.Scanner;
+import Utilities.MyRectangle2D;
 
 /**
  * Geometry: the bounding rectangle
@@ -11,17 +13,31 @@ import java.util.Scanner;
  * Write a test program that prompts the user to enter five points and 
  * displays the bounding rectangle’s center, width, and height.
  * 
- * 11/10/2016
+ * 11/25/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_15 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		System.out.print("Enter 5 given points: ");
+        Scanner input = new Scanner(System.in);
+        
+        double[][] points = new double[5][2];
+        
+        for (int i = 0; i < points.length; i++) 
+        {
+            points[i][0] = input.nextDouble();
+            points[i][1] = input.nextDouble();
+        }
+         
+        MyRectangle2D r1 = MyRectangle2D.getRectangle(points);
+        System.out.println("Center point: " + r1.getX() + " " + r1.getY());
+        System.out.println("width = " + r1.getWidth());
+        System.out.println("height = " + r1.getHeight());
+        
+        input.close();
 	}
-
 }
