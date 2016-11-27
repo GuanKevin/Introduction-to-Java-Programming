@@ -1,5 +1,4 @@
 package Chapter_10_Object_Oriented_Thinking;
-import java.util.Scanner;
 
 /**
  * Implement the StringBuilder class
@@ -14,14 +13,13 @@ import java.util.Scanner;
  * public MyStringBuilder1 substring(int begin, int end);
  * public String toString();
  * 
- * 03/10/2016
+ * 11/27/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_27 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		
