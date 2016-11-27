@@ -1,4 +1,4 @@
-package Chapter_11_Inheritence_and_Polymorphism;
+package Utilities;
 
 public class checkingsAccount extends Account 
 {
@@ -21,12 +21,12 @@ public class checkingsAccount extends Account
 	@Override
 	public void withdraw(double withdraw)
 	{
-		if ((super.accountBalance - withdraw) < -1000)
+		if ((super.getBalance() - withdraw) < -1000)
 		{
 			System.out.println("Error! Overdraft Limit!");
 		}
 		else
-			super.accountBalance -= withdraw;
+			super.balance -= withdraw;
 	}
 	
 	@Override

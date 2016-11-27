@@ -1,6 +1,9 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 import java.util.Scanner;
 
+import Utilities.GeometricObject;
+import Utilities.Triangle;
+
 /**
  * The Triangle class
  * Design a class named Triangle that extends GeometricObject. 

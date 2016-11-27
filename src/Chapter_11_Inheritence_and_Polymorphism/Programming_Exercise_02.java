@@ -1,6 +1,12 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 import java.util.Scanner;
 
+import Utilities.Employee;
+import Utilities.Faculty;
+import Utilities.Person;
+import Utilities.Staff;
+import Utilities.Student;
+
 /**
  * The Person, Student, Employee, Faculty, and Staff classes
  * Design a class named Person and its two subclasses named Student and Employee. 

@@ -1,6 +1,8 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 import java.util.Scanner;
 
+import Utilities.Account;
+
 /**
  * New Account class
  * An Account class was specified in Programming Exercise 9.7. Design a new Account class as follows:

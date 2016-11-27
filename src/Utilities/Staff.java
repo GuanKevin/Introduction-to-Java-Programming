@@ -1,4 +1,4 @@
-package Chapter_11_Inheritence_and_Polymorphism;
+package Utilities;
 
 public class Staff extends Employee
 {

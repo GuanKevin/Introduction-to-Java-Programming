@@ -1,6 +1,8 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 import java.util.Scanner;
 
+import Utilities.myStack;
+
 /**
  * Implement MyStack using inheritance
  * In Listing 11.10, MyStack is implemented using composition. 
