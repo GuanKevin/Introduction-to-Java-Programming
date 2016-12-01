@@ -1,6 +1,5 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 import java.util.Scanner;
-
 /**
  * Area of a convex polygon
  * A polygon is convex if it contains any line segments that connects two points of the polygon. 
@@ -13,9 +12,29 @@ import java.util.Scanner;
 
 public class Programming_Exercise_15 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter number of points in the polygon:");
+		int points = scanner.nextInt();
+		double[] xpoints = new double[points];
+		double[] ypoints = new double[points];
+		System.out.println("Enter the " + points + " points in the polygon clockwise:");
+		for(int i = 0; i < points; i++)
+		{
+			System.out.print("x-coordinate: ");
+			xpoints[i] = scanner.nextDouble();
+			System.out.print("y-coordinate: ");
+			ypoints[i] = scanner.nextDouble();
+		}
+        double sum = 0.0;
+        for (int i = 0; i < points; i++) {
+        	if(i == points - 1)
+        		sum = sum + (xpoints[i] * ypoints[0]) - (ypoints[i] * xpoints[0]);
+        	else
+        		sum = sum + (xpoints[i] * ypoints[i+1]) - (ypoints[i] * xpoints[i+1]);
+        }
+        System.out.println("The area of the polygon is " + (Math.abs(sum) * .5));
 		
 	}
 }

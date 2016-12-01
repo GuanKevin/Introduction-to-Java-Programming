@@ -1,7 +1,7 @@
 package Chapter_11_Inheritence_and_Polymorphism;
+
 import java.util.Scanner;
 
-import Utilities.GeometricObject;
 import Utilities.Triangle;
 
 /**
@@ -22,35 +22,25 @@ import Utilities.Triangle;
  * The program should create a Triangle object with these sides and set the color and filled properties using the input. 
  * The program should display the area, perimeter, color, and true or false to indicate whether it is filled or not.
  * 
- * 03/15/2016
+ * 12/01/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_01
-{
-	static Scanner input = new Scanner(System.in);
-	static double side1, side2, side3;
-	static String color;
-	static boolean isFilled;
-	
+{	
 	public static void main(String[] args) 
 	{
-		requestUserInputs();
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the three sides of a triangle: ");
+		Triangle myTriangle = new Triangle(input.nextDouble(), input.nextDouble(), input.nextDouble());
+		myTriangle.setColor("red");
+		myTriangle.setFilled(true);
+		System.out.println(myTriangle.toString()
+				+ "\nArea: " + myTriangle.getArea()
+				+ "\nColor: " + myTriangle.getColor());
+
 		
-		GeometricObject myTriangle = new Triangle(side1, side2, side3, color, isFilled);
-		System.out.println(myTriangle.toString());
-	}
-	
-	public static void requestUserInputs()
-	{
-		System.out.println("Enter 3 sides of the triangle: ");
-		side1 = input.nextDouble();
-		side2 = input.nextDouble();
-		side3 = input.nextDouble();
-		System.out.println("Enter the color of the triangle: ");
-		color = input.next();
-		System.out.println("Enter boolean value for whether the triangle is filled: ");
-		isFilled = input.nextBoolean();
+		input.close();
 	}
 }

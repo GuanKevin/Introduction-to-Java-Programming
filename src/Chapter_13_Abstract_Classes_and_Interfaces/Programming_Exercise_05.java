@@ -1,5 +1,4 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
-import java.util.Scanner;
 
 /**
  * Enable GeometricObject comparable
@@ -13,7 +12,6 @@ import java.util.Scanner;
 
 public class Programming_Exercise_05
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		
