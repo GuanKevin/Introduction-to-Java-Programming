@@ -27,7 +27,7 @@ public class Programming_Exercise_09
 		course.addStudent("Daniel");
 		course.dropStudent("Kevin");
 		
-		String[] students = course.getStudents();
+		String[] students = course.getStudentsArray();
 		
 		for (int i = 0; i < course.getNumberOfStudents(); i++)
 			System.out.print(students[i] + " ");

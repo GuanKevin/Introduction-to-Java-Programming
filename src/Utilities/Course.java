@@ -1,36 +1,48 @@
 package Utilities;
 
+import java.util.ArrayList;
+
 public class Course 
 {
 	private String courseName;
-	private String[] students = new String[3];
-	private int numberOfStudents;
+	private ArrayList<String> studentsList = new ArrayList<>();
 
+	public Course()
+	{
+		this ("Java 101");
+	}
+	
 	public Course(String courseName) 
 	{
 		this.courseName = courseName;
 	}
 
+	/**
+	 * Add a student (element) into the next available index in the array list
+	 * 
+	 * @param student
+	 */
 	public void addStudent(String student) 
-	{
-		if (numberOfStudents >= students.length)
-		{
-			String[] temp = new String[students.length * 2];
-			System.arraycopy(student, 0, temp, 0, students.length);
-			students = temp;
-		}
-		
-		students[numberOfStudents++] = student;
+	{		
+		studentsList.add(student);
 	}
 
-	public String[] getStudents() 
+	public String[] getStudentsArray() 
 	{
-		return students;
+		String[] list = new String[studentsList.size()];
+		list = studentsList.toArray(list);
+		
+		return list;
+	}
+	
+	public ArrayList<String> getStudentsList()
+	{
+		return studentsList;
 	}
 
 	public int getNumberOfStudents() 
 	{
-		return numberOfStudents;
+		return studentsList.size();
 	}
 
 	public String getCourseName() 
@@ -40,23 +52,11 @@ public class Course
 
 	public void dropStudent(String student) 
 	{
-		String[] temp = new String[students.length];
-		int index = 0;
-		
-		for (int i = 0; i < numberOfStudents; i++)
-			if (!students[i].equals(student))
-			{
-				temp[index] = students[i];
-				index++;
-			}
-		
-		students = temp;
-		numberOfStudents--;
+		studentsList.remove(student);
 	}
 	
 	public void clear()
 	{
-		numberOfStudents = 0;
-		students = new String[5];
+		studentsList.clear();
 	}
 }
