@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Account
 {
-	private int accountNumber;
-	private double balance;
-	private double annualInterestRate;
+	protected int accountNumber;
+	protected double balance;
+	protected double annualInterestRate;
 	Date dateCreated = new Date();
 	
 	public Account()
 	{
-		this(0, 0, 5, new Date());
+		this(07, 0.15d, 5, new Date());
 	}
 	
 	public Account(int accountNumber, double balance, double annualInterestRate, Date dateCreated)
@@ -78,5 +78,9 @@ public class Account
 		balance += deposit;
 		return (getBalance() + deposit);
 	}
+	
+	public String toString()
+	{
+		return "Account # " + getAccNum() + "\nBalance $" + getBalance() + " as of " + new Date() + ".";
+	}
 }
-

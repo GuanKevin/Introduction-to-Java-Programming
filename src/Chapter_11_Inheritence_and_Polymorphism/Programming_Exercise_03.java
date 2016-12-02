@@ -1,5 +1,9 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 
+import Utilities.Account;
+import Utilities.CheckingAccount;
+import Utilities.SavingsAccount;
+
 /**
  * Subclasses of Account
  * In Programming Exercise 9.7, the Account class was defined to model a bank account. 
@@ -18,6 +22,8 @@ public class Programming_Exercise_03
 {
 	public static void main(String[] args) 
 	{
-
+		Account myAccount = new CheckingAccount();
+		myAccount = new SavingsAccount();
+		System.out.println(myAccount.withdraw(.16d));
 	}
 }
