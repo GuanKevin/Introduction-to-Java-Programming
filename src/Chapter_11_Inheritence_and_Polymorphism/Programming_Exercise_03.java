@@ -22,8 +22,10 @@ public class Programming_Exercise_03
 {
 	public static void main(String[] args) 
 	{
-		Account myAccount = new CheckingAccount();
+		Account myAccount = new Account();
+		myAccount = new CheckingAccount();
 		myAccount = new SavingsAccount();
-		System.out.println(myAccount.withdraw(.16d));
+		
+		System.out.println(myAccount.withdraw(110.15) + "\n" + myAccount.toString());
 	}
 }

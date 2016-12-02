@@ -11,7 +11,7 @@ public class Account
 	
 	public Account()
 	{
-		this(07, 0.15d, 5, new Date());
+		this(07, 12.15, 5, new Date());
 	}
 	
 	public Account(int accountNumber, double balance, double annualInterestRate, Date dateCreated)
@@ -69,14 +69,12 @@ public class Account
 	
 	public double withdraw(double withdraw) 
 	{
-		balance -= withdraw;
-		return (getBalance() - withdraw);
+		return (balance -= withdraw);
 	}
 	
 	public double deposit(double deposit)
 	{
-		balance += deposit;
-		return (getBalance() + deposit);
+		return (balance += deposit);
 	}
 	
 	public String toString()

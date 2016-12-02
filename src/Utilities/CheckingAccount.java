@@ -6,7 +6,7 @@ public class CheckingAccount extends Account
 {
 	public CheckingAccount()
 	{
-		this(07, 1110.15d, 5, new Date());
+		this(06, 1110.15d, 5, new Date());
 	}
 	
 	public CheckingAccount(int accountNumber, double balance, double annualInterestRate, Date dateCreated)
