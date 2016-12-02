@@ -1,7 +1,5 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 
-import java.util.Scanner;
-
 import Utilities.Triangle;
 
 /**
@@ -31,16 +29,9 @@ public class Programming_Exercise_01
 {	
 	public static void main(String[] args) 
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter the three sides of a triangle: ");
-		Triangle myTriangle = new Triangle(input.nextDouble(), input.nextDouble(), input.nextDouble());
+		Triangle myTriangle = new Triangle(2.4, 6.7, 4.9);
 		myTriangle.setColor("red");
-		myTriangle.setFilled(true);
 		System.out.println(myTriangle.toString()
-				+ "\nArea: " + myTriangle.getArea()
 				+ "\nColor: " + myTriangle.getColor());
-
-		
-		input.close();
 	}
 }

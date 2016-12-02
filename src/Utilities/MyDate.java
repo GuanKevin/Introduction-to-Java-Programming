@@ -72,5 +72,8 @@ public class MyDate
 		this.day = day;
 	}
 	
-	
+	public String toString()
+	{
+		return getMonth() + "/" + getDay() + "/" + getYear();
+	}
 }
