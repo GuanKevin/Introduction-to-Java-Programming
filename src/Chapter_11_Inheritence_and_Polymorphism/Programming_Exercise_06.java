@@ -19,24 +19,8 @@ import java.util.ArrayList;
 
 public class Programming_Exercise_06 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		ArrayList<Object> objectList = new ArrayList<Object>();
-		objectList.add(new Account());
-		objectList.add(new MyDate());
-		objectList.add("Hello World!");
 
-		printString(objectList);
-	}
-	
-	//In order to override an ArrayList, which is normally NOT possible,
-	//You will need to extend the ArrayList
-	public static void printString(ArrayList<Object> objectList)
-	{
-		for (int i = 0; i < objectList.size(); i++)
-		{
-			System.out.println(objectList.get(i).toString());
-		}
 	}
 }

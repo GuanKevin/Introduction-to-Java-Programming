@@ -1,127 +1,82 @@
 package Utilities;
-import java.util.ArrayList;
+
 import java.util.Date;
 
-public class Account 
+public class Account
 {
-	private String customerName;
-	static protected int accountNumber;
-	int accountID;
-	protected double balance = 0;
-	private double annualInterestRate = 3.5;
-	protected ArrayList<Double> transactions;
-	private int id;
+	private int accountNumber;
+	private double balance;
+	private double annualInterestRate;
 	Date dateCreated = new Date();
 	
 	public Account()
 	{
-		this (100);
+		this(0, 0, 5, new Date());
 	}
 	
-	public Account(double accountBalance)
+	public Account(int accountNumber, double balance, double annualInterestRate, Date dateCreated)
 	{
-		dateCreated = new Date();
-		this.balance = accountBalance;
-		++accountNumber;
-	}
-	
-	public Account(int id, double balance)
-	{
-		this.id = id;
+		this.accountNumber = accountNumber;
 		this.balance = balance;
-	}
-	
-	public Account(String customerName, int accountID, double accountBalance)
-	{
-		dateCreated = new Date();
-		this.customerName = customerName;
-		this.balance = accountBalance;
-		this.accountID = accountID;
-		transactions = new ArrayList<>();
-	}
-	
-	public int getId() {
-		return id;
+		this.annualInterestRate = annualInterestRate;
+		this.dateCreated = dateCreated; 
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public ArrayList<Double> getTransactions() 
-	{
-		return new ArrayList<Double>(transactions);
-	}
-	
-	public void withdraw(double withdraw)
-	{
-		transactions.add(new Double(-withdraw));
-		balance -= withdraw;
-	}
-	
-	public void deposit(double deposit)
-	{
-		transactions.add(new Double(deposit));
-		balance += deposit;
-	}
-	
-	public String getCustomerName()
-	{
-		return customerName;
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "Account Number: " + accountID
-				+ "\nBalance: " + getBalance()
-				+ "\nAnnual Interest Rate: " + getAnnualInterestRate() + "%"
-				+ "\nDate Created: " + dateCreated();
-	}
-	
-	public int getID()
+	public int getAccNum() 
 	{
 		return accountNumber;
 	}
-	
-	public double getBalance()
+
+	public void setAccNum(int accountNumber) 
+	{
+		this.accountNumber = accountNumber;
+	}
+
+	public double getBalance() 
 	{
 		return balance;
 	}
-	
-	public void setBalance(double accountBalance)
+
+	public void setBalance(double balance) 
 	{
-		this.balance = accountBalance;
+		this.balance = balance;
 	}
-	
-	public void setID(double accountBalance)
-	{
-		this.balance = accountBalance;
-	}
-	
-	public double getAnnualInterestRate()
+
+	public double getAnnualInterestRate() 
 	{
 		return annualInterestRate;
 	}
-	
-	public void setAnnualInterestRate(double annualInterestRate)
+
+	public void setAnnualInterestRate(double annualInterestRate) 
 	{
 		this.annualInterestRate = annualInterestRate;
 	}
 	
-	public String dateCreated()
+	public Date getDataCreated()
 	{
-		return dateCreated.toString();
+		return dateCreated;
 	}
 	
 	public double getMonthlyInterestRate()
 	{
-		return annualInterestRate/12;
+		return (getAnnualInterestRate() / 100 / 12);
 	}
 	
 	public double getMonthlyInterest()
 	{
-		balance += balance * getMonthlyInterestRate();
-		return balance;
+		return (getBalance() * getMonthlyInterestRate());
+	}
+	
+	public double withdraw(double withdraw) 
+	{
+		balance -= withdraw;
+		return (getBalance() - withdraw);
+	}
+	
+	public double deposit(double deposit)
+	{
+		balance += deposit;
+		return (getBalance() + deposit);
 	}
 }
+

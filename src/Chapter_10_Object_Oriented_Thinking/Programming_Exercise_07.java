@@ -1,4 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
+import java.util.Date;
 import java.util.Scanner;
 
 import Utilities.Account;
@@ -26,7 +27,7 @@ public class Programming_Exercise_07
 		Scanner input = new Scanner(System.in);
 		
 		for (int i = 0; i < account.length; i++)
-			account[i] = new Account(i, 100);
+			account[i] = new Account(i, 100, 8, new Date());
 		
 		while (true)
 		{
