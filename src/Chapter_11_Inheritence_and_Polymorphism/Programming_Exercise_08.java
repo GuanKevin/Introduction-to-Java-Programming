@@ -1,7 +1,4 @@
 package Chapter_11_Inheritence_and_Polymorphism;
-import java.util.Scanner;
-
-import Utilities.Account;
 
 /**
  * New Account class
@@ -16,15 +13,15 @@ import Utilities.Account;
  * Deposit $30, $40, and $50 to the account and withdraw $5, $4, and $2 from the account. 
  * Print an account summary that shows account holder name, interest rate, balance, and all transactions.
  *
- * 03/20/2016
+ * 12/05/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_08 
 {
-	public static void main(String[] args) 
+	public static void main (String[] args)  
 	{
-
-	}
+	    		  
+	}		
 }
