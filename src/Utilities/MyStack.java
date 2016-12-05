@@ -2,34 +2,52 @@ package Utilities;
 
 import java.util.ArrayList;
 
-public class MyStack extends ArrayList<Object>
+public class MyStack extends ArrayList<String>
 {
-	  public boolean isEmpty() {
-		    return super.isEmpty();
-		  }
 
-		  public int getSize() {
-		    return size();
-		  }
-
-		  public Object peek() {
-		    return get(getSize() - 1);
-		  }
-
-		  public Object pop() {
-		    return remove(getSize() - 1);
-		  }
-
-		  public Object push(Object o) {
-		    add(o);
-		    return o;
-		  }
-
-		  public int search(Object o) {
-		    return indexOf(o);
-		  }
-
-		  public String toString() {
-		    return "stack: " + toString();
-		  }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public MyStack()
+	{
+		
+	}
+	
+	public boolean isEmpty()
+	{
+		return super.isEmpty();
+	}
+	
+	public int getSize()
+	{
+		return size();
+	}
+	
+	public String peek()
+	{
+		return get(getSize() - 1);
+	}
+	
+	public String pop()
+	{
+		return remove(getSize() - 1);
+	}
+	
+	public String push(String str)
+	{
+		add(str);
+		return str;
+	}
+	
+	public int search(String str)
+	{
+		return indexOf(str);
+	}
+	
+	public String toString()
+	{
+		return "stack: " + toString();
+	}
 }
