@@ -1,44 +1,35 @@
 package Utilities;
+
 import java.util.ArrayList;
 
-public class MyStack extends ArrayList<Character>
+public class MyStack extends ArrayList<Object>
 {
-	
-	public MyStack()
-	{
-		
-	}
-	
-	public MyStack(String string)
-	{
-		push(string);
-	}
-	
-	public void push(String string)
-	{
-		for(int i = 0; i < string.length(); i++)
-		{
-			add(string.charAt(i));
-		}
-	}
-	
-	public void pop()
-	{
-		remove(size() - 1);
-	}
-	
-	public char peek()
-	{
-		return get(size() - 1);
-	}
-	
-	public void display()
-	{
-		while(!isEmpty())
-		{
-			System.out.print(peek());
-			pop();
-		}
-		System.out.print("\n");
-	}
+	  public boolean isEmpty() {
+		    return super.isEmpty();
+		  }
+
+		  public int getSize() {
+		    return size();
+		  }
+
+		  public Object peek() {
+		    return get(getSize() - 1);
+		  }
+
+		  public Object pop() {
+		    return remove(getSize() - 1);
+		  }
+
+		  public Object push(Object o) {
+		    add(o);
+		    return o;
+		  }
+
+		  public int search(Object o) {
+		    return indexOf(o);
+		  }
+
+		  public String toString() {
+		    return "stack: " + toString();
+		  }
 }
