@@ -1,7 +1,7 @@
 package Chapter_11_Inheritence_and_Polymorphism;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Random;
 
 /**
  * Algebra: perfect square
@@ -12,106 +12,88 @@ import java.util.Random;
  * 2 and 5 appear an odd number of times in the array list. 
  * So, n is 10.)
  *
- * 03/15/2016
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_17 
 {
-	static Scanner input = new Scanner(System.in);
-	static Random rand = new Random();
 	public static void main(String[] args) 
 	{
-		int myInteger = rand.nextInt(10000);
-		System.out.println("Your integer is " + myInteger);
-		ArrayList<Integer> integerList = new ArrayList<Integer>();
-		findFactors(integerList, myInteger);
-		System.out.println("Factors of " + myInteger + " is " + integerList);
-		removeEvenDuplicates(integerList);
-		System.out.println("Non duplicate factors: " + integerList);
-		System.out.println("The perfect square are: " + (myInteger * perfectSquare(integerList)));
-		System.out.println("The square root of: " + (myInteger * perfectSquare(integerList)) 
-				+ " is " + Math.sqrt((myInteger * perfectSquare(integerList))));
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter an integer: ");
+		int m = input.nextInt();
+		
+		ArrayList<Integer> factorList = findFactors(m);
+		System.out.println("Factors of " + m + " are " + factorList.toString());
+		
+		int n = productOddNumbers(factorList);
+		
+		if (n != 0)
+			System.out.print(" = " + n +
+					"\nn = " + n +
+					", m = " + m +
+					"\nn * m = " + (n * m) + 
+					"\nThe perfect square is " + Math.sqrt(n * m));
+		else
+			System.out.println("There is no perfect square.");
+		
+		input.close();
 	}
 	
-	public static int perfectSquare(ArrayList<Integer> integerList)
+	public static int productOddNumbers(ArrayList<Integer> factorList)
 	{
+		if (factorList.isEmpty())
+			return 0;
+		
+		ArrayList<Boolean> oddFactorList = new ArrayList<>();
 		int product = 1;
 		
-		for (int i = 0; i < integerList.size(); i++)
-		{
-			product *= integerList.get(i);
-		}
+		for (int i = 0; i <= factorList.get(factorList.size() - 1); i++)
+			oddFactorList.add(false);
+			
+		for (int i = 0; i < factorList.size(); i++)
+			oddFactorList.set(factorList.get(i), !oddFactorList.get(factorList.get(i)));
+		
+		boolean noSquare = true;
+		for (int i = 0; i < oddFactorList.size(); i++)
+			if (oddFactorList.get(i) == true)
+			{
+				noSquare = false;
+				break;
+			}
+		
+		if (noSquare)
+			return 0;
+		
+		System.out.print("The odd factors are: 1");
+		for (int i = 2; i < oddFactorList.size(); i++)
+			if (oddFactorList.get(i))
+			{
+				product *= i;
+				System.out.print(" * " + i);
+			}
 		
 		return product;
 	}
 	
-	public static void findFactors(ArrayList<Integer> integerList, int myInteger)
+	public static ArrayList<Integer> findFactors(int number)
 	{
-		int counter = 2;
+		int factors = 2;
+		ArrayList<Integer> tempFactorList = new ArrayList<>();
 		
-		while (myInteger != 1)
+		while (number != 1)
 		{
-			if ((myInteger % counter) == 0)
+			if (number % factors == 0)
 			{
-				integerList.add(counter);
-				myInteger /= counter;
+				tempFactorList.add(factors);
+				number /= factors;
 			}
 			else
-			{
-				counter++;
-			}
+				factors++;
 		}
-	}
-	
-	public static void removeEvenDuplicates(ArrayList<Integer> integerList)
-	{
-		int counter;
-		ArrayList<Integer> tempList = new ArrayList<Integer>();
-		ArrayList<Integer> readNum = new ArrayList<Integer>();
 		
-		if (integerList.size() != 1)
-		{
-			for (int i = 0; i < integerList.size(); i++)
-			{
-				counter = 1;
-				for (int j = i + 1; j < integerList.size(); j++)
-				{
-					if (readNum.contains(integerList.get(i)))
-					{
-						counter++;
-						break;
-					}
-					if (integerList.get(i) == integerList.get(j))
-					{
-						++counter;
-					}
-				}
-				
-				if ((counter % 2) != 0)
-				{
-					if (!tempList.contains(integerList.get(i)))
-					{
-						if (i < integerList.size() - 1)
-						{
-							tempList.add(integerList.get(i));
-						}
-						else if (i == integerList.size() - 1 && !readNum.contains(integerList.get(i)))
-						{
-							tempList.add(integerList.get(i));
-						}
-					}
-				}
-				
-				if (!readNum.contains(integerList.get(i)))
-				{
-					readNum.add(integerList.get(i));
-				}
-			}
-			
-			integerList.clear();
-			integerList.addAll(tempList);
-		}
+		return tempFactorList;
 	}
 }
