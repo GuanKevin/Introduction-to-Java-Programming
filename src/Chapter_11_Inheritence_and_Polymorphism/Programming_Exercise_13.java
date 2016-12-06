@@ -1,7 +1,7 @@
 package Chapter_11_Inheritence_and_Polymorphism;
-import java.util.Scanner;
-import java.util.Random;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Remove duplicates
@@ -10,48 +10,87 @@ import java.util.ArrayList;
  * Write a test program that prompts the user to enter 10 integers to a list 
  * and displays the distinct integers separated by exactly one space.
  *
- * 03/14/2016
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_13 
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		inputToList(list);
-		System.out.println(list);
+		ArrayList<Integer> list = generateList(10);
 		removeDuplicate(list);
-		System.out.println(list);
-	}
-	
-	public static void inputToList(ArrayList<Integer> list)
-	{
-		Random rand = new Random();
-		System.out.print("Enter the size of your list: ");
-		int size = input.nextInt();
 		
-		for (int i = 0; i < size; i++)
-		{
-			list.add(rand.nextInt(10));
-		}
+		System.out.print("Numbers after duplicates remopved: ");
+		for (int i = 0; i < list.size(); i++)
+			System.out.print(list.get(i) + " ");
 	}
 	
 	public static void removeDuplicate(ArrayList<Integer> list)
 	{
-		ArrayList<Integer> tempList = new ArrayList<Integer>();
-		
-		for (int i = 0; i < list.size(); i++)
+		if (list.isEmpty())
 		{
-			if (!tempList.contains(list.get(i)))
-			{
-				tempList.add(list.get(i));
-			}
+			System.out.println("List is empty.");
+			return;
 		}
 		
-		list.clear();
-		list.addAll(tempList);	
+		sort(list);
+		System.out.print("Numbers after sort: ");
+		for (int i = 0; i < list.size(); i++)
+			System.out.print(list.get(i) + " ");
+		System.out.println();
+		
+		for (int i = 0; i < list.size() - 1; i++)
+			if (list.get(i) == list.get(i + 1))
+			{
+				list.remove(i + 1);
+				i--;
+			}
+	}
+	
+	public static void sort(ArrayList<Integer> list) 
+	{
+		if (list.isEmpty())
+		{
+			System.out.println("List is empty, nothing to sort");
+			return;
+		}
+		
+		for (int i = 0; i < list.size() - 1; i++)
+		{
+			int min = i;
+			
+			for (int j = i + 1; j < list.size(); j++)
+				if (list.get(min) > list.get(j))
+					min = j;
+			
+			if (min != i)
+				swap(list, min, i);
+		}
+	}
+	
+	public static void swap(ArrayList<Integer> list, int minIndex, int curIndex)
+	{
+		int tempEle = list.get(minIndex);
+		list.set(minIndex, list.get(curIndex));
+		list.set(curIndex, tempEle);		
+	}
+	
+	public static ArrayList<Integer> generateList(int size)
+	{
+		ArrayList<Integer> tempList = new ArrayList<>();
+		Random randNum = new Random();
+		
+		System.out.print("Numbers generated to list: ");
+		for (int i = 0; i < size; i++)
+		{
+			int number = randNum.nextInt(size);
+			System.out.print(number + " ");
+			tempList.add(number);
+		}
+		System.out.println();
+		
+		return tempList;
 	}
 }
