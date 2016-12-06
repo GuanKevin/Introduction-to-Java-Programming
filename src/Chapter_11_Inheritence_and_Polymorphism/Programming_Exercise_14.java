@@ -1,5 +1,5 @@
 package Chapter_11_Inheritence_and_Polymorphism;
-import java.util.Scanner;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,63 +11,53 @@ import java.util.Random;
  * Write a test program that prompts the user to enter two lists, each with five integers, and displays their union. 
  * The numbers are separated by exactly one space in the output.
  *
- * 03/14/2016
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_14 
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		ArrayList<Integer> listOne = new ArrayList<Integer>();
-		ArrayList<Integer> listTwo = new ArrayList<Integer>();
+		ArrayList<Integer> list1 = generateList(5);
+		ArrayList<Integer> list2 = generateList(5);
 		
-		inputIntegers(listOne);
-		System.out.println("List one integers " + listOne);
-		inputIntegers(listTwo);
-		System.out.println("List two integers " + listTwo);
-		listOne.addAll(listTwo);
-		System.out.println("Union list one and two: " + listOne);
-		printList(listOne);
-		removeDuplicate(listOne);
-		System.out.println("Removed duplicate: " + listOne);
+		list1 = union(list1, list2);
+		
+		System.out.print("List after union: ");
+		for (int i = 0; i < list1.size(); i ++)
+			System.out.print(list1.get(i) + " ");
 	}
 	
-	public static void inputIntegers(ArrayList<Integer> list)
+	public static ArrayList<Integer> union(ArrayList<Integer> list1, ArrayList<Integer> list2)
 	{
-		Random rand = new Random();
-		
-		for (int i = 0; i < 5; i++)
+		if (list1.isEmpty() && list2.isEmpty())
 		{
-			list.add(rand.nextInt(10));
+			System.out.print("Both list is empty!");
+			return list1;
 		}
+		
+		for (int i = 0; i < list2.size(); i++)
+			list1.add(list2.get(i));
+		
+		return list1;
 	}
 	
-	public static void printList(ArrayList<Integer> list)
+	public static ArrayList<Integer> generateList(int size)
 	{
-		System.out.print("Numbers separated by one space [ ");
-		for (int i = 0; i < list.size(); i++)
-		{
-			System.out.print(list.get(i) + " ");
-		}
-		System.out.println("]");
-	}
-	
-	public static void removeDuplicate(ArrayList<Integer> list)
-	{
-		ArrayList<Integer> tempList = new ArrayList<Integer>();
+		ArrayList<Integer> tempList = new ArrayList<>();
+		Random randNum = new Random();
 		
-		for (int i = 0; i < list.size(); i++)
+		System.out.print("Numbers generated to list: ");
+		for (int i = 0; i < size; i++)
 		{
-			if (!tempList.contains(list.get(i)))
-			{
-				tempList.add(list.get(i));
-			}
+			int number = randNum.nextInt(size);
+			System.out.print(number + " ");
+			tempList.add(number);
 		}
+		System.out.println();
 		
-		list.clear();
-		list.addAll(tempList);	
+		return tempList;
 	}
 }
