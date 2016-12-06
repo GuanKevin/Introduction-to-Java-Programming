@@ -1,6 +1,7 @@
 package Chapter_11_Inheritence_and_Polymorphism;
-import java.util.Scanner;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Sort ArrayList
@@ -8,79 +9,55 @@ import java.util.ArrayList;
  * public static void sort(ArrayList<Integer> list) 
  * Write a test program that prompts the user to enter 5 numbers, stores them in an array list, and displays them in increasing order.
  *
- * 03/13/2016
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_11 
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		insertNumbers(list);
-	}
-	
-	public static void insertNumbers(ArrayList<Integer> list)
-	{
-		System.out.print("Enter five numbers : ");
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter 5 numbers: ");
+		ArrayList<Integer> list = new ArrayList<>();
 		
-		for (int i = 0; i < 5; i++)
-		{
+		for(int i = 0; i < 5; i++)
 			list.add(input.nextInt());
-		}
-		System.out.println(list.toString());
-		sort(list);
-	}
-
-	//  2 3 4 5 7
-	public static void sort(ArrayList<Integer> list)
-	{
-		int smallestNum = Integer.MAX_VALUE;
-		int index = 0;
-		for (int i = list.size(); i >= 0; i--)
-		{
-			for (int j = 0; j < i; j++)
-			{
-				if (smallestNum > list.get(j))
-				{
-					smallestNum = list.get(j);
-					index = j;
-				}
-			}
-			if (smallestNum != Integer.MAX_VALUE)
-			{
-				list.add(smallestNum);
-				list.remove(index);
-				System.out.println(list.toString());
-				smallestNum = Integer.MAX_VALUE;
-			}			
-		}
-	}
-	
-	/*public static void sortArrayList(ArrayList<Integer> integerList)
-	{
-		int minimum;
 		
-		for (int i = 0; i < integerList.size() - 1; i++)
+		sort(list);
+		
+		for (int i = 0; i < list.size(); i++)
+			System.out.print(list.get(i) + " ");
+		
+		input.close();
+	}
+	
+	public static void sort(ArrayList<Integer> list) 
+	{
+		if (list.isEmpty())
 		{
-			minimum = integerList.get(i);
-			for (int j = 1; j < integerList.size(); j++)
-			{
-				if (minimum > integerList.get(j))
-				{
-					swapNumbers(integerList, i, j);
-				}
-			}
+			System.out.println("List is empty, nothing to sort");
+			return;
+		}
+		
+		for (int i = 0; i < list.size() - 1; i++)
+		{
+			int min = i;
+			
+			for (int j = i + 1; j < list.size(); j++)
+				if (list.get(min) > list.get(j))
+					min = j;
+			
+			if (min != i)
+				swap(list, min, i);
 		}
 	}
 	
-	public static void swapNumbers(ArrayList<Integer> integerList, int minimumIndex, int swapIndex)
+	public static void swap(ArrayList<Integer> list, int minIndex, int curIndex)
 	{
-		int temp = integerList.get(minimumIndex);
-		integerList.set(minimumIndex, integerList.get(swapIndex));
-		integerList.set(swapIndex, temp);
+		int tempEle = list.get(minIndex);
+		list.set(minIndex, list.get(curIndex));
+		list.set(curIndex, tempEle);		
 	}
-	*/
 }
