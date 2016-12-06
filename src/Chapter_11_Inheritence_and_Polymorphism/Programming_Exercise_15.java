@@ -5,7 +5,7 @@ import java.util.Scanner;
  * A polygon is convex if it contains any line segments that connects two points of the polygon. 
  * Write a program that prompts the user to enter the number of points in a convex polygon, then enter the points clockwise, and display the area of the polygon.
  *
- * 03/20/2016
+ * 12/06/2016
  * @author kevgu
  *
  */
@@ -14,21 +14,25 @@ public class Programming_Exercise_15
 {
 	public static void main(String[] args) 
 	{
-		Scanner scanner = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		System.out.println("Enter number of points in the polygon:");
-		int points = scanner.nextInt();
+		int points = input.nextInt();
 		double[] xpoints = new double[points];
 		double[] ypoints = new double[points];
+		
 		System.out.println("Enter the " + points + " points in the polygon clockwise:");
+		
 		for(int i = 0; i < points; i++)
 		{
 			System.out.print("x-coordinate: ");
-			xpoints[i] = scanner.nextDouble();
+			xpoints[i] = input.nextDouble();
 			System.out.print("y-coordinate: ");
-			ypoints[i] = scanner.nextDouble();
+			ypoints[i] = input.nextDouble();
 		}
+		
         double sum = 0.0;
-        for (int i = 0; i < points; i++) {
+        for (int i = 0; i < points; i++) 
+        {	
         	if(i == points - 1)
         		sum = sum + (xpoints[i] * ypoints[0]) - (ypoints[i] * xpoints[0]);
         	else
@@ -36,5 +40,6 @@ public class Programming_Exercise_15
         }
         System.out.println("The area of the polygon is " + (Math.abs(sum) * .5));
 		
+        input.close();
 	}
 }
