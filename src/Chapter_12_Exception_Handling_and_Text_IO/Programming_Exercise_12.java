@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Your program converts it to the end-of-line brace style in (b).
  * It converts the Java source code to a new format. 
  * 
- * 03/22/2016
+ * 12/07/2016
  * @author kevgu
  *
  */
