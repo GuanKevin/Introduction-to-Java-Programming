@@ -1,4 +1,6 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
+
+import Utilities.HexFormatException;
 import java.util.Scanner;
 
 /**
@@ -7,69 +9,48 @@ import java.util.Scanner;
  * Define a custom exception called HexFormatException. 
  * Implement the hex2Dec method to throw a HexFormatException if the string is not a hex string.
  * 
- * 03/18/2015
+ * 12/07/2015
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_08
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) throws HexFormatException 
 	{
-		try
+		try 
 		{
-			System.out.print("Enter a hex number: ");
-			String hex = input.nextLine();
-			//Integer.parseInt(hex, 16);
-			checkHex(hex);
-			System.out.println("The decimal value for hex number " + hex + " is " + hexToDecimal(hex.toUpperCase()));
+			Scanner input = new Scanner(System.in);
+			System.out.print("Enter a hexadecimal value: ");
+			String hex = input.next().toUpperCase();
+			System.out.print("The hexadecimal value of " + hex + " is " + hex2Dec(hex) + ".");
+			
+			input.close();
 		}
-		catch (NumberFormatException ex)
+		catch (Exception ex)
 		{
-			System.out.println("Number Format Exception! Not a hexadecimal input!");
+			System.out.print(ex.getMessage());
 		}
 	}
+	
+	public static int hex2Dec(String hexString) throws HexFormatException 
+	{
+		int value = convertHexToDec(hexString.charAt(0));
+		
+	    for (int i = 1; i < hexString.length(); i++) 
+	      value = value * 16 + convertHexToDec(hexString.charAt(i));
 
-	public static int hexToDecimal(String hex) 
-	{		
-		int decimalValue = 0;
-		
-		for (int i = 0; i < hex.length(); i++) 
-		{
-			char hexChar = hex.charAt(i);
-			decimalValue = decimalValue * 16 + hexCharToDecimal(hexChar);
-		}
-		
-		return decimalValue;
-	}
-	
-	public static int hexCharToDecimal(char ch) 
-	{
-		if (ch >= 'A' && ch <= 'F')
-		{
-			return 10 + ch - 'A';
-		}
-		else // ch is '0', '1', ..., or '9'
-		{
-			return ch - '0';
-		}
-	}
-	
-	/*
-	 * Hexadecimal has a base of 16
-	 * 0 - 9
-	 * A - F
-	 */
-	public static void checkHex(String Hex) throws HexFormatException
-	{
-		for (int i = 0; i < Hex.length(); i++)
-		{
-			if ((Hex.charAt(Character.toUpperCase(i)) < '0' || Hex.charAt(Character.toUpperCase(i)) > '9')
-					&& (Hex.charAt(Character.toUpperCase(i)) < 'A' || Hex.charAt(Character.toUpperCase(i)) > 'F'))
-			{
-				throw new HexFormatException("This is not a Hexadecimal!");
-			}
-		}
-	}
+	    return value;
+	  }
+
+	  static int convertHexToDec(char ch) throws HexFormatException 
+	  { 
+		  if (ch >= 'A' && ch <= 'F')
+				return 10 + ch - 'A';
+			else if (ch >= '0' && ch <= '9')
+				return ch - '0';
+			else
+				throw new HexFormatException(ch + " is not a hexadecimal value.");    
+	  }
 }
+
