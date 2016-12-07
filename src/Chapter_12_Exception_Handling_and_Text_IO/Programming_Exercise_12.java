@@ -1,4 +1,5 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -18,55 +19,43 @@ import java.util.Scanner;
 
 public class Programming_Exercise_12
 {
-	Scanner input = new Scanner(System.in);
-	public static void main(String[] args) 
+	public static void main(String[] args) throws FileNotFoundException 
 	{
 		if (args.length != 1)
 		{
-			System.out.println("Incorrect amount of arguements!");
-			System.exit(0);
+			System.out.print("Arguments not found.");
+			System.exit(1);;
 		}
 		
-		File testFile = new File(args[0]);
-		String bracketStr = "";
-		
-		try
+		File sourceFile = new File(args[0]);
+		if (!sourceFile.exists())
 		{
-			Scanner fileReader = new Scanner(testFile);
+			System.out.print("Text file not found!");
+			System.exit(2);;
+		}
+		
+		StringBuilder buffer = new StringBuilder();
+		Scanner input = new Scanner(sourceFile);
+		
+		while (input.hasNext())
+		{
+			String s = input.nextLine();
+			String s1 = s.trim();
 			
-			while (fileReader.hasNext())
+			if (s1.charAt(0) == '{')
 			{
-				bracketStr += fileReader.next();
+				buffer.append(" {");
+				if (s1.length() > 1) 
+					buffer.append("\n" + s.replace('{', ' '));
 			}
-			
-			fileReader.close();
-		}
-		catch (FileNotFoundException ex)
-		{
-			System.out.println(ex.getStackTrace());
+			else
+				buffer.append("\n" + s);
 		}
 		
-		try
-		{
-			PrintWriter fileWriter = new PrintWriter(testFile);
-			
-			for (int i = 0; i < bracketStr.length(); i++)
-			{
-				if (bracketStr.charAt(i) == '{')
-				{
-					fileWriter.write(bracketStr.charAt(i) + "\n");
-				}
-				else
-				{
-					fileWriter.write(bracketStr.charAt(i));
-				}
-			}
-			
-			fileWriter.close();
-		}
-		catch (FileNotFoundException ex)
-		{
-			System.out.println(ex.getStackTrace());
-		}
-	}
+		input.close();
+		
+		PrintWriter output = new PrintWriter(sourceFile);
+		output.print(buffer.toString());
+		output.close();
+    }
 }
