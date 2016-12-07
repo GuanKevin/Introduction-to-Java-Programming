@@ -1,30 +1,29 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
-import java.util.Scanner;
+
+import Utilities.Loan;
 
 /**
  * IllegalArgumentException
  * Modify the Loan class in Listing 10.2 to throw 
  * IllegalArgumentException if the loan amount, interest rate, or number of years is less than or equal to zero.
  * 
- * 04/
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_04
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		try
 		{
-			Loan loan = new Loan(1, 1, 0);
-			loan.toString();
+			Loan loan = new Loan(10, 30, 100000);
+			loan.setAnnualInterestRate(-5);
 		}
-		catch (IllegalArgumentException er)
+		catch (Exception e)
 		{
-			System.out.print("Illegal Argument Exception Error Found " + er.getMessage());
+			System.out.println(e);
 		}
 	}
-
 }
