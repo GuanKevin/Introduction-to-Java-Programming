@@ -1,5 +1,6 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 
+import Utilities.IllegalTriangleException;
 import Utilities.Triangle;
 
 /**
@@ -27,7 +28,7 @@ import Utilities.Triangle;
 
 public class Programming_Exercise_01
 {	
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IllegalTriangleException 
 	{
 		Triangle myTriangle = new Triangle(2.4, 6.7, 4.9);
 		myTriangle.setColor("red");

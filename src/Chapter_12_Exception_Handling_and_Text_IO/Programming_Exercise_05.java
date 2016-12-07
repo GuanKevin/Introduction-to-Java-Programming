@@ -1,5 +1,7 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
-import java.util.Scanner;
+
+import Utilities.IllegalTriangleException;
+import Utilities.Triangle;
 
 /**
  * IllegalTriangleException
@@ -12,26 +14,23 @@ import java.util.Scanner;
  * Construct a triangle with the specified sides  
  * public Triangle(double side1, double side2, double side3) throws IllegalTriangleException
  * 
- * 03/16/2016
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_05
 {
-	Scanner input = new Scanner(System.in);
-	@SuppressWarnings("unused")
-	public static void main(String[] args) 
+	public static void main(String[] args)  
 	{
 		try
 		{
-			Triangle mytriangle = new Triangle(1, 1, 10000);
+			Triangle triangle = new Triangle(1, 1, 1);
+			triangle.setSide2(5);
 		}
 		catch (IllegalTriangleException ex)
 		{
-			System.out.println("Illegal Triangle Exception!");
-			ex.printStackTrace();
+			System.out.print(ex.getMessage());
 		}
 	}
-
 }
