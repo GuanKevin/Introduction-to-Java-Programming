@@ -1,4 +1,5 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,38 +10,41 @@ import java.util.Scanner;
  * Prompts the user to enter the index of the array, then displays the corresponding element value. 
  * If the specified index is out of bounds, display the message Out of Bounds.
  * 
- * 04/
+ * 12/06/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_03
 {
-	static Random rand = new Random();
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.println("Enter an index of the array: ");
-		int[] myarray = new int[100];
-		inputRandNum(myarray);
-		int index = input.nextInt();
+		int[] list = generateList(100);
+		
+		System.out.print("Enter an index: ");
 		
 		try
 		{
-			System.out.println("The number in index " + index + " is " + myarray[index]);
+			Scanner input = new Scanner(System.in);
+			System.out.print("The number is: " + list[input.nextInt()]);
+			
+			input.close();
 		}
-		catch (ArrayIndexOutOfBoundsException er)
+		catch (Exception e)
 		{
-			System.out.println("Array index out of bound exception found! " + er.getMessage());
+			//e.printStackTrace();
+			System.out.print("Out of Bounds.");
 		}
-		
 	}
-
-	public static void inputRandNum(int[] myarray)
+	
+	public static int[] generateList(int size)
 	{
-		for (int i = 0; i < myarray.length; i++)
-		{
-			myarray[i] = rand.nextInt(1000);
-		}
+		Random randomNumber = new Random();
+		int[] tempList = new int[size];
+		
+		for (int i = 0; i < size; i++)
+			tempList[i] = randomNumber.nextInt(1000);
+		
+		return tempList;
 	}
 }
