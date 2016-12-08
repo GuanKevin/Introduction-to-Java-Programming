@@ -1,5 +1,7 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
-import java.util.Scanner;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Create large dataset
@@ -7,23 +9,35 @@ import java.util.Scanner;
  * The faculty member’s first name and last name for the ith line are FirstNamei and LastNamei. 
  * The rank is randomly generated as assistant, associate, and full. 
  * The salary is randomly generated as a number with two digits after the decimal point. 
- * The salary for an assistant professor should be in the range from 50,000 to 80,000, for associate professor from 60,000 to 110,000, and for full professor from 75,000 to 130,000. Save the file in Salary.txt. Here are some sample data:
+ * The salary for an assistant professor should be in the range from 50,000 to 80,000, for associate professor from 60,000 to 110,000,
+ * and for full professor from 75,000 to 130,000. Save the file in Salary.txt. 
+ * Here are some sample data:
  * FirstName1 LastName1 assistant 60055.95
  * FirstName2 LastName2 associate 81112.45
  * . . .
  * FirstName1000 LastName1000 full 92255.21
  * 
- * 04/
+ * 12/08/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_24
 {
-	Scanner input = new Scanner(System.in);
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException 
+	{
+		File fileName = new File("src/Text_Files/CHP12_PE24.txt");
+		if (!fileName.exists())
+		{
+			System.out.println("File does not exist, generating file...");
+			fileName.createNewFile();
+		}
+		
+		generateDataSet(fileName);
+	}
+	
+	public static void generateDataSet(File fileName)
 	{
 		
 	}
-
 }
