@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Programming_Exercise_17
 {
 	public static void main(String[] args) throws FileNotFoundException
-	{	
+	{			
 		Scanner input = new Scanner(System.in);
 		boolean playGame = true;
 		char replay;
@@ -29,26 +29,26 @@ public class Programming_Exercise_17
 		{
 			playHangMan(args, input);
 			
-			System.out.print("(Y|N) Would you like to play again? ");
+			System.out.print("(Y|N) Would you like to play again? > ");
 			replay = input.next().charAt(0);
 			
 			if (Character.toUpperCase(replay) != 'Y')
 				playGame = false;
 		}
-		System.out.println("Ending game.");
 		
 		input.close();
 	}
 	
 	public static void playHangMan(String[] args, Scanner input) throws FileNotFoundException
-	{	
+	{
 		ArrayList<String> wordList = getList(args);
 		ArrayList<Character> guessList = new ArrayList<>();
 		Random randNum = new Random();
 		String word = wordList.get(randNum.nextInt(wordList.size())).toLowerCase();
-		char[] asteriskWord = hideWord(word); 
+		char[] asteriskWord = hideWord(word);
 		boolean guessedWord = false;
 		int roundCounter = 0;
+		long startTime = System.currentTimeMillis();
 		
 		while (!guessedWord)
 		{
@@ -57,10 +57,10 @@ public class Programming_Exercise_17
 			
 			if (checkGameStatus(asteriskWord))
 			{
-				System.out.println("Congratulations! You've guessed " + word + " in " + roundCounter + " tries!");
+				System.out.println("Congratulations! You've guessed " + word + " in " + roundCounter + " tries"
+						+ "\nTime taken: " + ((System.currentTimeMillis() - startTime) / 1000) + " seconds.");
 				guessedWord = true;
 			}
-			
 			roundCounter++;
 		}
 	}
@@ -70,7 +70,6 @@ public class Programming_Exercise_17
 		for (int i = 0; i < asteriskWord.length; i++)
 			if (asteriskWord[i] == '*')
 				return false;
-		
 		return true;
 	}
 	
@@ -79,7 +78,14 @@ public class Programming_Exercise_17
 		char guess = input.next().charAt(0);
 		boolean repeatGuess = true;
 		
+		if (guess == '0')
+		{
+			System.out.println("Terminating game.");
+			System.exit(3);
+		}
+		
 		while (repeatGuess)
+		{
 			if (!guessList.contains(guess))
 			{
 				guessList.add(guess);
@@ -87,15 +93,16 @@ public class Programming_Exercise_17
 			}
 			else
 			{
-				System.out.print("You've already made that guess: " + guessList.toString() + 
-						"\nTry another > ");
+				System.out.print("You've already made that guess: " + 
+									guessList.toString() +
+									"\nTry another > ");
 				guess = input.next().charAt(0);
 			}
-		
-		
-		for (int i = 0; i < word.length(); i++)
-			if (word.charAt(i) == guess)
-				asteriskWord[i] = guess;
+			
+			for (int i = 0; i < word.length(); i++)
+				if (word.charAt(i) == guess)
+					asteriskWord[i] = guess;
+		}
 	}
 	
 	public static void displayHiddenWord(char[] asteriskWord)
@@ -128,13 +135,12 @@ public class Programming_Exercise_17
 		File sourceFile = new File(args[0]);
 		if (!sourceFile.exists())
 		{
-			System.out.print("Missing source file!");
+			System.out.print("Missing text file.");
 			System.exit(1);
 		}
 		
 		ArrayList<String> tempWordList = new ArrayList<>();
-		
-		try (Scanner input = new Scanner(sourceFile);)
+		try (Scanner input = new Scanner(sourceFile))
 		{
 			while (input.hasNext())
 				tempWordList.add(input.next());
@@ -143,3 +149,11 @@ public class Programming_Exercise_17
 		return tempWordList;
 	}
 }
+
+
+
+
+
+
+
+
