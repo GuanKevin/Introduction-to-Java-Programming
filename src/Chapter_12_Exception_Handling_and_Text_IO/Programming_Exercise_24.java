@@ -1,7 +1,11 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Create large dataset
@@ -17,27 +21,48 @@ import java.io.IOException;
  * . . .
  * FirstName1000 LastName1000 full 92255.21
  * 
- * 12/08/2016
+ * 12/09/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_24
 {
-	public static void main(String[] args) throws IOException 
+	public static void main(String[] args) throws IOException  
 	{
-		File fileName = new File("src/Text_Files/CHP12_PE24.txt");
-		if (!fileName.exists())
+		File dataFile = new File("src/Text_Files/CHP12_PE24.txt");
+		if (!dataFile.exists())
 		{
 			System.out.println("File does not exist, generating file...");
-			fileName.createNewFile();
+			dataFile.createNewFile();
 		}
 		
-		generateDataSet(fileName);
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter dataset size: ");
+		generateDataSet(dataFile, input.nextInt());		
+		
+		input.close();
 	}
 	
-	public static void generateDataSet(File fileName)
+	public static void generateDataSet(File dataFile, int size) throws FileNotFoundException
 	{
+		try (PrintWriter writer = new PrintWriter(dataFile))
+		{
+			for (int i = 1; i <= size; i++)
+				writer.print("FirstName" + i + " LastName" + i + " " + getRankSalary() + "\n");
+		}
+	}
+	
+	public static String getRankSalary()
+	{
+		Random randNum = new Random();
+		int position = randNum.nextInt(3);
 		
+		if (position == 0)
+			return ("Assistant " + String.format("%10.2f", (50000 + Math.random() * 30000)));
+		else if (position == 1)
+			return ("Associate " + String.format("%10.2f", (60000 + Math.random() * 45000)));
+		else
+			return ("Full " + String.format("%10.2f", (70000 + Math.random() * 60000)));
 	}
 }
