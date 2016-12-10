@@ -1,5 +1,5 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
-import java.util.Scanner;
+
 /**
  * Triangle class
  * Design a new Triangle class that extends the abstract GeometricObject class.
