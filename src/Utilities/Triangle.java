@@ -6,7 +6,7 @@ public class Triangle extends GeometricObject
 	
 	public Triangle() throws IllegalTriangleException    
 	{
-		this (1.0, 1.0, 1.0);
+		this (1.0, 1.0, 1.0, "Blue", true);
 	}
 	
 	public Triangle(double side1, double side2, double side3) throws IllegalTriangleException   
@@ -22,8 +22,25 @@ public class Triangle extends GeometricObject
 			this.side1 = side1;
 			this.side2 = side2;
 			this.side3 = side3;
-		}
-		    
+		}   
+	}
+	
+	public Triangle(double side1, double side2, double side3, String color, boolean filled) throws IllegalTriangleException
+	{
+		if (side1 > (side2 + side3))
+			throw new IllegalTriangleException(side1);
+		else if (side2 > (side1 + side3))
+			throw new IllegalTriangleException(side2);
+		else if (side3 > (side1 + side2))
+			throw new IllegalTriangleException(side3);
+		else
+		{
+			this.side1 = side1;
+			this.side2 = side2;
+			this.side3 = side3;
+		} 
+		super.setColor(color);
+		super.setFilled(filled);
 	}
 	
 	@Override
