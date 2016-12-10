@@ -1,5 +1,6 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
-import java.util.Scanner;
+
+import java.io.File;
 
 /**
  * Rename files
@@ -10,17 +11,31 @@ import java.util.Scanner;
  * Use the following command to run your program. 
  * java Exercise12_28 *
  * 
- * 04/
+ * 12/09/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_28
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		if (args.length == 0)
+		{
+			System.out.print("Missing files. Terminating program.");
+			System.exit(0);
+		}
 		
+		for (int i = 0; i < args.length; i++)
+		{
+			if (args[i].matches("Exercise[\\d]_.*"))
+			{
+				String s = args[i];
+				String newName = s.substring(0, s.indexOf('_') - 1) + "0" + s.substring(s.indexOf('_') - 1) ;
+				
+				File file = new File(args[i]);
+				file.renameTo(new File(newName));
+			}
+		}
 	}
-
 }

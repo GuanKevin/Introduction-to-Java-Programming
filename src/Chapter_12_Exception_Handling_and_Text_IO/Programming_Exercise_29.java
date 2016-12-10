@@ -1,5 +1,4 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
-import java.util.Scanner;
 
 /**
  * Rename files
@@ -9,14 +8,13 @@ import java.util.Scanner;
  * In Java, when you pass the symbol * from the command line, it refers to all files in the directory (see Supplement III.V). 
  * Use the following command to run your program. java Exercise12_29 *
  * 
- * 04/
+ * 12/09/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_29
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
 		
