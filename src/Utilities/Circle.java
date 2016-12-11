@@ -61,4 +61,10 @@ public class Circle extends GeometricObject
 		else
 			return -1;
 	}
+
+	@Override
+	public void howToColor() 
+	{
+		System.out.println("Circle: Color around it.");
+	}
 }

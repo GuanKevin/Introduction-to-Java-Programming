@@ -1,5 +1,10 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
-import java.util.Scanner;
+
+import Utilities.Circle;
+import Utilities.GeometricObject;
+import Utilities.IllegalTriangleException;
+import Utilities.Square;
+import Utilities.Triangle;
 
 /**
  * The Colorable interface
@@ -7,19 +12,24 @@ import java.util.Scanner;
  * Every class of a colorable object must implement the Colorable interface. 
  * Design a class named Square that extends GeometricObject and implements Colorable. 
  * Implement howToColor to display the message Color all four sides. 
- * Draw a UML diagram that involves Colorable, Square, and GeometricObject. 
  * Write a test program that creates an array of five GeometricObjects. 
  * For each object in the array, display its area and invoke its howToColor method if it is colorable.
  * 
+ * 12/10/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_07
 {
-	Scanner input = new Scanner(System.in);
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IllegalTriangleException 
 	{
+		GeometricObject[] objects = new GeometricObject[3];
+		objects[0] = new Triangle(6, 4, 8);
+		objects[1] = new Circle(5);
+		objects[2] = new Square(8, "blue");
 		
+		for (int i = 0; i < objects.length; i++)
+			objects[i].howToColor();
 	}
 }

@@ -1,6 +1,8 @@
 package Utilities;
 
-public abstract class GeometricObject implements Comparable<GeometricObject>
+import Interfaces.Colorable;
+
+public abstract class GeometricObject implements Comparable<GeometricObject>, Colorable
 {
 	  private String color = "blue";
 	  private boolean filled;

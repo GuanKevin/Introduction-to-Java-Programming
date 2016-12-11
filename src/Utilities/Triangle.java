@@ -111,4 +111,10 @@ public class Triangle extends GeometricObject
 		else
 			return -1;
 	}
+
+	@Override
+	public void howToColor() 
+	{
+		System.out.println("Triangle: Color all 3 sides.");
+	}
 }
