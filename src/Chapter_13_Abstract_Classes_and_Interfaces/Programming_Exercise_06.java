@@ -1,10 +1,12 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
-import java.util.Scanner;
+
+import Utilities.Circle;
+import Utilities.GeometricObject;
 
 /**
  * The ComparableCircle class
  * Define a class named ComparableCircle that extends Circle and implements Comparable. 
- * Draw the UML diagram and implement the compareTo method to compare the circles on the basis of area. 
+ * Implement the compareTo method to compare the circles on the basis of area. 
  * Write a test class to find the larger of two instances of ComparableCircle objects.
  * 
  * @author kevgu
@@ -13,9 +15,11 @@ import java.util.Scanner;
 
 public class Programming_Exercise_06
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Circle circle1 = new Circle(5);
+		Circle circle2 = new Circle(9);
 		
+		System.out.print(GeometricObject.max(circle1, circle2));
 	}
 }
