@@ -2,7 +2,7 @@ package Utilities;
 
 import java.util.ArrayList;
 
-public class Course 
+public class Course implements Cloneable
 {
 	private String courseName;
 	private ArrayList<String> studentsList = new ArrayList<>();
@@ -58,5 +58,16 @@ public class Course
 	public void clear()
 	{
 		studentsList.clear();
+	}
+	
+	public String toString()
+	{
+		return studentsList.toString();
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException
+	{
+		return super.clone();
 	}
 }
