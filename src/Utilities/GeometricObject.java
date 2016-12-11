@@ -1,6 +1,6 @@
 package Utilities;
 
-public abstract class GeometricObject 
+public abstract class GeometricObject implements Comparable<GeometricObject>
 {
 	  private String color = "blue";
 	  private boolean filled;
@@ -41,6 +41,11 @@ public abstract class GeometricObject
 	  public void setFilled(boolean filled) 
 	  {
 		  this.filled = filled;
+	  }
+	  
+	  public static GeometricObject max(GeometricObject o1, GeometricObject o2)
+	  {
+		  return o1.compareTo(o2) == 1 ? o1 : o2;
 	  }
 
 	  /**Abstract method findArea*/

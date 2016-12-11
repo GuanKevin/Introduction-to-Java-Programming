@@ -100,4 +100,15 @@ public class Triangle extends GeometricObject
 	{
 		return "Triangle: side1 = " + side1 + " side2 = " + side2 +" side3 = " + side3; 
 	}
+
+	@Override
+	public int compareTo(GeometricObject o) 
+	{
+		if (getArea() > o.getArea())
+			return 1;
+		else if (getArea() == o.getArea())
+			return 0;
+		else
+			return -1;
+	}
 }

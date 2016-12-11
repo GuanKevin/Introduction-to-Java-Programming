@@ -49,4 +49,15 @@ public class Circle extends GeometricObject {
 	  public String toString() {
 	    return "[Circle] radius = " + radius;
 	  }
+
+	@Override
+	public int compareTo(GeometricObject o) 
+	{
+		if (getArea() > o.getArea())
+			return 1;
+		else if (getArea() == o.getArea())
+			return 0;
+		else
+			return -1;
 	}
+}
