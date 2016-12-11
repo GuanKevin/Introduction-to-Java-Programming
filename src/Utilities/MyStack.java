@@ -2,13 +2,10 @@ package Utilities;
 
 import java.util.ArrayList;
 
-public class MyStack extends ArrayList<String>
+public class MyStack extends ArrayList<Object> implements Cloneable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	ArrayList<Object> list = new ArrayList<>();
 	
 	public MyStack()
 	{
@@ -25,29 +22,37 @@ public class MyStack extends ArrayList<String>
 		return size();
 	}
 	
-	public String peek()
+	public Object peek()
 	{
 		return get(getSize() - 1);
 	}
 	
-	public String pop()
+	public Object pop()
 	{
 		return remove(getSize() - 1);
 	}
 	
-	public String push(String str)
+	public Object push(Object o)
 	{
-		add(str);
-		return str;
+		add(o);
+		return o;
 	}
 	
-	public int search(String str)
+	public int search(Object o)
 	{
-		return indexOf(str);
+		return indexOf(o);
 	}
 	
 	public String toString()
 	{
 		return "stack: " + toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Object clone()
+	{
+		MyStack c = (MyStack) super.clone();
+		c.list = (ArrayList<Object>) this.list.clone();
+		return c;
 	}
 }
