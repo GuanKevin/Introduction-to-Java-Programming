@@ -49,6 +49,19 @@ public abstract class GeometricObject implements Comparable<GeometricObject>, Co
 	  {
 		  return o1.compareTo(o2) == 1 ? o1 : o2;
 	  }
+	  
+	  public static double sumArea(GeometricObject[] a)
+	  {
+		  double area = 0;
+		  
+		  for (int i = 0; i < a.length; i++)
+		  {
+			  System.out.println(a[i].toString());
+			  area += a[i].getArea();
+		  }
+		  
+		  return area;
+	  }
 
 	  /**Abstract method findArea*/
 	  public abstract double getArea();

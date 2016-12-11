@@ -1,5 +1,8 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
-import java.util.Scanner;
+
+import Utilities.Circle;
+import Utilities.GeometricObject;
+import Utilities.Rectangle;
 
 /**
  * Sum the areas of geometric objects
@@ -8,15 +11,17 @@ import java.util.Scanner;
  * public static double sumArea(GeometricObject[] a)
  * Write a test program that creates an array of four objects (two circles and two rectangles) and computes their total area using the sumArea method.
  * 
+ * 12/11/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_12
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		
+		GeometricObject[] a = {new Circle(5), new Circle(9.4), new Rectangle(6.5, 8.4), new Rectangle(4.5, 6.4)};
+	
+		System.out.print("The area of the " + a.length + " objects is " + String.format("%.2f", GeometricObject.sumArea(a)));
 	}
 }

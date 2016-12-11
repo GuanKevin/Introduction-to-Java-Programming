@@ -60,7 +60,7 @@ public class Circle extends GeometricObject
 	@Override 
 	public String toString() 
 	{
-		return "[Circle] radius = " + radius;
+		return "[Circle] area = " + String.format("%.2f", getArea());
 	}  
 
 	@Override

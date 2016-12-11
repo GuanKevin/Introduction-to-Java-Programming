@@ -72,4 +72,10 @@ public class Rectangle extends GeometricObject
 	{
 		System.out.println("Rectangle: Draw around it!");
 	}
+	
+	@Override
+	public String toString()
+	{
+		return ("[Rectangle] Area: " + getArea());
+	}
 }
