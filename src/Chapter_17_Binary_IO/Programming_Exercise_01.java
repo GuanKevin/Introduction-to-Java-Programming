@@ -1,7 +1,6 @@
 package Chapter_17_Binary_IO;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -12,31 +11,33 @@ import java.util.Random;
  * Append new data to it if it already exists. Write 100 integers created randomly into the file using text I/O. 
  * Integers are separated by a space.
  * 
+ * 12/15/2016
  * @author kevgu
- * 06/23/2016
  *
  */
 
 public class Programming_Exercise_01
 {
-	public static void main(String[] args) throws FileNotFoundException, IOException
+	public static void main(String[] args) throws IOException
 	{
-		try (FileOutputStream output = new FileOutputStream("Exercise17_01.txt", true);)
+		File textFile = new File("src/Text_Files/Chapter_17/CHP17_PE01.txt");
+		if (!textFile.exists())
 		{
-			Random rand = new Random();
-			for (int i = 0; i < 10; i++)
-			{
-				output.write(rand.nextInt(10));
-			}
+			System.out.println("File does not exist, generating file...");
+			textFile.createNewFile();
 		}
 		
-		try (FileInputStream input = new FileInputStream("Exercise17_01.txt");)
+		try (FileOutputStream output = new FileOutputStream(textFile, true))
 		{
-			int value = 0;
+			Random rand = new Random();
+			System.out.print("Generating numbers...");
 			
-			while ((value = input.read()) != -1)
+			for (int i = 1; i <= 100; i++)
 			{
-				System.out.print(value + " ");
+				if (i % 10 == 0)
+					output.write((String.valueOf(rand.nextInt(100)) + "\n").getBytes());
+				else
+					output.write((String.valueOf(rand.nextInt(100)) + " ").getBytes());
 			}
 		}
 	}
