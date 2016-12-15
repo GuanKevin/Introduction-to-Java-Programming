@@ -2,6 +2,7 @@ package Utilities;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 
 public class Rational extends Number implements Comparable<Rational>
 {
@@ -115,7 +116,8 @@ public class Rational extends Number implements Comparable<Rational>
 	@Override
 	public double doubleValue() 
 	{
-		return new BigDecimal(bigIntegerValue()).doubleValue();
+		BigDecimal numerator = new BigDecimal(r[0]);
+		return numerator.divide(new BigDecimal(r[1]), 10, RoundingMode.HALF_UP).doubleValue();
 	}
 
 	@Override
