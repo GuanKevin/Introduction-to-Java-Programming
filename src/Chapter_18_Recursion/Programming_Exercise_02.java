@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -8,36 +9,42 @@ import java.util.Scanner;
  * Let f0 and f1 denote the two previous Fibonacci numbers. 
  * The current Fibonacci number would then be f0 + f1.
  * Write a test program that prompts the user to enter an index and displays its Fibonacci number.
+ * https://www.mathsisfun.com/numbers/fibonacci-sequence.html
  * 
- * 06/25/2016
+ * 12/16/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_02
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter an index: ");
 		int index = input.nextInt();
+		System.out.print("The fib(" + index + ") is " + fibonacci(index) + ".");
 		
-		System.out.print("The series of " + index + " is " + fibUsingIter(index));
+		input.close();
 	}
 	
-	public static long fibUsingIter(int index)
+	public static long fibonacci(int index)
 	{
-		int f0 = 0;
-		int f1 = 1; 
-		int series = 0;
+		long f0 = 0, f1 = 1;
+		long fibNum = 0;
+		
+		if (index == 0)
+			return 0;
+		if (index == 1)
+			return 1;
 		
 		for (int i = 2; i <= index; i++)
 		{
-			series = f0 + f1;
+			fibNum = f0 + f1;
 			f0 = f1;
-			f1 = series;
+			f1 = fibNum;
 		}
 		
-		return series;
+		return fibNum;
 	}
 }
