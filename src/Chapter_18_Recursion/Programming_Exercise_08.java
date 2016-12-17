@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -8,34 +9,38 @@ import java.util.Scanner;
  * For example, reverseDisplay(12345) displays 54321. 
  * Write a test program that prompts the user to enter an integer and displays its reversal.
  * 
- * 06/27/2016
+ * 12/17/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_08
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter a number to be reversed: ");
-		int value = input.nextInt();
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter the number: ");
+		int number = input.nextInt();
+		System.out.print("The reverse of " + number + " is ");
+		reverseDisplay(number);
 		
-		System.out.print("The reverse of " + value + " is ");
-		reverseDisplay(value);
+		input.close();
 	}
 	
-	/*
-	 * It takes in an integer and reverse it and display through recursion
-	 */
-	public static void reverseDisplay(int value)
+	public static void reverseDisplay(int value) 
 	{
-		if ((value % 10) == 0)
+		if (value != 0)
 		{
-			return;
+			System.out.print(value % 10);
+			reverseDisplay(value / 10);
 		}
+	}
+	
+	public static int reverseValue(int value) 
+	{
+		if (value <= 10)
+			return value;
 		
-		System.out.print(value % 10);
-		reverseDisplay(value / 10);
+		return (int) (((value % 10) * Math.pow(10, (Integer.toString(value)).length() - 1)) + reverseValue(value / 10));
 	}
 }
