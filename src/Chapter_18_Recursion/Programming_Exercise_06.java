@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -6,23 +7,33 @@ import java.util.Scanner;
  * Write a recursive method to compute the following series:
  * Write a test program that displays m(i) for i = 1, 2, . . ., 10.
  * 
- * 
+ * 12/17/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_06
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter i: ");
-		System.out.print(series(input.nextDouble()));
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter a number: ");
+		int number = input.nextInt();
+		System.out.print(String.format("%.3f", sumSeries(number)));
+		
+		input.close();
 	}
-	public static double series(double i)
+	
+	public static double sumSeries(int number)
 	{
-		if(i == 1)
-			return 1.0 / 2;
-		return (i / (i + 1.0)) + series(i - 1);
+		if (number <= 1)
+		{
+			System.out.print(number + "/2 = ");
+			return (1.0/2);
+		}
+		
+		System.out.print(number + "/" + "(" + number + " + 1)" + " + ");
+		
+		return ((number / (number + 1.0)) + sumSeries(--number));
 	}
 }
