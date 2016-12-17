@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -6,39 +7,33 @@ import java.util.Scanner;
  * Modify Listing 18.2, ComputeFibonacci.java, so that the program finds the number of times the fib method is called. 
  * (Hint: Use a static variable and increment it every time the method is called.)
  * 
- * 06/27/2016
+ * 12/17/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_07
 {
-	static int counter = 0;
-	static Scanner input = new Scanner(System.in);
+	static int fibCount = 0;
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter the index: ");
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter an index: ");
 		int index = input.nextInt();
+		System.out.print("Fib(" + index + ") = " + fibonacci(index) + ".\nFibonacci called " + fibCount + " times.");
 		
-		System.out.print("The series of index " + index + " is " + fibonacci(index)
-							+ "\nCounter: " + counter);
+		input.close();
 	}
 	
-	/*
-	 * Grabs the index and finds out the fibonacci series
-	 * Increment the counter value to the amount of time the recursion method is called
-	 */
-	public static long fibonacci(int index)
+	public static int fibonacci(int index)
 	{
-		counter++;
-		if (index == 0)
-		{
-			return 0;
-		}
+		++fibCount;
+		
 		if (index == 1)
-		{
 			return 1;
-		}
+		if (index == 0)
+			return 0;
+		
 		return fibonacci(index - 2) + fibonacci(index - 1);
 	}
 }
