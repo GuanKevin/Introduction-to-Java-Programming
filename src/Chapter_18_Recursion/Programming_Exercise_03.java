@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -9,33 +10,28 @@ import java.util.Scanner;
  * Write a recursive method to find the GCD. 
  * Write a test program that prompts the user to enter two integers and displays their GCD.
  * 
- * 06/26/2016
+ * 12/16/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_03
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args)
 	{
-		System.out.print("Enter two numbers, largest number first: ");
-		int largerNum = input.nextInt();
-		int smallerNum = input.nextInt();
-		
-		System.out.print("The GCD of " + largerNum + " and " + smallerNum + " is " + gcdRecursion(largerNum, smallerNum));
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter two numbers: ");
+		int num1 = input.nextInt(); 
+		int num2 = input.nextInt(); 
+		System.out.print("The GCD of " + num1 + " and " + num2 + " is " + gcd(Math.max(num1, num2), Math.min(num1, num2)));
+		input.close();
 	}
 	
-	/*
-	 * Finding GCD using recursion
-	 */
-	public static int gcdRecursion(int largerNum, int smallerNum)
+	public static int gcd(int max, int min) 
 	{
-		if ((largerNum % smallerNum) == 0)
-		{
-			return smallerNum;
-		}
+		if ((max % min) == 0)
+			return min;
 		
-		return gcdRecursion(smallerNum, largerNum % smallerNum);
+		return gcd(min, max % min);
 	}
 }
