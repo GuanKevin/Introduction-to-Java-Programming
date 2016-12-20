@@ -1,0 +1,6 @@
+Goodbye
+Goodbye
+Goodbye
+No
+public class Test {public static void main(String[] args) {// Some statements}}public class Test{public static void main(String[] args){// Some statements}}
+

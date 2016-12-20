@@ -1,0 +1,2 @@
+Kevin: 10 10 Adriana: 6 4 Daniel: 9 11 Shafia: 4 6 Jimmie: 3 2 Vicki: 11 9 Stas: 0 0 Jefferson: -2 -3
+

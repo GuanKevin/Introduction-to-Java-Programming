@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -8,38 +9,29 @@ import java.util.Scanner;
  * For example, count("Welcome", 'e') returns 2. 
  * Write a test program that prompts the user to enter a string and a character, and displays the number of occurrences for the character in the string.
  * 
- * 06/28/2016
+ * 12/19/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_10
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a string: ");
-		String str = input.next();
-		System.out.print("Enter a char: ");
-		char a = input.next().charAt(0);
+		String line = input.nextLine();
+		System.out.print("Enter the character to check: ");
+		char c = input.next().charAt(0);
+		System.out.print("The character (" + c + ") appear(s) " + count(line, c) + " time(s).");
 		
-		System.out.print("There are " + count(str, a) + " in the string: " + str);
+		input.close();
 	}
-
-	/*
-	 * Takes in a string and character as arguments 
-	 * and returns the amount of occurrences of that character in that string
-	 */
+	
 	public static int count(String str, char a)
 	{
-		int counter = (str.charAt(0) == a) ? 1 : 0;
 		if (str.length() == 1)
-		{
-			return counter;
-		}
-		else
-		{
-			return counter + count(str.substring(1, str.length()), a);
-		}
+			return (str.charAt(0) == a ? 1 : 0);
+		return (str.charAt(0) == a ? 1 : 0) + count(str.substring(1, str.length()), a);
 	}
 }
