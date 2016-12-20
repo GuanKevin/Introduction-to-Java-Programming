@@ -1,74 +1,54 @@
 package Chapter_18_Recursion;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Find the largest number in an array
  * Write a recursive method that returns the largest integer in an array. 
  * Write a test program that prompts the user to enter a list of eight integers and displays the largest element.
  * 
- * 06/29/2016;
+ * 12/19/2016;
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_13
-{
-	static final int size = 8;
-	static Random rand = new Random();
-	
+{	
 	public static void main(String[] args) 
 	{
-		int[] myArray = new int[size];
-		int index = 0;
-		int number = 0;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter the size of the array: ");
+		int[] arr = generateArray(input.nextInt());
+		System.out.print("The largest number in the array is " + findLargestNum(arr, 0));
 		
-		storeRandNum(myArray);
-		
-		System.out.print("Numbers in the array: ");
-		displayArray(myArray);
-		System.out.print("\nLargest number in array: " + findLargestNum(myArray, index, number));
+		input.close();
 	}
 	
-	/*
-	 * Recursion method using the index to compare numbers through the array
-	 * Returns the largest number found in the array
-	 */
-	public static int findLargestNum(int[] myArray, int index, int number)
+	public static int findLargestNum(int[] arr, int helper)
 	{
-		if (index == myArray.length - 1)
-		{
-			return number;
-		}
+		if (arr.length == (helper + 1))
+			return arr[helper];
 		
-		if (number < myArray[index])
-		{
-			number = myArray[index];
-		}
+		int value = findLargestNum(arr, 1 + helper);
 		
-		return findLargestNum(myArray, ++index, number);
+		return (arr[helper] > value ? arr[helper] : value);
 	}
 	
-	/*
-	 * Display each integer in the array
-	 */
-	public static void displayArray(int[] myArray)
+	public static int[] generateArray(int size)
 	{
-		for (int i = 0; i < myArray.length; i++)
+		Random randNum = new Random();
+		int[] tempArr = new int[size];
+		
+		System.out.print("Generating numbers: ");
+		for (int i = 0; i < size; i++)
 		{
-			System.out.print(myArray[i] + " ");
+			int num = randNum.nextInt(size);
+			System.out.print(num + " ");
+			tempArr[i] = num;
 		}
-	}
-	
-
-	/*
-	 * Store random numbers between 0 - 99 into the array
-	 */
-	public static void storeRandNum(int[] myArray)
-	{
-		for (int i = 0; i < 8; i++)
-		{
-			myArray[i] = rand.nextInt(100);
-		}
+		System.out.println();
+		
+		return tempArr;
 	}
 }
