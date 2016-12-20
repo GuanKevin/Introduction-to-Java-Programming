@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -7,32 +8,29 @@ import java.util.Scanner;
  * The helper method header is:
  * public static void reverseDisplay(String value, int high)
  * 
- * 06/29/2016
+ * 12/19/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_12
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a string: ");
-		String value = input.nextLine();
-		reverseDisplay(value, value.length() - 1);
+		String line = input.nextLine();
+		System.out.print("The reverse of \"" + line + "\" is ");
+		reverseDisplay(line, line.length() - 1);
+		
+		input.close();
 	}
 	
-	/*
-	 * Take a string, and it's going to take the length of the string
-	 * With the length, which is the "helper value", it will 
-	 * figure out which character to print out
-	 * Hello --> olleH
-	 * 
-	 */
 	public static void reverseDisplay(String value, int high)
 	{
-		if (high < 0)
+		if (high == 0)
 		{
+			System.out.print(value.charAt(high));
 			return;
 		}
 		
