@@ -15,10 +15,8 @@ import java.util.Scanner;
 
 public class Programming_Exercise_03 
 {
-	@SuppressWarnings("static-access")
 	public static void main(String[] args) 
 	{
-		ArrayListDistinctElements myArrayList = new ArrayListDistinctElements();
 		System.out.print("Enter values: ");
 		Scanner input = new Scanner(System.in);
 		ArrayList<String>  myList = new ArrayList<>();
