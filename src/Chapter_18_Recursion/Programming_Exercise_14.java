@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -6,40 +7,28 @@ import java.util.Scanner;
  * Write a recursive method to return the number of uppercase letters in a string. 
  * Write a test program that prompts the user to enter a string and displays the number of uppercase letters in the string.
  * 
- * 06/30/2016
+ * 12/22/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_14
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
-		int counter = 0;
-		
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a string: ");
-		String myString = input.nextLine();
+		String line = input.nextLine();
+		System.out.print("Number of uppercases in \"" + line + "\" is " + numUppCase(line, 0) + ".");
 		
-		System.out.print("The number of uppercase in the string \n" + myString + " is " + findUppercase(myString, counter));
+		input.close();
 	}
 	
-	/*
-	 * Counts the uppercase characters in the string
-	 * Returns the amount of uppercase when the string is null
-	 */
-	public static int findUppercase(String myString, int counter)
+	public static int numUppCase(String line, int helper)
 	{
-		if (myString.length() == 0)
-		{
-			return counter;
-		}
+		if ((line.length() - 1) == helper)
+			return (Character.isUpperCase(line.charAt(helper)) ? 1 : 0);
 		
-		if (myString.charAt(0) >= 65 && myString.charAt(0) <= 90)
-		{
-			++counter;
-		}
-		
-		return findUppercase(myString.substring(1), counter);
+		return (Character.isUpperCase(line.charAt(helper)) ? 1 : 0) + numUppCase(line, ++helper);
 	}
 }
