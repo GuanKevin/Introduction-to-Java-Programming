@@ -20,7 +20,7 @@ public class Programming_Exercise_24
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a hexadecimal value: ");
 		String hexString = input.next();
-		System.out.print("The decimal value of " + hexString + " is " + hex2Dec(hexString) + ".");
+		System.out.print("The decimal value of " + hexString + " is " + 	hex2Dec(hexString) + ".");
 		
 		input.close();
 	}
