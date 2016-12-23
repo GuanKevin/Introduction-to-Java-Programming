@@ -8,53 +8,41 @@ import java.util.Scanner;
  * public static int hex2Dec(String hexString)
  * Write a test program that prompts the user to enter a hex string and displays its decimal equivalent.
  * 
- * 07/06/2016
+ * 12/23/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_24
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a hexadecimal value: ");
 		String hexString = input.next();
-
-		System.out.print("Decimal value is " + hex2Dec(hexString));
+		System.out.print("The decimal value of " + hexString + " is " + hex2Dec(hexString) + ".");
+		
+		input.close();
 	}
 	
-	/**
-	 * Takes in a hexadecimal string and uses recursion
-	 * to return its decimal value
-	 * 
-	 * @param hexString
-	 * @return
-	 */
 	public static int hex2Dec(String hexString)
 	{
-		if (hexString.length() == 1)
-		{
-			return checkHexValue(hexString.charAt(0));
-		}
-
-		return (checkHexValue(hexString.charAt(0)) * (int) Math.pow(16, hexString.length() - 1)) + hex2Dec(hexString.substring(1));
+		return hex2Dec(hexString, 0, hexString.length() - 1);
 	}
 	
-	/**
-	 * Returns the digit value of 0 to 9 as 0 to 9
-	 * and A to F as 10 to 15
-	 * 
-	 * @param hexValue
-	 * @return
-	 */
-	public static int checkHexValue(int hexValue)
+	public static int hex2Dec(String hexString, int low, int high)
 	{
-		if (hexValue - '0' < 10)
-		{
-			return (hexValue - '0');
-		}
+		if (high < low)
+			return 0;
+		
+		return hex2Dec(hexString, low, high - 1) * 16 + getHexValue(hexString.charAt(high));
+	}
 
-		return (hexValue - 'A' + 10);
+	public static int getHexValue(char ch)
+	{
+		if (ch >= 'A' && ch <= 'F')
+			return 10 + ch - 'A';
+		else
+			return ch - '0';
 	}
 }
