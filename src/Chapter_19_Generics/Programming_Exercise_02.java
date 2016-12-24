@@ -2,13 +2,15 @@ package Chapter_19_Generics;
 
 import java.util.Scanner;
 
+import Utilities.GenericStackInheritance;
+
 /**
  * Implement GenericStack using inheritance
  * In Listing 19.1, GenericStack is implemented using composition. 
  * Define a new stack class that extends ArrayList. 
  * Write a test program that prompts the user to enter five strings and displays them in reverse order.
  * 
- * 07/26/2016
+ * 12/23/2016
  * @author kevgu
  *
  */
@@ -17,21 +19,25 @@ public class Programming_Exercise_02
 {
 	public static void main(String[] args) 
 	{
-		GenericStackInheritance<String> myStack = new GenericStackInheritance<>(); 
-		System.out.print("Enter size: ");
+		GenericStackInheritance<String> stack = new GenericStackInheritance<>();
+		System.out.print("Push: " + stack.push("Show me the money.")
+				+ "\nSearch: " + stack.search("Show me the money.")
+				+ "\nSize: " + stack.size()
+				+ "\nString: " + stack.toString()
+				+ "\nPop: " + stack.pop()
+				+ "\nPeek: " + stack.peek() + "\n");
+		
 		Scanner input = new Scanner(System.in);
-		int size = input.nextInt();
-		
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			myStack.push(input.next());
+			System.out.print("Enter string " + i + ": ");
+			stack.push(input.nextLine());
 		}
 		
-		for (int i = 0; i < size; i++)
-		{
-			System.out.print(myStack.pop() + " ");
-		}
+		for (int i = 0; i < 5; i++)
+			System.out.print(stack.pop());
 		
 		input.close();
 	}
 }
+
