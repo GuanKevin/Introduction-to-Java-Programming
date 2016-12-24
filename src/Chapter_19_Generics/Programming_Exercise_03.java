@@ -9,6 +9,7 @@ import java.util.Scanner;
  * The new list contains the non-duplicate elements from the original list.
  * public static <E> ArrayList<E> removeDuplicates(ArrayList<E> list)
  * 
+ * 12/23/2016
  * @author kevgu
  *
  */
@@ -17,24 +18,28 @@ public class Programming_Exercise_03
 {
 	public static void main(String[] args) 
 	{
-		System.out.print("Enter values: ");
 		Scanner input = new Scanner(System.in);
-		ArrayList<String>  myList = new ArrayList<>();
-		String s = input.next();
+		System.out.print("Enter size of list: ");
+		int size = input.nextInt();
+		ArrayList<Integer> list = new ArrayList<>();
 		
-		while (!s.equals("X"))
-		{
-			myList.add(s);
-			s = input.next();
-		}
-		
-		myList = ArrayListDistinctElements.removeDuplicates(myList);
-		
-		for (String s2 : myList)
-		{
-			System.out.print(s2);
-		}
-		
+		System.out.print("Enter " + size + " numbers: ");
+		for (int i = 0; i < size; i++)
+			list.add(input.nextInt());
+		list = removeDuplicates(list);
+		System.out.print(list.toString());
+			
 		input.close();
+	}
+	
+	public static <E> ArrayList<E> removeDuplicates(ArrayList<E> list)
+	{
+		ArrayList<E> tempList = new ArrayList<>();
+		
+		for (int i = 0; i < list.size(); i++)
+			if (!tempList.contains(list.get(i)))
+				tempList.add(list.get(i));
+		
+		return tempList;
 	}
 }
