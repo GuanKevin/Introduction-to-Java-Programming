@@ -14,50 +14,34 @@ import java.util.Scanner;
  * The base case is that s2 is empty and prints s1 to the console.
  * Write a test program that prompts the user to enter a string and displays all its permutations.
  * 
- * 07/05/2016
+ * 12/23/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_25
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a string: ");
 		String s = input.next();
-		
+		System.out.print("The permutations of " + s + " is:"); 
 		displayPermutation(s);
+		
+		input.close();
 	}
 	
-	/**
-	 * Calls displayPermutation method
-	 * 
-	 * @param s
-	 */
 	public static void displayPermutation(String s)
 	{
-		displayPermutation("", s);
+		displayPermutation(" ", s);
 	}
 	
-	/**
-	 * Returns all possible permutations of a given string
-	 * A B C
-	 * A
-	 * 
-	 * @param s1
-	 * @param s2
-	 */
 	public static void displayPermutation(String s1, String s2)
 	{
 		if (s2.length() == 0)
-		{
-			System.out.println(s1);
-		}
-		
+			System.out.print(s1);
 		for (int i = 0; i < s2.length(); i++)
-		{
 			displayPermutation(s1 + s2.charAt(i), s2.substring(0, i) + s2.substring(i + 1));
-		}
-	} 
+	}
 }

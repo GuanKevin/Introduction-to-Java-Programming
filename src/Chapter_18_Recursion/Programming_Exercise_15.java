@@ -1,4 +1,5 @@
 package Chapter_18_Recursion;
+
 import java.util.Scanner;
 
 /**
@@ -7,39 +8,30 @@ import java.util.Scanner;
  * The helper method header is:
  * public static int count(String str, char a, int high)
  * 
- * 07/02/2016
+ * 12/22/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_15
 {
-	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
 	{
+		Scanner input = new Scanner(System.in);
 		System.out.print("Enter a string: ");
-		String str = input.nextLine();
-		System.out.print("Enter a char: ");
+		String line = input.nextLine();
+		System.out.print("Look for character: ");
 		char a = input.next().charAt(0);
-		int high = 0;
+		System.out.print("Number of occurrences of " + a + " in \"" + line + "\" is " + count(line, a, 0) + ".");
 		
-		System.out.print("There are " + count(str, a, high) + " " + a + " character in the string: " + str);
+		input.close();
 	}
-
-	/*
-	 * Looks through a string and 
-	 * increment counter variable when matching
-	 * character is found
-	 */
+	
 	public static int count(String str, char a, int high)
 	{
-		int counter = (str.charAt(high) == a) ? 1 : 0;
+		if (str.length() - 1 == high)
+			return (str.charAt(high) == a) ? 1 : 0;
 		
-		if (high == str.length() - 1)
-		{
-			return counter;
-		}
-		
-		return counter + count(str, a, ++high);
+		return ((str.charAt(high) == a) ? 1 : 0) + count(str, a, ++high);
 	}
 }

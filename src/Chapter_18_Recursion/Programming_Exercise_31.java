@@ -1,4 +1,6 @@
 package Chapter_18_Recursion;
+
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -7,14 +9,42 @@ import java.util.Scanner;
  * Pass the parameters from the command line as follows: 
  * java Exercise18_31 dirName oldWord newWord
  * 
+ * 
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_31
 {
-	Scanner input = new Scanner(System.in);
 	public static void main(String[] args) 
+	{
+		if (args.length != 3)
+		{
+			System.out.print("directoryName, oldString, newString");
+			System.exit(0);
+		}
+		
+		File textFile = new File(args[0]);
+		if (!textFile.exists())
+		{
+			System.out.print("File does not exist!");
+			System.exit(1);
+		}
+		
+		try (Scanner reader = new Scanner(textFile))
+		{
+			while (reader.hasNext())
+				System.out.print(reader.next() + " ");
+		}
+		catch (Exception ex)
+		{
+			System.out.print(ex.getMessage());
+		}
+		
+		replaceWords();
+	}
+	
+	public static void replaceWords()
 	{
 		
 	}
