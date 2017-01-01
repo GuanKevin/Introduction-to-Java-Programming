@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Implement the following method using binary search. 
  * public static <E extends Comparable<E>> int binarySearch(E[] list, E key)
  * 
- * 12/
+ * 01/01/2017
  * @author kevgu
  *
  */
@@ -30,6 +30,25 @@ public class Programming_Exercise_07
 		input.close();
 	}
 	
+	public static <E extends Comparable<E>> int binarySearch(E[] list, E key)
+	{
+		return binarySearch(list, key, 0, list.length);
+	}
+	
+	public static <E extends Comparable<E>> int binarySearch(E[] list, E key, int low, int high)
+	{
+		int mid = (low + high) / 2;
+		
+		if (low > high)
+			return -1;
+		else if (list[mid].equals(key))
+			return mid;
+		else if (list[mid].compareTo(key) == -1)
+			return binarySearch(list, key, mid + 1, high);
+		else
+			return binarySearch(list, key, low, mid - 1);
+	}
+	
 	public static Integer[] generateArr(int size)
 	{
 		Random randNum = new Random();
@@ -39,23 +58,5 @@ public class Programming_Exercise_07
 			tempList[i] = randNum.nextInt(size);
 		
 		return tempList;
-	}
-	
-	public static <E extends Comparable<E>> int binarySearch(E[] list, E key)
-	{
-		return binarySearch(list, key, 0, list.length);
-	}
-	
-	public static <E extends Comparable<E>> int binarySearch(E[] list, E key, int low, int high)
-	{
-		int mid = (low + high) / 2;
-		if (low > high)
-			return -1;
-		else if (list[mid].equals(key))
-			return mid;
-		else if (list[mid].compareTo(key) == -1)
-			return binarySearch(list, key, mid + 1, high);
-		else
-			return binarySearch(list, key, low, mid - 1);
 	}
 }
