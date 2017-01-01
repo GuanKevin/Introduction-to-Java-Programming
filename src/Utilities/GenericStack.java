@@ -22,6 +22,7 @@ public class GenericStack<E>
 	{
 		if (size == 0)
 			return null;
+		
 		return (E) stack[size - 1];
 	}
 	
