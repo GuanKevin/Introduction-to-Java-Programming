@@ -1,6 +1,7 @@
 package Chapter_20_Lists_Stacks_Queues_and_Priority_Queues;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,25 +11,25 @@ import java.util.Scanner;
  * Guessing the capitals
  * Rewrite Programming Exercise 8.37 to store the pairs of states and capitals so that the questions are displayed randomly.
  * 
- * 01/
+ * 01/03/2017
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_03 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws FileNotFoundException 
 	{
 		if (args.length != 1)
 		{
-			System.out.print("Arguments not found.. termininating program..");
+			System.out.print("Args not found.. ending program..");
 			System.exit(0);
 		}
 		
 		File textFile = new File(args[0]);
 		if (!textFile.exists())
 		{
-			System.out.print("File not found.. terminating program..");
+			System.out.print("Text file does not exist.. ending program..");
 			System.exit(1);
 		}
 		
@@ -43,10 +44,6 @@ public class Programming_Exercise_03
 				capitalList.add(line.substring(line.indexOf(',') + 1, line.length()).trim());
 			}
 		}
-		catch (Exception ex)
-		{
-			System.out.print(ex.getMessage());
-		}
 		
 		System.out.println("List of capitals:");
 		for (int i = 0; i < capitalList.size(); i++)
@@ -54,7 +51,6 @@ public class Programming_Exercise_03
 				System.out.printf("%-18s\n", capitalList.get(i));
 			else
 				System.out.printf("%-18s ", capitalList.get(i));
-		
 		guessCapital(stateList, capitalList);
 	}
 	
@@ -62,14 +58,13 @@ public class Programming_Exercise_03
 	{
 		Random randPick = new Random();
 		Scanner input = new Scanner(System.in);
-		int missCounter = 0;
-		int guessCounter = 0;
+		int missCounter = 0, guessCounter = 0;
 		
 		while (missCounter != 3)
 		{
 			int pick = randPick.nextInt(stateList.size());
 			System.out.print("What is the capital of " + stateList.get(pick) + ": ");
-			String guess = input.nextLine().toLowerCase();
+			String guess = input.next().toLowerCase();
 			
 			if (guess.equals(capitalList.get(pick).toLowerCase()))
 			{
