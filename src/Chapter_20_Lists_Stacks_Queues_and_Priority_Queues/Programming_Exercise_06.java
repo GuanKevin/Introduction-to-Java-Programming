@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * Write a test program that stores 5 million integers in a linked list 
  * and test the time to traverse the list using an iterator vs. using the get(index) method.
  * 
- * 01/
+ * 01/03/2017
  * @author kevgu
  *
  */
@@ -18,7 +18,7 @@ public class Programming_Exercise_06
 	public static void main(String[] args) 
 	{
 		LinkedList<Integer> linkedList = new LinkedList<>();
-		final int size = 500000;
+		final int size = 50000;
 		
 		for (int i = 0; i < size; i++)
 			linkedList.add(i);
