@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
  * {"George", "Katie", "Kevin", "Michelle", "Ryan"}, 
  * and find their union, difference, and intersection.
  * 
- * 01/
+ * 01/04/2017
  * @author kevgu
  *
  */
@@ -25,9 +25,11 @@ public class Programming_Exercise_10
 		
 		queue1.addAll(queue2);
 		System.out.println("The union of queue1 and queue2 is: " + queue1.toString());
+		
 		queue1 = new PriorityQueue<>(Arrays.asList(new String[]{"George", "Jim", "John", "Blake", "Kevin", "Michael"}));	
 		queue1.removeAll(queue2);
 		System.out.println("The difference of queue1 and queue2 is: " + queue1.toString());
+		
 		queue1 = new PriorityQueue<>(Arrays.asList(new String[]{"George", "Jim", "John", "Blake", "Kevin", "Michael"}));
 		queue1.retainAll(queue2);
 		System.out.println("The intersection of queue1 and queue2 is: " + queue1.toString());

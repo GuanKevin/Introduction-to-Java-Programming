@@ -12,7 +12,7 @@ import java.util.Deque;
  * The following diagram shows how to evaluate 1 2 + 3 *.
  * Write a program to evaluate postfix expressions. Pass the expression as a command-line argument in one string.
  * 
- * 01/
+ * 01/04/2017
  * @author kevgu
  *
  */
@@ -64,12 +64,19 @@ public class Programming_Exercise_14
 				System.out.println("Pushing result: " + (operand1 / operand2));
 				stack.push(operand1 / operand2);
 			}
+			else if (expressions[i].equals("%"))
+			{
+				operand2 = stack.pop();
+				operand1 = stack.pop();
+				System.out.println("Operating: " + operand1 + " / " + operand2);
+				System.out.println("Pushing result: " + (operand1 / operand2));
+				stack.push(operand1 % operand2);
+			}
 			else
 			{
 				System.out.println("Pushed: " + expressions[i]);
 				stack.push(Integer.parseInt(expressions[i]));
 			}
-		
 		System.out.print("The answer is: " + stack.pop());
 	}
 }

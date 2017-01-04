@@ -1,6 +1,7 @@
 package Chapter_20_Lists_Stacks_Queues_and_Priority_Queues;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -16,14 +17,14 @@ import java.util.Scanner;
  * Write a program to check whether a Java source-code file has correct pairs of grouping symbols. 
  * Pass the source-code file name as a command-line argument.
  * 
- * 01/
+ * 01/04/2017
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_11 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args) throws FileNotFoundException 
 	{
 		if (args.length != 1)
 		{
@@ -41,7 +42,7 @@ public class Programming_Exercise_11
 		checkFile(javaFile);
 	}
 	
-	public static void checkFile(File javaFile)
+	public static void checkFile(File javaFile) throws FileNotFoundException
 	{
 		ArrayList<Character> symbolsOpen = new ArrayList<>();
 		symbolsOpen.add('(');
@@ -81,10 +82,6 @@ public class Programming_Exercise_11
 			}
 			if (stackOpen.isEmpty())
 				System.out.print("Stack is empty: " + stackOpen.toString());
-		}
-		catch (Exception ex)
-		{
-			System.out.print(ex.getMessage());
 		}
 	}
 }
