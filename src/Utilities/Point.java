@@ -32,7 +32,7 @@ public class Point implements Comparable<Point>
 			else if (this.y == p2.y)
 				return 0;
 			else
-				return -1;
+				return 1;
 		}
 		else
 			return 1;

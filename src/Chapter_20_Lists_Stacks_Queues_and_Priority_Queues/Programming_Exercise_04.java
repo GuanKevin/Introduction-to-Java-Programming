@@ -17,7 +17,7 @@ import Utilities.Point;
  * -Randomly create 100 points and apply the Arrays.sort method to display the points 
  * in increasing order of their x-coordinates and in increasing order of their y-coordinates, respectively
  * 
- * 01/
+ * 01/03/2017
  * @author kevgu
  *
  */
@@ -26,7 +26,7 @@ public class Programming_Exercise_04
 {
 	public static void main(String[] args) 
 	{
-		Point[] points = new Point[10];
+		Point[] points = new Point[5];
 	 
 		for (int i = 0; i < points.length; i++) 
 			points[i] = new Point(Math.random() * 100, Math.random() * 100);
