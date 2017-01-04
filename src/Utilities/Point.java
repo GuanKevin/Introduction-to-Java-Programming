@@ -10,6 +10,16 @@ public class Point implements Comparable<Point>
 		this.y = y;
 	}
 	
+	public void setX(double x)
+	{
+		this.x = x;
+	}
+	
+	public void setY(double y)
+	{
+		this.y = y;
+	}
+	
 	@Override
 	public int compareTo(Point p2) 
 	{

@@ -21,5 +21,4 @@ public class CompareY implements Comparator<Point>
 		else
 			return 1;
 	}
-	
 }
