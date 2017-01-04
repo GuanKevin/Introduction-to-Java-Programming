@@ -42,7 +42,6 @@ public class Programming_Exercise_16
 	
 	public static String inflixToPostfix(String expressions)
 	{
-		Deque<Character> operandStack = new ArrayDeque<>();
 		Deque<Character> operatorStack = new ArrayDeque<>();
 		StringTokenizer tokens = new StringTokenizer(expressions, "()+-/*%", true);
 		String s = "";

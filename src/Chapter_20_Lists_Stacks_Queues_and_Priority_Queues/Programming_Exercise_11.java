@@ -47,6 +47,7 @@ public class Programming_Exercise_11
 		symbolsOpen.add('(');
 		symbolsOpen.add('{');
 		symbolsOpen.add('[');
+		
 		ArrayList<Character> symbolsClose = new ArrayList<>();
 		symbolsClose.add(')');
 		symbolsClose.add('}');

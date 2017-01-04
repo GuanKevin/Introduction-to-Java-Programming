@@ -69,6 +69,7 @@ public class Programming_Exercise_14
 				System.out.println("Pushed: " + expressions[i]);
 				stack.push(Integer.parseInt(expressions[i]));
 			}
+		
 		System.out.print("The answer is: " + stack.pop());
 	}
 }

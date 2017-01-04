@@ -25,8 +25,7 @@ public class Programming_Exercise_08
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter your digits: ");
 		String[] digits = input.next().split("");
-		List<String> guessList = Arrays.asList(digits);
-		
+		List<String> guessList = Arrays.asList(digits);	
 		checkLottery(lottoList, guessList);
 		
 		input.close();
