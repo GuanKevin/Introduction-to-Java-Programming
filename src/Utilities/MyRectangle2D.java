@@ -1,7 +1,5 @@
 package Utilities;
 
-import java.util.Arrays;
-
 public class MyRectangle2D 
 {
 	private double x, y, width, height;
