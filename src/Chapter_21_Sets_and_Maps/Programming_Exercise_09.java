@@ -12,14 +12,14 @@ import java.util.Scanner;
  * pairs of each state and its capital in a map. Your program should prompt the user 
  * to enter a state and should display the capital for the state.
  * 
- * 01/
+ * 01/07/2016
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_09 
 {
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) throws FileNotFoundException   
 	{
 		if (args.length != 1)
 		{
@@ -30,10 +30,13 @@ public class Programming_Exercise_09
 		Map<String, String> map = new HashMap<>();
 		try (Scanner input = new Scanner(new File(args[0]));)
 		{
-			String line = input.nextLine().toLowerCase();
-			map.put(line.substring(0, line.indexOf(',')), line.substring(line.indexOf(',') + 1, line.length()).trim());
+			while (input.hasNext())
+			{
+				String line = input.nextLine().toLowerCase();
+				map.put(line.substring(0, line.indexOf(',')), line.substring(line.indexOf(',') + 1, line.length()).trim());	
+			}
 		}
 		
-		System.out.print(map.get("alabama"));
+		System.out.print(map.get("washington"));
 	}
 }

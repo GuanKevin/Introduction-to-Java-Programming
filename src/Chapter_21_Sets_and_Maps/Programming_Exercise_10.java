@@ -10,11 +10,11 @@ import java.util.TreeMap;
 
 /**
  * Count the occurrences of each keyword
- * Rewrite Listing 21.7 CountKeywords. 
- * java to read in a Java source code file and count the occurrence of each keyword 
+ * Rewrite Listing 21.7 CountKeywords.java to read in a Java source code 
+ * file and count the occurrence of each keyword 
  * in the file, but don’t count the keyword if it is in a comment or in a string literal.
  * 
- * 01/
+ * 01/07/2017
  * @author kevgu
  *
  */
@@ -28,14 +28,14 @@ public class Programming_Exercise_10
 			System.out.println("Missing CountKeyword text file and test file.. terminating program..");
 			System.exit(0);
 		}
+		
 		Set<String> set = new HashSet<>();
 		TreeMap<String, Integer> map = new TreeMap<>();
+		
 		try (Scanner input = new Scanner(new File(args[0]));)
 		{
 			while (input.hasNext())
-			{
 				set.add(input.next());
-			}
 		}
 		try (Scanner input = new Scanner(new File(args[1]));)
 		{
@@ -53,7 +53,6 @@ public class Programming_Exercise_10
 							int value = map.get(token);
 							map.put(token, ++value);
 						}
-							
 				}
 			}
 		}
