@@ -15,7 +15,7 @@ import java.util.Set;
  * all of them should be reported. For example, since 9 and 3 appear 
  * twice in the list 9 30 3 9 3 2 4, both occurrences should be reported.
  * 
- * 01/04/2016
+ * 01/07/2016
  * @author kevgu
  *
  */
@@ -24,11 +24,11 @@ public class Programming_Exercise_06
 {
 	public static void main(String[] args) 
 	{
-		Map<Integer, Integer> map = new HashMap<>();
 		Scanner input = new Scanner(System.in);
 		System.out.print("Enter numbers: ");
 		
 		int key = input.nextInt();
+		Map<Integer, Integer> map = new HashMap<>();		//Map<key, value> 
 		while (key != 0)
 		{
 			if (!map.containsKey(key))

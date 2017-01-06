@@ -12,30 +12,23 @@ import java.util.TreeSet;
  * Write a program that reads words from a text file and displays all the nonduplicate words in ascending order. 
  * The text file is passed as a command-line argument.
  * 
- * 01/04/2017
+ * 01/06/2017
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_02 
 {
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) throws FileNotFoundException  
 	{
 		if (args.length != 1)
 		{
-			System.out.print("Missing arguments.. terminating program..");
+			System.out.print("Missing arguments.. ending program..");
 			System.exit(0);
 		}
 		
-		File textFile = new File(args[0]);
-		if (!textFile.exists())
-		{
-			System.out.print("File not found.. terminating program..");
-			System.exit(1);
-		}
-		
 		Set<String> set = new HashSet<>();
-		try (Scanner input = new Scanner(textFile))
+		try (Scanner input = new Scanner(new File(args[0]));)
 		{
 			while (input.hasNext())
 				set.add(input.next());

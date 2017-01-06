@@ -13,45 +13,41 @@ import java.util.Set;
  * file name and displays the number of vowels and consonants in the file. 
  * Use a set to store the vowels A, E, I, O, and U.
  * 
- * 01/04/2017
+ * 01/07/2017
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_04 
 {
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) throws FileNotFoundException  
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter a text file: ");
-		
-		File textFile = new File(input.nextLine());
-		if (!textFile.exists())
+		if (args.length != 1)
 		{
-			System.out.print("Text file not found! Terminating program..");
+			System.out.println("Missing arguments.. termininating program..");
 			System.exit(0);
 		}
 		
-		Set<Character> set = new HashSet<>(Arrays.asList(new Character[]{'A', 'E', 'I', 'O', 'U'}));
-		try (Scanner textReader = new Scanner(textFile))
+		Set<Character> set = new HashSet<>(Arrays.asList(new Character[] {'A', 'E', 'I', 'O', 'U'}));
+		try (Scanner input = new Scanner(new File(args[0]));)
 		{
 			int vowelCount = 0;
 			int consonantCount = 0;
-			while (textReader.hasNext())
+			
+			while(input.hasNext())
 			{
-				String text = textReader.nextLine().trim();
-				System.out.println(text);
+				String line = input.next().trim();
+				System.out.println(line);
 				
-				for (int i = 0; i < text.length(); i++)
-					if (set.contains(Character.toUpperCase(text.charAt(i))))
+				for (int i = 0; i < line.length(); i++)
+					if (set.contains(Character.toUpperCase(line.charAt(i))))
 						vowelCount++;
-					else if (Character.isLetter(text.charAt(i)))
+					else if (Character.isLetter(line.charAt(i)))
 						consonantCount++;
 			}
-			System.out.print("Vowels: " + vowelCount
+			
+			System.out.print("Vowels: " + vowelCount 
 					+ "\nConsonants: " + consonantCount);
 		}
-		
-		input.close();
 	}
 }
