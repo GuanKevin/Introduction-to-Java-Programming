@@ -2,7 +2,7 @@ package Chapter_10_Object_Oriented_Thinking;
 import java.util.Date;
 import java.util.Scanner;
 
-import Utilities.Account;
+import utilities.Account;
 
 /**
  * Game: ATM machine

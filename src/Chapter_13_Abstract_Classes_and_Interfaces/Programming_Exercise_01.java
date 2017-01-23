@@ -1,7 +1,7 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
 
-import Utilities.IllegalTriangleException;
-import Utilities.Triangle;
+import utilities.IllegalTriangleException;
+import utilities.Triangle;
 
 /**
  * Triangle class

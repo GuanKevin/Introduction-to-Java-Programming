@@ -2,7 +2,7 @@ package Chapter_13_Abstract_Classes_and_Interfaces;
 
 import java.math.BigInteger;
 
-import Utilities.Rational;
+import utilities.Rational;
 
 /**
  * Create a rational-number calculator

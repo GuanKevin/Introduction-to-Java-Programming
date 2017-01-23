@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-import Utilities.Loan;
+import utilities.Loan;
 
 /**
  * Store Loan objects

@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import Utilities.WordOccurrence;
+import utilities.WordOccurrence;
 
 /**
  * Revise Listing 21.9, CountOccurrenceOfWords.java

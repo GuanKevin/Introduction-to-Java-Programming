@@ -1,7 +1,8 @@
 package Chapter_12_Exception_Handling_and_Text_IO;
 
-import Utilities.HexFormatException;
 import java.util.Scanner;
+
+import utilities.HexFormatException;
 
 /**
  * HexFormatException

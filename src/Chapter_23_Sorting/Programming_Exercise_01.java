@@ -5,6 +5,9 @@ import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
+import utilities.GeometricObjectComparator;
+import utilities.Rectangle;
+
 /**
  * Generic Bubble Sort
  * Write the following two generic methods using bubble sort. 
@@ -27,6 +30,19 @@ public class Programming_Exercise_01
 		System.out.println("Before bubble sort: " + Arrays.toString(list));
 		bubbleSort(list);
 		System.out.println("Comparable bubble sort: " + Arrays.toString(list));
+		
+		Rectangle[] rectangle = {new Rectangle(3, 5), new Rectangle(13, 3), new Rectangle(7, 15), 
+				new Rectangle(5, 5), new Rectangle(3, 3), new Rectangle(10, 7), new Rectangle(2, 9), 
+				new Rectangle(1, 1), new Rectangle(29, 17), new Rectangle(4, 6), new Rectangle(6, 5), new Rectangle(2, 13)};
+		
+		System.out.println("Objects before bubble sort: ");
+		for (int i = 0; i < rectangle.length; i++)
+			System.out.println(rectangle[i].toString());
+		
+		System.out.println("Objects after bubble sort: ");
+		bubbleSort(rectangle, new GeometricObjectComparator());
+		for (int i = 0; i < rectangle.length; i++)
+			System.out.println(rectangle[i].toString());
 		
 		input.close();
 	}
@@ -62,6 +78,19 @@ public class Programming_Exercise_01
 	
 	public static <E> void bubbleSort(E[] list, Comparator<? super E> comparator)
 	{
+		boolean needNextPass = true;
 		
+		for (int k = 1; k < list.length && needNextPass; k++) 
+		{
+			needNextPass = false;
+			for (int i = 0; i < list.length - k; i++) 
+				if (comparator.compare(list[i], list[i + 1]) == 1) 
+				{
+					E temp = list[i];
+					list[i] = list[i + 1];
+					list[i + 1] = temp;
+					needNextPass = true;
+				}
+		}
 	}
 }

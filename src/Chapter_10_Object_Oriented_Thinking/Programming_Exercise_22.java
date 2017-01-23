@@ -1,6 +1,6 @@
 package Chapter_10_Object_Oriented_Thinking;
 
-import Utilities.MyString1;
+import utilities.MyString1;
 
 /**
  * Implement the String class

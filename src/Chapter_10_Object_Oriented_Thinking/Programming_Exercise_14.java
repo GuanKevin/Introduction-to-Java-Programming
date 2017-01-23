@@ -1,5 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
-import Utilities.MyDate;
+import utilities.MyDate;
 
 /**
  * The MyDate class

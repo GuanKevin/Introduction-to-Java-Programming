@@ -1,8 +1,8 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
 
-import Utilities.Circle;
-import Utilities.GeometricObject;
-import Utilities.Rectangle;
+import utilities.Circle;
+import utilities.GeometricObject;
+import utilities.Rectangle;
 
 /**
  * Sum the areas of geometric objects

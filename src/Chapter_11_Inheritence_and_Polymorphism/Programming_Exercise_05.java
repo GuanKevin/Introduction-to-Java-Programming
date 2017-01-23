@@ -3,7 +3,7 @@ package Chapter_11_Inheritence_and_Polymorphism;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Utilities.Course;
+import utilities.Course;
 
 /**
  * The Course class

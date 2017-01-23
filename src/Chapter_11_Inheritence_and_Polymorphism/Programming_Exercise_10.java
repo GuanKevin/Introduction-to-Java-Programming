@@ -2,7 +2,7 @@ package Chapter_11_Inheritence_and_Polymorphism;
 
 import java.util.Scanner;
 
-import Utilities.MyStack;
+import utilities.MyStack;
 
 /**
  * Implement MyStack using inheritance

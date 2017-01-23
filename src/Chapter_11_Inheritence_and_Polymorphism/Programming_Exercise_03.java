@@ -1,8 +1,8 @@
 package Chapter_11_Inheritence_and_Polymorphism;
 
-import Utilities.Account;
-import Utilities.CheckingAccount;
-import Utilities.SavingsAccount;
+import utilities.Account;
+import utilities.CheckingAccount;
+import utilities.SavingsAccount;
 
 /**
  * Subclasses of Account

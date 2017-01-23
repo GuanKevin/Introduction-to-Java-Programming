@@ -2,8 +2,8 @@ package Chapter_11_Inheritence_and_Polymorphism;
 
 import java.util.ArrayList;
 
-import Utilities.Account1;
-import Utilities.Transaction;
+import utilities.Account1;
+import utilities.Transaction;
 
 /**
  * New Account class

@@ -1,6 +1,6 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
 
-import Utilities.Octagon;
+import utilities.Octagon;
 
 /**
  * The Octagon class
