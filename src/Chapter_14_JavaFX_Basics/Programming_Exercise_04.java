@@ -1,4 +1,4 @@
-package Chapter_14_JavaFX_Basics;
+/*package Chapter_14_JavaFX_Basics;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -12,7 +12,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Color and font
  * Write a program that displays five texts vertically, as shown in Figure 14.44a. 
  * Set a random color and opacity for each text and set the font of each text to Times Roman, bold, italic, and 22 pixels.
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * 05/13/2016
  * @author kevgu
  *
- */
+ *//*
 
 public class Programming_Exercise_04 extends Application
 {
@@ -51,3 +51,4 @@ public class Programming_Exercise_04 extends Application
 		primaryStage.show();
 	}
 }
+*/

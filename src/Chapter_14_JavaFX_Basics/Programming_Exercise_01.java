@@ -1,4 +1,4 @@
-package Chapter_14_JavaFX_Basics;
+/*package Chapter_14_JavaFX_Basics;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -7,14 +7,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Display images
  * Write a program that displays four images in a grid pane, as shown in Figure 14.43a.
  * 
  * 05/06/2016
  * @author kevgu
  *
- */
+ *//*
 
 public class Programming_Exercise_01 extends Application
 {
@@ -45,3 +45,4 @@ public class Programming_Exercise_01 extends Application
 	}
 
 }
+*/

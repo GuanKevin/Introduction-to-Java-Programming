@@ -1,4 +1,4 @@
-package Chapter_14_JavaFX_Basics;
+/*package Chapter_14_JavaFX_Basics;
 
 import javafx.application.Application;
 import javafx.geometry.Point2D;
@@ -9,7 +9,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Characters around circle
  * Write a program that displays a string Welcome to Java around the circle, as shown in Figure 14.44b. 
  * Hint: You need to display each character in the right location with appropriate rotation using a loop.
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * 05/13/2016
  * @author kevgu
  *
- */
+ *//*
 
 public class Programming_Exercise_05 extends Application
 {
@@ -57,3 +57,4 @@ public class Programming_Exercise_05 extends Application
 		primaryStage.show();
 	}
 }
+*/

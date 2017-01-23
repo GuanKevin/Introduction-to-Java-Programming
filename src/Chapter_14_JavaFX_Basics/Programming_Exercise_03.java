@@ -1,4 +1,4 @@
-package Chapter_14_JavaFX_Basics;
+/*package Chapter_14_JavaFX_Basics;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Display three cards
  * Write a program that displays three cards randomly selected from a deck of 52, as shown in Figure 14.43c. 
  * The card image files are named 1.png, 2.png, …, 52.png and stored in the image/card directory. 
@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  * 05/12/2016
  * @author kevgu
  *
- */
+ *//*
 
 public class Programming_Exercise_03 extends Application
 {	
@@ -40,12 +40,12 @@ public class Programming_Exercise_03 extends Application
 		Application.launch(args);
 	}
 	
-	/**
+	*//**
 	 * Display three random cards
 	 * 
 	 * @param primaryStage
 	 * @throws Exception
-	 */
+	 *//*
 	@Override
 	public void start(Stage primaryStage) throws Exception 
 	{
@@ -64,11 +64,11 @@ public class Programming_Exercise_03 extends Application
 		primaryStage.show();
 	}
 	
-	/**
+	*//**
 	 * Output which three cards were randomly chosen
 	 * 
 	 * @param threeNums
-	 */
+	 *//*
 	public static void displayNum(int[] threeNums)
 	{
 		for (int i = 0; i < threeNums.length; i++)
@@ -77,12 +77,12 @@ public class Programming_Exercise_03 extends Application
 		}
 	}
 	
-	/**
+	*//**
 	 * Randomly chooses three number from the array list
 	 * Stores the number into the array
 	 * 
 	 * @param threeNums
-	 */
+	 *//*
 	public static void chooseThree(int[] threeNums)
 	{
 		Random rand = new Random();
@@ -98,9 +98,9 @@ public class Programming_Exercise_03 extends Application
 		}
 	}
 	
-	/**
+	*//**
 	 * Store numbers 1 to 52 into the arraylist
-	 */
+	 *//*
 	public static void store52Numbers()
 	{
 		for (int i = 1; i <= 52; i++)
@@ -109,3 +109,4 @@ public class Programming_Exercise_03 extends Application
 		}
 	}
 }
+*/

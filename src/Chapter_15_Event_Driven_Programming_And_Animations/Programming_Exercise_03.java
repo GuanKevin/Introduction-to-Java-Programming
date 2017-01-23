@@ -1,4 +1,4 @@
-package Chapter_15_Event_Driven_Programming_And_Animations;
+/*package Chapter_15_Event_Driven_Programming_And_Animations;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Move the ball
  * Write a program that moves the ball in a pane. 
  * You should define a pane class for displaying the ball and provide the methods for moving the ball left, right, up, and down, as shown in Figure 15.24c. 
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * @author kevgu
  * 06/09/2016
  * 
- */
+ *//*
 
 public class Programming_Exercise_03 extends Application
 {
@@ -68,3 +68,4 @@ public class Programming_Exercise_03 extends Application
 		primaryStage.show();
 	}
 }
+*/

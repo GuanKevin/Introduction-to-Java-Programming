@@ -1,4 +1,4 @@
-package Chapter_14_JavaFX_Basics;
+/*package Chapter_14_JavaFX_Basics;
 
 import java.util.Random;
 
@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Tic-tac-toe board
  * Write a program that displays a tic-tac-toe board, as shown in Figure 14.43b. 
  * A cell may be X, O, or empty. 
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * 05/06/2016
  * @author kevgu
  *
- */
+ *//*
 
 public class Programming_Exercise_02 extends Application
 {
@@ -65,3 +65,4 @@ public class Programming_Exercise_02 extends Application
 		primaryStage.show();
 	}
 }
+*/

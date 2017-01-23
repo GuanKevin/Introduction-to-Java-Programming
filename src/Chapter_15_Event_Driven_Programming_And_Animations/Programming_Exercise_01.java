@@ -1,4 +1,4 @@
-package Chapter_15_Event_Driven_Programming_And_Animations;
+/*package Chapter_15_Event_Driven_Programming_And_Animations;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Pick four cards
  * Write a program that lets the user click the Refresh button to display four cards from a deck of 52 cards, as shown in Figure 15.24a. 
  * (See the hint in Programming Exercise 14.3 on how to obtain four random cards.)
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * @author kevgu
  * 06/08/2016
  *
- */
+ *//*
 
 public class Programming_Exercise_01 extends Application
 {
@@ -72,9 +72,9 @@ public class Programming_Exercise_01 extends Application
 		primaryStage.show();
 	}
 
-	/**
+	*//**
 	 * Store the numbers from 1 to 52 into the array list
-	 */
+	 *//*
 	private static void storeDeck()
 	{
 		for (int i = 1; i <= 52; i++)
@@ -83,3 +83,4 @@ public class Programming_Exercise_01 extends Application
 		}
 	}
 }
+*/

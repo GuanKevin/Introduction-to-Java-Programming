@@ -1,4 +1,4 @@
-package Chapter_15_Event_Driven_Programming_And_Animations;
+/*package Chapter_15_Event_Driven_Programming_And_Animations;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -11,14 +11,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-/**
+*//**
  * Rotate a rectangle
  * Write a program that rotates a rectangle 15 degrees right when the Rotate button is clicked, as shown in Figure 15.24b.
  * 
  * @author kevgu
  * 06/08/2016
  *
- */
+ *//*
 
 public class Programming_Exercise_02 extends Application
 {
@@ -54,3 +54,4 @@ public class Programming_Exercise_02 extends Application
 		
 	}
 }
+*/
