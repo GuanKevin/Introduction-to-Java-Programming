@@ -9,6 +9,11 @@ public class Square extends GeometricObject
 		this (1.0, "Black");
 	}
 	
+	public Square(double side)
+	{
+		this (side, "Black");
+	}
+	
 	public Square(double side, String color)
 	{
 		this.setSide(side);
@@ -33,7 +38,7 @@ public class Square extends GeometricObject
 	public String toString()
 	{
 		return ("Square's area: " + getArea()
-				+ "\nSquare's color: " + getColor());
+				/*+ "\nSquare's color: " + getColor()*/);
 	}
 
 	@Override
