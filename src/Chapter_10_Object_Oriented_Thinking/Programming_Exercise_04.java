@@ -1,5 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
-import Utilities.MyPoint;
+import utilities.MyPoint;
 
 /**
  * The MyPoint class

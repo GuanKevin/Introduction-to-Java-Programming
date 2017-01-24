@@ -1,6 +1,6 @@
 package Chapter_10_Object_Oriented_Thinking;
 
-import Utilities.MyString2;
+import utilities.MyString2;
 
 /**
  * New string split method

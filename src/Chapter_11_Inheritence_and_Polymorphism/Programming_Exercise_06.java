@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-import Utilities.Loan;
+import utilities.Loan;
 
 /**
  * Use ArrayList

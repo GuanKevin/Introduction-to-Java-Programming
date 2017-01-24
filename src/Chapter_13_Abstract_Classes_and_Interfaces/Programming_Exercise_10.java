@@ -1,6 +1,6 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
 
-import Utilities.Rectangle;
+import utilities.Rectangle;
 
 /**
  * Enable Rectangle comparable

@@ -1,7 +1,7 @@
 package Chapter_10_Object_Oriented_Thinking;
 import java.util.Scanner;
 
-import Utilities.StackOfIntegers;
+import utilities.StackOfIntegers;
 
 /**
  * Displaying the prime factors

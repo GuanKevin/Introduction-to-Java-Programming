@@ -1,10 +1,10 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
 
-import Utilities.Circle;
-import Utilities.GeometricObject;
-import Utilities.IllegalTriangleException;
-import Utilities.Square;
-import Utilities.Triangle;
+import utilities.Circle;
+import utilities.GeometricObject;
+import utilities.IllegalTriangleException;
+import utilities.Square;
+import utilities.Triangle;
 
 /**
  * The Colorable interface

@@ -1,7 +1,7 @@
 package Chapter_13_Abstract_Classes_and_Interfaces;
 
-import Utilities.Circle;
-import Utilities.GeometricObject;
+import utilities.Circle;
+import utilities.GeometricObject;
 
 /**
  * The ComparableCircle class

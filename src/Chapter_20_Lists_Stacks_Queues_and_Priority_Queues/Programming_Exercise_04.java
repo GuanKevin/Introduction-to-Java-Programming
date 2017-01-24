@@ -2,8 +2,8 @@ package Chapter_20_Lists_Stacks_Queues_and_Priority_Queues;
 
 import java.util.Arrays;
 
-import Utilities.CompareY;
-import Utilities.Point;
+import utilities.CompareY;
+import utilities.Point;
 
 /**
  * Sort points in a plane

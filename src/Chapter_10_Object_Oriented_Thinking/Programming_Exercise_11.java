@@ -1,5 +1,5 @@
 package Chapter_10_Object_Oriented_Thinking;
-import Utilities.Circle2D;
+import utilities.Circle2D;
 
 /**
  * Geometry: the Circle2D class

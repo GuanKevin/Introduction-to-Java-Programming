@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import Utilities.Loan;
+import utilities.Loan;
 
 /**
  * Restore objects from a file
