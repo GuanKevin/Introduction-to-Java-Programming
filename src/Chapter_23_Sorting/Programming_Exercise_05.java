@@ -1,5 +1,9 @@
 package Chapter_23_Sorting;
 
+import java.util.ArrayList;
+
+import utilities.Heap;
+
 /**
  * Generic heap sort
  * Write the following two generic methods using heap sort. 
@@ -14,8 +18,15 @@ package Chapter_23_Sorting;
 
 public class Programming_Exercise_05 
 {
-	public static void main(String[] args) 
+	@SuppressWarnings("unchecked")
+	public static <E extends Comparable<E>> void main(String[] args) 
 	{
+		Integer[] list = {1, 2, 4, 5, 53, -44, -5, -3, 3, 3, 1, -4, 0};
+		Heap<E> heap = new Heap<E>((E[]) list);
+		heap.heapSort();
+		ArrayList<E> newList = heap.getList();
 		
+		for (int i = 0; i < newList.size(); i++)
+			System.out.print(newList.get(i) + " ");	
 	}
 }
