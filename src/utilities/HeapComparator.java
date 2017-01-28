@@ -1,22 +1,30 @@
 package utilities;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 
-public class Heap <E extends Comparable<E>>
+public class HeapComparator<E extends Comparable<E>> extends Heap<E> 
 {
-	protected ArrayList<E> list = new ArrayList<>();
+	protected Comparator<? super E> comparator;
 	
-	public Heap()
+	public HeapComparator()
 	{
 		
 	}
 	
-	public Heap(E[] objects)
+	public HeapComparator(Comparator<? super E> comparator)
 	{
-		for (int i = 0; i < objects.length; i++)
-			add(objects[i]);
+		this.comparator = comparator;
 	}
 	
+	public HeapComparator(Comparator<? super E> comparator, E[] o)
+	{
+		this.comparator = comparator;
+		
+		for (int i = 0; i < o.length; i++)
+			add(o[i]);
+	}
+	
+	@Override
 	public void add(E newObject)
 	{
 		System.out.println("Adding: " + newObject);
@@ -27,7 +35,7 @@ public class Heap <E extends Comparable<E>>
 		{
 			int parentIndex = (currentIndex - 1) / 2;
 			
-			if (list.get(currentIndex).compareTo(list.get(parentIndex)) > 0)
+			if (comparator.compare(list.get(currentIndex), (list.get(parentIndex))) > 0)
 			{
 				E temp = list.get(currentIndex);
 				list.set(currentIndex, list.get(parentIndex));
@@ -41,6 +49,7 @@ public class Heap <E extends Comparable<E>>
 		System.out.println("Heap: " + list.toString());
 	}
 	
+	@Override
 	public E remove()
 	{
 		if (list.size() == 0) return null;
@@ -59,7 +68,7 @@ public class Heap <E extends Comparable<E>>
 			int maxIndex = leftChildIndex;
 			
 			if (rightChildIndex < list.size())
-				if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0)
+				if (comparator.compare(list.get(maxIndex), (list.get(rightChildIndex))) < 0)
 					maxIndex = rightChildIndex;
 			
 			if (list.get(currentIndex).compareTo(list.get(maxIndex)) < 0)
@@ -74,46 +83,5 @@ public class Heap <E extends Comparable<E>>
 		}
 		
 		return removedObject;
-	}
-	
-	public void heapSort()
-	{
-		if (list.size() == 0) return;
-		
-		Heap<E> heap = new Heap<>();
-		
-		for (int i = 0; i < list.size(); i++)
-			heap.add(list.get(i));
-		
-		for (int i = list.size() - 1; i >= 0; i--)
-			list.set(i, heap.remove());
-	}
-	
-	@SuppressWarnings("hiding")
-	public <E extends Comparable<E>> void heapSort(E[] list)
-	{
-		Heap<E> heap = new Heap<>();
-		
-		for (int i = 0; i < list.length; i++)
-			heap.add(list[i]);
-		
-		for (int i = list.length - 1; i >= 0; i--)
-			list[i] = heap.remove();
-	}
-	
-	public ArrayList<E> getList()
-	{
-		return list;
-	}
-	
-	public int getSize()
-	{
-		return list.size();
-	}
-	
-	@Override
-	public String toString()
-	{
-		return list.toString();
 	}
 }
