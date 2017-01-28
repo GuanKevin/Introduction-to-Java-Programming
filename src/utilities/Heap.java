@@ -19,7 +19,7 @@ public class Heap <E extends Comparable<E>>
 	
 	public void add(E newObject)
 	{
-		System.out.println("Adding: " + newObject);
+		//System.out.println("Adding: " + newObject);
 		list.add(newObject);
 		int currentIndex = list.size() - 1;
 		
@@ -38,7 +38,7 @@ public class Heap <E extends Comparable<E>>
 			currentIndex = parentIndex;
 		}
 		
-		System.out.println("Heap: " + list.toString());
+		//System.out.println("Heap: " + list.toString());
 	}
 	
 	public E remove()
@@ -109,6 +109,19 @@ public class Heap <E extends Comparable<E>>
 	public int getSize()
 	{
 		return list.size();
+	}
+	
+	@Override
+	public Heap<E> clone()
+	{
+		return this;
+	}
+	
+	public boolean equals(Heap<E> o)
+	{
+		if (this.getList().equals(o.getList()))
+			return true;
+		return false;
 	}
 	
 	@Override
