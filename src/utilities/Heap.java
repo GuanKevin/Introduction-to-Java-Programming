@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Heap <E extends Comparable<E>>
 {
-	private ArrayList<E> list = new ArrayList<>();
+	protected ArrayList<E> list = new ArrayList<>();
 	
 	public Heap()
 	{
@@ -19,6 +19,7 @@ public class Heap <E extends Comparable<E>>
 	
 	public void add(E newObject)
 	{
+		System.out.println("Adding: " + newObject);
 		list.add(newObject);
 		int currentIndex = list.size() - 1;
 		
@@ -36,6 +37,8 @@ public class Heap <E extends Comparable<E>>
 				break;
 			currentIndex = parentIndex;
 		}
+		
+		System.out.println("Heap: " + list.toString());
 	}
 	
 	public E remove()
