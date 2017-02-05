@@ -7,7 +7,7 @@ import java.util.Scanner;
  * to prompt the user to enter the character Y for Yes and 
  * N for No rather than entering 1 for Yes and 0 for No.
  * 
- * 08/16/2016
+ * 02/05/2017
  * @author kevgu
  *
  */
@@ -58,7 +58,7 @@ public class Programming_Exercise_10
 		char answer = input.next().charAt(0);
 		
 		if (answer == 'Y')
-		day += 1;
+			day += 1;
 		
 		// Prompt the user to answer questions
 		System.out.print("\nIs your birthday in Set2?\n");
@@ -67,7 +67,7 @@ public class Programming_Exercise_10
 		answer = input.next().charAt(0);
 		
 		if (answer == 'Y')
-		day += 2;
+			day += 2;
 		
 		// Prompt the user to answer questions
 		System.out.print("Is your birthday in Set3?\n");
@@ -76,7 +76,7 @@ public class Programming_Exercise_10
 		answer = input.next().charAt(0);
 		
 		if (answer == 'Y')
-		day += 4;
+			day += 4;
 		
 		// Prompt the user to answer questions
 		System.out.print("\nIs your birthday in Set4?\n");
@@ -85,7 +85,7 @@ public class Programming_Exercise_10
 		answer = input.next().charAt(0);
 		
 		if (answer == 'Y')
-		day += 8;
+			day += 8;
 		
 		// Prompt the user to answer questions
 		System.out.print("\nIs your birthday in Set5?\n");
@@ -94,7 +94,7 @@ public class Programming_Exercise_10
 		answer = input.next().charAt(0);
 		
 		if (answer == 'Y')
-		day += 16;
+			day += 16;
 		
 		System.out.println("\nYour birthday is " + day + "!");
 		input.close();
