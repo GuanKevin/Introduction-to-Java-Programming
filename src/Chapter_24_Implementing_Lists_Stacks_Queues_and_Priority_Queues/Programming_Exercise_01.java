@@ -1,5 +1,7 @@
 package Chapter_24_Implementing_Lists_Stacks_Queues_and_Priority_Queues;
 
+import utilities.MyArrayList;
+
 /**
  * Add set operations in MyList
  * Define the following methods in MyList and implement them in MyAbstractList:
@@ -22,6 +24,13 @@ public class Programming_Exercise_01
 {
 	public static void main(String[] args) 
 	{
+		String[] strArr1 = {"Tom", "George", "Peter", "Jean", "Jane"};
+		String[] strArr2 = {"Tom", "George", "Michael", "Michelle", "Daniel"};
+		MyArrayList<String> list1 = new MyArrayList<>(strArr1);
+		MyArrayList<String> list2 = new MyArrayList<>(strArr2);
 		
+		list1.addAll(list2);
+		System.out.println(list1.toString());
+		System.out.println(list2.toString());
 	}
 }
