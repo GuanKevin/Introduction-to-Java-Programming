@@ -8,9 +8,8 @@ package Chapter_22_Developing_Efficient_Algorithms;
  * PrimeNumbers.dat. When a new prime number is found, the number is appended to the file.
  * To find whether a new number is prime, your program should load the prime numbers from the file to an array of the long type of size 10000.
  * If no number in the array is a divisor for the new number, continue to read 
- * the next 10000 prime numbers from the data file, until a divisor is found or all numbers in the file are read. If no divisor is found, the new number is prime.
- * Since this program takes a long time to finish, you should run it as a batch job from a UNIX machine. If the machine is shut down and rebooted, 
- * your program should resume by using the prime numbers stored in the binary data file rather than start over from scratch.
+ * the next 10000 prime numbers from the data file, until a divisor is found or all numbers in the file are read. 
+ * If no divisor is found, the new number is prime.
  * 
  * 01/
  * @author kevgu
@@ -19,7 +18,7 @@ package Chapter_22_Developing_Efficient_Algorithms;
 
 public class Programming_Exercise_08 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)  
 	{
 		
 	}
