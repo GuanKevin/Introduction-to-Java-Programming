@@ -10,6 +10,7 @@ public class Programming_Exercise_23 {
 		Scanner scanner = new Scanner(System.in);
 		String expression = scanner.nextLine();
 		System.out.println(expression + " = " + evalExpression(expression));
+		scanner.close();
 	}
 	
 	public static int evalExpression(String expression)
