@@ -16,7 +16,7 @@ import java.util.Comparator;
  * public static <E> boolean ordered(E[] list Comparator<? super E> comparator) 
  * public static <E> boolean ordered(E[] list, Comparator<? super E> comparator, boolean ascending)
  * 
- * 01/
+ * 02/09/2017
  * @author kevgu
  *
  */

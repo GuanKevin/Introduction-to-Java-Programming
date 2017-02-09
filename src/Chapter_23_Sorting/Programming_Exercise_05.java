@@ -1,8 +1,5 @@
 package Chapter_23_Sorting;
-
-import java.util.ArrayList;
-
-import utilities.Heap;
+import utilities.HeapSort;
 
 /**
  * Generic heap sort
@@ -11,22 +8,19 @@ import utilities.Heap;
  * public static <E extends Comparable<E>> void heapSort(E[] list) 
  * public static <E> void heapSort(E[] list, Comparator<? super E> comparator)
  * 
- * 01/
+ * 02/09/2017
  * @author kevgu
  *
  */
 
 public class Programming_Exercise_05 
 {
-	@SuppressWarnings("unchecked")
-	public static <E extends Comparable<E>> void main(String[] args) 
+	public static void main(String[] args) 
 	{
-		Integer[] list = {1, 2, 4, 5, 53, -44, -5, -3, 3, 3, 1, -4, 0};
-		Heap<E> heap = new Heap<E>((E[]) list);
-		heap.heapSort();
-		ArrayList<E> newList = heap.getList();
+		Integer[] list = {-44, -5, -3, 3, 3, 1, -4, 0, 1, 2, 4, 5, 53};
+		HeapSort.heapSort(list);
 		
-		for (int i = 0; i < newList.size(); i++)
-			System.out.print(newList.get(i) + " ");	
+		for (int i = 0; i < list.length; i++)
+			System.out.print(list[i] + " ");
 	}
 }
