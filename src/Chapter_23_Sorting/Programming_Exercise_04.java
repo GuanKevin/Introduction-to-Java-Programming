@@ -9,7 +9,7 @@ import java.util.Scanner;
  * The quick sort algorithm presented in the book selects the first element in the list as the pivot. 
  * Revise it by selecting the median among the first, middle, and last elements in the list.
  * 
- * 02/06/2017
+ * 02/09/2017
  * @author kevgu
  *
  */
@@ -28,6 +28,31 @@ public class Programming_Exercise_04
 		input.close();
 	}
 	
+	public static <E extends Comparable<E>> void setMedianIndex(E[] list, int start, int last)
+	{
+		if (list[start].compareTo(list[(last + start) / 2]) == 1)
+		{
+			if (list[(last + start) / 2].compareTo(list[last]) == 1)
+				swap(list, start, (last + start) / 2);
+			else if (list[start].compareTo(list[last]) == 1)
+				swap(list, start, last);
+		}
+		else
+		{
+			if (list[start].compareTo(list[last]) == 1)
+				return;
+			else if (list[(last + start) / 2].compareTo(list[last]) == 1)
+				swap(list, 0, last);
+		}
+	}
+	
+	public static <E extends Comparable<E>> void swap(E[] list, int first, int median)
+	{
+		E tempObj = list[first];
+		list[first] = list[median];
+		list[median] = tempObj;
+	}
+
 	public static <E extends Comparable<E>> void quickSort(E[] list)
 	{
 		quickSort(list, 0, list.length - 1);
@@ -43,35 +68,10 @@ public class Programming_Exercise_04
 		}
 	}
 	
-	public static <E extends Comparable<E>> void getMedianIndex(E[] list)
-	{
-		if (list[0].compareTo(list[(list.length - 1) / 2]) == 1)  
-		{
-			if (list[(list.length - 1) / 2].compareTo(list[list.length - 1]) == 1) 
-			    swap(list, 0, (list.length - 1)/ 2);
-			else if (list[0].compareTo(list[list.length - 1]) == 1)			
-			    swap (list, 0, list.length - 1);
-		} 
-		else 
-		{
-			if (list[(list.length - 1)/ 2].compareTo(list[list.length - 1]) == 1)
-			    swap(list, 0, list.length - 1);
-			else if (list[(list.length - 1)/ 2].compareTo(list[list.length - 1]) == -1)
-			    swap(list, 0, (list.length -1)/ 2);
-		}
-	}
-	
-	public static <E extends Comparable<E>> void swap(E[] list, int first, int median)
-	{
-		E temp = list[first];
-		list[first] = list[median];
-		list[median] = temp;
-	}
-	
 	public static <E extends Comparable<E>> int partition(E[] list, int first, int last)
 	{
-		getMedianIndex(list);
-		E pivot = list[0];
+		setMedianIndex(list, first, last);
+		E pivot = list[first];
 		int low = first + 1;
 		int high = last;
 		
