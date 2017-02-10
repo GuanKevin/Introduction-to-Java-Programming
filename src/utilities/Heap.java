@@ -1,19 +1,54 @@
 package utilities;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Heap<E extends Comparable<E>>
 {
-	private ArrayList<E> list = new ArrayList<E>();
+	private java.util.ArrayList<E> list = new java.util.ArrayList<E>();
+	private int value;
 	
-	
-	public Heap() {}
+	/**
+	 * Default false is set to as minHeap.
+	 * Passing true will set heap as maxHeap
+	 */
+	public Heap() 
+	{
+		setHeap(false);
+	}
 
 	public Heap(E[] objects) 
 	{
+		setHeap(true);
+		
 	    for (int i = 0; i < objects.length; i++)
 	      add(objects[i]);
+	}
+	
+	public Heap(E[] objects, boolean heap) 
+	{
+		setHeap(heap);
+		
+	    for (int i = 0; i < objects.length; i++)
+	      add(objects[i]);
+	}
+	
+	/**
+	 * maxHeap = 1
+	 * minHeap = -1
+	 * 
+	 * @param maxHeap
+	 */
+	public void setHeap(boolean maxHeap)
+	{
+		if (maxHeap)
+			value = 1;
+		else
+			value = -1;
+	}
+	
+	public int getHeap()
+	{
+		return value;
 	}
 
 	public void add(E newObject) 
@@ -25,7 +60,7 @@ public class Heap<E extends Comparable<E>>
 	    {
 	    	int parentIndex = (currentIndex - 1) / 2;
 	    	
-	    	if (list.get(currentIndex).compareTo(list.get(parentIndex)) > 0) 
+	    	if (list.get(currentIndex).compareTo(list.get(parentIndex)) == getHeap()) 
 	    	{
 		        E temp = list.get(currentIndex);
 		        list.set(currentIndex, list.get(parentIndex));
@@ -57,11 +92,11 @@ public class Heap<E extends Comparable<E>>
 	      
 	    	if (rightChildIndex < list.size()) 
 	    	{
-	    		if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0) 
+	    		if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) == -getHeap()) 
 	    			maxIndex = rightChildIndex;
 	    	}      
 	       
-	    	if (list.get(currentIndex).compareTo(list.get(maxIndex)) < 0) 
+	    	if (list.get(currentIndex).compareTo(list.get(maxIndex)) == -getHeap()) 
 	    	{
 	    		E temp = list.get(maxIndex);
 	    		list.set(maxIndex, list.get(currentIndex));
@@ -135,9 +170,9 @@ public class Heap<E extends Comparable<E>>
     }
 	
 	@Override
-	public String toString()
+	public String toString() 
 	{
-		return "Array List: " + list.toString();
+		return "List: " + list.toString();
 	}
 	
 	public int getSize() 

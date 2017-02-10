@@ -17,6 +17,14 @@ public class HeapSort
 			list[i] = heap.remove();
 	}
 	
+	public static <E extends Comparable<E>> void heapSort(E[] list, boolean heapType)
+	{
+		Heap<E> heap = new Heap<>(list, heapType);
+		
+		for (int i = list.length - 1; i >= 0; i--)
+			list[i] = heap.remove();
+	}
+	
 	public static <E extends Comparable<E>> void heapSort(E[] list, Comparator<E> comparator)
 	{
 		Heap<E> heap = new Heap<>();
