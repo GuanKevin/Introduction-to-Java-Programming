@@ -1,6 +1,6 @@
 package Chapter_23_Sorting;
 
-import utilities.HeapSort;
+import utilities.Heap;
 
 /**
  * Min-heap
@@ -18,9 +18,12 @@ public class Programming_Exercise_07
 	public static void main(String[] args) 
 	{
 		Integer[] list = {-44, -5, -3, 3, 3, 1, -4, 0, 1, 2, 4, 5, 53};
-		HeapSort.heapSort(list);
+		Heap<Integer> heap = new Heap<>(list);
+		System.out.println(heap.toString());
+
+		/*HeapSort.heapSort(list);
 		
 		for (int i = 0; i < list.length; i++)
-			System.out.print(list[i] + " ");
+			System.out.print(list[i] + " ");*/
 	}
 }

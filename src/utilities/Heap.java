@@ -1,10 +1,11 @@
 package utilities;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Heap<E extends Comparable<E>>
 {
-	private java.util.ArrayList<E> list = new java.util.ArrayList<E>();
+	private ArrayList<E> list = new ArrayList<E>();
 	
 	
 	public Heap() {}
@@ -132,6 +133,12 @@ public class Heap<E extends Comparable<E>>
 
 	    return removedObject;
     }
+	
+	@Override
+	public String toString()
+	{
+		return "Array List: " + list.toString();
+	}
 	
 	public int getSize() 
 	{
