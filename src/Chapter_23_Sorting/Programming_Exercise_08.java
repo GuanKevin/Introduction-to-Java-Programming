@@ -5,7 +5,7 @@ package Chapter_23_Sorting;
  * Implement the following sort method using a heap. 
  * public static <E extends Comparable<E>> void sort(E[] list)
  * 
- * 01/
+ * 02/10/2017
  * @author kevgu
  *
  */
@@ -16,6 +16,7 @@ public class Programming_Exercise_08
 	{
 		Integer[] list = {2, 3, 2, 5, 6, 1, -2, 3, 14, 12};
 	    heapSort(list);
+	    
 	    for (int i = 0; i < list.length; i++) 
 	    	System.out.print(list[i] + " ");
 	}
@@ -59,7 +60,7 @@ public class Programming_Exercise_08
 	    			list.set(parentIndex, temp);
 	    		}
 	    		else
-	    			break; // the tree is a heap now
+	    			break; 
 
 	    		currentIndex = parentIndex;
 	    	}
@@ -79,7 +80,7 @@ public class Programming_Exercise_08
 	    		int leftChildIndex = 2 * currentIndex + 1;
 	    		int rightChildIndex = 2 * currentIndex + 2;
 
-	    		if (leftChildIndex >= list.size()) break; // The tree is a heap
+	    		if (leftChildIndex >= list.size()) break; 
 	    		int maxIndex = leftChildIndex;
 	    		if (rightChildIndex < list.size()) 
 	    			if (list.get(maxIndex).compareTo(list.get(rightChildIndex)) < 0) 
