@@ -7,7 +7,7 @@ import java.util.Random;
  * Radix sort
  * Write a program that randomly generates 1,000,000 integers and sorts them using radix sort.
  * 
- * 01/
+ * 02/11/2017
  * @author kevgu
  *
  */
@@ -20,18 +20,16 @@ public class Programming_Exercise_12
 		radixSort(list);
 		
 		for (int i = 0; i < list.length; i++)
-		{
 			if ((i + 1) % 10 == 0)
 				System.out.println(list[i] + " ");
 			else
 				System.out.print(list[i] + " ");
-		}
 	}
 	
 	public static void radixSort(int[] list)
 	{
 		@SuppressWarnings("unchecked")
-		ArrayList<Integer>[] buckets = new ArrayList[list.length];
+		ArrayList<Integer>[] buckets = new ArrayList[10];
 		
 		for (int i = 0; i < buckets.length; i++)
 			buckets[i] = new ArrayList<Integer>();
@@ -40,7 +38,7 @@ public class Programming_Exercise_12
 		{
 			for (int i = 0; i < buckets.length; i++)
 				buckets[i].clear();
-		
+			
 			for (int i = 0; i < list.length; i++)
 			{
 				int key = getKey(list[i], position);
@@ -48,6 +46,7 @@ public class Programming_Exercise_12
 			}
 			
 			int k = 0;
+			
 			for (int i = 0; i < buckets.length; i++)
 				for (int j = 0; j < buckets[i].size(); j++)
 					list[k++] = buckets[i].get(j);
@@ -63,14 +62,14 @@ public class Programming_Exercise_12
 		return (number / result) % 10;
 	}
 	
-	public static int[] generateNumbers(int number)
+	public static int[] generateNumbers(int size)
 	{
-		int[] tempList = new int[number];
-		Random randNumbers = new Random();
+		int[] tempList = new int[size];
+		Random randNum = new Random();
 		
 		for (int i = 0; i < tempList.length; i++)
-			tempList[i] = randNumbers.nextInt(100) + 1;
+			tempList[i] = randNum.nextInt(10000);
 		
-		return tempList;
+		return tempList;		
 	}
 }
