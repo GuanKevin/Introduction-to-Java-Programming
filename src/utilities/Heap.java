@@ -2,7 +2,7 @@ package utilities;
 
 import java.util.Comparator;
 
-public class Heap<E extends Comparable<E>>
+public class Heap<E extends Comparable<E>> implements Cloneable
 {
 	private java.util.ArrayList<E> list = new java.util.ArrayList<E>();
 	private int value;
@@ -168,6 +168,25 @@ public class Heap<E extends Comparable<E>>
 
 	    return removedObject;
     }
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException 
+	{
+		return super.clone();
+	}
+	
+	@SuppressWarnings("hiding")
+	public <E extends Comparable<E>> boolean equals(Heap<E> heapList)
+	{
+		if (this.getSize() != heapList.getSize())
+			return false;
+		
+		for (int i = 0; i < list.size(); i++)
+			if (list.get(i) != heapList.list.get(i))
+				return false;
+		
+		return true;
+	}
 	
 	@Override
 	public String toString() 
